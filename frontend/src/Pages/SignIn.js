@@ -13,10 +13,10 @@ const SignIn = (props) => {
   const [loginStep, setloginStep] = useState(null);
   const [eyeState, setEyeState] = useState(true);
   const [incomingUser, setIncomingUser] = useState({ email: "", pass: "" });
-
+  /*
   const respuestaGoogle = (response) => {
     const { givenName, email, googleId, imageUrl } = response.profileObj;
-    /* setPreUser({name:givenName,email:email,pass:googleId,url:imageUrl}) */
+
     props.logInUserInBackEnd({
       name: givenName,
       email: email,
@@ -27,11 +27,10 @@ const SignIn = (props) => {
 
     props.history.push("/");
   };
-
+ */
   return (
     <div className="">
-
-      <div className="myForm bg-secondary d-flex flex-column align-items-center">
+      <div className="d-flex">
         <div className="bg-white font-italic w-50 mt-2 mb-3 border p-5 logInContainer d-flex flex-column  align-items-left">
           Log-In Form
           <div className="border-0 bg-white">
@@ -68,7 +67,7 @@ const SignIn = (props) => {
           >
             Continue
           </button>
-       {/*    <GoogleLogin
+          {/*    <GoogleLogin
             className="text-white bg-primary"
             clientId="834257531526-ouhj5beccvjj3nhvrqjrjvmdga8qjvu9.apps.googleusercontent.com"
             buttonText="LogIn with Google"
@@ -83,7 +82,7 @@ const SignIn = (props) => {
           </NavLink>
         </div>
       </div>
-  {/*     <Footer /> */}
+      {/*     <Footer /> */}
     </div>
   );
 };

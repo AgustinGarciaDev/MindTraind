@@ -10,7 +10,7 @@ import axios from "axios";
 import { NavLink } from "react-router-dom";
 
 const SignUp = (props) => {
-  const [loginStep, setloginStep] = useState(null);
+  const [hidden, setHidden] = useState(true);
   const [eyeState, setEyeState] = useState(true);
   const [countries, setCountries] = useState([]);
   const [preUser, setPreUser] = useState({
@@ -57,77 +57,46 @@ const SignUp = (props) => {
   }; */
 
   return (
-    <div className="d-flex">
-      <div className="w-50">
-        <input
-          id="newone"
-          _ngcontent-yed-c7=""
-          className="ng-dirty ng-valid ng-touched"
-          formcontrolname="user"
-          type="text"
-          id="user"
-          placeholder="RUT"
-        ></input>
-      </div>
-      <div className="w-50">
-        <div className="w-50 bg-secondary myForm d-flex flex-column align-items-center">
-          <div className="font-italic realForm mt-3 mb-2 bg-white border-1 p-3 d-flex flex-column  align-items-left">
-            Sign-up Form
-            <input
-              type="text"
-              onChange={(e) => setPreUser({ ...preUser, name: e.target.value })}
-              value={preUser.name}
-              placeholder="your name"
-              className="border-1"
-            />
-            <input
-              type="text"
-              onChange={(e) => setPreUser({ ...preUser, lastName: e.target.value })}
-              value={preUser.lastName}
-              placeholder="your Last Name"
-              className="border-1"
-            />
+    <div
+      className="signUpContainer d-flex "
+      onMouseOver={() => setHidden(false)}
+      onMouseOut={() => setHidden(false)}
+    >
+      {/*  <p> "hola" {hidden && "hola"}</p> */}
+      <div className={"w-50"}>
+        <div className="titleForm m-3 h2 ">Sign Up Form</div>
+        <div className="h6 small text-center">Change your Life</div>
+        <div className="bg-secondary">
+          <div className="font-italic  mt-3 mb-2 bg-white border-1 p-3 d-flex flex-column">
             <div className="border mt-1">
               <input
                 type="mail"
                 onChange={(e) => setPreUser({ ...preUser, email: e.target.value.toLowerCase() })}
                 value={preUser.email}
                 placeholder="your email"
-                className="border-0 w-75"
+                className="ng-valid border-0 w-75"
               />
               📧
             </div>
-            <div className="border mt-1">
+            <div className="border mt-1 ">
               <input
                 type="text"
                 onChange={(e) => setPreUser({ ...preUser, url: e.target.value })}
                 value={preUser.url}
-                placeholder="url of your picture"
-                className="border-0 w-100"
+                placeholder="your name"
+                className="ng-dirty border-0 w-100"
+              />
+            </div>
+            <div className="border mt-1 ">
+              <input
+                type="text"
+                onChange={(e) => setPreUser({ ...preUser, url: e.target.value })}
+                value={preUser.url}
+                placeholder="your last name"
+                className="ng-valid border-0 w-100"
               />
             </div>
             {/*  <div className="small border mt-1"> */}
-            <select
-              placeholder="where you from?"
-              type="selection"
-              placeholder="country"
-              className=" small h3 mt-1 border"
-              onChange={(e) => setPreUser({ ...preUser, country: e.target.value })}
-            >
-              <option disabled selected>
-                -your country-
-              </option>
-
-              {countries &&
-                countries.length !== 0 &&
-                countries.map((pais) => {
-                  return (
-                    <option key={pais.name} value={pais.name}>
-                      {pais.name}
-                    </option>
-                  );
-                })}
-            </select>
             {/* </div> */}
             <div className="mt-1">
               <input
@@ -158,10 +127,7 @@ const SignUp = (props) => {
             cookiePolicy={"single_host_origin"}
           /> */}
             <NavLink to="/LogIn">
-              <label className="mt-2 btn btn-warning h6">
-                Do you already have an myTinerary account? yes, then please Log-In, ..👉 clicking
-                here
-              </label>{" "}
+              <label className="mt-2 btn btn-warning h6">Do you need help click here?</label>{" "}
             </NavLink>
             <ul className="pl-3 small">
               {/*  {console.log("soy el validations", validations)} */}
@@ -174,6 +140,7 @@ const SignUp = (props) => {
           </div>
         </div>
       </div>
+      <div className="w-50 bg-dark">hola</div>
     </div>
   );
 };
