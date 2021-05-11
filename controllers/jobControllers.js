@@ -12,62 +12,63 @@ const errorBackend = "error 500 , avisar al  team backend";
 const errorJobNotFound = "error: Job not found";
 
 const jobControllers = {
-    addJob = async (req,res) => {
-        let respuesta, error;
+    addJob : async (req,res) => {
+        let response, error;
         try {
-            respuesta = new Job(req.body);
-            await respuesta.save();
+            let newJob = new Job(req.body);
+            await newJob.save();
+            response = newJob;
+        } catch (err) {
+            console.log(err);
+            error = "error missing required fields ";
+        }
+        respondFrontend(res,response,error);
+    },
+    getAllJobs : async (req,res) => {
+        let response, error;
+        try {
+            response = await Job.find();
         } catch (err) {
             console.log(err);
             error = errorBackend;
         }
-        respondFrontend(req,res);
+        respondFrontend(res,response,error);
     },
-    getAllJobs = async (req,res) => {
-        let respuesta, error;
-        try {
-            respuesta = await Job.find();
-        } catch (err) {
-            console.log(err);
-            error = errorBackend;
-        }
-        respondFrontend(req,res);
-    },
-    getJobById = async (req,res) => {
+    getJobById : async (req,res) => {
         const id = req.params.id;
-        let respuesta, error;
+        let response, error;
         try {
-            respuesta = await Job.findById(id);
-            respuesta || (error = errorJobNotFound)
+            response = await Job.findById(id);
+            response || (error = errorJobNotFound)
         } catch (err) {
             console.log(err);
             error = errorBackend;
         }
-        respondFrontend(req,res);
+        respondFrontend(res,response,error);
     },
     updateJob: async (req,res) => {
         const id = req.params.id;
-        let respuesta, error;
+        let response, error;
         try {
-            respuesta = await Job.findByIdAndUpdate(id,req.body,{new:true});
-            respuesta || (error = errorJobNotFound);
+            response = await Job.findByIdAndUpdate(id,req.body,{new:true});
+            response || (error = errorJobNotFound);
         } catch (err) {
             console.log(err);
             error = errorBackend;
         }
-        respondFrontend(req,res);
+        respondFrontend(res,response,error);
     },
     deleteJob: async (req,res) => {
         const id = req.params.id;
-        let respuesta, error;
+        let response, error;
         try {
-            respuesta = await Job.findByIdAndDelete(id);
-            respuesta || (error = errorJobNotFound);
+            response = await Job.findByIdAndDelete(id);
+            response || (error = errorJobNotFound);
         } catch (err) {
             console.log(err);
             error = errorBackend;
         }
-        respondFrontend(req,res);
+        respondFrontend(res,response,error);
     }
 
 }

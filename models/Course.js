@@ -12,6 +12,6 @@ const courseSchemma = new mongoose.Schema({
     difficulty: { type: Number, required: true, min: 1, max: 5 },
 })
 
-const course = mongoose.model('course', courseSchemma)
+const Course = mongoose.model('course', courseSchemma)
 
-module.exports = course
+module.exports = Course

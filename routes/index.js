@@ -5,9 +5,11 @@ const validator = require('../config/validator') */
 
 const courseControllers = require('../controllers/courseControllers')
 const userControllers = require('../controllers/userControllers')
+const jobControllers = require('../controllers/jobControllers')
 
 const {addCourse, getAllCourses, getCourseById, updateCourse, deleteCourse} = courseControllers
 const {addUser, getAllUsers, getUserById, updateUser, deleteUser} = userControllers
+const {addJob,getAllJobs,getJobById,updateJob,deleteJob} = jobControllers
 
 //COURSE ROUTES
 router.route('/courses')
@@ -28,5 +30,14 @@ router.route('/users/:id')
     .get(getUserById)
     .put(updateUser)
     .delete(deleteUser)
-    
+
+router.route('/jobs')
+    .post(addJob)
+    .get(getAllJobs)
+
+router.route('/jobs/:id')
+    .get(getJobById)
+    .put(updateJob)
+    .delete(deleteJob)
+
 module.exports = router
