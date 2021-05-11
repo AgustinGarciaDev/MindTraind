@@ -20,18 +20,38 @@ html *{
 .title{
     padding: 25vh;
     color:white;
+    font-size: 10vh;
 }
 .footer{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: black;
+    
 }
 .link-footer{
     display: flex;
-    margin: 2vh;
+    justify-content:center;
+   
+}   
+.link{
+   padding: 2vh;
+   text-decoration:none;
+   color: white;
+   font-size: 2vh;
+   margin-top: 1vh;
 }
 .information{
     display: flex;
-    flex-wrap:nowrap;
-    padding: 4vh;
+    width: 95vw;
+}
+.img-info{
+    height: 8vh;
+}
+.img-social{
+    height:10vh;
+    padding: 1vh;
+}
+.info-ind{
+    margin:4vh;
+    padding:2vh;
 }
