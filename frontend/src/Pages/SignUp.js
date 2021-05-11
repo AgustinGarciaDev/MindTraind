@@ -99,18 +99,18 @@ const SignUp = (props) => {
             </div>
             {/*  <div className="small border mt-1"> */}
             {/* </div> */}
-            <div className="mt-1">
+            <div className="mt-1 ">
               <input
                 onChange={(e) => setPreUser({ ...preUser, pass: e.target.value })}
                 value={preUser.pass}
                 type={eyeState ? "password" : "text"}
                 placeholder="your password"
-                className="mb-1"
+                className="mb-1 ng-dirty"
               ></input>
             </div>
             <span className="small">show your password</span>
             <label htmlFor="eye">
-              <i class={eyeState ? "fas fa-eye-slash" : "fas fa-eye"}></i>
+              <i className={eyeState ? "fas fa-eye-slash" : "fas fa-eye"}></i>
               {/*  <i class="fas fa-eye"></i> */}
               <input
                 id="eye"
