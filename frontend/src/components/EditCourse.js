@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { connect } from "react-redux"
+import coursesActions from "../redux/actions/coursesActtions"
 
 const EditCourse = (props) => {
     const [options, setOptions] = useState([])
@@ -13,7 +15,15 @@ const EditCourse = (props) => {
             ...course,
             [name]: value
         })
-        console.log(course)
+    }
+
+    const sendData = async (e) => {
+        e.preventDefault()
+        const data = {...course, id: props.course._id}
+        const response = await props.editCourse(data)
+        if(response){
+            props.cancel()
+        }
     }
 
     return (
@@ -29,7 +39,7 @@ const EditCourse = (props) => {
                         <input type="text" placeholder="Difficulty" name="difficulty" onChange={readInput} />
                         <div className="formButtons">
                             <button onClick={props.cancel}>Go back</button>
-                            <button >Send</button>
+                            <button onClick={sendData} >Send</button>
                         </div>
                     </form>
                 </div>
@@ -38,4 +48,8 @@ const EditCourse = (props) => {
     )
 }
 
-export default EditCourse
+const mapDispatchToProps = {
+    editCourse: coursesActions.editCourse
+}
+
+export default connect(null, mapDispatchToProps)(EditCourse)

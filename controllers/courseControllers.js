@@ -54,7 +54,8 @@ const courseControllers = {
         const id = req.params.id;
         let response, error;
         try {
-            response = await Course.findByIdAndUpdate(id, req.body, { new: true }).populate('coach');
+            await Course.findByIdAndUpdate(id, req.body, { new: true });
+            response = await Course.find().populate('coach');
             response || (error = errorCourseNotFound);
         } catch (err) {
             console.log(err);

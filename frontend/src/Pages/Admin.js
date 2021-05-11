@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import axios from 'axios'
 import Course from '../components/Course'
 import Spinner from 'react-bootstrap/Spinner'
 import { connect } from "react-redux"
@@ -9,10 +8,14 @@ const Admin = (props) => {
     const [loader, setLoader] = useState(true)
 
     useEffect(() => {
-        props.getCourses()
+        if (props.coursesList.length === 0) {
+            props.getCourses()
+        }
         if (props.coursesList.length !== 0) {
             setLoader(false)
         }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.coursesList])
 
     return (
