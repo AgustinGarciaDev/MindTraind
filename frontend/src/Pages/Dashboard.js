@@ -1,55 +1,24 @@
-import { Sidenav, Dropdown, Nav, Icon } from 'rsuite';
+import React from 'react';
+import NavBarDashBoard from '../components/NavBarDashBoard'
+import CourseCard from '../components/CourseCard'
 const Dashboard = () => {
 
     const cursos = [
-        { nombreCurso: "zumba", foto: "http://baravdg.com/wp-content/uploads/2021/05/d8.jpg", nombre: "profesor", fecha: "17-05-2022", duration: "3 meses", dificultad: "extrema" }
+        { nameCourse: "Zumba", pictureRefence: "http://baravdg.com/wp-content/uploads/2021/05/pexels-andrea-piacquadio-3775566-1-scaled.jpg", nombre: "profesor", fecha: "17-05-2022", duration: "3 meses", dificultad: "extrema" },
+        { nameCourse: "Zumba", pictureRefence: "http://baravdg.com/wp-content/uploads/2021/05/pexels-andrea-piacquadio-3775566-1-scaled.jpg", nombre: "profesor", fecha: "17-05-2022", duration: "3 meses", dificultad: "extrema" },
+        { nameCourse: "Zumba", pictureRefence: "http://baravdg.com/wp-content/uploads/2021/05/pexels-andrea-piacquadio-3775566-1-scaled.jpg", nombre: "profesor", fecha: "17-05-2022", duration: "3 meses", dificultad: "extrema" }
+
     ]
 
     return (
         <>
-            <div>
-                <div style={{ width: 250 }}>
-                    <Sidenav defaultOpenKeys={['3', '4']} activeKey="1">
-                        <Sidenav.Body>
-                            <Nav>
-                                <Nav.Item eventKey="1" icon={<Icon icon="dashboard" />}>
-                                    Dashboard
-                                </Nav.Item>
-                                <Nav.Item eventKey="2" icon={<Icon icon="group" />}>
-                                    User Group
-                                 </Nav.Item>
-                                <Dropdown eventKey="3" title="Advanced" icon={<Icon icon="magic" />}>
-                                    <Dropdown.Item eventKey="3-1">Geo</Dropdown.Item>
-                                    <Dropdown.Item eventKey="3-2">Devices</Dropdown.Item>
-                                    <Dropdown.Item eventKey="3-3">Loyalty</Dropdown.Item>
-                                    <Dropdown.Item eventKey="3-4">Visit Depth</Dropdown.Item>
-                                </Dropdown>
-                                <Dropdown
-                                    eventKey="4"
-                                    title="Settings"
-                                    icon={<Icon icon="gear-circle" />}
-                                >
-                                    <Dropdown.Item eventKey="4-1">Applications</Dropdown.Item>
-                                    <Dropdown.Item eventKey="4-2">Channels</Dropdown.Item>
-                                    <Dropdown.Item eventKey="4-3">Versions</Dropdown.Item>
-                                    <Dropdown.Menu eventKey="4-5" title="Custom Action">
-                                        <Dropdown.Item eventKey="4-5-1">Action Name</Dropdown.Item>
-                                        <Dropdown.Item eventKey="4-5-2">Action Params</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
-                            </Nav>
-                        </Sidenav.Body>
-                    </Sidenav>
-                </div>
-            </div>
-            <div>
-                {cursos.map(curso => <div>
-                    <h1>{curso.nombreCurso}</h1>
-                </div>)}
+            <NavBarDashBoard />
+            <h1 className="tituloDasboard">My courses</h1>
+            <div className="ContenedorDeLosCursos">
+                {cursos.map(curso => <CourseCard curso={curso} />)}
             </div>
         </>
     )
-
 }
 
 export default Dashboard
