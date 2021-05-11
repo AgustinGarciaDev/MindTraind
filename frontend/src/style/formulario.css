@@ -19,6 +19,9 @@
 
 .hidden,
 .hidden > div {
-  background-color: aqua;
   display: none;
+}
+
+.myBtn {
+  border-radius: 20px !important;
 }

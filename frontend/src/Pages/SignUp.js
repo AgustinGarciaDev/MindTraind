@@ -12,7 +12,8 @@ import { NavLink } from "react-router-dom";
 const SignUp = (props) => {
   const [hidden, setHidden] = useState(true);
   const [eyeState, setEyeState] = useState(true);
-  const [countries, setCountries] = useState([]);
+
+  /* const [countries, setCountries] = useState([]); */
   const [preUser, setPreUser] = useState({
     name: "",
     lastName: "",
@@ -107,12 +108,20 @@ const SignUp = (props) => {
                 className="mb-1"
               ></input>
             </div>
-            <input id="eye" type="checkbox" onChange={() => setEyeState(!eyeState)}></input>{" "}
             <span className="small">show your password</span>
+            <label htmlFor="eye">
+              <i class={eyeState ? "fas fa-eye-slash" : "fas fa-eye"}></i>
+              {/*  <i class="fas fa-eye"></i> */}
+              <input
+                id="eye"
+                className="hidden"
+                type="checkbox"
+                onChange={() => setEyeState(!eyeState)}
+              ></input>{" "}
+            </label>
             <button
-              className="btn mb-1 btn-success logoIcon"
+              className="btn mb-1 btn-danger myBtn "
               onClick={() => {
-                props.createAndLogIn(preUser);
                 props.history.push("/");
               }}
             >
