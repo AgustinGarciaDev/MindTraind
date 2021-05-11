@@ -3,6 +3,8 @@ const cors = require('cors')
 const router = require('./routes/index')
 require('dotenv').config()
 require('./config/database')
+const passaport = require('passport')
+require('./config/passport')
 
 const app = express()
 

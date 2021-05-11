@@ -1,13 +1,17 @@
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import 'rsuite/lib/styles/index.less';
+import './style/formulario.css'
+import './style/dashboard.css'
+import './style/home.css'
 import SignIn from './Pages/SignIn'
 import SignUp from './Pages/SignUp'
 import Home from './Pages/Home'
 import Dashboard from './Pages/Dashboard'
 import Footer from './components/Footer'
 import Header from './components/Footer'
+import "bootstrap/dist/css/bootstrap.css";
 
 const App = () => {
-
   return (
     <BrowserRouter>
       <Header />
@@ -18,8 +22,9 @@ const App = () => {
         <Route exact path="/dashboard" component={Dashboard} />
       </Switch>
       <Footer />
-    </BrowserRouter>
-  )
-}
 
-export default App
+    </BrowserRouter>
+  );
+};
+
+export default App;
