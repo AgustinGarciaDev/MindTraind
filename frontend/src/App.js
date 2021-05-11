@@ -1,7 +1,8 @@
 import './App.css';
 function App() {
   return (
-    <h1>hola web!!!</h1>
+
+    <h1>Hello Word!</h1>
 
   );
 }
