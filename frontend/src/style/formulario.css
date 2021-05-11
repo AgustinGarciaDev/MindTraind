@@ -1,0 +1,13 @@
+.ng-dirty:focus {
+  border-radius: 2px;
+  outline: none;
+  border-color: #ee98a9;
+  box-shadow: 0 0 0 0.2rem rgba(220, 42, 77, 0.25);
+}
+
+.ng-valid:focus {
+  border-radius: 2px;
+  outline: none;
+  border-color: rgba(0, 132, 66, 0.8);
+  box-shadow: 0 0 0 0.2rem rgb(0 132 66 / 25%);
+}

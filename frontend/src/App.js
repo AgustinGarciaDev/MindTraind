@@ -9,9 +9,9 @@ import Home from './Pages/Home'
 import Dashboard from './Pages/Dashboard'
 import Footer from './components/Footer'
 import Header from './components/Footer'
+import "bootstrap/dist/css/bootstrap.css";
 
 const App = () => {
-
   return (
     <BrowserRouter>
       <Header />
@@ -24,7 +24,7 @@ const App = () => {
       <Footer />
 
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export default App
+export default App;
