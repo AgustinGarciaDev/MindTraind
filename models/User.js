@@ -10,6 +10,6 @@ const userSchemma = new mongoose.Schema({
     googleUser: {type: Boolean, default: false}
 })
 
-const user = mongoose.model('user', userSchemma)
+const User = mongoose.model('user', userSchemma)
 
-module.exports = user
+module.exports = User
