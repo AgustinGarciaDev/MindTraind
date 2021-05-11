@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import SignIn from './pages/SignIn'
-import SignUp from './pages/SignUp'
-import Home from './pages/Home'
-import Dashboard from './pages/Dashboard'
+import SignIn from './Pages/SignIn'
+import SignUp from './Pages/SignUp'
+import Home from './Pages/Home'
+import Dashboard from './Pages/Dashboard'
 
 const App = () => {
 
