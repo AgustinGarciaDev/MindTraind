@@ -3,6 +3,8 @@ import SignIn from './Pages/SignIn'
 import SignUp from './Pages/SignUp'
 import Home from './Pages/Home'
 import Dashboard from './Pages/Dashboard'
+import Footer from './components/Footer'
+import Header from './components/Footer'
 
 const App = () => {
 
