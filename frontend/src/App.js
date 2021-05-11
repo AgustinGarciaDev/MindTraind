@@ -18,6 +18,7 @@ const App = () => {
         <Route exact path="/dashboard" component={Dashboard} />
       </Switch>
       <Footer />
+
     </BrowserRouter>
   )
 }
