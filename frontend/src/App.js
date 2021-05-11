@@ -1,4 +1,8 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import 'rsuite/lib/styles/index.less';
+import './style/formulario.css'
+import './style/dashboard.css'
+import './style/home.css'
 import SignIn from './Pages/SignIn'
 import SignUp from './Pages/SignUp'
 import Home from './Pages/Home'
