@@ -6,8 +6,8 @@ const Dashboard = () => {
 
     return (
         <div>
-            {cursos.map(elemento => <div>
-                <h1>{nombre}</h1>
+            {cursos.map(curso => <div>
+                <h1>{curso.nombre}</h1>
             </div>)}
         </div>
     )
