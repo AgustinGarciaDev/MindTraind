@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-/* const passport = require('../config/passport')
-const validator = require('../config/validator') */
+const passport = require('passport')
+const validator = require('../config/validator') 
 
 const courseControllers = require('../controllers/courseControllers')
 const userControllers = require('../controllers/userControllers')
