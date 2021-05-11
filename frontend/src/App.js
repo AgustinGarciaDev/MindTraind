@@ -6,8 +6,7 @@ import SignIn from './Pages/SignIn'
 import SignUp from './Pages/SignUp'
 import Home from './Pages/Home'
 import Dashboard from './Pages/Dashboard'
-import Footer from './components/Footer'
-import Header from './components/Footer'
+import Admin from './Pages/Admin'
 import "bootstrap/dist/css/bootstrap.css";
 
 const App = () => {
@@ -18,6 +17,7 @@ const App = () => {
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/admin" component={Admin} />
       </Switch>
 
     </BrowserRouter>
