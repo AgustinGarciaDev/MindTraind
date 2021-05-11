@@ -1,7 +1,7 @@
 const SignIn = () => {
 
     return (
-        <h2>Componente Sign IN</h2>
+        <h2>Componente Sign VLNTN IN</h2>
     )
 }
 
