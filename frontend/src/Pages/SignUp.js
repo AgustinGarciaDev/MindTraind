@@ -105,7 +105,7 @@ const SignUp = (props) => {
                 value={preUser.pass}
                 type={eyeState ? "password" : "text"}
                 placeholder="your password"
-                className="mb-1 ng-dirty"
+                className={!validations.includes(false) ? "ng-valid" : "ng-dirty"}
               ></input>
             </div>
             <span className="small">show your password</span>
