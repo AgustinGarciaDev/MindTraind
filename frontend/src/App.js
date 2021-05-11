@@ -1,13 +1,13 @@
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import SignIn from './Pages/SignIn'
-import SignUp from './Pages/SignUp'
-import Home from './Pages/Home'
-import Dashboard from './Pages/Dashboard'
-import Footer from './components/Footer'
-import Header from './components/Footer'
+import SignIn from "./Pages/SignIn";
+import SignUp from "./Pages/SignUp";
+import Home from "./Pages/Home";
+import Dashboard from "./Pages/Dashboard";
+import Footer from "./components/Footer";
+import Header from "./components/Footer";
+import "bootstrap/dist/css/bootstrap.css";
 
 const App = () => {
-
   return (
     <BrowserRouter>
       <Header />
@@ -19,7 +19,7 @@ const App = () => {
       </Switch>
       <Footer />
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export default App
+export default App;
