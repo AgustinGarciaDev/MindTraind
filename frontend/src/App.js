@@ -13,14 +13,12 @@ import "bootstrap/dist/css/bootstrap.css";
 const App = () => {
   return (
     <BrowserRouter>
-      <Header />
       <Switch>
         <Route exact path="/home" component={Home} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/dashboard" component={Dashboard} />
       </Switch>
-      <Footer />
 
     </BrowserRouter>
   );
