@@ -10,6 +10,7 @@ const Info=()=>{
                     <div  className="information">
             
                         <div>
+                           
                         <h2>POSTURE</h2>
                         <p>A correct body posture benefits us in our health, avoiding muscular and spinal problems such as scoliosis, lordosis, low back pain among others, it avoids the appearance of muscle pain, keeping the load of our body leveled between the body segments </p>
                         </div>
