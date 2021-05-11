@@ -81,3 +81,32 @@
     font-size: 25px;
     margin-left: 10px;
 }
+
+.contenedorInscripcionCursos{
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 6vw;
+}
+
+.contenedorInfoCurso{
+    display: flex;
+    align-items: center;
+}
+
+.contenedorInfoCurso > h2{
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 0;
+}
+
+.contenedorInfoCurso > p{
+    margin-bottom: 0;
+    margin-left: 10px;
+}
+
+
+.contenedorBtnInscripcion{
+    display: flex;
+    margin: 20px;
+}
