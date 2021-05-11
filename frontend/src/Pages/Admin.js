@@ -2,20 +2,18 @@ import { useEffect, useState } from "react"
 import axios from 'axios'
 import Course from '../components/Course'
 import Spinner from 'react-bootstrap/Spinner'
+import { connect } from "react-redux"
+import coursesActions from "../redux/actions/coursesActtions"
 
-const Admin = () => {
-    const [courses, setCourses] = useState([])
+const Admin = (props) => {
     const [loader, setLoader] = useState(true)
 
     useEffect(() => {
-        axios.get('http://localhost:4000/api/courses')
-            .then(response => {
-                if (response.data.success) {
-                    setCourses(response.data.response)
-                    setLoader(false)
-                }
-            })
-    }, [])
+        props.getCourses()
+        if (props.coursesList.length !== 0) {
+            setLoader(false)
+        }
+    }, [props.coursesList])
 
     return (
         <>
@@ -28,7 +26,7 @@ const Admin = () => {
                             ?
                             <Spinner animation="border" role="status" />
                             :
-                            courses.map(course => <Course key={course._id} course={course} />)
+                            props.coursesList.map(course => <Course key={course._id} course={course} />)
                     }
                 </div>
             </div>
@@ -36,4 +34,14 @@ const Admin = () => {
     )
 }
 
-export default Admin
+const mapStateToProps = state => {
+    return {
+        coursesList: state.courses.courses
+    }
+}
+
+const mapDispatchToProps = {
+    getCourses: coursesActions.getCourses
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Admin)
