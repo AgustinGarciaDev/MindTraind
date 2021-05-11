@@ -11,3 +11,17 @@
   border-color: rgba(0, 132, 66, 0.8);
   box-shadow: 0 0 0 0.2rem rgb(0 132 66 / 25%);
 }
+
+.titleForm {
+  text-align: center;
+  font-style: italic;
+}
+
+.hidden,
+.hidden > div {
+  display: none;
+}
+
+.myBtn {
+  border-radius: 20px !important;
+}
