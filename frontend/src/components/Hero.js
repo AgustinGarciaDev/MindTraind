@@ -6,13 +6,13 @@ const Hero=()=>{
         <main className="container-title">
            
                 <div>
-                    <div >
-                        <img src="" alt=" " className="logo">LOGO</img>
-                        <h1 className="title">TITULO</h1>
+                    
+                    <div style={{backgroundImage:'url("http://baravdg.com/wp-content/uploads/2021/05/89952.jpg")'}}  className="img-home">
+                        <h1 className="title">TRAINED MIND</h1>
+                       
+                    
                     </div>
-                    <div>
-                    <p className="subtitle">SUBTITULO</p>
-                    </div>
+     
                        
                 </div>
         </main>
