@@ -6,7 +6,6 @@ const Dashboard = () => {
     ]
 
     return (
-<<<<<<< HEAD
         <>
             <div>
                 <div style={{ width: 250 }}>
@@ -49,13 +48,6 @@ const Dashboard = () => {
                 </div>)}
             </div>
         </>
-=======
-        <div>
-            {cursos.map(elemento => <div>
-                <h1>nombre</h1>
-            </div>)}
-        </div>
->>>>>>> origin/gracia
     )
 
 }
