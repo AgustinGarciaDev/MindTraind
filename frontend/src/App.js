@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import './style/formulario.css'
 import './style/dashboard.css'
 import './style/home.css'
+import './style/admin.css'
 import SignIn from './Pages/SignIn'
 import SignUp from './Pages/SignUp'
 import Home from './Pages/Home'
