@@ -6,7 +6,9 @@ const Dashboard = () => {
 
     return (
         <div>
-            <h1>hola</h1>
+            {cursos.map(elemento => <div>
+                <h1>{nombre}</h1>
+            </div>)}
         </div>
     )
 }
