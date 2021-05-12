@@ -10,10 +10,12 @@ import Dashboard from './Pages/Dashboard'
 import Admin from './Pages/Admin'
 import CourseList from './Pages/CourseList'
 import "bootstrap/dist/css/bootstrap.css";
-
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 const App = () => {
   return (
     <BrowserRouter>
+      <ToastContainer />
       <Switch>
         <Route exact path="/home" component={Home} />
         <Route exact path="/signup" component={SignUp} />
