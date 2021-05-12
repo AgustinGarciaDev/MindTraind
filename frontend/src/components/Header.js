@@ -8,7 +8,7 @@ const Header=()=>{
         
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <div>
-            <img src="http://baravdg.com/wp-content/uploads/2021/05/logo-1.png" alt="imagen-home" className="logo" />
+            <img src="http://baravdg.com/wp-content/uploads/2021/05/tm.png" alt="imagen-home" className="logo" />
         </div>
             <Navbar.Brand href="#home"></Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />

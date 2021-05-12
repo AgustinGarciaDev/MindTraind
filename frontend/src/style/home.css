@@ -16,6 +16,7 @@ html *{
 }
 .logo{
     height: 10vh;
+    padding:1vh;
 }
 .title{
     padding: 25vh;
