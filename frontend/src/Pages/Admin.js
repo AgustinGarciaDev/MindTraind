@@ -65,9 +65,10 @@ const Admin = (props) => {
         }
     }
 
-    const sendData = e => {
+    const sendData = async e => {
         e.preventDefault()
-        props.addCourse(course)
+        const response= await props.addCourse(course)
+        console.log(response)
     }
 
     return (
