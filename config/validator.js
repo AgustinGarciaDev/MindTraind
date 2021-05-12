@@ -2,17 +2,17 @@ const joi = require('joi')
 
 const validator = (req, res, next) => {
 
-    const namesRegExp = `^[a-zA-Z]*$`
+    //const namesRegExp = `/^[a-z ' ñ á é í ó ú]*$/i`
     const password = /(?=.*\d)(?=.*[A-z])/
 
     const schema = joi.object({
-        firstName: joi.string().trim().min(2).max(20).required().pattern(new RegExp(namesRegExp)).messages({
+        firstName: joi.string().trim().min(2).max(20).required().pattern(new RegExp(/^[a-z ' ñ á é í ó ú]{2,}$/i)).messages({
             'string.min': 'A minimum of 2 characters.',
             'string.max': 'A maximum of 20 characters.',
             'string.pattern.base': 'You can only use letters',
             'string.empty': 'You must complete this field'
         }),
-        lastName: joi.string().trim().min(2).max(20).required().pattern(new RegExp(namesRegExp)).messages({
+        lastName: joi.string().trim().min(2).max(20).required().pattern(new RegExp(/^[a-z ' ñ á é í ó ú]{2,}$/i)).messages({
             'string.min': 'A minimum of 2 characters.',
             'string.max': 'A maximum of 20 characters.',
             'string.pattern.base': 'You can only use letters',
@@ -37,9 +37,12 @@ const validator = (req, res, next) => {
     })
 
     const validation = schema.validate(req.body, { abortEarly: false })
-
+    
     if (validation.error) {
-        return res.json({ succes: false, error: validation.error })
+        let errors =  validation.error.details.map(error => {
+            return {message:error.message,label: error.context.label}
+        });
+        return res.json({success:false, errors})
     }
     next()
 }
