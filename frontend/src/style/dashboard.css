@@ -16,11 +16,12 @@
 }
 
 .ContenedorDeLosCursos{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    top: 6vw;
+     box-shadow: 1px 1px 5px 0px #000000a6;
+    margin-right: 20px;
+    margin-left: 20px;
+    border-radius: 10px;
+    width: 21vw;
+    max-height: 30vw;
 }
 
 .contenedorCurso{
@@ -29,6 +30,7 @@
     margin-left: 20px;
     border-radius: 10px;
     width: 21vw;
+    max-height: 30vw;
 }
 
 .tituloDasboard{
@@ -109,4 +111,14 @@
 .contenedorBtnInscripcion{
     display: flex;
     margin: 20px;
+}
+
+.contenedorAsideNav{
+    width: 26vw;
+    position: relative;
+    height: 50vw;
+    background:orange;
+    margin-right: 0;
+    margin-left: auto;
+
 }

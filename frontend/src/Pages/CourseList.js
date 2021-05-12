@@ -21,8 +21,9 @@ const CourseList = () => {
             <h1>Lista cursos</h1>
             <div className="contenedorInscripcionCursos">
                 {cursos.map(curso => <SuscribeCardCourse courseSubscription={courseSubscription} curso={curso} />)}
+                {!inscripcion && <SideNavSuscribe />}
             </div>
-            {!inscripcion && <SideNavSuscribe />}
+
 
         </div>
 
