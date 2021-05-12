@@ -3,10 +3,11 @@ import Course from '../components/Course'
 import Spinner from 'react-bootstrap/Spinner'
 import { connect } from "react-redux"
 import coursesActions from "../redux/actions/coursesActtions"
+import { showToast } from '../helpers/myToast'
 
 const Admin = (props) => {
     const [loader, setLoader] = useState(true)
-    const [course, setCourse] = useState({ nameCourse: '', category: [], coach: '', pictureRefence: '', programDescription: '', lessons: [], duration: '', difficulty: '' })
+    const [course, setCourse] = useState({ nameCourse: '', categories: [], coach: '', pictureRefence: '', programDescription: '', lessons: [], duration: '', difficulty: '' })
     const [category, setCategory] = useState({ name: '' })
     const [lesson, setLesson] = useState({ lessonName: '', videoLink: '' })
 
@@ -48,26 +49,31 @@ const Admin = (props) => {
     }
 
     const addCategory = () => {
-        if (category.name === '') {
-            alert("completa los campos crack")
+        if (category.name.trim() === '') {
+            showToast('error', "You cant add an empy category")
         } else {
-            course.category.push(category)
+            course.categories.push(category)
             setCategory({ name: '' })
         }
     }
 
     const addLesson = () => {
-        if (lesson.videoLink === '' || lesson.lessonName === '') {
-            alert("completa los campos crack")
+        if (lesson.videoLink.trim() === '' || lesson.lessonName.trim() === '') {
+            showToast('error', "You cant add an empy lesson")
         } else {
             course.lessons.push(lesson)
             setLesson({ lessonName: '', videoLink: '' })
         }
     }
 
-    const sendData = e => {
+    const sendData = async e => {
         e.preventDefault()
-        props.addCourse(course)
+        const response = await props.addCourse(course)
+        if (response) {
+            setCourse({ nameCourse: '', categories: [], coach: '', pictureRefence: '', programDescription: '', lessons: [], duration: '', difficulty: '' })
+        } else {
+            alert("funciona")
+        }
     }
 
     return (
@@ -100,7 +106,7 @@ const Admin = (props) => {
                         </div>
                         <div className="newCategories">
                             {
-                                course.category.map(category => <p key={category.name}>{category.name}</p>)
+                                course.categories.map(category => <p key={category.name}>{category.name}</p>)
                             }
                         </div>
                         <h3>Lessons</h3>

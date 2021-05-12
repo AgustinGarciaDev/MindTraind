@@ -27,6 +27,9 @@ const coursesActions = {
             const response = await axios.post('http://localhost:4000/api/courses', data)
             if (response.data.success) {
                 dispatch({ type: 'GET_COURSES', payload: response.data.response })
+                return response.data.success
+            }else{
+                return response.data.success
             }
         }
     }

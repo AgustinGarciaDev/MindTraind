@@ -10,6 +10,7 @@
     "express": "^4.17.1",
     "forever": "^3.0.4",
     "joi": "^17.4.0",
+    "joi-oid": "^1.1.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.8",
     "nodemon": "^2.0.7",

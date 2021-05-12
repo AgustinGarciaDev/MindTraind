@@ -29,24 +29,27 @@ const CourseList = (props) => {
 
 
     return (
-        <div>
+        <>
             <NavBarDashBoard />
-            <h1>Lista cursos</h1>
-            <div className="contenedorInscripcionCursos courseList">
+            <div className="fotoPortadaCourse">
+                <h1 className="cursoModalTitle titlePrincipal" >Boost your career with our courses</h1>
+            </div>
+            <div className="contenedorCourseAndSideBar">
+                <div className="contenedorInscripcionCursos courseList">
 
-                {
-                    loader
-                        ?
-                        <Spinner animation="border" role="status" />
-                        :
-                        props.coursesList.map(course => <SuscribeCardCourse courseSubscription={courseSubscription} course={course} />)
-                }
-
+                    {
+                        loader
+                            ?
+                            <Spinner animation="border" role="status" />
+                            :
+                            props.coursesList.map(course => <SuscribeCardCourse courseSubscription={courseSubscription} course={course} />)
+                    }
+                </div>
                 {!close && <SideNavSuscribe closeModal={closeModal} infoCourse={infoCourse} />}
             </div>
 
 
-        </div>
+        </>
 
     )
 }
