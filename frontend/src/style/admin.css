@@ -50,9 +50,9 @@
     display: flex;
     flex-direction: column;
     background-color: rgb(248, 248, 248);
-
     width: 70vw;
     padding: 2vh 3vw;
+    text-align: center;
 }
 
 .courseForm input {
@@ -71,4 +71,26 @@
 .formButtons button{
     border: 1px solid black;
     width: 5rem;
+}
+
+.category{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.categoryContainer{
+    border: 1px solid black;
+    margin: 1vh 1vh;
+    width: 8rem
+}
+
+.categoryIcons{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.categoryIcons div{
+    margin-right: 1vh;
 }
