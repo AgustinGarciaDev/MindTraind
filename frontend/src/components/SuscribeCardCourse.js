@@ -24,7 +24,7 @@ const SuscribeCardCourse = (props) => {
                 </div>
             </div>
             <div className="contenedorBtnInscripcion">
-                <button onClick={() => props.courseSubscription()} className="btnDashBoard">Inscribirme!</button>
+                <button onClick={() => props.courseSubscription(props.curso)} className="btnDashBoard">Inscribirme!</button>
             </div>
         </div>
     )
