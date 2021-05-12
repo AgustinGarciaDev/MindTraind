@@ -18,6 +18,10 @@ const SuscribeCardCourse = (props) => {
                     <h2>Duration</h2>
                     <p>{duration}</p>
                 </div>
+                <div className="contenedorInfoCurso" >
+                    <h2>Description</h2>
+                    <p>Aca va ir la descripcion</p>
+                </div>
             </div>
             <div className="contenedorBtnInscripcion">
                 <button onClick={() => props.courseSubscription()} className="btnDashBoard">Inscribirme!</button>
