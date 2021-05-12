@@ -16,12 +16,11 @@
 }
 
 .ContenedorDeLosCursos{
-     box-shadow: 1px 1px 5px 0px #000000a6;
-    margin-right: 20px;
-    margin-left: 20px;
-    border-radius: 10px;
-    width: 21vw;
-    max-height: 30vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 6vw;
 }
 
 .contenedorCurso{
@@ -30,7 +29,6 @@
     margin-left: 20px;
     border-radius: 10px;
     width: 21vw;
-    max-height: 30vw;
 }
 
 .tituloDasboard{
@@ -89,11 +87,20 @@
     align-items: center;
     position: relative;
     top: 6vw;
+    align-items: flex-start;
+}
+
+
+.courseList{
+
+    top: 0px;
 }
 
 .contenedorInfoCurso{
     display: flex;
     align-items: center;
+    margin-bottom: 16px;
+    margin-top: 16px;
 }
 
 .contenedorInfoCurso > h2{
@@ -114,11 +121,61 @@
 }
 
 .contenedorAsideNav{
-    width: 26vw;
+    width: 30vw;
     position: relative;
-    height: 50vw;
-    background:orange;
+    height: 40vw;
+    background:#080D13;
     margin-right: 0;
     margin-left: auto;
+    color: white;
+    padding: 23px;
+        bottom: 56px;
+}
 
+.titleContenedorAside{
+  font-family: 'Anton', sans-serif;
+}
+
+.nameTitleAside{
+        font-family: 'Roboto', sans-serif;
+}
+
+.lineaTitle{
+    background: #FF0034;
+    height: 0.5vw;
+    width: 5vw;
+    position: relative;
+    top: -7px;
+
+}
+.textoCourseAside > h2{
+    margin: 0;
+}
+
+.contenedorDatosCourseAside{
+    display: flex;
+    margin-top: 2vw;
+}
+
+.textoCourseAside{
+        margin-right: 4vw;
+}
+.contenedorBtnClose{
+    justify-content: flex-end;
+    display: flex;
+}
+
+.fa-times{
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.btnInscripcion{
+        width: 10vw;
+    height: 3vw;
+    background: #ff0034;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 2vw;
 }

@@ -1,27 +1,48 @@
 import SuscribeCardCourse from '../components/SuscribeCardCourse'
 import NavBarDashBoard from '../components/NavBarDashBoard'
 import SideNavSuscribe from '../components/SideNavSuscribe'
-import { useState } from 'react'
-const CourseList = () => {
+import coursesActions from "../redux/actions/coursesActtions"
+import { connect } from "react-redux"
+import { Spinner } from "react-bootstrap";
+import { useEffect, useState } from 'react'
+const CourseList = (props) => {
+    const [close, setClose] = useState(false)
+    const [loader, setLoader] = useState(true)
+    const [infoCourse, setInfoCourse] = useState(null)
 
-    const [inscripcion, setInscripcion] = useState(false)
-    const cursos = [
-        { nameCourse: "Zumba", pictureRefence: "http://baravdg.com/wp-content/uploads/2021/05/pexels-andrea-piacquadio-3775566-1-scaled.jpg", nombre: "profesor", fecha: "17-05-2022", duration: "3 meses", dificultad: "extrema" },
-        { nameCourse: "Zumba", pictureRefence: "http://baravdg.com/wp-content/uploads/2021/05/pexels-andrea-piacquadio-3775566-1-scaled.jpg", nombre: "profesor", fecha: "17-05-2022", duration: "3 meses", dificultad: "extrema" },
-        { nameCourse: "Zumba", pictureRefence: "http://baravdg.com/wp-content/uploads/2021/05/pexels-andrea-piacquadio-3775566-1-scaled.jpg", nombre: "profesor", fecha: "17-05-2022", duration: "3 meses", dificultad: "extrema" }
-    ]
-    const courseSubscription = () => {
-
-        setInscripcion(!inscripcion)
+    const courseSubscription = (course) => {
+        setInfoCourse(course)
+        setClose(false)
     }
+    const closeModal = () => {
+        setClose(true)
+    }
+
+    useEffect(() => {
+        if (props.coursesList.length === 0) {
+            props.getCourses()
+        }
+        if (props.coursesList.length !== 0) {
+            setLoader(false)
+        }
+    }, [props.coursesList])
+
 
     return (
         <div>
             <NavBarDashBoard />
             <h1>Lista cursos</h1>
-            <div className="contenedorInscripcionCursos">
-                {cursos.map(curso => <SuscribeCardCourse courseSubscription={courseSubscription} curso={curso} />)}
-                {!inscripcion && <SideNavSuscribe />}
+            <div className="contenedorInscripcionCursos courseList">
+
+                {
+                    loader
+                        ?
+                        <Spinner animation="border" role="status" />
+                        :
+                        props.coursesList.map(course => <SuscribeCardCourse courseSubscription={courseSubscription} course={course} />)
+                }
+
+                {!close && <SideNavSuscribe closeModal={closeModal} infoCourse={infoCourse} />}
             </div>
 
 
@@ -30,4 +51,14 @@ const CourseList = () => {
     )
 }
 
-export default CourseList
+const mapStateToProps = state => {
+    return {
+        coursesList: state.courses.courses
+    }
+}
+const mapDispatchToProps = {
+    getCourses: coursesActions.getCourses
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(CourseList)
