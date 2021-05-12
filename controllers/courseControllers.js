@@ -17,10 +17,7 @@ const courseControllers = {
         try {
             let newCourse = new Course(req.body);
             await newCourse.save();
-            response = await newCourse.execPopulate({
-                path: 'coach',
-                select: '-_id -password'
-            });
+            response = await Course.find()
 
         } catch (err) {
             console.log(err);

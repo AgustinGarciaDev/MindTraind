@@ -30,7 +30,7 @@ const EditCourse = (props) => {
     const editCategory = (data) => {
         console.log(data)
     }
-
+    
     return (
         <>
             <div className="editCourseContainer">
@@ -46,7 +46,7 @@ const EditCourse = (props) => {
                         <h3>Categorys</h3>
                         <div className="category">
                             {
-                                props.course.category.map(category => <Category editCategory={editCategory} key={category} category={category} />)
+                                props.course.category.map(category => <Category editCategory={editCategory} key={category._id} category={category} />)
                             }
                         </div>
                         <div className="formButtons">
