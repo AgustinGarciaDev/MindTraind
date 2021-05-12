@@ -1,4 +1,9 @@
 import axios from "axios";
+
+/* import { ToastContainer, toast, helpers, showToast } from "react-toastify"; */
+import { showToast } from "../../helpers/myToast";
+
+/* import "react-toastify/dist/ReactToastify.css"; */
 /* import { Notyf } from "notyf"; */
 /* import "notyf/notyf.min.css"; // for React, Vue and Svelte */
 /* import { Redirect } from "react-router-dom"; */
@@ -6,25 +11,33 @@ import axios from "axios";
 
 const usersActions = {
   createUserBackEnd: (preUser) => {
+    /*  const notify = (msg) => toast("errores del baack end"); */
+
     return (dispatch, getState) => {
       console.log("new user petition Req", preUser);
-      let respuesta = axios.post("http://localhost:4000/api/users/", preUser).then((respuesta) => {
-        if (!respuesta.data.success) {
-          console.log("errores del baack end", respuesta);
-          /*  respuesta.data.errores.details &&
+      let respuesta = axios
+        .post("http://localhost:4000/api/users/signup", preUser)
+
+        .then((respuesta) => {
+          console.log("0) soylaRespuesta", respuesta);
+          if (respuesta.data.success) {
+            showToast("success", respuesta.data.error);
+            /*   alert(respuesta.data.error); */
+
+            /*  respuesta.data.errores.details &&
             respuesta.data.errores.details.map((joiError) => {
             }); */
 
-          return respuesta.data.errores;
-        } else {
-          alert("algo fallo");
-        }
-        dispatch({
-          type: "LOGIN_USER",
-
-          payload: respuesta.data.success ? respuesta.data.respuesta : null,
-        });
-      });
+            dispatch({
+              type: "LOGIN_USER",
+              payload: respuesta.data.response,
+            });
+          } else {
+            showToast("error", respuesta.data);
+            return respuesta.data.errores;
+          }
+        })
+        .catch((e) => console.log("el eror", e));
     };
   },
 

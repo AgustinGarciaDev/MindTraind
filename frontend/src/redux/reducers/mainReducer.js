@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import courseReducer from "./coursesReducer";
-import usersReducer from "./userReducer";
+import userReducer from "./userReducer";
 
 const mainReducer = combineReducers({
   courses: courseReducer,
-  users: usersReducer,
+  user: userReducer,
 });
 
 export default mainReducer;

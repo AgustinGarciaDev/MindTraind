@@ -5,20 +5,15 @@ const userReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case "LOGIN_USER":
-      if (action.payload) {
-        console.log("1)payload is true", action.payload);
-      }
+      console.log("1)payload", action.payload);
 
-      /*  localStorage.setItem(
-          "userLogged",
-          JSON.stringify({
-            name: action.payload.name,
-            url: action.payload.url,
-            email: action.payload.email,
-          })
-        );
-        localStorage.setItem("token", action.payload.token);
-      } */
+      localStorage.setItem(
+        "userLogged",
+        JSON.stringify({
+          firstName: action.payload.name,
+        })
+      );
+      /*  localStorage.setItem("token", action.payload.token); */
 
       return {
         ...state,
