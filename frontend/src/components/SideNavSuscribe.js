@@ -1,20 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Nav } from "react-bootstrap";
 
 const SideNavSuscribe = (props) => {
 
-    const [close, setClose] = useState(false)
+    if (props.infoCourse === null) {
 
-    const closeModal = () => {
-        setClose(true)
+        return false
     }
-
+    const { nameCourse } = props.infoCourse
     return (
         <div className="contenedorAsideNav">
-            <button onClick={closeModal} >X</button>
+            <button onClick={() => props.closeModal()} >X</button>
             <div>
                 <h1>Inscripcion al curso</h1>
-                {<h2>{props.infoCourse.nameCourse}</h2>}
+                <h3>{nameCourse}</h3>
                 <i class="fab fa-facebook"></i>
             </div>
         </div>
