@@ -6,6 +6,9 @@ import coursesActions from "../redux/actions/coursesActtions"
 
 const Admin = (props) => {
     const [loader, setLoader] = useState(true)
+    const [course, setCourse] = useState({ nameCourse: '', category: [], coach: '', pictureRefence: '', programDescription: '', lessons: [], duration: '', difficulty: '' })
+    const [category, setCategory] = useState({ name: '' })
+    const [lesson, setLesson] = useState({ lessonName: '', videoLink: '' })
 
     useEffect(() => {
         if (props.coursesList.length === 0) {
@@ -17,6 +20,55 @@ const Admin = (props) => {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.coursesList])
+
+    const readInput = e => {
+        const value = e.target.value
+        const name = e.target.name
+        setCourse({
+            ...course,
+            [name]: value
+        })
+    }
+
+    const createCategory = e => {
+        const value = e.target.value
+        const name = e.target.name
+        setCategory({
+            [name]: value
+        })
+    }
+
+    const createLesson = e => {
+        const value = e.target.value
+        const name = e.target.name
+        setLesson({
+            ...lesson,
+            [name]: value
+        })
+    }
+
+    const addCategory = () => {
+        if (category.name === '') {
+            alert("completa los campos crack")
+        } else {
+            course.category.push(category)
+            setCategory({ name: '' })
+        }
+    }
+
+    const addLesson = () => {
+        if (lesson.videoLink === '' || lesson.lessonName === '') {
+            alert("completa los campos crack")
+        } else {
+            course.lessons.push(lesson)
+            setLesson({ lessonName: '', videoLink: '' })
+        }
+    }
+
+    const sendData = e => {
+        e.preventDefault()
+        props.addCourse(course)
+    }
 
     return (
         <>
@@ -32,6 +84,36 @@ const Admin = (props) => {
                             props.coursesList.map(course => <Course key={course._id} course={course} />)
                     }
                 </div>
+                <h3>Add new course</h3>
+                <div className="newCourseContainer">
+                    <form className="newCourseForm">
+                        <input type="text" placeholder="Course name" name="nameCourse" value={course.nameCourse} onChange={readInput} />
+                        <input type="text" placeholder="Program description" name="programDescription" value={course.programDescription} onChange={readInput} />
+                        <input type="text" placeholder="Coach " name="coach" value={course.coach} onChange={readInput} />
+                        <input type="text" placeholder="Picture refence " name="pictureRefence" value={course.pictureRefence} onChange={readInput} />
+                        <input type="text" placeholder="Duration" name="duration" value={course.duration} onChange={readInput} />
+                        <input type="text" placeholder="Difficulty" name="difficulty" value={course.difficulty} onChange={readInput} />
+                        <h3>Categories</h3>
+                        <div className="categoryNew">
+                            <input type="text" placeholder="categories" onChange={createCategory} name="name" value={category.name} />
+                            <i className="fas fa-plus" onClick={addCategory}></i>
+                        </div>
+                        <div className="newCategories">
+                            {
+                                course.category.map(category => <p key={category.name}>{category.name}</p>)
+                            }
+                        </div>
+                        <h3>Lessons</h3>
+                        <div className="lessonsNew">
+                            <div className="lessonInput">
+                                <input type="text" placeholder="lesson name" onChange={createLesson} name="lessonName" value={lesson.lessonName} />
+                                <input type="text" placeholder="video" onChange={createLesson} name="videoLink" value={lesson.videoLink} />
+                            </div>
+                            <i className="fas fa-plus" onClick={addLesson}></i>
+                        </div>
+                        <button onClick={sendData}>Add</button>
+                    </form>
+                </div>
             </div>
         </>
     )
@@ -44,7 +126,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    getCourses: coursesActions.getCourses
+    getCourses: coursesActions.getCourses,
+    addCourse: coursesActions.addCourse
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Admin)

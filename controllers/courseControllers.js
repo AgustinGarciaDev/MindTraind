@@ -17,10 +17,7 @@ const courseControllers = {
         try {
             let newCourse = new Course(req.body);
             await newCourse.save();
-            response = await newCourse.execPopulate({
-                path: 'coach',
-                select: '-_id -password'
-            });
+            response = await Course.find()
 
         } catch (err) {
             console.log(err);
@@ -61,7 +58,8 @@ const courseControllers = {
         const id = req.params.id;
         let response, error;
         try {
-            response = await Course.findByIdAndUpdate(id, req.body, { new: true })
+            await Course.findByIdAndUpdate(id, req.body, { new: true })
+            response = await Course.find()
                 .populate({ path: 'coach', select: '-_id -password' })
                 .populate({ path: 'students', select: '-_id -password' });
             response || (error = errorCourseNotFound);
@@ -101,7 +99,44 @@ const courseControllers = {
             error = errorBackend;
         }
         respondFrontend(res, response, error);
-    }
+    },
+
+    modifyCategories: async (req,res) => {
+        let response,error;
+        let idCourse = req.params.id;
+        const {action,idCategory,newNameCategory} = req.body;
+        let querySelector,updateOperator;
+
+        switch(action){
+            case "add":
+                querySelector = {_id :idCourse};
+                updateOperator = {$push: {categories:{name: newNameCategory}}};
+                break;
+            case "update":
+                querySelector = {_id:idCourse, "categories._id": idCategory}
+                updateOperator = {$set: {"categories.$.name" : newNameCategory}};
+                break;
+            case "delete":
+                querySelector = {_id :idCourse};
+                updateOperator = {$pull: {categories: {_id:idCategory}}};
+                break;
+            default:
+                respondFrontend(res,response,`error, unknown action: "${action} "`);
+                break;
+        }
+        try {
+            response = await Course.findOneAndUpdate(querySelector,updateOperator,{new:true})
+                .populate({ path: 'coach', select: '-_id -password' })
+                .populate({ path: 'students', select: '-_id -password' });
+            
+            response || (error = errorCourseNotFound);
+        } catch (err) {
+            console.log(e);
+            error = errorBackend;
+        }
+        respondFrontend(res,response,error);
+    },
+
 
 }
 
