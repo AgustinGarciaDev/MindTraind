@@ -9,6 +9,7 @@ import Home from './Pages/Home'
 import Dashboard from './Pages/Dashboard'
 import Admin from './Pages/Admin'
 import CourseList from './Pages/CourseList'
+import ClassList from './Pages/ClassList'
 import "bootstrap/dist/css/bootstrap.css";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
@@ -23,6 +24,7 @@ const App = () => {
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/admin" component={Admin} />
         <Route exact path="/courselist" component={CourseList} />
+        <Route exact path="/class" component={ClassList} />
       </Switch>
 
     </BrowserRouter>

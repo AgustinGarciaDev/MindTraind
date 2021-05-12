@@ -27,9 +27,9 @@ const userControllers = {
                 let token = jwToken.sign({ ...newUser }, process.env.SECRET_OR_KEY);
                 response = {
                     ...newUser.toObject(),
-                    _id: null,
+                    _id: undefined,
+                    password:undefined,
                     token,
-                    password: null
                 }
             }
             else {
@@ -100,12 +100,11 @@ const userControllers = {
             let userExist = await User.findOne({ email });
             if (userExist) {
                 if (bcryptsjs.compareSync(password, userExist.password)) {
-                    let token = bcryptsjs.sign({ ...userExist }, process.env.SECRET_OR_KEY);
-                    respuesta = {
+                    //let token = jwToken.sign({ ...userExist }, process.env.SECRET_OR_KEY);
+                    response = {
                         ...userExist.toObject(),
-                        _id: null,
-                        password: null,
-                        token
+                        _id: undefined,
+                        //token
                     }
                 } else
                     error = "Please provide a valid email and password ";
@@ -119,11 +118,14 @@ const userControllers = {
         respondFrontend(res, response, error);
     },
     forcedLogin: async (req, res) => {
+        
+        console.log(req.user)
         let response = {
             ...req.user.toObject(),
-            _id: null, password: null
+            _id: undefined, password: undefined
         }
-        respondFrontend(res, response, null);
+        
+        respondFrontend(res, response, undefined);
     }
 }
 

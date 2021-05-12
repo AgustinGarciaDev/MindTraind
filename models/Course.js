@@ -9,7 +9,7 @@ const courseSchemma = new mongoose.Schema({
     programDescription: { type: String, required: true },
     lessons: [{ lessonName: { type: String, required: true }, videoLink: { type: String, required: true } }],
     duration: { type: Number, required: true },
-    difficulty: { type: Number, required: true, min: 1, max: 5 },
+    difficulty: { type: Number, required: true, min: 1 },
     students: { type: [{ type: mongoose.Types.ObjectId, ref: 'user' }], default: [] }
     //[{type: mongoose.Types.ObjectId,ref: 'user'}]
 })
