@@ -20,22 +20,22 @@ const usersActions = {
 
         .then((respuesta) => {
           console.log("0) soylaRespuesta", respuesta);
-          if (!respuesta.data.success) {
-            showToast("error", respuesta.data.error);
+          if (respuesta.data.success) {
+            showToast("success", respuesta.data.error);
             /*   alert(respuesta.data.error); */
 
             /*  respuesta.data.errores.details &&
             respuesta.data.errores.details.map((joiError) => {
             }); */
 
-            return respuesta.data.errores;
+            dispatch({
+              type: "LOGIN_USER",
+              payload: respuesta.data.response,
+            });
           } else {
-            showToast("success", respuesta.data.error);
+            showToast("error", respuesta.data);
+            return respuesta.data.errores;
           }
-          dispatch({
-            type: "LOGIN_USER",
-            payload: respuesta.data.success ? respuesta.data.response : null,
-          });
         })
         .catch((e) => console.log("el eror", e));
     };

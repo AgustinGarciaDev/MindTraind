@@ -40,7 +40,7 @@ const SignUp = (props) => {
 
   useEffect(() => {
     const otherInput = preUser;
-    console.log("otherInput", otherInput);
+    /*  console.log("otherInput", otherInput); */
     setValidationsOther([
       otherInput.firstName.length > 1,
       otherInput.lastName.length > 2,
@@ -132,7 +132,7 @@ const SignUp = (props) => {
                 }
               />
               📧
-              {console.log("validacionesotro", validationsOther)}
+              {/*  {console.log("validacionesotro", validationsOther)} */}
             </div>
             {/*  <div className="small border mt-1"> */}
             {/* </div> */}
@@ -161,7 +161,8 @@ const SignUp = (props) => {
               className="btn mb-1 btn-danger myBtn "
               onClick={() => {
                 props.createAndLogIn(preUser);
-                console.log("0 preuser", preUser);
+                /* console.log("el usuario", props.theUser && props) */
+                /* console.log("0 preuser", preUser); */
                 /*     props.history.push("/"); */
               }}
             >
@@ -211,7 +212,9 @@ const SignUp = (props) => {
 };
 /* REDUX */
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    theUser: state.user.userLogged,
+  };
 };
 const mapDispatchToProps = {
   /*  fetchCountries: countriesActions.actionLoadCountries, */
