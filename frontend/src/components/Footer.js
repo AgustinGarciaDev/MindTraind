@@ -7,9 +7,9 @@ const Footer=()=>{
     <div>   
         <div  className="footer">
             <div className="social">
-                <img src="" alt="facebook" className="img-social"/>
-                <img src="" alt="instangram" className="img-social"/>
-                <img src="" alt="whatsapp" className="img-social"/>
+                <img src="http://baravdg.com/wp-content/uploads/2021/05/fb.png" alt="facebook" className="img-social"/>
+                <img src="http://baravdg.com/wp-content/uploads/2021/05/inst.png" alt="instangram" className="img-social"/>
+                <img src="http://baravdg.com/wp-content/uploads/2021/05/wsp.png" alt="whatsapp" className="img-social"/>
             </div>
             <div className="link-footer">
                 <NavLink exact to="/"><h2 className="link">Home</h2></NavLink>
