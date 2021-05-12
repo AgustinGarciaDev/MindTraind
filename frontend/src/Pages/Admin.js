@@ -3,6 +3,7 @@ import Course from '../components/Course'
 import Spinner from 'react-bootstrap/Spinner'
 import { connect } from "react-redux"
 import coursesActions from "../redux/actions/coursesActtions"
+import { showToast } from '../helpers/myToast'
 
 const Admin = (props) => {
     const [loader, setLoader] = useState(true)
@@ -48,8 +49,8 @@ const Admin = (props) => {
     }
 
     const addCategory = () => {
-        if (category.name === '') {
-            alert("completa los campos crack")
+        if (category.name.trim() === '') {
+            showToast('error', "You cant add an empy category")
         } else {
             course.category.push(category)
             setCategory({ name: '' })
@@ -57,8 +58,8 @@ const Admin = (props) => {
     }
 
     const addLesson = () => {
-        if (lesson.videoLink === '' || lesson.lessonName === '') {
-            alert("completa los campos crack")
+        if (lesson.videoLink.trim() === '' || lesson.lessonName.trim() === '') {
+            showToast('error', "You cant add an empy lesson")
         } else {
             course.lessons.push(lesson)
             setLesson({ lessonName: '', videoLink: '' })
@@ -67,8 +68,12 @@ const Admin = (props) => {
 
     const sendData = async e => {
         e.preventDefault()
-        const response= await props.addCourse(course)
-        console.log(response)
+        const response = await props.addCourse(course)
+        if (response) {
+            setCourse({ nameCourse: '', category: [], coach: '', pictureRefence: '', programDescription: '', lessons: [], duration: '', difficulty: '' })
+        } else {
+            alert("funciona")
+        }
     }
 
     return (

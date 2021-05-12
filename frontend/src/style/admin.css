@@ -111,6 +111,8 @@
     display: flex;
     flex-direction: column;
     width: 50%;
+    padding: 1rem;
+    border: solid 1px black;
 }
 
 .newCourseForm input{
