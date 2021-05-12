@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { Nav } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
+import MydModalWithGrid from "react-bootstrap"
 
 const SideNavSuscribe = (props) => {
+    const [modalShow, setModalShow] = useState(false);
 
     console.log(props)
     if (props.infoCourse === null) {
@@ -9,6 +11,29 @@ const SideNavSuscribe = (props) => {
         return false
     }
     const { nameCourse, duration, difficulty, programDescription } = props.infoCourse
+
+    function MyVerticallyCenteredModal(props) {
+        return (
+            <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered >
+                <Modal.Header closeButton>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                        Modal heading
+                </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <h1>hola</h1>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={props.onHide}>Close</Button>
+                    <Button onClick={props.onHide}>Close</Button>
+                </Modal.Footer>
+            </Modal>
+        );
+    }
+
+
+
+
     return (
         <div className="contenedorAsideNav">
             <div className="contenedorBtnClose"> <i onClick={() => props.closeModal()} className="fas fa-times"></i></div>
@@ -31,7 +56,12 @@ const SideNavSuscribe = (props) => {
                     <p>{programDescription}</p>
                 </div>
             </div>
-            <button className="btnInscripcion">Inscribirme</button>
+            <button onClick={() => setModalShow(true)} className="btnInscripcion">Inscribirme</button>
+
+            <MyVerticallyCenteredModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+            />
         </div>
     )
 }
