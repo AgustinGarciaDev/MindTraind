@@ -18,10 +18,7 @@ const Footer=()=>{
                 <NavLink exact to="/dashboard"><h2 className="link">dashboard</h2></NavLink>
             </div> 
         </div>
-            <div className="name">
-                <p>choclazo</p>
-                <p>COHORT 3 - MINDHUB</p>
-            </div>
+           
      </div>
 </div>
     )

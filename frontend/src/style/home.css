@@ -1,0 +1,37 @@
+html *{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+.home{
+    height: 100vh;
+}
+.img-home{
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index:-1;
+    object-fit: cover ;
+    width: 100%;
+    height: 80vh;
+}
+.logo{
+    height: 10vh;
+}
+.title{
+    padding: 25vh;
+    color:white;
+}
+.footer{
+    display: flex;
+    justify-content: space-around;
+    background-color: black;
+}
+.link-footer{
+    display: flex;
+    margin: 2vh;
+}
+.information{
+    display: flex;
+    flex-wrap:nowrap;
+    padding: 4vh;
+}

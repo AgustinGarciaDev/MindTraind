@@ -1,18 +1,30 @@
 import React from 'react'
-import{NavLink} from 'react-router-dom'
+import { Nav } from "react-bootstrap";
+import { Navbar } from 'react-bootstrap';
 
 const Header=()=>{
-    return(
-    <div>   
-        <div  className="header">
-            <div className="link-footer">
-                <NavLink exact to="/"><h2 className="link">Home</h2></NavLink>
-                <NavLink exact to="/signup"><h2 className="link">signup</h2></NavLink>
-                <NavLink exact to="/signin"><h2 className="link">signin</h2></NavLink>
-                <NavLink exact to="/dashboard"><h2 className="link">dashboard</h2></NavLink>
-            </div>
-       </div>     
-</div>
-    )
+  return (
+    <header>
+        
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <div>
+            <img src="http://baravdg.com/wp-content/uploads/2021/05/logo-1.png" alt="imagen-home" className="logo" />
+        </div>
+            <Navbar.Brand href="#home"></Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+                <Nav className="mr-auto">
+                    <Nav.Link href="#features">Sign In</Nav.Link>
+                    <Nav.Link href="#pricing">Sign Up</Nav.Link>
+                </Nav>
+            </Navbar.Collapse>
+        </Navbar>
+    </header>
+)
 }
+
+    
+
+           
+
 export default Header

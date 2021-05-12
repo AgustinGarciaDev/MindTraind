@@ -7,6 +7,6 @@ const jobsSchemma = new mongoose.Schema({
     description: { type: String, required: true },
 })
 
-const jobs = mongoose.model('user', jobsSchemma)
+const Job = mongoose.model('job', jobsSchemma)
 
-module.exports = jobs
+module.exports = Job

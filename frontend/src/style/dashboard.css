@@ -1,0 +1,112 @@
+.logoDashBoard{
+    width: 5vw;
+}
+
+.DashBoardfotoUsuario{
+    width: 3vw;
+    border-radius: 50%;
+}
+
+.fotoCurso{
+    width: 100%;
+    height: 15vw;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+}
+
+.ContenedorDeLosCursos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 6vw;
+}
+
+.contenedorCurso{
+    box-shadow: 1px 1px 5px 0px #000000a6;
+    margin-right: 20px;
+    margin-left: 20px;
+    border-radius: 10px;
+    width: 21vw;
+}
+
+.tituloDasboard{
+    text-align: center;
+}
+
+.contenedorBtn{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+
+}
+
+.btnDashBoard{
+    border: none;
+    background: FF0034;
+    background: #FF0034;
+    color: white;
+    width: 11vw;
+    height: 3vw;
+    border-radius: 10px;
+    box-shadow: 1px 1px 9px 2px #ff0034;
+}
+
+.fotoProfesor{
+    width: 4vw;
+    height: 4vw;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.contenedorDatosCardCurso{
+    margin-left: 18px;
+    margin-bottom: 14px;
+    margin-top: 19px;
+}
+
+.tituloCurso{
+    font-family: 'Anton', sans-serif;
+}
+
+.fotoProfesorNombre{
+    display: flex;
+    align-items: center;
+}
+
+.nombreProfesor {
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    margin-left: 10px;
+}
+
+.contenedorInscripcionCursos{
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 6vw;
+}
+
+.contenedorInfoCurso{
+    display: flex;
+    align-items: center;
+}
+
+.contenedorInfoCurso > h2{
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 0;
+}
+
+.contenedorInfoCurso > p{
+    margin-bottom: 0;
+    margin-left: 10px;
+}
+
+
+.contenedorBtnInscripcion{
+    display: flex;
+    margin: 20px;
+}
