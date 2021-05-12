@@ -14,7 +14,17 @@ import Foro from './Pages/Foro'
 import "bootstrap/dist/css/bootstrap.css";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-const App = () => {
+import {connect} from 'react-redux'
+import usersActions from "./redux/actions/usersActions";
+
+const App = (props) => {
+  const token = localStorage.getItem("token");
+  console.log(props)
+  //veo que no haya en el store un usuario logueado y que haya un token en el localStorage
+  if(!props.userLogged && token && token !== "undefined"){
+    console.log("holo")
+      props.loginForced(JSON.parse(token),props.history)
+  }
   return (
     <BrowserRouter>
       <ToastContainer />
@@ -32,4 +42,13 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = (state) =>{
+  return {
+      userLogged : state.user.userLogged,
+  }
+}
+const mapDispatchToProps = {
+  loginForced: usersActions.loginForced,
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);

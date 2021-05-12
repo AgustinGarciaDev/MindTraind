@@ -44,7 +44,9 @@ const usersActions = {
             const { data } = await axios.get("http://localhost:4000/api/usersforcedlogin", {
                 headers: { 'Authorization': 'Bearer ' + token }
             })
+            
             dispatch({type: "LOGIN_USER", payload: {...data.response,token} } );
+            showToast("success",`Welcome ${data.response.firstName} ${data.response.lastName}`)
         }
         catch (err) {
             alert("Error 500 , please come back later")
