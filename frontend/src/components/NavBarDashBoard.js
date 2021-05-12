@@ -12,9 +12,9 @@ const NavBarDashBoard = () => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link href="#pricing"><img className="DashBoardfotoUsuario" src="http://baravdg.com/wp-content/uploads/2021/04/46.jpg" alt="" /></Nav.Link>
-                        <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+                        <NavDropdown title="Settings" id="collasible-nav-dropdown">
+                            <NavDropdown.Item href="#action/3.1">Perfil</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.2">Beneficios</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
