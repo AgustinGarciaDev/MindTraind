@@ -61,7 +61,8 @@ const courseControllers = {
         const id = req.params.id;
         let response, error;
         try {
-            response = await Course.findByIdAndUpdate(id, req.body, { new: true })
+            await Course.findByIdAndUpdate(id, req.body, { new: true })
+            response = await Course.find()
                 .populate({ path: 'coach', select: '-_id -password' })
                 .populate({ path: 'students', select: '-_id -password' });
             response || (error = errorCourseNotFound);
