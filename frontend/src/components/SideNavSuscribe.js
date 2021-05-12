@@ -1,8 +1,13 @@
+import { Nav } from "react-bootstrap";
 
 const SideNavSuscribe = () => {
 
     return (
-        <h1>hola</h1>
+        <>
+
+            <h1>h</h1>
+
+        </>
     )
 }
 
