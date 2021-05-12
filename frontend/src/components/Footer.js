@@ -13,9 +13,8 @@ const Footer=()=>{
             </div>
             <div className="link-footer">
                 <NavLink exact to="/"><p className="link">Home</p></NavLink>
-                <NavLink exact to="/signup"><p className="link">signup</p></NavLink>
-                <NavLink exact to="/signin"><p className="link">signin</p></NavLink>
-                <NavLink exact to="/dashboard"><p className="link">dashboard</p></NavLink>
+                <NavLink exact to="/signup"><p className="link">Sign Up</p></NavLink>
+                <NavLink exact to="/signin"><p className="link">Sign In</p></NavLink>
             </div> 
         </div>
            

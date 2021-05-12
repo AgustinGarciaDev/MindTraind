@@ -42,10 +42,12 @@ html *{
    color: white;
    font-size: 2vh;
    margin-top: 1vh;
+   font-family: 'Roboto', sans-serif;
 }
 .information{
     display: flex;
     width: 95vw;
+    font-family: 'Roboto', sans-serif;
 }
 .img-info{
     height: 8vh;
@@ -74,3 +76,9 @@ html *{
     color:white;
     font-size: 4vh;
 }
+.video{
+    width: 80vh;
+}
+.active{
+    color:red;
+  }
