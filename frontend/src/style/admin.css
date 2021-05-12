@@ -94,3 +94,56 @@
 .categoryIcons div{
     margin-right: 1vh;
 }
+
+.editInput{
+    width: 95%;
+}
+
+.newCourseContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.newCourseForm{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.newCourseForm input{
+    margin-bottom: 1vh;
+    border: none;
+    border-bottom: 1px solid black;
+    background: none;
+    outline: none;
+}   
+.categoryNew{
+    width: 100%;
+    display: flex;
+}
+.categoryNew input{
+    width: 100%;
+}
+
+.lessonsNew{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.lessonInput{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-right: 2vw;
+}
+
+.newCategories{
+    display: flex;
+    justify-content: center;
+}
+.newCategories p {
+    margin: 0 1vh;
+}
