@@ -2,7 +2,11 @@
 const SideNavSuscribe = () => {
 
     return (
-        <h1>hola</h1>
+        <div className="contenedorAsideNav">
+            <div>
+                <h1>Inscripcion al curso</h1>
+            </div>
+        </div>
     )
 }
 
