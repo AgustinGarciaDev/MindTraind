@@ -7,7 +7,7 @@ const courseControllers = require('../controllers/courseControllers')
 const userControllers = require('../controllers/userControllers')
 const jobControllers = require('../controllers/jobControllers')
 
-const {addCourse, getAllCourses, getCourseById, updateCourse, deleteCourse,getCourseByIdUser, modifyCategories} = courseControllers
+const {addCourse, getAllCourses, getCourseById, updateCourse, deleteCourse,getCourseByIdUser, modifyCategories, modifyLesson} = courseControllers
 const {addUser, getAllUsers, getUserById, updateUser, deleteUser} = userControllers
 const {addJob,getAllJobs,getJobById,updateJob,deleteJob} = jobControllers
 
@@ -26,6 +26,8 @@ router.route('/coursesOfUser/:id')
 router.route('/courses/modifyCategory/:id')
     .put(modifyCategories);
 
+router.route('/courses/modifyLesson/:id')
+    .put(modifyLesson)
 
 //USER ROUTES
 router.route('/users')

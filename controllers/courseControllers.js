@@ -140,6 +140,42 @@ const courseControllers = {
         respondFrontend(res,response,error);
     },
 
+    modifyLesson: async (req,res) => {
+        let response,error;
+        let idCourse = req.params.id;
+        const {action,idLesson,newName, newVideoLink} = req.body;
+        let querySelector,updateOperator;
+
+        switch(action){
+            case "add":
+                querySelector = {_id :idCourse};
+                updateOperator = {$push: {lessons:{lessonName: newName,videoLink: newVideoLink}}};
+                break;
+            case "update":
+                querySelector = {_id:idCourse, "lessons._id": idLesson}
+                updateOperator = {$set: {"lessons.$.lessonName" : newName,"lessons.$.videoLink":newVideoLink}};
+                break;
+            case "delete":
+                querySelector = {_id :idCourse};
+                updateOperator = {$pull: {lessons: {_id:idLesson}}};
+                break;
+            default:
+                respondFrontend(res,response,`error, unknown action: "${action} "`);
+                break;
+        }
+        try {
+            response = await Course.findOneAndUpdate(querySelector,updateOperator,{new:true})
+                .populate({ path: 'coach', select: '-_id -password' })
+                .populate({ path: 'students', select: '-_id -password' });
+            
+            response || (error = errorCourseNotFound);
+        } catch (err) {
+            console.log(e);
+            error = errorBackend;
+        }
+        respondFrontend(res,response,error);
+    },
+
 
 }
 
