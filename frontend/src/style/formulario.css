@@ -25,3 +25,43 @@
 .myBtn {
   border-radius: 20px !important;
 }
+
+.r2l {
+  filter: invert(1);
+  /*   width: 60px !important ;
+  height: 60px !important ; */
+}
+
+.mirror {
+  display: inline-block;
+  /* font-size: 30px; */
+  filter: invert(1);
+  -webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
+  -moz-transform: matrix(-1, 0, 0, 1, 0, 0);
+  -o-transform: matrix(-1, 0, 0, 1, 0, 0);
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.errorContainer {
+  background-color: #ee98a9;
+  /* border-style: double; */
+  border: solid 3px rgba(220, 42, 77, 0.25);
+  /* border-color: ; */
+  /* box-shadow: 0 0 0 0.2rem rgba(220, 42, 77, 0.25); */
+}
+
+#close {
+  width: 40px;
+  float: right;
+  display: inline-block;
+  padding: 2px 5px;
+  /* background: #ccc; */
+}
+
+#close:hover {
+  /* float:right; */
+  display: inline-block;
+  padding: 2px 5px;
+  /*  background: #ccc; */
+  color: #fff;
+}
