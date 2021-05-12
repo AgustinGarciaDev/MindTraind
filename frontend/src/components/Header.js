@@ -15,9 +15,9 @@ const Header=()=>{
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                <NavLink exact to="/">Home</NavLink>
-                    <NavLink exact to="/signin" >Sign In</NavLink>
-                    <NavLink exact to="/signup">Sign Up</NavLink>
+                <NavLink exact to="/"><p className="link">Home</p></NavLink>
+                    <NavLink exact to="/signin"><p className="link">Sign In</p></NavLink>
+                    <NavLink exact to="/signup"><p className="link">Sign Up</p></NavLink>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

@@ -7,10 +7,9 @@ const Hero=()=>{
            
                 <div>
                     
-                    <div style={{backgroundImage:'url("http://baravdg.com/wp-content/uploads/2021/05/trainedmind.png")'}}  className="img-home">
-                       
-                    
+                    <div style={{backgroundImage:'url("http://baravdg.com/wp-content/uploads/2021/05/trainedmind.png")'}}  className="img-home">   
                     </div>
+                    
      
                        
                 </div>

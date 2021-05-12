@@ -1,12 +1,24 @@
 import React from 'react'
 
 
+
 const Info=()=>{
     return(
         <main className="info">
            
                 <div>
                     
+                    <div className="info-ind">
+                        <img src="http://baravdg.com/wp-content/uploads/2021/05/hiit-o-entrenamiento-intervalico-de-alta-intensidad.jpg" alt="video" className="video" />
+                        <div>
+                            <h2>¿Como inscribirte?</h2>
+                            <p>Para ser parte de esta experiencia , debes elegir que corsus queres realizar.
+                                se parte del los mejores instructores en Trained Mind.
+                            </p>
+                            <h3>Pasos a seguir</h3>
+                            <p>aca van las imagenes representativas</p>
+                        </div>
+                    </div>        
                     <div  className="information">
             
                         <div className="info-ind">
