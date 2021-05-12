@@ -110,9 +110,10 @@
 .newCourseForm{
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 70%;
     padding: 1rem;
     border: solid 1px black;
+    text-align: center;
 }
 
 .newCourseForm input{
@@ -149,4 +150,32 @@
 }
 .newCategories p {
     margin: 0 1vh;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+small{
+    color: red;
+}
+
+.lessonInputError{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1vh;
+    width: 100%;
+}
+
+.categoriesShow{
+    border: 1px solid black;
+    padding: 1vh 4vh;
 }

@@ -4,9 +4,8 @@ import coursesActions from "../redux/actions/coursesActtions"
 import Category from './Category'
 
 const EditCourse = (props) => {
-    const [options, setOptions] = useState([])
-    const [error, setError] = useState({})
     const [course, setCourse] = useState({})
+    const [error, setError] = useState({})
     const errorsImput = { nameCourse: null, coach: null, category: null, pictureRefence: null, programDescription: null, duration: null, difficulty: null }
 
     const readInput = e => {
@@ -46,7 +45,7 @@ const EditCourse = (props) => {
                         <h3>Categorys</h3>
                         <div className="category">
                             {
-                                props.course.category.map(category => <Category editCategory={editCategory} key={category._id} category={category} />)
+                                props.course.categories.map(category => <Category editCategory={editCategory} key={category._id} category={category} />)
                             }
                         </div>
                         <div className="formButtons">
