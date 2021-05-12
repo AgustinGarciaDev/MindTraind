@@ -2,51 +2,43 @@ import React from "react";
 /* import Header from "./Header";
 import Footer from "./Footer"; */
 import { useEffect, useState } from "react";
-
-/* import { connect } from "react-redux"; */
-
+import { connect } from "react-redux";
+import usersActions from "../redux/actions/usersActions";
 import axios from "axios";
 /* import GoogleLogin from "react-google-login"; */
 import { NavLink } from "react-router-dom";
-
 const SignUp = (props) => {
   const [hidden, setHidden] = useState(true);
   const [eyeState, setEyeState] = useState(true);
-
   /* const [countries, setCountries] = useState([]); */
   const [preUser, setPreUser] = useState({
-    name: "",
+    firstName: "",
     lastName: "",
     email: "",
-    country: "",
-    pass: "",
-    url: "",
+    profilePicture: "",
+    password: "",
+    role: "noRole",
   });
   const [validations, setValidations] = useState([]);
-
   useEffect(() => {
-    console.log("1v) soy el didmount");
+    /*  console.log("1v) soy el didmount"); */
   }, []);
-
   useEffect(() => {
     /*  console.log("entre a validr"); */
-    const pass = preUser.pass;
+    const pass = preUser.password;
     setValidations([
       pass.length > 5,
       pass.search(/[A-Z]/) > -1,
       pass.search(/[0-9]/) > -1,
       pass.search(/[$&+,:;=?@#]/) > -1,
     ]);
-  }, [preUser.pass]);
-
+  }, [preUser.password]);
   /*   const fetchCountries = async (props) => {
     const paises = await props.fetchCountries();
     setCountries(paises);
   }; */
-
   /*  const respuestaGoogle = (response) => {
     const { givenName, email, googleId, imageUrl } = response.profileObj;
-
     props.createAndLogIn({
       name: givenName,
       email: email,
@@ -56,7 +48,6 @@ const SignUp = (props) => {
     });
     props.history.push("/");
   }; */
-
   return (
     <div
       className="signUpContainer d-flex "
@@ -69,6 +60,35 @@ const SignUp = (props) => {
         <div className="h6 small text-center">Change your Life</div>
         <div className="bg-secondary">
           <div className="font-italic  mt-3 mb-2 bg-white border-1 p-3 d-flex flex-column">
+            <div className="border mt-1 ">
+              <input
+                type="text"
+                onChange={(e) => setPreUser({ ...preUser, firstName: e.target.value })}
+                value={preUser.firstName}
+                placeholder="your name"
+                className="ng-dirty border-0 w-100"
+              />
+            </div>
+            <div className="border mt-1 ">
+              <input
+                type="text"
+                onChange={(e) => setPreUser({ ...preUser, lastName: e.target.value })}
+                value={preUser.lastName}
+                placeholder="your last name"
+                className="ng-valid border-0 w-100"
+              />
+            </div>
+
+            <div className="border mt-1 ">
+              <input
+                type="text"
+                onChange={(e) => setPreUser({ ...preUser, profilePicture: e.target.value })}
+                value={preUser.profilePicture}
+                placeholder="your ur image"
+                className="ng-valid border-0 w-100"
+              />
+            </div>
+
             <div className="border mt-1">
               <input
                 type="mail"
@@ -79,39 +99,22 @@ const SignUp = (props) => {
               />
               📧
             </div>
-            <div className="border mt-1 ">
-              <input
-                type="text"
-                onChange={(e) => setPreUser({ ...preUser, url: e.target.value })}
-                value={preUser.url}
-                placeholder="your name"
-                className="ng-dirty border-0 w-100"
-              />
-            </div>
-            <div className="border mt-1 ">
-              <input
-                type="text"
-                onChange={(e) => setPreUser({ ...preUser, url: e.target.value })}
-                value={preUser.url}
-                placeholder="your last name"
-                className="ng-valid border-0 w-100"
-              />
-            </div>
             {/*  <div className="small border mt-1"> */}
             {/* </div> */}
             <div className="mt-1 ">
               <input
-                onChange={(e) => setPreUser({ ...preUser, pass: e.target.value })}
-                value={preUser.pass}
+                onChange={(e) => setPreUser({ ...preUser, password: e.target.value })}
+                value={preUser.password}
                 type={eyeState ? "password" : "text"}
                 placeholder="your password"
+                className="mb-1 ng-dirty"
                 className={!validations.includes(false) ? "ng-valid" : "ng-dirty"}
               ></input>
             </div>
             <span className="small">show your password</span>
+
             <label htmlFor="eye">
               <i className={eyeState ? "fas fa-eye-slash" : "fas fa-eye"}></i>
-              {/*  <i class="fas fa-eye"></i> */}
               <input
                 id="eye"
                 className="hidden"
@@ -122,7 +125,9 @@ const SignUp = (props) => {
             <button
               className="btn mb-1 btn-danger myBtn "
               onClick={() => {
-                props.history.push("/");
+                props.createAndLogIn(preUser);
+                console.log("0 preuser", preUser);
+                /*     props.history.push("/"); */
               }}
             >
               Continue
@@ -135,8 +140,18 @@ const SignUp = (props) => {
             onFailure={respuestaGoogle}
             cookiePolicy={"single_host_origin"}
           /> */}
+
+            <div id="fb-root"></div>
+            <script
+              async
+              defer
+              crossorigin="anonymous"
+              src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0"
+              nonce="vAEksnOF"
+            ></script>
+
             <NavLink to="/LogIn">
-              <label className="mt-2 btn btn-warning h6">Do you need help click here?</label>{" "}
+              <label className="mt-2 btn btn-warning h6">Do you need help? click here</label>{" "}
             </NavLink>
             <ul className="pl-3 small">
               {/*  {console.log("soy el validations", validations)} */}
@@ -153,16 +168,14 @@ const SignUp = (props) => {
     </div>
   );
 };
-
 /* REDUX */
 /* const mapStateToProps = (state) => {
   return {};
-};
-
+};*/
 const mapDispatchToProps = {
-  fetchCountries: countriesActions.actionLoadCountries,
-  createAndLogIn: usersActions.actionCreateUserInBackEnd,
+  /*  fetchCountries: countriesActions.actionLoadCountries, */
+  createAndLogIn: usersActions.createUserBackEnd,
 };
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp); */
 
-export default SignUp;
+export default connect(null, mapDispatchToProps)(SignUp);
+/* export default SignUp; */
