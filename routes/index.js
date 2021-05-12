@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const passport = require('passport')
 const validator = require('../config/validator') 
+const courseValidator = require('../config/courseValidator')
 
 const courseControllers = require('../controllers/courseControllers')
 const userControllers = require('../controllers/userControllers')
@@ -14,7 +15,7 @@ const {addJob,getAllJobs,getJobById,updateJob,deleteJob} = jobControllers
 //COURSE ROUTES
 router.route('/courses')
     .get(getAllCourses)
-    .post(addCourse)
+    .post(courseValidator ,addCourse)
 
 router.route('/courses/:id')
     .get(getCourseById)
