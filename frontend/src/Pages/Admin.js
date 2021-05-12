@@ -7,7 +7,7 @@ import { showToast } from '../helpers/myToast'
 
 const Admin = (props) => {
     const [loader, setLoader] = useState(true)
-    const [course, setCourse] = useState({ nameCourse: '', category: [], coach: '', pictureRefence: '', programDescription: '', lessons: [], duration: '', difficulty: '' })
+    const [course, setCourse] = useState({ nameCourse: '', categories: [], coach: '', pictureRefence: '', programDescription: '', lessons: [], duration: '', difficulty: '' })
     const [category, setCategory] = useState({ name: '' })
     const [lesson, setLesson] = useState({ lessonName: '', videoLink: '' })
 
@@ -52,7 +52,7 @@ const Admin = (props) => {
         if (category.name.trim() === '') {
             showToast('error', "You cant add an empy category")
         } else {
-            course.category.push(category)
+            course.categories.push(category)
             setCategory({ name: '' })
         }
     }
@@ -70,7 +70,7 @@ const Admin = (props) => {
         e.preventDefault()
         const response = await props.addCourse(course)
         if (response) {
-            setCourse({ nameCourse: '', category: [], coach: '', pictureRefence: '', programDescription: '', lessons: [], duration: '', difficulty: '' })
+            setCourse({ nameCourse: '', categories: [], coach: '', pictureRefence: '', programDescription: '', lessons: [], duration: '', difficulty: '' })
         } else {
             alert("funciona")
         }
@@ -106,7 +106,7 @@ const Admin = (props) => {
                         </div>
                         <div className="newCategories">
                             {
-                                course.category.map(category => <p key={category.name}>{category.name}</p>)
+                                course.categories.map(category => <p key={category.name}>{category.name}</p>)
                             }
                         </div>
                         <h3>Lessons</h3>
