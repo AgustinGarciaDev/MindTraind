@@ -1,74 +1,72 @@
 import axios from "axios";
 
 /* import { ToastContainer, toast, helpers, showToast } from "react-toastify"; */
-import { showToast } from "../../helpers/myToast";
+import { showToast, showTostError500 } from "../../helpers/myToast";
 
-/* import "react-toastify/dist/ReactToastify.css"; */
-/* import { Notyf } from "notyf"; */
-/* import "notyf/notyf.min.css"; // for React, Vue and Svelte */
-/* import { Redirect } from "react-router-dom"; */
-/* const notyf = new Notyf(); */
 
 const usersActions = {
-  createUserBackEnd: (preUser) => {
+  signUpUser: (objInputsValues) => {
     /*  const notify = (msg) => toast("errores del baack end"); */
-
-    return (dispatch, getState) => {
-      console.log("new user petition Req", preUser);
-      let respuesta = axios
-        .post("http://localhost:4000/api/users/signup", preUser)
-
-        .then((respuesta) => {
-          console.log("0) soylaRespuesta", respuesta);
-          if (respuesta.data.success) {
-            showToast("success", respuesta.data.error);
-            /*   alert(respuesta.data.error); */
-
-            /*  respuesta.data.errores.details &&
-            respuesta.data.errores.details.map((joiError) => {
-            }); */
-
-            dispatch({
-              type: "LOGIN_USER",
-              payload: respuesta.data.response,
-            });
-          } else {
-            showToast("error", respuesta.data);
-            return respuesta.data.errores;
-          }
-        })
-        .catch((e) => console.log("el eror", e));
-    };
+    return async (dispatch, getState) => {
+      try {
+        let { data } = await axios.post("http://localhost:4000/api/users/signup", objInputsValues)
+        if (data.success) {
+          showToast("success", data.error);
+          dispatch({ type: "LOGIN_USER", payload: data.response });
+          showToast("success",`Welcome ${data.response.firstName} ${data.response.lastName}`)
+        } else {
+          return data.errors ? data.errors : data.error;
+        }
+      } catch (err) {
+        console.log(err);
+        showTostError500();
+      }
+    }
   },
-
-  /* filtro */
-  /*   logInUserBackEnd: (preUser) => {
-    return (dispatch, getState) => {
-      let respuesta = axios
-        .post("http://localhost:4000/api/trainedMind/LogIn/", preUser)
-        .then((respuesta) => {
-          console.log("1)soy info para loguear", respuesta.data.respuesta);
-          if (!respuesta.data.success) {
-            notyf.error({ message: respuesta.data.error, duration: 3000 });
-          } else {
-            notyf.success({ message: "Welcome 😀", duration: 3000 });
-          }
-          dispatch({
-            type: "LOGIN_USER",
-            payload: respuesta.data.success ? respuesta.data.respuesta : null,
-          });
-        });
-    };,
-  }, */
-
-  actionLogOut: () => {
-    return (dispatch, getState) => {
-      dispatch({
-        type: "LOG_OUT",
-        payload: [],
-      });
-    };
+  logInUser : (objInputsValues) =>{
+    return async (dispatch) => {
+      try {
+        let {data} = await axios.post("http://localhost:4000/api/users/login",objInputsValues);
+        console.log(data)
+        if(data.success){
+          dispatch({type:"LOGIN_USER" , payload: data.response})      
+          showToast("success",`Welcome ${data.response.firstName} ${data.response.lastName}`)
+        }
+      } catch (err) {
+        console.log(err);
+        showTostError500();
+      }
+    }
   },
+  loginForced: (token, history) => {
+    return async (dispatch, getState) => {
+        try {
+            const { data } = await axios.get("http://localhost:4000/api/usersforcedlogin", {
+                headers: { 'Authorization': 'Bearer ' + token }
+            })
+            dispatch({type: "LOGIN_USER", payload: {...data.response,token} } );
+        }
+        catch (err) {
+            alert("Error 500 , please come back later")
+            console.log(err)
+            if (err.response && err.response.status === 401) {
+                alert("try harder next time")
+                localStorage.clear();
+                window.location.reload(true);
+                //history.push("/");
+            }
+            showToast();
+            localStorage.clear();
+        }
+    }
+},
+
+  logOutUser: () => {
+    return (dispatch, getState) => {
+      showToast("info", "Come back later ", "top-right");
+      dispatch({type: "LOG_OUT"})
+    };
+  }
 
   /*  ForceLogIn: (preUser) => {
       console.log("1) en force login", preUser);

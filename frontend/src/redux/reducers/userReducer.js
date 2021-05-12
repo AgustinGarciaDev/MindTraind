@@ -1,26 +1,14 @@
 const initialState = { userLogged: null };
 
 const userReducer = (state = initialState, action) => {
-  console.log("0)payload Jona", action.payload);
-
+  console.log(action)
   switch (action.type) {
     case "LOGIN_USER":
-      console.log("1)payload", action.payload);
-
-      localStorage.setItem(
-        "userLogged",
-        JSON.stringify({
-          firstName: action.payload.name,
-        })
-      );
-      /*  localStorage.setItem("token", action.payload.token); */
-
+      localStorage.setItem("userLogged",JSON.stringify(action.payload));
       return {
         ...state,
         userLogged: action.payload,
       };
-
-      break;
 
     case "LOG_OUT":
       localStorage.clear();

@@ -9,6 +9,7 @@ import { NavLink } from "react-router-dom";
 /* import GoogleLogin from "react-google-login"; */
 
 const SignUp = (props) => {
+  console.log(props)
   const [hidden, setHidden] = useState(true);
   const [eyeState, setEyeState] = useState(true);
   const [errorVisible, setErrorVisible] = useState(true);
@@ -218,7 +219,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = {
   /*  fetchCountries: countriesActions.actionLoadCountries, */
-  createAndLogIn: usersActions.createUserBackEnd,
+  createAndLogIn: usersActions.signUpUser,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
