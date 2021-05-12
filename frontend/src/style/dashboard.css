@@ -81,57 +81,56 @@
     font-size: 25px;
     margin-left: 10px;
 }
-
+.contenedorCourseAndSideBar{
+    display: flex;
+        margin-top: 39px;
+}
 .contenedorInscripcionCursos{
     display: flex;
     align-items: center;
     position: relative;
     top: 6vw;
     align-items: flex-start;
+        flex-wrap: wrap;
+    width: 83vw;
 }
-
 
 .courseList{
 
     top: 0px;
 }
-
 .contenedorInfoCurso{
     display: flex;
     align-items: center;
     margin-bottom: 16px;
     margin-top: 16px;
 }
-
 .contenedorInfoCurso > h2{
     font-size: 20px;
     font-family: 'Roboto', sans-serif;
     margin-bottom: 0;
 }
-
 .contenedorInfoCurso > p{
     margin-bottom: 0;
     margin-left: 10px;
 }
 
-
 .contenedorBtnInscripcion{
     display: flex;
     margin: 20px;
 }
-
 .contenedorAsideNav{
     width: 30vw;
-    position: relative;
+    position: sticky;
     height: 40vw;
     background:#080D13;
     margin-right: 0;
     margin-left: auto;
     color: white;
     padding: 23px;
-        bottom: 56px;
+    bottom: 39px;
+    top: 0px;
 }
-
 .titleContenedorAside{
   font-family: 'Anton', sans-serif;
 }
@@ -139,7 +138,6 @@
 .nameTitleAside{
         font-family: 'Roboto', sans-serif;
 }
-
 .lineaTitle{
     background: #FF0034;
     height: 0.5vw;
@@ -151,12 +149,10 @@
 .textoCourseAside > h2{
     margin: 0;
 }
-
 .contenedorDatosCourseAside{
     display: flex;
     margin-top: 2vw;
 }
-
 .textoCourseAside{
         margin-right: 4vw;
 }
@@ -164,12 +160,10 @@
     justify-content: flex-end;
     display: flex;
 }
-
 .fa-times{
     font-size: 30px;
     cursor: pointer;
 }
-
 .btnInscripcion{
         width: 10vw;
     height: 3vw;
@@ -178,4 +172,50 @@
     font-weight: bold;
     border: none;
     border-radius: 2vw;
+}
+.cursoModal {
+    border-radius: 10px;
+    width: 10vw;
+    height: 10vw;
+    background-position: center;
+    background-size: cover;
+}
+.contenedorInformacionModal{
+    display: flex;
+}
+
+.cursoModalTitle{
+  font-family: 'Anton', sans-serif;
+  margin: 0;
+}
+
+.cursoModalSubtitle{
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 0;
+    font-size: 20px;
+}
+
+.cursoModalSubtitle > span{
+    margin-left: 5px;
+}
+.modalTextContent{
+    display: flex;
+    align-items: center;
+    margin-left: 16px;
+    margin-bottom: 10px;
+}
+
+.fotoPortadaCourse {
+    background-image: url("http://baravdg.com/wp-content/uploads/2021/05/pexels-li-sun-2294361-1-scaled.jpg");
+     background-size: cover;
+    background-position: center;
+    height: 29vw;
+    display: flex;
+    align-items: center;
+}
+
+.titlePrincipal{
+    color: white;
+    font-size: 4rem;
+    margin-left: 7vw;
 }
