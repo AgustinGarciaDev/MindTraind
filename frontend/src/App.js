@@ -23,7 +23,10 @@ const App = (props) => {
   //veo que no haya en el store un usuario logueado y que haya un token en el localStorage
   if(!props.userLogged && token && token !== "undefined"){
       props.loginForced(JSON.parse(token),props.history)
+      return null;
   }
+  
+
   return (
     <BrowserRouter>
       <ToastContainer />
@@ -34,7 +37,7 @@ const App = (props) => {
         <Route exact path="/dashboard" component={Dashboard} /> {/* SOLO ALUMNO /PROFESOR/ADMIN */}
         <Route exact path="/admin" component={Admin} /> {/* ADMIN */}
         <Route exact path="/courselist" component={CourseList} /> {/*  SOLO ALUMNO /PROFESOR/ADMIN*/}
-        <Route exact path="/class" component={ClassList} /> {/* SOLO ALUMNO /PROFESOR/ADMIN*/}
+        <Route exact path="/class/:id" component={ClassList} /> {/* SOLO ALUMNO /PROFESOR/ADMIN*/}
         <Route exact path="/foro" component={Foro} />{/* SOLO ALUMNO /PROFESOR/ADMIN */}
       </Switch>
     </BrowserRouter>

@@ -87,7 +87,7 @@ const courseControllers = {
         respondFrontend(res, response, error)
     },
     getCourseByIdUser: async (req, res) => {
-        const idUser = req.params.id;
+        const idUser = req.user._id;
         let response, error;
 
         try {

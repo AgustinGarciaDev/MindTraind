@@ -13,6 +13,7 @@ const coursesActions = {
                 }
                 dispatch({ type: 'GET_COURSES', payload: response.data.response })
             } catch (err) {
+                console.log(err)
                 showTostError500();
             }
 
@@ -54,9 +55,64 @@ const coursesActions = {
         }
     },
 
-    addStudentToCourse: (token) => {
-        
-    }
+    addStudentToCourse: (token,idCourse,action) => {
+        return async(dispatch) => {
+            try {
+                
+                const {data} = await axios.put( "http://localhost:4000/api/coursesmodifyStudents/"+idCourse,{action},{
+                    headers: { 'Authorization': 'Bearer ' + token }
+                })
+                if(!data.success){
+                    return showToast("error",data.error);
+                }
+                showToast("info", "inscripcion exitosa")
+                dispatch({type:"UPDATE_COURSE",payload:data.response}) 
+            } catch (err) {
+                if (err.response && err.response.status === 401) {
+                    localStorage.clear();
+                    return showToast("error", "usuario no autorizado , acceso denegado")
+                }
+                console.log(err);
+                showTostError500();
+            }
+        }
+    },
+    getCoursesByIdStudent:(token) => {
+        return async () => {
+            try {
+                const {data} = await axios.get("http://localhost:4000/api/coursesOfUser",{
+                    headers: {"Authorization": "Bearer " + token}
+                })
+                console.log(data)
+                return data
+
+            } catch (err) {
+                if (err.response && err.response.status === 401) {
+                    localStorage.clear();
+                    return showToast("error", "usuario no autorizado , acceso denegado")
+                }
+                console.log(err);
+                showTostError500();
+            }
+            
+        }
+    },
+    getCourseById: (idCourse) => {
+        return async () => {
+            try {
+                const {data} = await axios.get('http://localhost:4000/api/courses/'+idCourse)
+                if (data.success) 
+                    return data.response    
+                else
+                    showToast("error", data.error)
+                
+            } catch (err) {
+                console.log(err)
+                showTostError500();
+            }
+
+        }
+    },
     
 
 }

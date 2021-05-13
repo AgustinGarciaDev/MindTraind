@@ -10,7 +10,16 @@ const courseReducer = (state = initialState, action) => {
                 ...state,
                 courses: action.payload
             }
-
+        case 'UPDATE_COURSE': 
+            let newCourses = state.courses.map(course => {
+                if(course._id === action.payload._id)
+                    return action.payload
+                return course
+            })
+            return {
+                ...state,
+                courses : newCourses
+            }
         default:
             return state
     }

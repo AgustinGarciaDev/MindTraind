@@ -21,8 +21,8 @@ router.route('/courses/:id')
     .get(getCourseById)
     .put(updateCourse)
     .delete(deleteCourse)
-router.route('/coursesOfUser/:id')
-    .get(getCourseByIdUser)
+router.route('/coursesOfUser')
+    .get(passport.authenticate('jwt',{session:false}),getCourseByIdUser)
 
 router.route('/coursesmodifyCategory/:id')
     .put(modifyCategories);

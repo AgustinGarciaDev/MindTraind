@@ -1,6 +1,36 @@
 import NavBarDashBoard from '../components/NavBarDashBoard'
 import Class from '../components/Class'
-const ClassList = () => {
+import { useEffect, useState } from 'react'
+import {connect} from 'react-redux'
+import coursesActions from '../redux/actions/coursesActtions'
+const ClassList = (props) => {
+    const {courses,getCourseById} = props
+    const [lessonsCourse , setLessonsCourse] = useState([]);
+    async function fetchAPI(idCourse) {
+        try {
+            const course = await getCourseById(idCourse)
+            setLessonsCourse(course.lessons)    
+
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    useEffect(()=>{
+        const idCourse = props.match.params.id
+        if(courses.length !== 0){
+            let course =   courses.find(aCourse => aCourse._id === idCourse)
+            setLessonsCourse(course.lessons)
+        }
+        else{
+            fetchAPI(idCourse)
+        }
+
+        
+        
+           
+    },[])
+
+
     const clases = [
         { name: "clase 1", videoclase: "https://www.youtube.com/embed/DiBmqCze5Uk" },
         { name: "clase 2", videoclase: "https://www.youtube.com/embed/DiBmqCze5Uk" },
@@ -14,11 +44,20 @@ const ClassList = () => {
                 <h2>Program Course</h2>
             </div>
             <div className="classContainer">
-                {clases.map(clase => <Class clase={clase} />)}
+                {lessonsCourse.map(lesson => <Class key={lesson._id} clase={lesson} />)}
             </div>
         </>
 
     )
 }
+const mapStateToProps = (state) => {
+    return {
+        courses : state.courses.courses
+    }
+}
+const mapDispatchToProps = {
+    getCourseById : coursesActions.getCourseById,
 
-export default ClassList
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(ClassList)

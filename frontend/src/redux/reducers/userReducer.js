@@ -1,7 +1,6 @@
 const initialState = { userLogged: null };
 
 const userReducer = (state = initialState, action) => {
-  console.log(action)
   switch (action.type) {
     case "LOGIN_USER":
       localStorage.setItem("token",JSON.stringify(action.payload.token));
