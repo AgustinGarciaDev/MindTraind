@@ -119,7 +119,6 @@ const userControllers = {
     },
     forcedLogin: async (req, res) => {
         
-        console.log(req.user)
         let response = {
             ...req.user.toObject(),
             _id: undefined, password: undefined
