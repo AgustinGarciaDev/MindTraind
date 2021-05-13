@@ -19,7 +19,6 @@ html *{
     padding:1vh;
 }
 .title{
-    padding: 25vh;
     color:white;
     font-size: 10vh;
 }
@@ -42,10 +41,13 @@ html *{
    color: white;
    font-size: 2vh;
    margin-top: 1vh;
+   font-family: 'Roboto', sans-serif;
 }
 .information{
     display: flex;
+    align-items: center;
     width: 95vw;
+    font-family: 'Roboto', sans-serif;
 }
 .img-info{
     height: 8vh;
@@ -73,4 +75,43 @@ html *{
     padding: 1vh;
     color:white;
     font-size: 4vh;
+}
+.video{
+    width: 80vh;
+}
+.active{
+    color:red;
+  }
+.subtitulo{
+    font-size: 4vh;
+    font-family: 'Roboto', sans-serif;
+}
+.parrafo{
+    font-size: 2vh;
+    font-family: 'Roboto', sans-serif;
+}
+.texto{
+    width: 40vh;
+}
+
+.img-rp{
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    padding: 1vh;
+}
+.img-r{
+    height: 10vh;
+    padding:1vh;
+}
+.barras-logo{
+    width: 45vw;
+    margin-top: 30vh;
+    height: 18vh;
+}
+.titulo{
+    color:white;
+    font-size: 5vh; 
+    margin-top:-17vh;
+    padding: 1vh;
 }

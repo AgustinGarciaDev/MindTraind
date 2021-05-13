@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Modal, Button } from "react-bootstrap";
-import MydModalWithGrid from "react-bootstrap"
 
 const SideNavSuscribe = (props) => {
     const [modalShow, setModalShow] = useState(false);
@@ -44,7 +43,7 @@ const SideNavSuscribe = (props) => {
                     </div>
                 </Modal.Body >
                 <Modal.Footer>
-                    {/* <Button onClick={props.onHide}>Inscribirme</Button> */}
+
                     <button onClick={() => setModalShow(true)} className="btnInscripcion">Inscribirme</button>
                 </Modal.Footer>
             </Modal >

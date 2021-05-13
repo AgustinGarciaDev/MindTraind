@@ -1,0 +1,51 @@
+.contenedorPosteos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.contenedorBienvenidaUsuario{
+    display: flex;
+    align-items: center;
+    width: 51vw;
+    justify-content: center;
+    height: 13vw;
+    border-radius: 1vw;
+    cursor: pointer;
+}
+
+.barraBuscadora{
+    
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+}
+
+.contenedorBtnTextArea{
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #F7F7F7;
+    box-shadow: 0 5px 25px 10px rgb(0 0 0 / 15%);
+    margin-top: 4vw;
+
+}
+
+.contenedorTextArea{
+
+    width: 51vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.public-DraftStyleDefault-ltr {
+    direction: ltr;
+    text-align: left;
+    background: white;
+    height: 15vw;
+}
+
+.inputPost{
+width: 100%;
+}

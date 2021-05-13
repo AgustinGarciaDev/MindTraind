@@ -2,12 +2,12 @@ import React from "react";
 /* import Header from "./Header";
 import Footer from "./Footer"; */
 import { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import usersActions from "../redux/actions/usersActions";
-import axios from "axios";
-import { NavLink } from "react-router-dom";
-/* import GoogleLogin from "react-google-login"; */
+/* import { connect } from "react-redux"; */
 
+/* import GoogleLogin from "react-google-login"; */
+import { NavLink } from "react-router-dom";
+import usersActions from "../redux/actions/usersActions";
+import { connect } from 'react-redux'
 const SignIn = (props) => {
   const [hidden, setHidden] = useState(true);
   const [eyeState, setEyeState] = useState(true);
@@ -55,6 +55,9 @@ const SignIn = (props) => {
     });
     props.history.push("/");
   }; */
+  const send = () => {
+    props.logInUser(preUser)
+  }
   return (
     <div
       className="SignInContainer d-flex "
@@ -123,12 +126,7 @@ const SignIn = (props) => {
             </label>
             <button
               className="btn mb-1 btn-danger myBtn "
-              onClick={() => {
-                props.logInUserBackEnd(preUser);
-                /* console.log("el usuario", props.theUser && props) */
-                /* console.log("0 preuser", preUser); */
-                /*     props.history.push("/"); */
-              }}
+              onClick={() => send()}
             >
               Continue
             </button>
@@ -169,21 +167,20 @@ const SignIn = (props) => {
             </ul>
           </div>
         </div>
-      </div>
+      </div >
       <div className="w-50 bg-dark">hola</div>
-    </div>
+    </div >
   );
 };
 /* REDUX */
-const mapStateToProps = (state) => {
+/*
+ const mapStateToProps = (state) => {
   return {
-    theUser: state.user.userLogged,
+  
   };
-};
+};*/
 const mapDispatchToProps = {
-  /*  fetchCountries: countriesActions.actionLoadCountries, */
-  logInUserBackEnd: usersActions.logInUserBackEnd,
+  logInUser: usersActions.logInUser
 };
+export default connect(null, mapDispatchToProps)(SignIn);
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
-/* export default SignIn; */

@@ -4,21 +4,23 @@ import Spinner from 'react-bootstrap/Spinner'
 import { connect } from "react-redux"
 import coursesActions from "../redux/actions/coursesActtions"
 import { showToast } from '../helpers/myToast'
+import CategoryText from "../components/CategoryText"
+import LessonText from "../components/LessonText"
 
 const Admin = (props) => {
     const [loader, setLoader] = useState(true)
     const [course, setCourse] = useState({ nameCourse: '', categories: [], coach: '', pictureRefence: '', programDescription: '', lessons: [], duration: '', difficulty: '' })
     const [category, setCategory] = useState({ name: '' })
     const [lesson, setLesson] = useState({ lessonName: '', videoLink: '' })
+    const [error, setError] = useState({})
+    const errorsImput = { nameCourse: null, coach: null, categories: null, pictureRefence: null, programDescription: null, duration: null, difficulty: null, lessons: null }
 
     useEffect(() => {
         if (props.coursesList.length === 0) {
             props.getCourses()
-        }
-        if (props.coursesList.length !== 0) {
+        } else {
             setLoader(false)
         }
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.coursesList])
 
@@ -68,18 +70,62 @@ const Admin = (props) => {
 
     const sendData = async e => {
         e.preventDefault()
-        const response = await props.addCourse(course)
-        if (response) {
-            setCourse({ nameCourse: '', categories: [], coach: '', pictureRefence: '', programDescription: '', lessons: [], duration: '', difficulty: '' })
+        if (course.categories.length === 0 || course.lessons.length === 0) {
+            showToast('error', "You cant send an empy form")
         } else {
-            alert("funciona")
+            const response = await props.addCourse(course)
+            if (response.data.success) {
+                setCourse({ nameCourse: '', categories: [], coach: '', pictureRefence: '', programDescription: '', lessons: [], duration: '', difficulty: '' })
+            } else {
+                console.log(response.data.error.details)
+                response.data.error.details.map(error => {
+                    errorsImput[error.path[0]] = error.message
+                    return null
+                })
+                setError(errorsImput)
+            }
         }
+    }
+
+    const changeCategory = (data) => {
+        if (data.text.trim() !== '') {
+            course.categories.map(category => {
+                if (category.name === data.data) {
+                    category.name = data.text
+                    return category
+                }
+            })
+        }
+    }
+
+    const deleteCategory = (data) => {
+        setCourse({
+            ...course,
+            categories: course.categories.filter(category => category.name !== data)
+        })
+    }
+
+    const changeLesson = (data) => {
+        course.lessons.map(lesson => {
+            if(lesson.lessonName === data.id){
+                lesson.lessonName = data.lessonName
+                lesson.videoLink = data.videoLink
+                return lesson
+            }
+        })
+    }
+
+    const deleteLesson = (data) => {
+        setCourse({
+            ...course,
+            lessons: course.lessons.filter(lesson => lesson.lessonName !== data)
+        })
     }
 
     return (
         <>
             <div className="adminContainer">
-                <h2>Courses</h2>
+                <h3 className="h3Form">Courses</h3>
                 <p>aca podria haber un filtro para facilitar la busqueda</p>
                 <div className="courseContainer">
                     {
@@ -90,34 +136,59 @@ const Admin = (props) => {
                             props.coursesList.map(course => <Course key={course._id} course={course} />)
                     }
                 </div>
-                <h3>Add new course</h3>
                 <div className="newCourseContainer">
                     <form className="newCourseForm">
+                        <h3 className="h3Form">Add new course</h3>
+
                         <input type="text" placeholder="Course name" name="nameCourse" value={course.nameCourse} onChange={readInput} />
+                        {error.nameCourse && <small>{error.nameCourse}</small>}
+
                         <input type="text" placeholder="Program description" name="programDescription" value={course.programDescription} onChange={readInput} />
+                        {error.programDescription && <small>{error.programDescription}</small>}
+
                         <input type="text" placeholder="Coach " name="coach" value={course.coach} onChange={readInput} />
+                        {error.coach && <small>{error.coach}</small>}
+
                         <input type="text" placeholder="Picture refence " name="pictureRefence" value={course.pictureRefence} onChange={readInput} />
-                        <input type="text" placeholder="Duration" name="duration" value={course.duration} onChange={readInput} />
-                        <input type="text" placeholder="Difficulty" name="difficulty" value={course.difficulty} onChange={readInput} />
-                        <h3>Categories</h3>
+                        {error.pictureRefence && <small>{error.pictureRefence}</small>}
+
+                        <input type="number" placeholder="Duration" name="duration" value={course.duration} onChange={readInput} />
+                        {error.duration && <small>{error.duration}</small>}
+
+                        <input type="number" placeholder="Difficulty" name="difficulty" value={course.difficulty} onChange={readInput} />
+                        {error.difficulty && <small>{error.difficulty}</small>}
+
+                        <h3 className="h3Form">Categories</h3>
                         <div className="categoryNew">
-                            <input type="text" placeholder="categories" onChange={createCategory} name="name" value={category.name} />
+                            <div className="lessonInputError">
+                                <input type="text" placeholder="categories" onChange={createCategory} name="name" value={category.name} />
+                                {error.categories && <small>{error.categories}</small>}
+                            </div>
                             <i className="fas fa-plus" onClick={addCategory}></i>
                         </div>
                         <div className="newCategories">
                             {
-                                course.categories.map(category => <p key={category.name}>{category.name}</p>)
+                                course.categories.map(category => <CategoryText deleteCategory={deleteCategory} changeCategory={changeCategory} key={category.name} category={category} />)
                             }
                         </div>
-                        <h3>Lessons</h3>
+                        <h3 className="h3Form">Lessons</h3>
                         <div className="lessonsNew">
                             <div className="lessonInput">
-                                <input type="text" placeholder="lesson name" onChange={createLesson} name="lessonName" value={lesson.lessonName} />
-                                <input type="text" placeholder="video" onChange={createLesson} name="videoLink" value={lesson.videoLink} />
+                                <div className="lessonInputError">
+                                    <input type="text" placeholder="lesson name" onChange={createLesson} name="lessonName" value={lesson.lessonName} />
+                                    <input type="text" placeholder="video" onChange={createLesson} name="videoLink" value={lesson.videoLink} />
+                                    {error.lessons && <small>{error.lessons}</small>}
+
+                                </div>
                             </div>
                             <i className="fas fa-plus" onClick={addLesson}></i>
                         </div>
-                        <button onClick={sendData}>Add</button>
+                        <div className="newCategories">
+                            {
+                                course.lessons.map(lesson => <LessonText changeLesson={changeLesson} key={lesson.lessonName} lesson={lesson} deleteLesson={deleteLesson} />)
+                            }
+                        </div>
+                        <button className="formButtonsNew" onClick={sendData}>Add</button>
                     </form>
                 </div>
             </div>

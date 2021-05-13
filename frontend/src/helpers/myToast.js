@@ -29,6 +29,6 @@ export function showToast(type, message, position = "top-right",) {
     }
 }
 
-export function mostrarTostadaError500(position = "top-right",) {
+export function showTostError500(position = "top-right",) {
     toast.error("ups , something went wrong, please try again... ",defaultConfiguration(position) );
 }

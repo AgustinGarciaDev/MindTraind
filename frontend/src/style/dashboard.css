@@ -29,6 +29,8 @@
     margin-left: 20px;
     border-radius: 10px;
     width: 21vw;
+        margin-top: 10px;
+    margin-bottom: 16px;
 }
 
 .tituloDasboard{
@@ -104,6 +106,7 @@
     align-items: center;
     margin-bottom: 16px;
     margin-top: 16px;
+    
 }
 .contenedorInfoCurso > h2{
     font-size: 20px;
@@ -122,7 +125,7 @@
 .contenedorAsideNav{
     width: 30vw;
     position: sticky;
-    height: 40vw;
+     height: 48vw;
     background:#080D13;
     margin-right: 0;
     margin-left: auto;
@@ -130,6 +133,7 @@
     padding: 23px;
     bottom: 39px;
     top: 0px;
+     overflow: overlay;
 }
 .titleContenedorAside{
   font-family: 'Anton', sans-serif;
@@ -219,3 +223,45 @@
     font-size: 4rem;
     margin-left: 7vw;
 }
+.contenedorClase{
+    width: 71vw;
+    margin-bottom: 23px;
+    margin-top: 23px;
+    background: #F7F7F7;
+    box-shadow: 0 5px 25px 10px rgb(0 0 0 / 15%);
+    display: flex;
+    align-items: center;
+    height: 5vw;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+.btnClass{
+    width: 14vw;
+    border: 1px solid #FF0034;
+    border-radius: 20vw;
+    background: white;
+    font-family: 'Roboto';
+    padding: 6px;
+    font-weight: bold;
+}
+
+.classContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.titleClass{
+     font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 29px;
+}
+
+.contenedorFrame {
+        display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

@@ -3,7 +3,6 @@ import { useState } from "react"
 const Category = (props) => {
     const [input, setInput] = useState(false)
     const [data, setData] = useState(props.category.name)
-
     const readInput = e => {
         const value = e.target.value
         setData(value)
