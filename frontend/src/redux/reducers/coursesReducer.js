@@ -9,6 +9,17 @@ const courseReducer = (state = initialState, action) => {
             return {
                 ...state,
                 courses: action.payload
+            };
+
+        case 'UPDATE_CATEGORY':
+            return {
+                ...state,
+                courses: state.courses.map(course => {
+                    if (course._id === action.payload._id) {
+                        course = action.payload
+                    }
+                    return course
+                })
             }
         case 'UPDATE_COURSE': 
             let newCourses = state.courses.map(course => {

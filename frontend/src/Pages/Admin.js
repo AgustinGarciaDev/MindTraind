@@ -94,6 +94,7 @@ const Admin = (props) => {
                     category.name = data.text
                     return category
                 }
+                return null
             })
         }
     }
@@ -112,6 +113,7 @@ const Admin = (props) => {
                 lesson.videoLink = data.videoLink
                 return lesson
             }
+            return null
         })
     }
 
@@ -178,7 +180,6 @@ const Admin = (props) => {
                                     <input type="text" placeholder="lesson name" onChange={createLesson} name="lessonName" value={lesson.lessonName} />
                                     <input type="text" placeholder="video" onChange={createLesson} name="videoLink" value={lesson.videoLink} />
                                     {error.lessons && <small>{error.lessons}</small>}
-
                                 </div>
                             </div>
                             <i className="fas fa-plus" onClick={addLesson}></i>

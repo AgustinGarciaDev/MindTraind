@@ -2,19 +2,54 @@ import { useState } from 'react'
 import { connect } from "react-redux"
 import coursesActions from "../redux/actions/coursesActtions"
 import Category from './Category'
+import Lesson from './Lesson'
 
 const EditCourse = (props) => {
     const [course, setCourse] = useState({})
-    const [error, setError] = useState({})
-    const errorsImput = { nameCourse: null, coach: null, category: null, pictureRefence: null, programDescription: null, duration: null, difficulty: null }
+    const [input, setInput] = useState(false)
+    const [newCategory, setNewCategory] = useState({ name: '' })
+    const [newLesson, setNewLesson] = useState({ newName: '', newVideoLink: '' })
 
     const readInput = e => {
         const value = e.target.value
         const name = e.target.name
-        setCourse({
-            ...course,
+        if (name !== 'name') {
+            setCourse({
+                ...course,
+                [name]: value
+            })
+        } else {
+            setNewCategory({
+                [name]: value
+            })
+        }
+    }
+
+    const createNewLesson = e => {
+        const value = e.target.value
+        const name = e.target.name
+        setNewLesson({
+            ...newLesson,
             [name]: value
         })
+    }
+
+    const deleteLesson = e => {
+        console.log(e)
+        const data = {  idCourse: props.course._id, action: e.action, idLesson: e.id  }
+        props.modifyLesson(data)
+    }
+    
+    const updateLesson = e => {
+        const data = {  idCourse: props.course._id, action: e.action, idLesson: e.id, newName: e.newName, newVideoLink: e.newVideoLink  }
+        props.modifyLesson(data)
+    }
+
+    const addLesson = async (e) => {
+        const data = { ...newLesson, idCourse: props.course._id, action: e }
+        if (newLesson.newName.trim() !== '' && newLesson.newVideoLink.trim() !== '') {
+            props.modifyLesson(data)
+        }
     }
 
     const sendData = async (e) => {
@@ -26,41 +61,79 @@ const EditCourse = (props) => {
         }
     }
 
-    const editCategory = (data) => {
-        console.log(data)
+
+    const addCategory = async (e) => {
+        if (e.action === 'add') {
+            if (newCategory.name && newCategory.name.trim() !== '') {
+                const data = { idCourse: props.course._id, action: e.action, newNameCategory: newCategory.name }
+                const response = await props.modifyCategory(data)
+                if (response) {
+                    setNewCategory({ name: '' })
+
+                }
+                setInput(!input)
+            } else {
+                setInput(!input)
+            }
+        } else {
+            const data = { idCourse: props.course._id, idCategory: e.id, action: e.action, newNameCategory: e.text }
+            await props.modifyCategory(data)
+        }
+        setInput(!input)
     }
-    
+
     return (
         <>
             <div className="editCourseContainer">
-                <div>
-                    <form className="courseForm">
-                        <h3>Data</h3>
-                        <input type="text" placeholder="Course name" name="nameCourse" onChange={readInput} />
-                        <input type="text" placeholder="Program description" name="programDescription" onChange={readInput} />
-                        <input type="text" placeholder="Coach " name="coach" onChange={readInput} />
-                        <input type="text" placeholder="Picture refence " name="pictureRefence" onChange={readInput} />
-                        <input type="text" placeholder="Duration" name="duration" onChange={readInput} />
-                        <input type="text" placeholder="Difficulty" name="difficulty" onChange={readInput} />
-                        <h3>Categorys</h3>
-                        <div className="category">
-                            {
-                                props.course.categories.map(category => <Category editCategory={editCategory} key={category._id} category={category} />)
-                            }
+
+                <form className="editForm">
+                    <h3>Data</h3>
+                    <input type="text" placeholder="Course name" name="nameCourse" onChange={readInput} />
+                    <input type="text" placeholder="Program description" name="programDescription" onChange={readInput} />
+                    <input type="text" placeholder="Coach " name="coach" onChange={readInput} />
+                    <input type="text" placeholder="Picture refence " name="pictureRefence" onChange={readInput} />
+                    <input type="text" placeholder="Duration" name="duration" onChange={readInput} />
+                    <input type="text" placeholder="Difficulty" name="difficulty" onChange={readInput} />
+                    <h3>Categorys</h3>
+                    <div className="categoryNew">
+                        <input onChange={readInput} name="name" placeholder="Category name" value={newCategory.name} />
+                        <i className="fas fa-plus" onClick={() => addCategory({ action: 'add' })}></i>
+                    </div>
+                    <div className="category">
+                        {
+                            props.course.categories.map(category => <Category addCategory={addCategory} key={category._id} category={category} />)
+                        }
+                    </div>
+                    <h3>Lessons</h3>
+                    <div className="lessonsNew">
+                        <div className="lessonInput">
+                            <div className="lessonInputError">
+                                <input type="text" placeholder="lesson name" name="newName" onChange={createNewLesson} value={newLesson.newName} />
+                                <input type="text" placeholder="video" name="newVideoLink" onChange={createNewLesson} value={newLesson.newVideoLink} />
+                            </div>
                         </div>
-                        <div className="formButtons">
-                            <button onClick={props.cancel}>Go back</button>
-                            <button onClick={sendData} >Send</button>
-                        </div>
-                    </form>
-                </div>
+                        <i className="fas fa-plus" onClick={() => addLesson('add')}></i>
+                    </div>
+                    <div className="category">
+                        {
+                            props.course.lessons.map(lesson => <Lesson key={lesson._id} lesson={lesson} deleteLesson={deleteLesson} updateLesson={updateLesson} />)
+                        }
+                    </div>
+                    <div className="formButtons">
+                        <button className="formButtonsEdit" onClick={props.cancel}>Go back</button>
+                        <button className="formButtonsEdit" onClick={sendData} >Send</button>
+                    </div>
+                </form>
+
             </div>
         </>
     )
 }
 
 const mapDispatchToProps = {
-    editCourse: coursesActions.editCourse
+    editCourse: coursesActions.editCourse,
+    modifyCategory: coursesActions.modifyCategory,
+    modifyLesson: coursesActions.modifyLesson
 }
 
 export default connect(null, mapDispatchToProps)(EditCourse)

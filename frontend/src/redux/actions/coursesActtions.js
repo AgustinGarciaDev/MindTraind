@@ -45,7 +45,7 @@ const coursesActions = {
                     dispatch({ type: 'GET_COURSES', payload: response.data.response })
                     return response
                 } else {
-                    showToast("error",response.data.error)
+                    showToast("error", response.data.error)
                     return response
                 }
             } catch (err) {
@@ -55,18 +55,18 @@ const coursesActions = {
         }
     },
 
-    addStudentToCourse: (token,idCourse,action) => {
-        return async(dispatch) => {
+    addStudentToCourse: (token, idCourse, action) => {
+        return async (dispatch) => {
             try {
-                
-                const {data} = await axios.put( "http://localhost:4000/api/coursesmodifyStudents/"+idCourse,{action},{
+
+                const { data } = await axios.put("http://localhost:4000/api/coursesmodifyStudents/" + idCourse, { action }, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
-                if(!data.success){
-                    return showToast("error",data.error);
+                if (!data.success) {
+                    return showToast("error", data.error);
                 }
                 showToast("info", "inscripcion exitosa")
-                dispatch({type:"UPDATE_COURSE",payload:data.response}) 
+                dispatch({ type: "UPDATE_COURSE", payload: data.response })
             } catch (err) {
                 if (err.response && err.response.status === 401) {
                     localStorage.clear();
@@ -77,11 +77,11 @@ const coursesActions = {
             }
         }
     },
-    getCoursesByIdStudent:(token) => {
+    getCoursesByIdStudent: (token) => {
         return async () => {
             try {
-                const {data} = await axios.get("http://localhost:4000/api/coursesOfUser",{
-                    headers: {"Authorization": "Bearer " + token}
+                const { data } = await axios.get("http://localhost:4000/api/coursesOfUser", {
+                    headers: { "Authorization": "Bearer " + token }
                 })
                 console.log(data)
                 return data
@@ -94,18 +94,18 @@ const coursesActions = {
                 console.log(err);
                 showTostError500();
             }
-            
+
         }
     },
     getCourseById: (idCourse) => {
         return async () => {
             try {
-                const {data} = await axios.get('http://localhost:4000/api/courses/'+idCourse)
-                if (data.success) 
-                    return data.response    
+                const { data } = await axios.get('http://localhost:4000/api/courses/' + idCourse)
+                if (data.success)
+                    return data.response
                 else
                     showToast("error", data.error)
-                
+
             } catch (err) {
                 console.log(err)
                 showTostError500();
@@ -113,8 +113,36 @@ const coursesActions = {
 
         }
     },
-    
 
+    modifyCategory: (data) => {
+        return async (dispatch, getState) => {
+            try {
+                const response = await axios.put('http://localhost:4000/api/coursesmodifyCategory/' + data.idCourse, data)
+                if (response.data.success) {
+                    dispatch({ type: 'UPDATE_CATEGORY', payload: response.data.response })
+                    return response.data.success
+                }
+            } catch (err) {
+                console.log(err);
+                showTostError500();
+            }
+        }
+    },
+
+    modifyLesson: (data) => {
+        return async (dispatch, getState) => {
+            try {
+                const response = await axios.put('http://localhost:4000/api/coursesmodifyLesson/' + data.idCourse, data)
+                if (response.data.success) {
+                    dispatch({ type: 'UPDATE_CATEGORY', payload: response.data.response })
+                    return response.data.success
+                }
+            } catch (err) {
+                console.log(err);
+                showTostError500();
+            }
+        }
+    }
 }
 
 export default coursesActions
