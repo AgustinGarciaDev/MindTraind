@@ -49,10 +49,11 @@ const SignUp = (props) => {
     ]);
   }, [preUser]);
 
-  /*   const fetchCountries = async (props) => {
-    const paises = await props.fetchCountries();
-    setCountries(paises);
-  }; */
+  const xx = (props) => {
+    let miRespuesta = props.createAndLogIn(preUser);
+    console.log(miRespuesta);
+  };
+
   /*  const respuestaGoogle = (response) => {
     const { givenName, email, googleId, imageUrl } = response.profileObj;
     props.createAndLogIn({
@@ -64,16 +65,18 @@ const SignUp = (props) => {
     });
     props.history.push("/");
   }; */
+
   return (
     <div
       className="signUpContainer d-flex "
       onMouseOver={() => setHidden(false)}
       onMouseOut={() => setHidden(false)}
     >
+      {props.theUser && console.log("X", props.theUser)}
       {/*  <p> "hola" {hidden && "hola"}</p> */}
       <div className={"w-50"}>
-        <div className="titleForm m-3 h2 ">Sign Up Form</div>
-        <div className="h6 small text-center">Change your Life</div>
+        <div className="titleForm titulos m-3 h2 ">Sign Up Form</div>
+        <div className="h6 small textos text-center">Change your Life</div>
         <div className="errorContainer" style={{ display: errorVisible ? "block" : "none" }}>
           error{" "}
           <span
@@ -95,7 +98,9 @@ const SignUp = (props) => {
                 placeholder="please, enter your name"
                 /*    className="ng-dirty  w-100" */
                 className={
-                  !validationsOther[0] ? "ng-dirty border-0 w-75" : "ng-valid border-0 w-75"
+                  !validationsOther[0]
+                    ? "ng-dirty textos small border-0 w-75"
+                    : "ng-valid  textos border-0 w-75"
                 }
               />
             </div>
@@ -106,7 +111,9 @@ const SignUp = (props) => {
                 value={preUser.lastName}
                 placeholder="your last name"
                 className={
-                  !validationsOther[1] ? "ng-dirty border-0 w-75" : "ng-valid border-0 w-75"
+                  !validationsOther[1]
+                    ? "ng-dirty textos small border-0 w-75"
+                    : "ng-valid textos small border-0 w-75"
                 }
               />
             </div>
@@ -118,7 +125,7 @@ const SignUp = (props) => {
                 onChange={(e) => setPreUser({ ...preUser, profilePicture: e.target.value })}
                 value={preUser.profilePicture}
                 placeholder="your url image"
-                className="ng-valid border-0 w-100"
+                className="ng-valid border-0 w-100 textos small"
               />
             </div>
 
@@ -129,7 +136,9 @@ const SignUp = (props) => {
                 value={preUser.email}
                 placeholder="a valid email address"
                 className={
-                  !validationsOther[2] ? "ng-dirty border-0 w-75" : "ng-valid border-0 w-75"
+                  !validationsOther[2]
+                    ? "ng-dirty border-0 textos small w-75"
+                    : "ng-valid border-0  textos small w-75"
                 }
               />
               📧
@@ -144,7 +153,11 @@ const SignUp = (props) => {
                 type={eyeState ? "password" : "text"}
                 placeholder="your secret password"
                 className="mb-1 ng-dirty"
-                className={!validationsPass.includes(false) ? "ng-valid" : "ng-dirty"}
+                className={
+                  !validationsPass.includes(false)
+                    ? "ng-valid textos small"
+                    : "ng-dirty textos small"
+                }
               ></input>
             </div>
             <span className="small">show your password</span>
@@ -189,9 +202,9 @@ const SignUp = (props) => {
               data-use-continue-as="true"
             ></div>
 
-            <NavLink to="/LogIn">
+            <NavLink to="/SignIn">
               <label className="mt-2 w-100 btn btn-warning myBtn h6">
-                Do you need help? click here <span className="mirror">👉</span>
+                Have an Account Already? click here <span className="mirror">👉</span>
               </label>{" "}
             </NavLink>
             <ul className="pl-3 small">

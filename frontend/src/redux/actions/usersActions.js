@@ -13,7 +13,7 @@ const usersActions = {
         if (data.success) {
           showToast("success", data.error);
           dispatch({ type: "LOGIN_USER", payload: data.response });
-          showToast("success",`Welcome ${data.response.firstName} ${data.response.lastName}`)
+          showToast("success", `Welcome ${data.response.firstName} ${data.response.lastName}`)
         } else {
           return data.errors ? data.errors : data.error;
         }
@@ -23,14 +23,14 @@ const usersActions = {
       }
     }
   },
-  logInUser : (objInputsValues) =>{
+  logInUser: (objInputsValues) => {
     return async (dispatch) => {
       try {
-        let {data} = await axios.post("http://localhost:4000/api/users/login",objInputsValues);
+        let { data } = await axios.post("http://localhost:4000/api/users/login", objInputsValues);
         console.log(data)
-        if(data.success){
-          dispatch({type:"LOGIN_USER" , payload: data.response})      
-          showToast("success",`Welcome ${data.response.firstName} ${data.response.lastName}`)
+        if (data.success) {
+          dispatch({ type: "LOGIN_USER", payload: data.response })
+          showToast("success", `Welcome ${data.response.firstName} ${data.response.lastName}`)
         }
       } catch (err) {
         console.log(err);
@@ -40,36 +40,36 @@ const usersActions = {
   },
   loginForced: (token, history) => {
     return async (dispatch, getState) => {
-        try {
-            const { data } = await axios.get("http://localhost:4000/api/usersforcedlogin", {
-                headers: { 'Authorization': 'Bearer ' + token }
-            })
-            
-            dispatch({type: "LOGIN_USER", payload: {...data.response,token} } );
-            showToast("success",`Welcome ${data.response.firstName} ${data.response.lastName}`)
+      try {
+        const { data } = await axios.get("http://localhost:4000/api/usersforcedlogin", {
+          headers: { 'Authorization': 'Bearer ' + token }
+        })
+
+        dispatch({ type: "LOGIN_USER", payload: { ...data.response, token } });
+        showToast("success", `Welcome ${data.response.firstName} ${data.response.lastName}`)
+      }
+      catch (err) {
+        alert("Error 500 , please come back later")
+        console.log(err)
+        if (err.response && err.response.status === 401) {
+          alert("try harder next time")
+          localStorage.clear();
+          window.location.reload(true);
+          //history.push("/");
         }
-        catch (err) {
-            alert("Error 500 , please come back later")
-            console.log(err)
-            if (err.response && err.response.status === 401) {
-                alert("try harder next time")
-                localStorage.clear();
-                window.location.reload(true);
-                //history.push("/");
-            }
-            localStorage.clear();
-        }
+        localStorage.clear();
+      }
     }
-},
+  },
 
   logOutUser: () => {
     return (dispatch, getState) => {
       showToast("info", "Come back later ", "top-right");
-      dispatch({type: "LOG_OUT"})
+      dispatch({ type: "LOG_OUT" })
     };
   }
 
-  
+
 };
 
 export default usersActions;
