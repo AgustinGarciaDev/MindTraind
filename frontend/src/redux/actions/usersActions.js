@@ -21,7 +21,7 @@ const usersActions = {
         .then((respuesta) => {
           console.log("0) soylaRespuesta", respuesta);
           if (respuesta.data.success) {
-            showToast("success", respuesta.data.error);
+            showToast("success", respuesta.data);
             /*   alert(respuesta.data.error); */
 
             /*  respuesta.data.errores.details &&
@@ -33,8 +33,8 @@ const usersActions = {
               payload: respuesta.data.response,
             });
           } else {
-            showToast("error", respuesta.data);
-            return respuesta.data.errores;
+            showToast("error", respuesta.data.errors);
+            return respuesta.data.errors;
           }
         })
         .catch((e) => console.log("el eror", e));

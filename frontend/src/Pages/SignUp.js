@@ -23,6 +23,7 @@ const SignUp = (props) => {
   });
   const [validationsPass, setValidationsPass] = useState([]);
   const [validationsOther, setValidationsOther] = useState([]);
+  const [erroresSignUp, setErroresSignUp] = useState(null);
 
   useEffect(() => {
     /*  console.log("1v) soy el didmount"); */
@@ -48,9 +49,12 @@ const SignUp = (props) => {
     ]);
   }, [preUser]);
 
-  const xx = (props) => {
+  const fcreateAndLogIn = () => {
     let miRespuesta = props.createAndLogIn(preUser);
-    console.log(miRespuesta);
+
+    console.log("0props", miRespuesta);
+    setErroresSignUp(miRespuesta);
+    console.log("errpres", miRespuesta);
   };
 
   /*  const respuestaGoogle = (response) => {
@@ -173,7 +177,7 @@ const SignUp = (props) => {
             <button
               className="btn mb-1 btn-danger myBtn "
               onClick={() => {
-                props.createAndLogIn(preUser);
+                fcreateAndLogIn();
                 /* console.log("el usuario", props.theUser && props) */
                 /* console.log("0 preuser", preUser); */
                 /*     props.history.push("/"); */
