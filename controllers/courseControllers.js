@@ -196,7 +196,7 @@ const courseControllers = {
                 break;
             default:
                 return  respondFrontend(res,response,`error, unknown action: "${action} "`);
-                break;
+                
         }
         try {
             response = await Course.findOneAndUpdate(querySelector,updateOperator,{new:true})

@@ -54,7 +54,7 @@ const coursesActions = {
         }
     },
 
-    addStudentToCourse: (email) => {
+    addStudentToCourse: (token) => {
         
     }
     
