@@ -10,10 +10,6 @@
   /* transition-timing-function: ease-in-out; */
 }
 
-/* .especial {
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-} */
-
 .ng-dirty:not(:focus) {
   border-radius: 2px;
   outline: none;
@@ -107,4 +103,12 @@
   padding: 2px 5px;
   /*  background: #ccc; */
   color: #fff;
+}
+
+.g-signin2 {
+  width: 100%;
+}
+
+.g-signin2 > div {
+  margin: 0 auto;
 }
