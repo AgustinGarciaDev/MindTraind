@@ -42,24 +42,26 @@ const usersActions = {
   },
 
   /* filtro */
-  /*   logInUserBackEnd: (preUser) => {
+  logInUserBackEnd: (preUser) => {
+    console.log("0) en login preuser", preUser);
     return (dispatch, getState) => {
       let respuesta = axios
-        .post("http://localhost:4000/api/trainedMind/LogIn/", preUser)
+        .post("http://localhost:4000/api/users/login/", preUser)
         .then((respuesta) => {
           console.log("1)soy info para loguear", respuesta.data.respuesta);
-          if (!respuesta.data.success) {
-            notyf.error({ message: respuesta.data.error, duration: 3000 });
+          if (respuesta.data.success) {
+            console.log("1) respuesta", respuesta);
           } else {
-            notyf.success({ message: "Welcome 😀", duration: 3000 });
+            alert("algo fallo");
           }
           dispatch({
             type: "LOGIN_USER",
-            payload: respuesta.data.success ? respuesta.data.respuesta : null,
+            payload: respuesta.data.response ? respuesta.data.response : null,
           });
-        });
-    };,
-  }, */
+        })
+        .catch((e) => console.log("error", e));
+    };
+  },
 
   actionLogOut: () => {
     return (dispatch, getState) => {

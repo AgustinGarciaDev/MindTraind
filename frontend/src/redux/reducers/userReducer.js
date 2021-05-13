@@ -6,11 +6,10 @@ const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case "LOGIN_USER":
       console.log("1)payload", action.payload);
-
       localStorage.setItem(
         "userLogged",
         JSON.stringify({
-          firstName: action.payload.name,
+          firstName: action.payload.firstName,
         })
       );
       /*  localStorage.setItem("token", action.payload.token); */
