@@ -17,6 +17,14 @@
   font-style: italic;
 }
 
+.titulos {
+  font-family: "Anton", sans-serif;
+}
+
+.textos {
+  font-family: "Roboto";
+}
+
 .hidden,
 .hidden > div {
   display: none;
@@ -53,7 +61,7 @@
 #close {
   width: 40px;
   float: right;
-  display: inline-block;
+  display: block;
   padding: 2px 5px;
   /* background: #ccc; */
 }
