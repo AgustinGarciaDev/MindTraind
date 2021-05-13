@@ -21,26 +21,6 @@ import usersActions from "./redux/actions/usersActions";
 const App = (props) => {
   const token = localStorage.getItem("token");
   //veo que no haya en el store un usuario logueado y que haya un token en el localStorage
-<<<<<<< HEAD
-  if (!props.userLogged && token && token !== "undefined") {
-    props.loginForced(JSON.parse(token), props.history)
-    return (
-      <BrowserRouter>
-        <ToastContainer />
-        <Switch>
-          <Route exact path="/" component={Home} /> {/* Todos */}
-          <Route exact path="/signup" component={SignUp} /> {/* Todos */}
-          <Route exact path="/signin" component={SignIn} /> {/* Todos */}
-          <Route exact path="/dashboard" component={Dashboard} /> {/* SOLO ALUMNO /PROFESOR/ADMIN */}
-          <Route exact path="/admin" component={Admin} /> {/* ADMIN */}
-          <Route exact path="/courselist" component={CourseList} /> {/*  SOLO ALUMNO /PROFESOR/ADMIN*/}
-          <Route exact path="/class" component={ClassList} /> {/* SOLO ALUMNO /PROFESOR/ADMIN*/}
-          <Route exact path="/foro" component={Foro} />{/* SOLO ALUMNO /PROFESOR/ADMIN */}
-        </Switch>
-      </BrowserRouter>
-    );
-  };
-=======
 
   if (!props.userLogged && token && token !== "undefined") {
     props.loginForced(JSON.parse(token), props.history)
@@ -61,15 +41,14 @@ const App = (props) => {
     </BrowserRouter>
   );
 };
->>>>>>> 135fb43d7582c7d73e929594364393261b36962b
 
-  const mapStateToProps = (state) => {
-    return {
-      userLogged: state.user.userLogged,
-    }
+const mapStateToProps = (state) => {
+  return {
+    userLogged: state.user.userLogged,
   }
-  const mapDispatchToProps = {
-    loginForced: usersActions.loginForced,
-  }
+}
+const mapDispatchToProps = {
+  loginForced: usersActions.loginForced,
+}
 
-  export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
