@@ -3,6 +3,7 @@ import './style/formulario.css'
 import './style/dashboard.css'
 import './style/home.css'
 import './style/admin.css'
+import './style/foro.css'
 import SignIn from './Pages/SignIn'
 import SignUp from './Pages/SignUp'
 import Home from './Pages/Home'
@@ -14,39 +15,45 @@ import Foro from './Pages/Foro'
 import "bootstrap/dist/css/bootstrap.css";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import usersActions from "./redux/actions/usersActions";
 
 const App = (props) => {
   const token = localStorage.getItem("token");
   //veo que no haya en el store un usuario logueado y que haya un token en el localStorage
+<<<<<<< HEAD
   if(!props.userLogged && token && token !== "undefined"){
       props.loginForced(JSON.parse(token),props.history)
+=======
+  if (!props.userLogged && token && token !== "undefined") {
+    console.log("holo")
+    props.loginForced(JSON.parse(token), props.history)
+>>>>>>> origin/chinchilla
   }
   return (
     <BrowserRouter>
       <ToastContainer />
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/signin" component={SignIn} />
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/admin" component={Admin} />
-        <Route exact path="/courselist" component={CourseList} />
-        <Route exact path="/class" component={ClassList} />
-        <Route exact path="/foro" component={Foro} />
+        <Route exact path="/" component={Home} /> {/* Todos */}
+        <Route exact path="/signup" component={SignUp} /> {/* Todos */}
+        <Route exact path="/signin" component={SignIn} /> {/* Todos */}
+        <Route exact path="/dashboard" component={Dashboard} /> {/* SOLO ALUMNO /PROFESOR/ADMIN */}
+        <Route exact path="/admin" component={Admin} /> {/* ADMIN */}
+        <Route exact path="/courselist" component={CourseList} /> {/*  SOLO ALUMNO /PROFESOR/ADMIN*/}
+        <Route exact path="/class" component={ClassList} /> {/* SOLO ALUMNO /PROFESOR/ADMIN*/}
+        <Route exact path="/foro" component={Foro} />{/* SOLO ALUMNO /PROFESOR/ADMIN */}
       </Switch>
     </BrowserRouter>
   );
 };
 
-const mapStateToProps = (state) =>{
+const mapStateToProps = (state) => {
   return {
-      userLogged : state.user.userLogged,
+    userLogged: state.user.userLogged,
   }
 }
 const mapDispatchToProps = {
   loginForced: usersActions.loginForced,
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
