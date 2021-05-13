@@ -39,12 +39,7 @@
     justify-content: center;
 
 }
-.public-DraftStyleDefault-ltr {
-    direction: ltr;
-    text-align: left;
-    background: white;
-    height: 15vw;
-}
+
 
 .inputPost{
 width: 100%;

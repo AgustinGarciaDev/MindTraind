@@ -1,11 +1,14 @@
 import NavBarDashBoard from '../components/NavBarDashBoard'
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-
 import Post from '../components/Post'
-import { Modal } from "react-bootstrap";
+import { convertFromRaw, convertToRaw } from 'draft-js';
 import { useEffect, useState } from "react";
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState } from 'draft-js';
+
+/* import draftToHtml from 'draftjs-to-html';
+import htmlToDraft from 'html-to-draftjs';
+ */
 const Foro = () => {
     const [modalShow, setModalShow] = useState(false);
     const nameUser = "Agustin"
@@ -20,10 +23,19 @@ const Foro = () => {
     const [editorState, setEditorState] = useState(EditorState.createEmpty())
 
     const onEditorStateChange = (editorState) => {
+
         setEditorState(editorState)
     }
 
+    const info = convertToRaw(editorState.getCurrentContent())
+    console.log(info)
+    const rawState = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
 
+    console.log(rawState)
+
+    /*     const conver = draftToHtml(convertToRaw(editorState.getCurrentContent()))
+    
+        console.log(conver) */
     return (
         <>
             <NavBarDashBoard />
