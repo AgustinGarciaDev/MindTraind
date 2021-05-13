@@ -100,11 +100,11 @@ const userControllers = {
             let userExist = await User.findOne({ email });
             if (userExist) {
                 if (bcryptsjs.compareSync(password, userExist.password)) {
-                    //let token = jwToken.sign({ ...userExist }, process.env.SECRET_OR_KEY);
+                    let token = jwToken.sign({ ...userExist }, process.env.SECRET_OR_KEY);
                     response = {
                         ...userExist.toObject(),
                         _id: undefined,
-                        //token
+                        token
                     }
                 } else
                     error = "Please provide a valid email and password ";

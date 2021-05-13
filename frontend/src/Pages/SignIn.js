@@ -3,20 +3,18 @@ import React from "react";
 import Footer from "./Footer"; */
 import { useEffect, useState } from "react";
 /* import { connect } from "react-redux"; */
-import axios from "axios";
+
 /* import GoogleLogin from "react-google-login"; */
 import { NavLink } from "react-router-dom";
-const SignUp = (props) => {
+import usersActions from "../redux/actions/usersActions";
+import {connect} from 'react-redux'
+const SignIn = (props) => {
   const [hidden, setHidden] = useState(true);
   const [eyeState, setEyeState] = useState(true);
   /* const [countries, setCountries] = useState([]); */
   const [preUser, setPreUser] = useState({
-    name: "",
-    lastName: "",
     email: "",
-    country: "",
-    pass: "",
-    url: "",
+    password: "",
   });
   const [validations, setValidations] = useState([]);
   useEffect(() => {
@@ -24,14 +22,14 @@ const SignUp = (props) => {
   }, []);
   useEffect(() => {
     /*  console.log("entre a validr"); */
-    const pass = preUser.pass;
+    const pass = preUser.password;
     setValidations([
       pass.length > 5,
       pass.search(/[A-Z]/) > -1,
       pass.search(/[0-9]/) > -1,
       pass.search(/[$&+,:;=?@#]/) > -1,
     ]);
-  }, [preUser.pass]);
+  }, [preUser.password]);
   /*   const fetchCountries = async (props) => {
     const paises = await props.fetchCountries();
     setCountries(paises);
@@ -47,6 +45,9 @@ const SignUp = (props) => {
     });
     props.history.push("/");
   }; */
+  const send = () => {
+    props.logInUser(preUser)
+  }
   return (
     <div
       className="signUpContainer d-flex "
@@ -69,30 +70,13 @@ const SignUp = (props) => {
               />
               📧
             </div>
-            <div className="border mt-1 ">
-              <input
-                type="text"
-                onChange={(e) => setPreUser({ ...preUser, url: e.target.value })}
-                value={preUser.url}
-                placeholder="your name"
-                className="ng-dirty border-0 w-100"
-              />
-            </div>
-            <div className="border mt-1 ">
-              <input
-                type="text"
-                onChange={(e) => setPreUser({ ...preUser, url: e.target.value })}
-                value={preUser.url}
-                placeholder="your last name"
-                className="ng-valid border-0 w-100"
-              />
-            </div>
+            
             {/*  <div className="small border mt-1"> */}
             {/* </div> */}
             <div className="mt-1 ">
               <input
-                onChange={(e) => setPreUser({ ...preUser, pass: e.target.value })}
-                value={preUser.pass}
+                onChange={(e) => setPreUser({ ...preUser, password: e.target.value })}
+                value={preUser.password}
                 type={eyeState ? "password" : "text"}
                 placeholder="your password"
                 className="mb-1 ng-dirty"
@@ -112,9 +96,7 @@ const SignUp = (props) => {
             </label>
             <button
               className="btn mb-1 btn-danger myBtn "
-              onClick={() => {
-                props.history.push("/");
-              }}
+              onClick={() => send()}
             >
               Continue
             </button>
@@ -145,12 +127,14 @@ const SignUp = (props) => {
   );
 };
 /* REDUX */
-/* const mapStateToProps = (state) => {
-  return {};
-};
+/*
+ const mapStateToProps = (state) => {
+  return {
+  
+  };
+};*/
 const mapDispatchToProps = {
-  fetchCountries: countriesActions.actionLoadCountries,
-  createAndLogIn: usersActions.actionCreateUserInBackEnd,
+  logInUser : usersActions.logInUser
 };
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp); */
-export default SignUp;
+export default connect(null, mapDispatchToProps)(SignIn); 
+
