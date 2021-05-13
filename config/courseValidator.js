@@ -13,7 +13,8 @@ const validator = (req, res, next) => {
             'string.empty': 'You must complete this field'
         }),
         coach: joiId.objectId().messages({
-            'string.empty': 'You must complete this field'
+            'string.empty': 'You must complete this field',
+            'invalid': 'It must have a valid Id'
         }),
         pictureRefence: joi.string().trim().required().messages({
             'string.empty': 'You must complete this field'

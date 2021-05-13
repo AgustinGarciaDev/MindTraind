@@ -2,16 +2,15 @@ import { useState } from "react"
 
 const Category = (props) => {
     const [input, setInput] = useState(false)
-    const [data, setData] = useState(props.categories.name)
-
+    const [data, setData] = useState(props.category.name)
     const readInput = e => {
         const value = e.target.value
         setData(value)
     }
 
     const sendData = () => {
-        if (data.trim() !== props.categories.name) {
-            const newDate = { id: props.categories._id, data }
+        if (data.trim() !== props.category.name) {
+            const newDate = { id: props.category._id, data }
             console.log(newDate)
             setInput(!input)
         } else {
