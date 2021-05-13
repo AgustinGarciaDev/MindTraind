@@ -6,41 +6,95 @@
 }
 
 .contenedorBienvenidaUsuario{
-    display: flex;
+     display: flex;
     align-items: center;
-    width: 51vw;
+    width: 44vw;
     justify-content: center;
-    height: 13vw;
-    border-radius: 1vw;
+    height: 5vw;
     cursor: pointer;
+    border-radius: 30px;
 }
 
 .barraBuscadora{
     
     margin-top: 3vw;
     margin-bottom: 3vw;
+    width: 47vw;
+    background: red;
 }
 
 .contenedorBtnTextArea{
-     display: flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     background: #F7F7F7;
-    box-shadow: 0 5px 25px 10px rgb(0 0 0 / 15%);
-    margin-top: 4vw;
+    padding: 23px;
+    border-radius: 1vw;
+}
 
+.contenedorBtnTextArea:hover{
+    box-shadow: 0 5px 25px 10px rgb(0 0 0 / 15%);
 }
 
 .contenedorTextArea{
-
     width: 51vw;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.inputPost{
+    width: 100%;
+    border: 1px solid #e5e5e5;
+    height: 3vw;
 
 }
 
+.postYtitulo{
+    box-shadow: 0 5px 25px 10px rgb(0 0 0 / 15%);
+    padding: 37px;
+    border-radius: 15px;
+    width: 75%;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+}
 
-.inputPost{
-width: 100%;
+.tituloForm {
+    font-family: "Anton";
+    margin-bottom: 0;
+    margin-left: 14px;
+}
+
+.btnForm{
+    width: 12vw;
+    font-weight: bold;
+    height: 3vw;
+}
+
+.textAreaConsulta{
+    width: 100%;
+     border: 1px solid #e5e5e5;
+}
+
+.inputSearch{
+     width: 95%;
+    height: 3vw;
+}
+
+.contenedorComentarios{
+    margin-top: 4vw;
+}
+
+.contenedorPost{
+    display: flex;
+    flex-direction: column;
+    background: #F7F7F7;
+    padding: 23px;
+    border-radius: 1vw;
+    width: 48vw;
+    margin-bottom: 3vw;
+}
+.comentarioFotoUser{
+    width: 4vw;
+    border-radius: 50%;
 }
