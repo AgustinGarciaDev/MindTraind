@@ -53,6 +53,10 @@ const coursesActions = {
             }
         }
     },
+
+    addStudentToCourse: (email) => {
+        
+    }
     
 
 }

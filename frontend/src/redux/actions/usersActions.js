@@ -57,7 +57,6 @@ const usersActions = {
                 window.location.reload(true);
                 //history.push("/");
             }
-            showToast();
             localStorage.clear();
         }
     }
@@ -70,27 +69,7 @@ const usersActions = {
     };
   }
 
-  /*  ForceLogIn: (preUser) => {
-      console.log("1) en force login", preUser);
-
-    return (dispatch, getState) => {
-    console.log(typeof userLS);
-      let respuesta = axios
-        .get("http://localhost:4000/api/trainedMind/LogInLF", {
-          headers: {
-            Authorization: "Bearer " + userLS,
-          },
-        })
-        .then((respuesta) => {
-            console.log("zz", respuesta.data.success);
-          dispatch({
-            type: "LOGIN_USER",
-            payload: respuesta.data.success ? respuesta.data.respuesta : null,
-          });
-        })
-        .catch((e) => console.log("", e));
-    };
-  }, */
+  
 };
 
 export default usersActions;

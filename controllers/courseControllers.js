@@ -174,6 +174,43 @@ const courseControllers = {
     },
 
 
+    modifyStudents: async (req,res) => {
+        let response,error;
+        let idCourse = req.params.id;
+        let idUser = req.user._id;
+        const {action} = req.body;
+        let querySelector,updateOperator;
+
+        switch(action){
+            case "add":
+                querySelector = {_id :idCourse};
+                updateOperator = {$push: {students: idUser}};
+                break;
+            /*case "update":
+                querySelector = {_id:idCourse, "lessons._id": idLesson}
+                updateOperator = {$set: {"lessons.$.lessonName" : newName,"lessons.$.videoLink":newVideoLink}};
+                break;*/
+            case "delete":
+                querySelector = {_id :idCourse};
+                updateOperator = {$pull: {students: idUser}};
+                break;
+            default:
+                return  respondFrontend(res,response,`error, unknown action: "${action} "`);
+                break;
+        }
+        try {
+            response = await Course.findOneAndUpdate(querySelector,updateOperator,{new:true})
+                .populate({ path: 'coach', select: '-_id -password' })
+                .populate({ path: 'students', select: '-_id -password' });
+            
+            response || (error = errorCourseNotFound);
+        } catch (err) {
+            console.log(e);
+            error = errorBackend;
+        }
+        respondFrontend(res,response,error);
+    },
+
 }
 
 module.exports = courseControllers;
