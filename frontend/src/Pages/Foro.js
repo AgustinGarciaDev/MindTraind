@@ -22,8 +22,10 @@ const Foro = () => {
             <NavBarDashBoard />
             <main className="contenedorPosteos">
                 <div className="barraBuscadora">
-                    <input placeholder="Search Post" type="text" />
-                    <i class="fas fa-search"></i>
+                    <input className="inputSearch" placeholder="Search Post" type="text" />
+                    <div className="contenedorIconoSearch">
+                        <i class="fas fa-search"></i>
+                    </div>
                 </div>
                 <div className="contenedorBtnTextArea">
 

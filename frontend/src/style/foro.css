@@ -16,11 +16,10 @@
 }
 
 .barraBuscadora{
-    
     margin-top: 3vw;
     margin-bottom: 3vw;
     width: 47vw;
-    background: red;
+    display: flex;
 }
 
 .contenedorBtnTextArea{
@@ -98,3 +97,68 @@
     width: 4vw;
     border-radius: 50%;
 }
+
+.contenedorNameUser{
+    display: flex;
+}
+
+.contedorDatosUsuario{
+    display: flex;
+    align-items: center;
+}
+
+.contenedorIconoSearch{
+       background-color: #FF0034;
+    width: 7vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.6vw;
+}
+
+.tituloPost{
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 3vw;
+    margin-bottom: 2vw;
+}
+
+.contenedorNameUser >h3{
+        margin-left: 5px;
+}
+
+.contenedorComentario{
+    margin-top: 15px;
+    margin-left: 11px;
+    font-size: 1.4vw;
+}
+
+.replyBtn{
+    display: flex;
+    align-items: center;
+}
+
+.replyBtn > p{
+ margin-bottom: 0;
+ margin-left: 10px;
+}
+
+.replyBtn:hover{
+   color: #FF0034;
+   cursor: pointer;
+}
+
+.inputComment{
+    margin-top: 54px;
+    box-shadow: -1px -1px 7px 0px #0000003d;
+    display: flex;
+    border-radius: 5vw;
+}
+
+.contenedorInputComment{
+        margin-top: 54px;
+            margin-top: 54px;
+    box-shadow: -1px -1px 7px 0px #0000003d;
+}
+
