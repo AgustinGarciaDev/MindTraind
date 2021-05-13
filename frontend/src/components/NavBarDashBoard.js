@@ -7,7 +7,7 @@ const NavBarDashBoard = () => {
     return (
         <header>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <Navbar.Brand href="#home"><img className="logoDashBoard" src="http://baravdg.com/wp-content/uploads/2021/05/logo-1.png" alt="" /></Navbar.Brand>
+                <Navbar.Brand href="#home"><img className="logoDashBoard" src="http://baravdg.com/wp-content/uploads/2021/05/tm.png" alt="" /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
