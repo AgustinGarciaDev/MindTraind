@@ -44,7 +44,7 @@ const coursesActions = {
                     dispatch({ type: 'GET_COURSES', payload: response.data.response })
                     return response
                 } else {
-                    showToast("error",response.data.error)
+                    showToast("error", response.data.error)
                     return response
                 }
             } catch (err) {
@@ -55,10 +55,38 @@ const coursesActions = {
     },
 
     addStudentToCourse: (email) => {
-        
-    }
-    
 
+    },
+
+    modifyCategory: (data) => {
+        return async (dispatch, getState) => {
+            try {
+                const response = await axios.put('http://localhost:4000/api/coursesmodifyCategory/' + data.idCourse, data)
+                if (response.data.success) {
+                    dispatch({ type: 'UPDATE_CATEGORY', payload: response.data.response })
+                    return response.data.success
+                }
+            } catch (err) {
+                console.log(err);
+                showTostError500();
+            }
+        }
+    },
+
+    modifyLesson: (data) => {
+        return async (dispatch, getState) => {
+            try {
+                const response = await axios.put('http://localhost:4000/api/coursesmodifyLesson/' + data.idCourse, data)
+                if (response.data.success) {
+                    dispatch({ type: 'UPDATE_CATEGORY', payload: response.data.response })
+                    return response.data.success
+                }
+            } catch (err) {
+                console.log(err);
+                showTostError500();
+            }
+        }
+    }
 }
 
 export default coursesActions
