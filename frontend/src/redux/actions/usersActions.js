@@ -30,6 +30,8 @@ const usersActions = {
         if (data.success) {
           dispatch({ type: "LOGIN_USER", payload: data.response });
           showToast("success", `Welcome ${data.response.firstName} ${data.response.lastName}`);
+        } else {
+          return data.error ? data.error : data.error;
         }
       } catch (err) {
         console.log(err);

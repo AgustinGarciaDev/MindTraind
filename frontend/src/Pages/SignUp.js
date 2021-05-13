@@ -9,10 +9,10 @@ import { NavLink } from "react-router-dom";
 /* import GoogleLogin from "react-google-login"; */
 
 const SignUp = (props) => {
-  console.log(props)
+  /*   console.log(props); */
   const [hidden, setHidden] = useState(true);
   const [eyeState, setEyeState] = useState(true);
-  const [errorVisible, setErrorVisible] = useState(true);
+  const [errorVisible, setErrorVisible] = useState(false);
   /* const [countries, setCountries] = useState([]); */
   const [preUser, setPreUser] = useState({
     firstName: "",
@@ -24,7 +24,7 @@ const SignUp = (props) => {
   });
   const [validationsPass, setValidationsPass] = useState([]);
   const [validationsOther, setValidationsOther] = useState([]);
-  const [erroresSignUp, setErroresSignUp] = useState(null);
+  const [erroresSignUp, setErroresSignUp] = useState([]);
 
   useEffect(() => {
     /*  console.log("1v) soy el didmount"); */
@@ -47,15 +47,21 @@ const SignUp = (props) => {
       otherInput.firstName.length > 1,
       otherInput.lastName.length > 2,
       otherInput.email.search(/^\S+@\S+\.\S+$/) > -1,
+      otherInput.profilePicture.length > 0,
     ]);
   }, [preUser]);
 
-  const fcreateAndLogIn = () => {
-    let miRespuesta = props.createAndLogIn(preUser);
+  const fcreateAndLogIn = async () => {
+    try {
+      let miRespuesta = await props.createAndLogIn(preUser);
+      console.log("0props", miRespuesta);
+      setErroresSignUp(miRespuesta);
+      setErrorVisible(!errorVisible);
 
-    console.log("0props", miRespuesta);
-    setErroresSignUp(miRespuesta);
-    console.log("errpres", miRespuesta);
+      console.log("errpres", miRespuesta);
+    } catch {
+      console.log("no funciono");
+    }
   };
 
   /*  const respuestaGoogle = (response) => {
@@ -81,16 +87,24 @@ const SignUp = (props) => {
       <div className={"w-50"}>
         <div className="titleForm titulos m-3 h2 ">Sign Up Form</div>
         <div className="h6 small textos text-center">Change your Life</div>
-        <div className="errorContainer" style={{ display: errorVisible ? "block" : "none" }}>
-          error{" "}
+
+        <div
+          className="errorContainer especial"
+          style={{ display: errorVisible ? "block" : "none" }}
+        >
           <span
             id="close"
-            style={{ display: errorVisible ? "float" : "none" }}
+            style={{ display: errorVisible ? "block" : "none" }}
             onClick={() => setErrorVisible(!errorVisible)}
           >
             {" "}
             x{" "}
           </span>
+          🚫 sorry we couldn't create an account with your provided info, please refer to the
+          folowing problemss ]
+          {erroresSignUp.map((error) => {
+            return <div className="m-2 text-danger small textos">❎ {error.message}</div>;
+          })}
         </div>
         <div className="bg-secondary">
           <div className="font-italic  mt-3 mb-2 bg-white border-1 p-3 d-flex flex-column">
@@ -103,8 +117,8 @@ const SignUp = (props) => {
                 /*    className="ng-dirty  w-100" */
                 className={
                   !validationsOther[0]
-                    ? "ng-dirty textos small border-0 w-75"
-                    : "ng-valid  textos border-0 w-75"
+                    ? "ng-dirty textos small  w-75"
+                    : "ng-valid  textos small  w-75"
                 }
               />
             </div>
@@ -115,9 +129,7 @@ const SignUp = (props) => {
                 value={preUser.lastName}
                 placeholder="your last name"
                 className={
-                  !validationsOther[1]
-                    ? "ng-dirty textos small border-0 w-75"
-                    : "ng-valid textos small border-0 w-75"
+                  !validationsOther[1] ? "ng-dirty textos small w-75" : "ng-valid textos small w-75"
                 }
               />
             </div>
@@ -129,7 +141,9 @@ const SignUp = (props) => {
                 onChange={(e) => setPreUser({ ...preUser, profilePicture: e.target.value })}
                 value={preUser.profilePicture}
                 placeholder="your url image"
-                className="ng-valid border-0 w-100 textos small"
+                className={
+                  !validationsOther[3] ? "ng-dirty textos small w-75" : "ng-valid textos small w-75"
+                }
               />
             </div>
 
@@ -140,9 +154,7 @@ const SignUp = (props) => {
                 value={preUser.email}
                 placeholder="a valid email address"
                 className={
-                  !validationsOther[2]
-                    ? "ng-dirty border-0 textos small w-75"
-                    : "ng-valid border-0  textos small w-75"
+                  !validationsOther[2] ? "ng-dirty textos small w-75" : "ng-valid textos small w-75"
                 }
               />
               📧
@@ -150,17 +162,16 @@ const SignUp = (props) => {
             </div>
             {/*  <div className="small border mt-1"> */}
             {/* </div> */}
-            <div className="mt-1 ">
+            <div className="border mt-3 ">
               <input
                 onChange={(e) => setPreUser({ ...preUser, password: e.target.value })}
                 value={preUser.password}
                 type={eyeState ? "password" : "text"}
                 placeholder="your secret password"
-                className="mb-1 ng-dirty"
                 className={
                   !validationsPass.includes(false)
-                    ? "ng-valid textos small"
-                    : "ng-dirty textos small"
+                    ? "ng-valid mt-2 textos small"
+                    : "ng-dirty mt-2 textos small"
                 }
               ></input>
             </div>

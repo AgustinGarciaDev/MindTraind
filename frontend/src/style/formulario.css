@@ -3,13 +3,44 @@
   outline: none;
   border-color: #ee98a9;
   box-shadow: 0 0 0 0.2rem rgba(220, 42, 77, 0.25);
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+
+  /* transition-timing-function: ease-in-out; */
 }
+
+/* .especial {
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+} */
+
+.ng-dirty:not(:focus) {
+  border-radius: 2px;
+  outline: none;
+  border-color: transparent;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+/* transition-timing-function: ease-in-out; */
 
 .ng-valid:focus {
   border-radius: 2px;
   outline: none;
   border-color: rgba(0, 132, 66, 0.8);
   box-shadow: 0 0 0 0.2rem rgb(0 132 66 / 25%);
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.ng-valid:not(:focus) {
+  border-radius: 2px;
+  outline: none;
+  border-color: transparent;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 .titleForm {
@@ -51,11 +82,14 @@
 }
 
 .errorContainer {
-  background-color: #ee98a9;
+  background-color: #f8d7da;
   /* border-style: double; */
-  border: solid 3px rgba(220, 42, 77, 0.25);
-  /* border-color: ; */
-  /* box-shadow: 0 0 0 0.2rem rgba(220, 42, 77, 0.25); */
+  border-style: solid;
+  /* border-color: rgba(220, 42, 77, 0.25); */
+  border-color: #721c24;
+  border-width: 2px 0px 2px 0px;
+
+  /* transition: display 2s, ease-in-out; */
 }
 
 #close {
@@ -63,6 +97,7 @@
   float: right;
   display: block;
   padding: 2px 5px;
+  color: red;
   /* background: #ccc; */
 }
 

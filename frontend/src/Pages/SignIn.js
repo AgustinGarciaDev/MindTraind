@@ -7,18 +7,18 @@ import { useEffect, useState } from "react";
 /* import GoogleLogin from "react-google-login"; */
 import { NavLink } from "react-router-dom";
 import usersActions from "../redux/actions/usersActions";
-import { connect } from 'react-redux'
+import { connect } from "react-redux";
 const SignIn = (props) => {
   const [hidden, setHidden] = useState(true);
   const [eyeState, setEyeState] = useState(true);
-  const [errorVisible, setErrorVisible] = useState(true);
-  /* const [countries, setCountries] = useState([]); */
+  const [errorVisible, setErrorVisible] = useState(false);
   const [preUser, setPreUser] = useState({
     email: "",
     password: "",
   });
   const [validationsPass, setValidationsPass] = useState([]);
   const [validationsOther, setValidationsOther] = useState([]);
+  const [erroresSignIn, setErroresSignIn] = useState("");
 
   useEffect(() => {
     /*  console.log("1v) soy el didmount"); */
@@ -40,10 +40,6 @@ const SignIn = (props) => {
     setValidationsOther([otherInput.email.search(/^\S+@\S+\.\S+$/) > -1]);
   }, [preUser]);
 
-  /*   const fetchCountries = async (props) => {
-    const paises = await props.fetchCountries();
-    setCountries(paises);
-  }; */
   /*  const respuestaGoogle = (response) => {
     const { givenName, email, googleId, imageUrl } = response.profileObj;
     props.createAndLogIn({
@@ -55,9 +51,20 @@ const SignIn = (props) => {
     });
     props.history.push("/");
   }; */
-  const send = () => {
-    props.logInUser(preUser)
-  }
+
+  const flogInUser = async () => {
+    /* props.logInUser(preUser) */
+    try {
+      let miRespuesta = await props.logInUser(preUser);
+      console.log("0props", miRespuesta);
+      setErroresSignIn(miRespuesta);
+      setErrorVisible(!errorVisible);
+
+      console.log("errpres", miRespuesta);
+    } catch {
+      console.log("no funciono");
+    }
+  };
   return (
     <div
       className="SignInContainer d-flex "
@@ -70,15 +77,17 @@ const SignIn = (props) => {
         <div className="titleForm titulos m-3 h2 ">Sign In</div>
         <div className="h6 small textos text-center">welcome back</div>
         <div className="errorContainer" style={{ display: errorVisible ? "block" : "none" }}>
-          error{" "}
           <span
             id="close"
-            style={{ display: errorVisible ? "float" : "none" }}
+            style={{ display: errorVisible ? "block" : "none" }}
             onClick={() => setErrorVisible(!errorVisible)}
           >
             {" "}
             x{" "}
           </span>
+          🚫 sorry we couldn't login to your account with your provided info, please refer to the
+          folowing messages.
+          <div>{erroresSignIn}</div>
         </div>
         <div className="bg-secondary">
           <div className="font-italic  mt-3 mb-2 bg-white border-1 p-3 d-flex flex-column">
@@ -124,10 +133,7 @@ const SignIn = (props) => {
                 onChange={() => setEyeState(!eyeState)}
               ></input>{" "}
             </label>
-            <button
-              className="btn mb-1 btn-danger myBtn "
-              onClick={() => send()}
-            >
+            <button className="btn mb-1 btn-danger myBtn " onClick={() => flogInUser()}>
               Continue
             </button>
             {/*     <GoogleLogin
@@ -167,20 +173,19 @@ const SignIn = (props) => {
             </ul>
           </div>
         </div>
-      </div >
+      </div>
       <div className="w-50 bg-dark">hola</div>
-    </div >
+    </div>
   );
 };
 /* REDUX */
 /*
  const mapStateToProps = (state) => {
   return {
-  
+
   };
 };*/
 const mapDispatchToProps = {
-  logInUser: usersActions.logInUser
+  logInUser: usersActions.logInUser,
 };
 export default connect(null, mapDispatchToProps)(SignIn);
-
