@@ -87,7 +87,7 @@ const courseControllers = {
         respondFrontend(res, response, error)
     },
     getCourseByIdUser: async (req, res) => {
-        const idUser = req.params.id;
+        const idUser = req.user._id;
         let response, error;
 
         try {
@@ -196,7 +196,7 @@ const courseControllers = {
                 break;
             default:
                 return  respondFrontend(res,response,`error, unknown action: "${action} "`);
-                break;
+                
         }
         try {
             response = await Course.findOneAndUpdate(querySelector,updateOperator,{new:true})

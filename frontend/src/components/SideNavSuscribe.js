@@ -1,15 +1,23 @@
 import { useEffect, useState } from "react";
 import { Modal, Button } from "react-bootstrap";
+import coursesActions from '../redux/actions/coursesActtions'
+import {connect} from 'react-redux'
+import { showToast } from "../helpers/myToast";
 
 const SideNavSuscribe = (props) => {
     const [modalShow, setModalShow] = useState(false);
 
     console.log(props)
     if (props.infoCourse === null) {
-
         return false
     }
     const { nameCourse, duration, difficulty, programDescription, pictureRefence } = props.infoCourse
+    const enroll = () => {
+        setModalShow(true)
+        if(props.infoCourse.students.some(student => student.email === props.userLogged.email))
+            return showToast("error","ya estas inscripto")
+        props.addStudentToCourse(props.userLogged.token,props.infoCourse._id,"add")
+    }
 
     function MyVerticallyCenteredModal(props) {
         return (
@@ -44,7 +52,7 @@ const SideNavSuscribe = (props) => {
                 </Modal.Body >
                 <Modal.Footer>
 
-                    <button onClick={() => setModalShow(true)} className="btnInscripcion">Inscribirme</button>
+                    <button onClick={() => enroll()} className="btnInscripcion">Inscribirme</button>
                 </Modal.Footer>
             </Modal >
         );
@@ -84,5 +92,14 @@ const SideNavSuscribe = (props) => {
         </div>
     )
 }
+const mapStateToProps = (state) => {
+    return {
+        userLogged: state.user.userLogged,
+    }
+}
 
-export default SideNavSuscribe
+const mapDispatchToProps = {
+    addStudentToCourse : coursesActions.addStudentToCourse,
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(SideNavSuscribe)

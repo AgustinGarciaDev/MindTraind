@@ -2,7 +2,7 @@ import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 const Class = (props) => {
-    const { name, videoclase } = props.clase
+    const { lessonName, videoLink } = props.clase
     const [modalShow, setModalShow] = useState(false);
 
 
@@ -17,7 +17,7 @@ const Class = (props) => {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="contenedorFrame">
-                        <iframe width="560" height="315" src={videoclase} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src={videoLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </Modal.Body >
                 <Modal.Footer>
@@ -34,7 +34,7 @@ const Class = (props) => {
         <>
             <div className="contenedorClase">
                 <div>
-                    <h1 className="titleClass">{name}</h1>
+                    <h1 className="titleClass">{lessonName}</h1>
                 </div>
                 <div>
                     <button className="btnClass " onClick={() => setModalShow(true)} ><i class="fas fa-play"></i> View Class</button>

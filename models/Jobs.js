@@ -5,6 +5,7 @@ const jobsSchemma = new mongoose.Schema({
     email: { type: String, required: true },
     area: [{ type: String, required: true }],
     description: { type: String, required: true },
+    urlImage:{type:String, required:true}
 })
 
 const Job = mongoose.model('job', jobsSchemma)
