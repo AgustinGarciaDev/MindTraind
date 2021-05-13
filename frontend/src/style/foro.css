@@ -1,51 +1,297 @@
 .contenedorPosteos{
     display: flex;
-    align-items: center;
+
     justify-content: center;
-    flex-direction: column;
 }
 
 .contenedorBienvenidaUsuario{
-    display: flex;
+     display: flex;
     align-items: center;
-    width: 51vw;
+    width: 44vw;
     justify-content: center;
-    height: 13vw;
-    border-radius: 1vw;
+    height: 5vw;
     cursor: pointer;
+    border-radius: 30px;
 }
 
 .barraBuscadora{
-    
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+    width: 47vw;
+    display: flex;
+}
+
+.contenedorBtnTextArea{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #F7F7F7;
+    padding: 23px;
+    border-radius: 1vw;
+}
+
+.contenedorBtnTextArea:hover{
+    box-shadow: 0 5px 25px 10px rgb(0 0 0 / 15%);
+}
+
+.contenedorTextArea{
+    width: 51vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputPost{
+    width: 100%;
+    border: 1px solid #e5e5e5;
+    height: 3vw;
+
+}
+
+.postYtitulo{
+    box-shadow: 0 5px 25px 10px rgb(0 0 0 / 15%);
+    padding: 37px;
+    border-radius: 15px;
+    width: 75%;
     margin-top: 3vw;
     margin-bottom: 3vw;
 }
 
-.contenedorBtnTextArea{
-     display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #F7F7F7;
-    box-shadow: 0 5px 25px 10px rgb(0 0 0 / 15%);
-    margin-top: 4vw;
-
+.tituloForm {
+    font-family: "Anton";
+    margin-bottom: 0;
+    margin-left: 14px;
 }
 
-.contenedorTextArea{
+.btnForm{
+    width: 12vw;
+    font-weight: bold;
+    height: 3vw;
+}
 
-    width: 51vw;
+.textAreaConsulta{
+    width: 100%;
+    border: 1px solid #e5e5e5;
+     height: 11vw;
+}
+
+.inputSearch{
+     width: 95%;
+    height: 3vw;
+}
+
+.contenedorComentarios{
+    margin-top: 2vw;
+    overflow: auto;
+    height: 36vw;
+}
+
+.contenedorPost{
+    display: flex;
+    flex-direction: column;
+    background: #F7F7F7;
+    padding: 23px;
+    border-radius: 1vw;
+    width: 48vw;
+    margin-bottom: 3vw;
+}
+.comentarioFotoUser{
+    width: 4vw;
+    border-radius: 50%;
+}
+
+.contenedorNameUser{
+    display: flex;
+}
+
+.contedorDatosUsuario{
+    display: flex;
+    align-items: center;
+}
+
+.contenedorIconoSearch{
+       background-color: #FF0034;
+    width: 7vw;
     display: flex;
     align-items: center;
     justify-content: center;
-
-}
-.public-DraftStyleDefault-ltr {
-    direction: ltr;
-    text-align: left;
-    background: white;
-    height: 15vw;
+    color: white;
+    font-size: 1.6vw;
+    border-top-right-radius: 3vw;
+    border-bottom-right-radius: 3vw;
 }
 
-.inputPost{
-width: 100%;
+.tituloPost{
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 3vw;
+    margin-bottom: 2vw;
+}
+
+.contenedorNameUser >h3{
+        margin-left: 5px;
+}
+
+.contenedorComentario{
+    margin-top: 15px;
+    margin-left: 11px;
+    font-size: 1.4vw;
+}
+
+.replyBtn{
+    display: flex;
+    align-items: center;
+}
+
+.replyBtn > p{
+ margin-bottom: 0;
+ margin-left: 10px;
+}
+
+.replyBtn:hover{
+   color: #FF0034;
+   cursor: pointer;
+}
+
+.inputComment{
+    display: flex;
+    width: 85%;
+    border-radius: 5vw;
+    border: none;
+    height: 3vw;
+    padding: 20px;
+}
+
+.contenedorInputComment{
+   margin-top: 54px;
+    box-shadow: -1px -1px 7px 0px #0000003d;
+    display: flex;
+        border-radius: 5vw;
+}
+
+.contenedorReply{
+    display: flex;
+    align-items: center;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    padding: 10px;
+    width: 40vw;
+    box-shadow: 0px 2px 3px 1px rgb(0 0 0 / 35%);
+    border-radius: 3vw;
+}
+
+.contenedorDatosUserReply{
+    margin-left: 1vw;
+}
+.contenedorDatosUserReply > h5{
+    margin-bottom: 0;
+}
+.contenedorDatosUserReply > p{
+    margin-bottom: 0;
+}
+.btnOpciones{
+    background: none;
+    color: black;
+    border: none;
+    box-shadow: none;
+    margin-left: 10px;
+}
+
+.btnOpciones:focus{
+    background: none;
+    color: black;
+    border: none;
+    box-shadow: none;
+}
+
+.btnOpcionED{
+  border: none;
+  background: white;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.btnOpcionED:hover{
+  background: #F2F2F2;
+  width: 100%;
+    align-items: baseline;
+    color: #FF0034;
+}
+.popover-body{
+  display: flex;
+flex-direction: column;
+    align-items: baseline;
+}
+.popover{
+  z-index: 0;
+}
+
+.contenedorEditorYcomentario{
+    display: flex;
+    align-items: center;
+}   
+
+.inputEdit{
+        border: none;
+    background: none;
+}
+
+.btnSendEdit{
+    border: none;
+    background: none;
+    color:#FF0034;
+}
+
+.contenedorInputEdit{
+     background: white;
+    border-radius: 3vw;
+    border: 1px solid #ff0034;
+    width: 15vw;
+}
+.bg-dark {
+    background-color: #080D13 !important;
+}
+.titleInternalForm{
+    font-size: 2vw;
+}
+
+.contenedorChat{
+    width: 98vw;
+    height: 100vh;
+}
+
+.contenedorBannerForo{
+    background-image: url("http://baravdg.com/wp-content/uploads/2021/05/Diseno-sin-titulo-22.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 33vw;
+    width: 21vw;
+    position: relative;
+    right: 2vw;
+    justify-content: center;
+    align-items: flex-end;
+    display: flex;
+    margin-top: 2vw;
+}
+
+.titleHelp {
+    font-size: 2vw;
+    color: white;
+    font-family: "Anton";
+}
+
+.contenedorBtnyTextBanner{
+    margin-bottom: 3vw;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.spaceBtnForo{
+     margin-top: 14px;
+}
+
+.spaceBtnQuery{
+    position: relative;
+    top: 19px;
 }

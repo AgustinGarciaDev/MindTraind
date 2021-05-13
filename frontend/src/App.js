@@ -1,3 +1,4 @@
+import "bootstrap/dist/css/bootstrap.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import './style/formulario.css'
 import './style/dashboard.css'
@@ -12,7 +13,9 @@ import Admin from './Pages/Admin'
 import CourseList from './Pages/CourseList'
 import ClassList from './Pages/ClassList'
 import Foro from './Pages/Foro'
-import "bootstrap/dist/css/bootstrap.css";
+import Chat from './Pages/Chat'
+import Jobs from './Pages/Jobs'
+
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { connect } from 'react-redux'
@@ -21,7 +24,6 @@ import usersActions from "./redux/actions/usersActions";
 const App = (props) => {
   const token = localStorage.getItem("token");
   //veo que no haya en el store un usuario logueado y que haya un token en el localStorage
-
   if (!props.userLogged && token && token !== "undefined") {
     props.loginForced(JSON.parse(token), props.history)
   }
@@ -36,6 +38,8 @@ const App = (props) => {
         <Route exact path="/admin" component={Admin} /> {/* ADMIN */}
         <Route exact path="/courselist" component={CourseList} /> {/*  SOLO ALUMNO /PROFESOR/ADMIN*/}
         <Route exact path="/class" component={ClassList} /> {/* SOLO ALUMNO /PROFESOR/ADMIN*/}
+        <Route exact path="/chat" component={Chat} /> {/* SOLO ALUMNO /PROFESOR/ADMIN*/}
+        <Route exact path="/jobs" component={Jobs} /> {/* SOLO ALUMNO /PROFESOR/ADMIN*/}
         <Route exact path="/foro" component={Foro} />{/* SOLO ALUMNO /PROFESOR/ADMIN */}
       </Switch>
     </BrowserRouter>
