@@ -1,83 +1,75 @@
 import axios from "axios";
-/* import { Notyf } from "notyf"; */
-/* import "notyf/notyf.min.css"; // for React, Vue and Svelte */
-/* import { Redirect } from "react-router-dom"; */
-/* const notyf = new Notyf(); */
+
+/* import { ToastContainer, toast, helpers, showToast } from "react-toastify"; */
+import { showToast, showTostError500 } from "../../helpers/myToast";
+
 
 const usersActions = {
-  createUserBackEnd: (preUser) => {
-    return (dispatch, getState) => {
-      console.log("new user petition Req", preUser);
-      let respuesta = axios.post("http://localhost:4000/api/users/", preUser).then((respuesta) => {
-        if (!respuesta.data.success) {
-          console.log("errores del baack end", respuesta);
-          /*  respuesta.data.errores.details &&
-            respuesta.data.errores.details.map((joiError) => {
-            }); */
-
-          return respuesta.data.errores;
+  signUpUser: (objInputsValues) => {
+    /*  const notify = (msg) => toast("errores del baack end"); */
+    return async (dispatch, getState) => {
+      try {
+        let { data } = await axios.post("http://localhost:4000/api/users/signup", objInputsValues)
+        if (data.success) {
+          showToast("success", data.error);
+          dispatch({ type: "LOGIN_USER", payload: data.response });
+          showToast("success",`Welcome ${data.response.firstName} ${data.response.lastName}`)
         } else {
-          alert("algo fallo");
+          return data.errors ? data.errors : data.error;
         }
-        dispatch({
-          type: "LOGIN_USER",
-
-          payload: respuesta.data.success ? respuesta.data.respuesta : null,
-        });
-      });
-    };
+      } catch (err) {
+        console.log(err);
+        showTostError500();
+      }
+    }
   },
-
-  /* filtro */
-  /*   logInUserBackEnd: (preUser) => {
-    return (dispatch, getState) => {
-      let respuesta = axios
-        .post("http://localhost:4000/api/trainedMind/LogIn/", preUser)
-        .then((respuesta) => {
-          console.log("1)soy info para loguear", respuesta.data.respuesta);
-          if (!respuesta.data.success) {
-            notyf.error({ message: respuesta.data.error, duration: 3000 });
-          } else {
-            notyf.success({ message: "Welcome 😀", duration: 3000 });
-          }
-          dispatch({
-            type: "LOGIN_USER",
-            payload: respuesta.data.success ? respuesta.data.respuesta : null,
-          });
-        });
-    };,
-  }, */
-
-  actionLogOut: () => {
-    return (dispatch, getState) => {
-      dispatch({
-        type: "LOG_OUT",
-        payload: [],
-      });
-    };
+  logInUser : (objInputsValues) =>{
+    return async (dispatch) => {
+      try {
+        let {data} = await axios.post("http://localhost:4000/api/users/login",objInputsValues);
+        console.log(data)
+        if(data.success){
+          dispatch({type:"LOGIN_USER" , payload: data.response})      
+          showToast("success",`Welcome ${data.response.firstName} ${data.response.lastName}`)
+        }
+      } catch (err) {
+        console.log(err);
+        showTostError500();
+      }
+    }
   },
+  loginForced: (token, history) => {
+    return async (dispatch, getState) => {
+        try {
+            const { data } = await axios.get("http://localhost:4000/api/usersforcedlogin", {
+                headers: { 'Authorization': 'Bearer ' + token }
+            })
+            
+            dispatch({type: "LOGIN_USER", payload: {...data.response,token} } );
+            showToast("success",`Welcome ${data.response.firstName} ${data.response.lastName}`)
+        }
+        catch (err) {
+            alert("Error 500 , please come back later")
+            console.log(err)
+            if (err.response && err.response.status === 401) {
+                alert("try harder next time")
+                localStorage.clear();
+                window.location.reload(true);
+                //history.push("/");
+            }
+            localStorage.clear();
+        }
+    }
+},
 
-  /*  ForceLogIn: (preUser) => {
-      console.log("1) en force login", preUser);
-
+  logOutUser: () => {
     return (dispatch, getState) => {
-    console.log(typeof userLS);
-      let respuesta = axios
-        .get("http://localhost:4000/api/trainedMind/LogInLF", {
-          headers: {
-            Authorization: "Bearer " + userLS,
-          },
-        })
-        .then((respuesta) => {
-            console.log("zz", respuesta.data.success);
-          dispatch({
-            type: "LOGIN_USER",
-            payload: respuesta.data.success ? respuesta.data.respuesta : null,
-          });
-        })
-        .catch((e) => console.log("", e));
+      showToast("info", "Come back later ", "top-right");
+      dispatch({type: "LOG_OUT"})
     };
-  }, */
+  }
+
+  
 };
 
 export default usersActions;

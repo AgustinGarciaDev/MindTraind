@@ -8,8 +8,8 @@ const courseControllers = require('../controllers/courseControllers')
 const userControllers = require('../controllers/userControllers')
 const jobControllers = require('../controllers/jobControllers')
 
-const {addCourse, getAllCourses, getCourseById, updateCourse, deleteCourse,getCourseByIdUser, modifyCategories} = courseControllers
-const {addUser, getAllUsers, getUserById, updateUser, deleteUser} = userControllers
+const {addCourse, getAllCourses, getCourseById, updateCourse, deleteCourse,getCourseByIdUser, modifyCategories, modifyLesson, modifyStudents} = courseControllers
+const {addUser, getAllUsers, getUserById, updateUser, deleteUser,loginUser,forcedLogin} = userControllers
 const {addJob,getAllJobs,getJobById,updateJob,deleteJob} = jobControllers
 
 //COURSE ROUTES
@@ -24,13 +24,17 @@ router.route('/courses/:id')
 router.route('/coursesOfUser/:id')
     .get(getCourseByIdUser)
 
-router.route('/courses/modifyCategory/:id')
+router.route('/coursesmodifyCategory/:id')
     .put(modifyCategories);
 
+router.route('/coursesmodifyLesson/:id')
+    .put(modifyLesson)
+
+router.route('/coursesmodifyStudents/:id')
+    .put(passport.authenticate('jwt',{session:false}),modifyStudents)
 
 //USER ROUTES
 router.route('/users')
-    .post(addUser)
     .get(getAllUsers)
 
 router.route('/users/:id')
@@ -38,6 +42,16 @@ router.route('/users/:id')
     .put(updateUser)
     .delete(deleteUser)
 
+router.route('/users/signup')
+    .post(validator,addUser)
+router.route('/users/login')
+    .post(loginUser)
+
+router.route('/usersforcedlogin')
+.get(passport.authenticate('jwt',{session:false}),forcedLogin)
+
+
+//JOB ROUTES
 router.route('/jobs')
     .post(addJob)
     .get(getAllJobs)
