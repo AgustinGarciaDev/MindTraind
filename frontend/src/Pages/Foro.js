@@ -14,6 +14,7 @@ const Foro = (props) => {
     const [objConsult, setobjConsult] = useState({
         title: "",
         comment: "",
+        idCourse: props.match.params.id
     })
 
     const inputData = (e) => {
@@ -25,12 +26,13 @@ const Foro = (props) => {
         })
     }
 
-    const sendComent = () => {
+    const sendComent = async () => {
 
         if (objConsult.title === "" || objConsult.comment === "") {
             showToast('error', "You cant add text")
         } else {
-            alert("E")
+            const respuesta = await props.sendPost(objConsult)
+            console.log(respuesta)
         }
     }
 
@@ -98,7 +100,7 @@ const Foro = (props) => {
                 </div>
                 <div className="contenedorBtn">
                     <button className="btnDashBoard spaceBtnQuery">
-                        Write query
+                        Question
                     </button>
                 </div>
             </main>
@@ -116,7 +118,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
 
-    loadComment: coursesActions.loadComment,
+    sendPost: coursesActions.sendPost,
 
 }
 

@@ -142,6 +142,24 @@ const coursesActions = {
                 showTostError500();
             }
         }
+    },
+
+    /* Comments */
+    sendPost: (data) => {
+
+        console.log(data)
+        return async (dispatch, getState) => {
+            /*     try {
+                    const response = await axios.post('http://localhost:4000/api/coursesmodifyComments/' + data.idCourse, data)
+    
+                    if (response.data.success) {
+                        return response.data.response
+                    }
+                } catch (err) {
+                    console.log(err);
+                    showTostError500();
+                } */
+        }
     }
 }
 

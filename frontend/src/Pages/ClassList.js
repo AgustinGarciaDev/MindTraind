@@ -1,34 +1,37 @@
 import NavBarDashBoard from '../components/NavBarDashBoard'
 import Class from '../components/Class'
 import { useEffect, useState } from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import coursesActions from '../redux/actions/coursesActtions'
 const ClassList = (props) => {
-    const {courses,getCourseById} = props
-    const [lessonsCourse , setLessonsCourse] = useState([]);
+
+    console.log(props.match.params)
+    const { courses, getCourseById } = props
+    const [lessonsCourse, setLessonsCourse] = useState([]);
     async function fetchAPI(idCourse) {
         try {
             const course = await getCourseById(idCourse)
-            setLessonsCourse(course.lessons)    
+            setLessonsCourse(course.lessons)
 
         } catch (err) {
             console.log(err)
         }
     }
-    useEffect(()=>{
+    useEffect(() => {
         const idCourse = props.match.params.id
-        if(courses.length !== 0){
-            let course =   courses.find(aCourse => aCourse._id === idCourse)
+        if (courses.length !== 0) {
+            let course = courses.find(aCourse => aCourse._id === idCourse)
             setLessonsCourse(course.lessons)
         }
-        else{
+        else {
             fetchAPI(idCourse)
         }
 
-        
-        
-           
-    },[])
+
+
+
+    }, [])
 
 
     const clases = [
@@ -41,6 +44,9 @@ const ClassList = (props) => {
         <>
             <NavBarDashBoard />
             <div>
+                <Link to={`/foro/${props.match.params.id}`} ><button className="btnDashBoard">Go course!</button></Link>
+            </div>
+            <div>
                 <h2>Program Course</h2>
             </div>
             <div className="classContainer">
@@ -52,12 +58,12 @@ const ClassList = (props) => {
 }
 const mapStateToProps = (state) => {
     return {
-        courses : state.courses.courses
+        courses: state.courses.courses
     }
 }
 const mapDispatchToProps = {
-    getCourseById : coursesActions.getCourseById,
+    getCourseById: coursesActions.getCourseById,
 
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(ClassList)
+export default connect(mapStateToProps, mapDispatchToProps)(ClassList)
