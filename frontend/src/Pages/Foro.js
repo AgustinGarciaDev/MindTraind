@@ -9,12 +9,13 @@ import { connect } from "react-redux"
 
 const Foro = (props) => {
 
-    const { firstName, lastName, profilePicture, email } = props.userLogged
+    const { firstName, lastName, profilePicture, email, token } = props.userLogged
     const [modalShow, setModalShow] = useState(false);
     const [objConsult, setobjConsult] = useState({
         title: "",
         comment: "",
-        idCourse: props.match.params.id
+        idCourse: props.match.params.id,
+        token: token
     })
 
     const inputData = (e) => {
