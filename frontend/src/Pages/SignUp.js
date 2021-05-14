@@ -234,11 +234,9 @@ const SignUp = (props) => {
       </div>
 
       <div className="signUpVideoContainer w-50 h-50 bg-dark" controls>
-        <video className="w-50" autoPlay muted loop>
+        <video className="signUpVideo w-100" autoPlay muted loop>
           <source
-            src={
-              "https://baravdg.com/wp-content/uploads/2021/05/pexels-karolina-grabowska-7710488.mp4"
-            }
+            src={"https://baravdg.com/wp-content/uploads/2021/05/Pexels-Videos-1596861.mp4"}
             type={"video/mp4"}
           />
         </video>

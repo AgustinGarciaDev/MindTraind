@@ -113,17 +113,46 @@
   margin: 0 auto;
 }
 
+html {
+  overflow-x: hidden;
+}
 .signUpVideoContainer {
-  height: 100px;
+  height: 600px;
+  /*  overflow-x: hidden; */
   /* top: -50%;
   left: -50%;
   width: 200%;
   height: 200%; */
 }
 
-video {
+.signUpVideo {
   position: absolute;
-  right: 0%;
-  bottom: -45%;
+  left: 50%;
+  bottom: 0%;
+  overflow-x: hidden;
+
   /* transform: translate(-50%, -50%); /* % of current element*/
+}
+
+.signInVideo {
+  position: absolute;
+  left: 40%;
+  bottom: -30%;
+
+  overflow-x: hidden;
+
+  /* transform: translate(-50%, -50%); /* % of current element*/
+}
+
+.signInVideoContainer {
+  height: 600px;
+
+  /* top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%; */
+}
+
+.w40 {
+  width: 40%;
 }
