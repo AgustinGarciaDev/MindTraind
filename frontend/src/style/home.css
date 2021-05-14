@@ -56,10 +56,11 @@ html *{
     
 }
 .img-info{
-    height: 4vh;
-    margin: 1vh;
+    height: 8vh;
+    margin: 2vh;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    box-shadow: 2px 2px 8px rgb(0 0 0 / 27%);
 }
 .img-social{
     height:10vh;
@@ -122,11 +123,10 @@ html *{
     font-family: 'Anton', sans-serif;
 }
 .fondo-txt{
-    display:flex;
-    background-color:white;
+    display: flex;
+    background-color: white;
     border-radius: 15px;
-   
-    
+    padding: 24px;
 }
 .fondo-info{
     display: flex ;
@@ -181,6 +181,7 @@ html *{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin:1rem;
 }
 a:link, a:visited, a:active {
     text-decoration:none;
@@ -194,13 +195,16 @@ a:link, a:visited, a:active {
     color: white; 
 }
 .cartel-rojo{
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: #ff0034;
     border-radius: 15px;
-    width: 50%; 
+    width: 50%;
+    padding: 26px;
+    text-align: center;
+    font-family: "Anton";
 }
 .txt-cartelrojo{
     display: flex;
