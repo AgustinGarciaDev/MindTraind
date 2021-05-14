@@ -128,7 +128,6 @@ const Admin = (props) => {
         <>
             <div className="adminContainer">
                 <h3 className="h3Form">Courses</h3>
-                <p>aca podria haber un filtro para facilitar la busqueda</p>
                 <div className="courseContainer">
                     {
                         loader
