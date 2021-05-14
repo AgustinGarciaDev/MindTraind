@@ -13,7 +13,11 @@ const Jobs = () => {
         <>
             <NavBarDashBoard />
             <div>
-                {jobs.map(job => <CardJob job={job} />)}
+
+                <div>Hi!</div>
+                <div>
+                    {jobs.map(job => <CardJob job={job} />)}
+                </div>
             </div>
         </>
     )
