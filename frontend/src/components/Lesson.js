@@ -38,8 +38,8 @@ const Lesson = (props) => {
                     </>
                     :
                     <>
-                        <p>Leson name: {props.lesson.lessonName}</p>
-                        <p className="editInputVideo">Video link: {props.lesson.videoLink}</p>
+                        <p><label className="lessonNames">Leson name:</label> {props.lesson.lessonName}</p>
+                        <p className="editInputVideo"><label className="lessonNames">Video link:</label> {props.lesson.videoLink}</p>
                     </>
             }
         </div>

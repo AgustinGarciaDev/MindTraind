@@ -16,7 +16,7 @@ const AsideNav = () => {
                 navHide
                     ? <div className="asideNav asideNavActive">
                         <div className="listIconNav">
-                            <div onClick={changeStatus} className="contenedorIconNav contenedorIconNavActive"><i class="fas fa-align-left"></i> </div>
+                            <div onClick={changeStatus} className="contenedorIconNav contenedorIconNavActive"><i className="fas fa-align-left"></i> </div>
                             <div className="contenedorIconNav contenedorIconNavActive">
                                 <i className="fas fa-graduation-cap"></i><p> Courses</p>
                             </div>
