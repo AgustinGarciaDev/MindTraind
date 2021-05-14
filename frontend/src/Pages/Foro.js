@@ -9,14 +9,42 @@ import { connect } from "react-redux"
 
 const Foro = (props) => {
 
+    const idCourse = props.match.params.id
+    const [commentsCourse, setCommentsCourse] = useState([]);
+    const { courses, getCourseById } = props
     const { firstName, lastName, profilePicture, email, token } = props.userLogged
     const [modalShow, setModalShow] = useState(false);
     const [objConsult, setobjConsult] = useState({
         title: "",
-        comment: "",
-        idCourse: props.match.params.id,
-        token: token
+        text: "",
+        idCourse: idCourse,
+        token: token,
+        action: "add",
+        userEmailReply: email
     })
+
+    console.log(objConsult)
+    async function fetchAPI(idCourse) {
+        try {
+            const course = await getCourseById(idCourse)
+            setCommentsCourse(course.comments)
+
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    useEffect(() => {
+
+        if (courses.length !== 0) {
+            let course = courses.find(aCourse => aCourse._id === idCourse)
+            setCommentsCourse(course.comments)
+        }
+        else {
+            fetchAPI(idCourse)
+        }
+    }, [])
+
+
 
     const inputData = (e) => {
         const campo = e.target.name
@@ -33,17 +61,9 @@ const Foro = (props) => {
             showToast('error', "You cant add text")
         } else {
             const respuesta = await props.sendPost(objConsult)
-            console.log(respuesta)
+            setCommentsCourse(respuesta.comments)
         }
     }
-
-
-    const post = [
-        { name: "agustin", apellido: "garcia", comment: "commentario nuevo", titulo: "Consulta 1", foto: "http://baravdg.com/wp-content/uploads/2021/04/46.jpg" },
-        { name: "agustin", apellido: "garcia", comment: "commentario nuevo", titulo: "Consulta 1", foto: "http://baravdg.com/wp-content/uploads/2021/04/46.jpg" },
-        { name: "agustin", apellido: "garcia", comment: "commentario nuevo", titulo: "Consulta 1", foto: "http://baravdg.com/wp-content/uploads/2021/04/46.jpg" },
-        { name: "agustin", apellido: "garcia", comment: "commentario nuevo", titulo: "Consulta 1", foto: "http://baravdg.com/wp-content/uploads/2021/04/46.jpg" },
-    ]
 
 
 
@@ -85,7 +105,7 @@ const Foro = (props) => {
                                 </div>
                                 <div>
                                     <h2 className="titleInternalForm" >Content</h2>
-                                    <textarea onChange={inputData} value={objConsult.comment} name="comment" className="textAreaConsulta" cols="30" rows="10"></textarea>
+                                    <textarea onChange={inputData} value={objConsult.text} name="text" className="textAreaConsulta" cols="30" rows="10"></textarea>
                                 </div>
                                 <div className="contenedorBtn">
                                     <button onClick={sendComent} className="btnDashBoard btnForm">Send</button>
@@ -95,7 +115,7 @@ const Foro = (props) => {
                         }
                     </div>
                     <div className="contenedorComentarios">
-                        {post.map(post => <Post post={post} />)}
+                        {commentsCourse.map(post => <Post post={post} />)}
                     </div>
 
                 </div>
@@ -113,13 +133,15 @@ const Foro = (props) => {
 
 const mapStateToProps = state => {
     return {
-        userLogged: state.user.userLogged
+        userLogged: state.user.userLogged,
+        courses: state.courses.courses
     }
 }
 
 const mapDispatchToProps = {
 
     sendPost: coursesActions.sendPost,
+    getCourseById: coursesActions.getCourseById,
 
 }
 

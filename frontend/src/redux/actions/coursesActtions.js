@@ -150,10 +150,11 @@ const coursesActions = {
         console.log(data)
         return async (dispatch, getState) => {
             try {
-                const response = await axios.post('http://localhost:4000/api/coursesmodifyComments/' + data.idCourse, data, {
+                const response = await axios.put('http://localhost:4000/api/coursesmodifyComments/' + data.idCourse, data, {
                     headers: { Authorization: "Bearer " + data.token },
                 })
 
+                console.log(response)
                 if (response.data.success) {
                     return response.data.response
                 }
