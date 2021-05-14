@@ -1,22 +1,30 @@
 import React from 'react'
 import{NavLink} from 'react-router-dom'
 
+
 const Info=()=>{
     return(
     <main>
            
         <div className="info">
+           
+            <div className="info-in">
+                <div className="more-info">
+                    <h2>More About Us</h2>
+                    <p>Trained Mind is a BodySystems company.Our mission is to create a Planet in shape by providing clients with what they are looking for. Success will be a consequence.</p>
+                </div>
+                <div className="fondo-videoTM">
+                    <video autoPlay loop muted id="video">
+                        <source src="http://baravdg.com/wp-content/uploads/2021/05/WhatsApp-Video-2021-05-14-at-12.18.47-AM.mp4" type="video/mp4"></source>
+                    </video>          
+                </div>                   
+            </div>
             <div className="img-rp">
                 <img src="http://baravdg.com/wp-content/uploads/2021/05/rbk.png" alt="img-r" className="img-r" />
                 <img src="http://baravdg.com/wp-content/uploads/2021/05/ua.png" alt="img-r" className="img-r" />
                 <img src="http://baravdg.com/wp-content/uploads/2021/05/ad.png" alt="img-r" className="img-r" />
                 <img src="http://baravdg.com/wp-content/uploads/2021/05/nblc.png" alt="img-r" className="img-r" />
-            </div>
-            <div className="info-in">
-                <img src="http://baravdg.com/wp-content/uploads/2021/05/rayas-red-izq-1.png" alt="franjasrojas" className="franjaroja" />
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/EDt4tgbHlDQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                             
-            </div>
-                    
+            </div>       
             <div  className="information"> 
                 <div className="fondo-info">
                         
@@ -48,6 +56,7 @@ const Info=()=>{
                         <img src="http://baravdg.com/wp-content/uploads/2021/05/Fitness-girl-black-sportswear-training-weight-lifting_1920x1440.jpg" alt="img-F" className="img-f" />
                     </div>
                 </div>
+                
             </div>
         </div>    
         <div className="fondo-inv">
@@ -72,7 +81,7 @@ const Info=()=>{
         </div>
         <div className="txt-inv">
            <div>
-                <h3>
+                <h3 className="txt-call">
                 Ready to start? I chose the instructorate and let's get started! 
                 </h3>
            </div>

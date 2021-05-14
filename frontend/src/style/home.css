@@ -15,8 +15,8 @@ html *{
     height: 80vh;
 }
 .logo{
-    height: 10vh;
-    padding:2vh;
+    height: 8vh;
+    margin:1vh;
 }
 .title{
     color:white;
@@ -82,8 +82,15 @@ html *{
     color:white;
     font-size: 4vh;
 }
+.fa-discord{
+    padding: 1vh;
+    color:white;
+    font-size: 3.8vh;
+
+}
 .franjaroja{
     width: 50vw;
+  
 }
 .active{
     color:red;
@@ -104,7 +111,7 @@ html *{
     display: flex;
     justify-content: space-between;
     background-color: black;
-    padding: 1vh;
+    padding: 2vh;
 }
 .img-r{
     height: 10vh;
@@ -138,6 +145,7 @@ html *{
     padding: 1vh;
     font-family: 'Roboto', sans-serif;
     justify-content: center;
+
 }
 .info-ind h2{
     font-family: 'Anton', sans-serif;
@@ -165,9 +173,10 @@ html *{
 .info-in{
     display: flex;
     background-color: black;
-    align-items: center ;
     justify-content: center;
-    z-index: -1;
+    justify-items: center;
+    align-items: center;
+    height: 70vh;
 }
     
 .btn-home{
@@ -214,7 +223,30 @@ a:link, a:visited, a:active {
 }
 .txt-cartelrojo p , h5{
     padding: 1rem;
-}        
+}
+#video{
+    width: 38vw;
+    position:absolute;
+    margin: 5vh;
+}
+.fondo-videoTM{
+    background-image: url("http://baravdg.com/wp-content/uploads/2021/05/rayas-red-izq-1.png") ;
+    background-size: cover;
+    height: 65vh;
+    width: 50vw;
+}
+.more-info{
+    width: 30%;
+    color: white;
+}
+.more-info p{
+   font-size: 2.5vh;
+   font-family: 'Roboto';
+}
+.more-info h2{
+    font-size: 4.5vh;
+    font-family: 'Anton', sans-serif; 
+ }           
 
 
 
@@ -235,9 +267,57 @@ a:link, a:visited, a:active {
    .img-home{
        background-position: center;
    }
-   .franjaroja{
-    display: none;
-}
+   .info-in{
+       display: flex;
+       flex-direction: column-reverse;
+       width: 100vw;
+   }
+   .more-info{
+       width: 84%;
+       margin: 1rem;
+   }
+   #video{
+       width: 85vw;   
+   }
+   .img-rp{
+       display: flex;
+       justify-content: space-around;
+       padding: 0;
+   }
+   .img-r{
+       height: 5vh;
+       padding:0;
+       margin:0;
+   }
+   .info{
+       width: 100%;
+   }
+   .cartel-rojo h4{
+    font-size: 1rem;
+   }
+   .cartel-rojo{
+       width: 85vw;
+   }
+   .btn-home{
+        width: 3.5rem;
+        height: 2rem;
+   }
+   .txt-call{
+       font-size: 1.2rem;
+       margin: 1.2rem;
+       margin-top: 2rem;
+   }
+   .information{
+       width: 100%;
+   }
+   .fondo-videoTM{
+   }
+   
+   
+       
+   
+
+
   
 }
 

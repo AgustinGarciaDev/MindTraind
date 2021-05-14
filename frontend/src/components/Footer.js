@@ -10,6 +10,7 @@ const Footer=()=>{
                 <i class="fab fa-facebook-square"></i>
                 <i class="fab fa-whatsapp-square"></i>
                 <i class="fab fa-instagram-square"></i>
+                <i class="fab fa-discord"></i>
             </div>
             <div className="link-footer">
                 <NavLink exact to="/"><p className="link">Home</p></NavLink>
