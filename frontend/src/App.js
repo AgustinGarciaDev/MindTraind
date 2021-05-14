@@ -45,7 +45,7 @@ const App = (props) => {
         <Route exact path="/chat" component={Chat} /> {/* SOLO ALUMNO /PROFESOR/ADMIN*/}
         <Route exact path="/jobs" component={Jobs} /> {/* SOLO ALUMNO /PROFESOR/ADMIN*/}
         <Route exact path="/class/:id" component={ClassList} /> {/* SOLO ALUMNO /PROFESOR/ADMIN*/}
-        <Route exact path="/foro" component={Foro} />{/* SOLO ALUMNO /PROFESOR/ADMIN */}
+        <Route exact path="/foro/:id" component={Foro} />{/* SOLO ALUMNO /PROFESOR/ADMIN */}
       </Switch>
     </BrowserRouter>
   );

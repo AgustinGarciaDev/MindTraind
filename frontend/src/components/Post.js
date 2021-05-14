@@ -6,6 +6,8 @@ import { toast } from 'react-toastify';
 
 const Post = (props) => {
 
+    const { title, text, user: { profilePicture, lastName, firstName } } = props.post
+    console.log(props)
     const reply = [
         { comentario: "hola" },
         { comentario: "hola" }
@@ -24,18 +26,17 @@ const Post = (props) => {
         })
     }
 
-    const { apellido, name, titulo, comment, foto } = props.post
     return (
         <div className="contenedorPost">
-            <h2 className="tituloPost">{titulo}</h2>
+            <h2 className="tituloPost">{title}</h2>
             <div className="contedorDatosUsuario">
-                <img className="comentarioFotoUser" src={foto} alt="" />
+                <img className="comentarioFotoUser" src={profilePicture} alt="" />
                 <div className="contenedorNameUser">
-                    <h3>{name} {apellido}</h3>
+                    <h3>{firstName} {lastName}</h3>
                 </div>
             </div>
             <div className="contenedorComentario">
-                <p>{comment}</p>
+                <p>{text}</p>
             </div>
             <div onClick={() => { setCommentReply(!commentReply) }} className="contenedorComentario replyBtn">
                 <i class="fas fa-reply"></i>
@@ -57,11 +58,7 @@ const Post = (props) => {
     )
 }
 
-const mapStateToProps = state => {
-    return {
 
-    }
-}
 
 const mapDispatchToProps = {
 
@@ -70,4 +67,4 @@ const mapDispatchToProps = {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Post)
+export default connect(null, mapDispatchToProps)(Post)
