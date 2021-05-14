@@ -73,7 +73,7 @@ const SignIn = (props) => {
     >
       {props.theUser && console.log("X", props.theUser)}
       {/*  <p> "hola" {hidden && "hola"}</p> */}
-      <div className={"w-50"}>
+      <div className={" w40 "}>
         <div className="titleForm titulos m-3 h2 ">Sign In</div>
         <div className="h6 small textos text-center">welcome back</div>
         <div className="errorContainer" style={{ display: errorVisible ? "block" : "none" }}>
@@ -174,7 +174,14 @@ const SignIn = (props) => {
           </div>
         </div>
       </div>
-      <div className="w-50 bg-dark">hola</div>
+      <div className="signInVideoContainer w-50 h-50 bg-dark" controls>
+        <video className="signInVideo w-100" autoPlay muted loop>
+          <source
+            src={"https://baravdg.com/wp-content/uploads/2021/05/production-ID_3843427.mp4"}
+            type={"video/mp4"}
+          />
+        </video>
+      </div>
     </div>
   );
 };
