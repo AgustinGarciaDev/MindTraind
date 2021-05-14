@@ -7,6 +7,8 @@ import usersActions from "../redux/actions/usersActions";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import GoogleLogin from "react-google-login";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const SignUp = (props) => {
   /*   console.log(props); */
@@ -19,6 +21,15 @@ const SignUp = (props) => {
   const [erroresSignUp, setErroresSignUp] = useState([]);
   /* const [countries, setCountries] = useState([]); */
   const [preUser, setPreUser] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    profilePicture: "",
+    password: "",
+    role: "noRole",
+  });
+
+  const [preUserPlaceHolder, setPreUserPlaceHolder] = useState({
     firstName: "",
     lastName: "",
     email: "",
@@ -60,7 +71,24 @@ const SignUp = (props) => {
       let miRespuesta = await props.createAndLogIn(preUser);
       console.log("0props", miRespuesta);
       setErroresSignUp(miRespuesta);
-      setErrorVisible(!errorVisible);
+      console.log("x", miRespuesta[0].message);
+      setPreUser({
+        firstName: miRespuesta[0].message !== "" ? preUser.firstName : miRespuesta[0].message,
+        lastName: miRespuesta[1].message !== "" ? preUser.lastName : miRespuesta[1].message,
+        profilePicture:
+          miRespuesta[2].message !== "" ? preUser.profilePicture : miRespuesta[2].message,
+        email: miRespuesta[3].message !== "" ? preUser.email : miRespuesta[3].message,
+        password: "",
+      });
+      setPreUserPlaceHolder({
+        firstName: "👉" + miRespuesta[0].message + "👈",
+        lastName: "👉" + miRespuesta[1].message + "👈",
+        profilePicture: "👉" + miRespuesta[2].message + "👈",
+        email: "👉" + miRespuesta[3].message + "👈",
+        password: "",
+      });
+      /*       setErrorVisible(!errorVisible); */
+      setErrorVisible(true);
 
       console.log("errpres", miRespuesta);
     } catch {
@@ -68,200 +96,238 @@ const SignUp = (props) => {
     }
   };
 
-  const respuestaGoogle = (response) => {
-    alert("");
-    /*  const { givenName, email, googleId, imageUrl } = response.profileObj;
+  const responseGoogle = (response) => {
+    alert("entre");
+    const { givenName, email, googleId, imageUrl } = response.profileObj;
     props.createAndLogIn({
-      name: givenName,
+      firstName: givenName,
+      lastName: givenName,
       email: email,
-      country: "",
-      pass: "a" + googleId,
-      url: imageUrl,
+      profilePicture: imageUrl,
+      password: "Cx1" + googleId,
+      role: "noRole",
     });
-    props.history.push("/"); */
+    props.history.push("/");
   };
 
   return (
-    <div
-      className="signUpContainer d-flex "
-      /* onMouseOver={() => setHidden(false)}
+    <>
+      <Header />
+      <div
+        className="signUpContainer d-flex "
+        /* onMouseOver={() => setHidden(false)}
       onMouseOut={() => setHidden(false)} */
-    >
-      {props.theUser && console.log("X", props.theUser)}
-      {/*  <p> "hola" {hidden && "hola"}</p> */}
-      <div className={"w-50"}>
-        <div className="titleForm titulos m-3 h2 ">Sign Up Form</div>
-        <div className="h6 small textos text-center">Change your Life</div>
-        <div className="h6 text-danger small textos text-center">(all fields are mandatory)</div>
-
-        <div
-          className="errorContainer especial"
-          style={{ display: errorVisible ? "block" : "none" }}
-        >
-          <span
-            id="close"
+      >
+        {props.theUser && console.log("X", props.theUser)}
+        {/*  <p> "hola" {hidden && "hola"}</p> */}
+        <div className={"w-50"}>
+          <div className="ti  titleForm titulos m-3 h2 ">Sign Up Form</div>
+          <div className="h6 small textos text-center">Change your life⚡</div>
+          <div className="h6 text-danger small textos text-center">
+            join us in 5 simple steps (all fields are mandatory)
+          </div>
+          <div
+            className="errorContainer especial"
             style={{ display: errorVisible ? "block" : "none" }}
-            onClick={() => setErrorVisible(!errorVisible)}
           >
-            {" "}
-            x{" "}
-          </span>
-          🚫 sorry we couldn't create an account with your provided info, please refer to the
-          folowing problemss ]
-          {erroresSignUp &&
-            erroresSignUp.map((error) => {
-              return <div className="m-2 text-danger small textos">❎ {error.message}</div>;
-            })}
-        </div>
-        <div className="bg-secondary">
-          <div className="font-italic  mt-3 mb-2 bg-white border-1 p-3 d-flex flex-column">
-            <div className="border mt-1 ">
-              <input
-                type="text"
-                onChange={(e) => setPreUser({ ...preUser, firstName: e.target.value })}
-                value={preUser.firstName}
-                placeholder="please, enter your name"
-                /*    className="ng-dirty  w-100" */
-                className={
-                  !validationsOther[0]
-                    ? "ng-dirty textos small  w-75"
-                    : "ng-valid  textos small  w-75"
-                }
-              />
-            </div>
-            <div className="border mt-1 ">
-              <input
-                type="text"
-                onChange={(e) => setPreUser({ ...preUser, lastName: e.target.value })}
-                value={preUser.lastName}
-                placeholder="your last name"
-                className={
-                  !validationsOther[1] ? "ng-dirty textos small w-75" : "ng-valid textos small w-75"
-                }
-              />
-            </div>
-            <div className="border mt-1 ">
-              <input
-                type="text"
-                onChange={(e) => setPreUser({ ...preUser, firstName: e.target.value })}
-                onChange={(e) => setPreUser({ ...preUser, profilePicture: e.target.value })}
-                value={preUser.profilePicture}
-                placeholder="your url image"
-                className={
-                  !validationsOther[3] ? "ng-dirty textos small w-75" : "ng-valid textos small w-75"
-                }
-              />
-            </div>
-            <div className="border mt-1">
-              <input
-                type="mail"
-                onChange={(e) => setPreUser({ ...preUser, email: e.target.value.toLowerCase() })}
-                value={preUser.email}
-                placeholder="a valid email address"
-                className={
-                  !validationsOther[2] ? "ng-dirty textos small w-75" : "ng-valid textos small w-75"
-                }
-              />
-              📧
-              {/*  {console.log("validacionesotro", validationsOther)} */}
-            </div>
-            {/*  <div className="small border mt-1"> */}
-            {/* </div> */}
-
-            <div className="w-25 mt-2 d-flex justify-content-between">
-              <span className="small italics">show your password </span>
-              <label htmlFor="eye" className="ml-5">
-                <i className={eyeState ? "pl-5 fas fa-eye-slash" : "fas fa-eye"}></i>
-                <input
-                  id="eye"
-                  className="hidden"
-                  type="checkbox"
-                  onChange={() => setEyeState(!eyeState)}
-                ></input>{" "}
-              </label>
-            </div>
-
-            <div className="border mb-2 ">
-              <input
-                onChange={(e) => setPreUser({ ...preUser, password: e.target.value })}
-                onFocus={() => setPassGuideVisible(true)}
-                value={preUser.password}
-                type={eyeState ? "password" : "text"}
-                placeholder="your secret password"
-                className={
-                  !validationsPass.includes(false)
-                    ? "ng-valid titulos small"
-                    : "ng-dirty titulos small"
-                }
-              ></input>
-            </div>
-
-            {/* errorPassContainer */}
-            <div className="mb-3">
-              <span style={{ display: passGuideVisible ? "block" : "none" }}>
-                **Password should be**
-              </span>
-              <ul>
-                {/*  {console.log("soy el validations", validations)} */}
-                <li style={{ display: passGuideVisible ? "block" : "none" }} className="small">
-                  {validationsPass[0] ? "✔" : "❎"}At least 6 character
-                </li>
-                <li style={{ display: passGuideVisible ? "block" : "none" }} className="small">
-                  {validationsPass[1] ? "✔" : "❎"}Contain a capital Letter
-                </li>
-                <li style={{ display: passGuideVisible ? "block" : "none" }} className="small">
-                  {validationsPass[2] ? "✔" : "❎"}Contain a number{" "}
-                </li>
-                <li style={{ display: passGuideVisible ? "block" : "none" }} className="small">
-                  {validationsPass[3] ? "✔" : "❎"}Contain one of $/¿,:;?@# chars{" "}
-                </li>
-              </ul>
-            </div>
-
-            <button
-              className="btn mb-1 btn-danger myBtn "
-              onClick={() => {
-                fcreateAndLogIn();
-              }}
+            <span
+              id="close"
+              style={{ display: errorVisible ? "block" : "none" }}
+              onClick={() => setErrorVisible(!errorVisible)}
             >
-              Continue
-            </button>
-            <GoogleLogin
-              clientId="829812608617-0sn9cfi15261rmp12hd06m7sj55plu0u.apps.googleusercontent.com"
-              render={(renderProps) => (
-                <div
-                  onClick={renderProps.onClick}
-                  disabled={renderProps.disabled}
-                  className="myBtn btn btn-primary  d-flex"
+              {" "}
+              x{" "}
+            </span>
+            <div className="text-center">
+              {" "}
+              🚫 sorry we couldn't create an account with your provided info, please refer to the
+              folowing problems{" "}
+            </div>
+            {/*    {erroresSignUp.length > 0 &&
+            setPreUser({
+              ...preUser,
+              firstName: erroresSignUp[0].message || "k",
+              lastName: erroresSignUp[1].message || "l",
+            })} */}
+          </div>
+
+          <div className="bg-secondary">
+            <div className="font-italic  mb-2 bg-white border-1 p-3 d-flex flex-column">
+              <div className="border">
+                <input
+                  type="text"
+                  onChange={(e) => setPreUser({ ...preUser, firstName: e.target.value })}
+                  value={preUser.firstName}
+                  placeholder={preUserPlaceHolder.firstName || "1) Please, enter your name"}
+                  autoFocus
+                  /*    className="ng-dirty  w-100" */
+                  className={
+                    !validationsOther[0]
+                      ? "ng-dirty textos small  w95"
+                      : "ng-valid  textos small  w95"
+                  }
+                />
+              </div>
+
+              <div className="border mt-1 ">
+                <input
+                  type="text"
+                  onChange={(e) => setPreUser({ ...preUser, lastName: e.target.value })}
+                  value={preUser.lastName}
+                  placeholder={preUserPlaceHolder.lastName || "2) your last name"}
+                  className={
+                    !validationsOther[1] ? "ng-dirty textos small w95" : "ng-valid textos small w95"
+                  }
+                />
+              </div>
+              <div className="border mt-1 ">
+                <input
+                  type="text"
+                  onChange={(e) => setPreUser({ ...preUser, firstName: e.target.value })}
+                  onChange={(e) => setPreUser({ ...preUser, profilePicture: e.target.value })}
+                  value={preUser.profilePicture}
+                  placeholder={preUserPlaceHolder.profilePicture || "3) your url image"}
+                  className={
+                    !validationsOther[3] ? "ng-dirty textos small w95" : "ng-valid textos small w95"
+                  }
+                />
+                👤
+              </div>
+              <div className="border mt-1">
+                <input
+                  type="mail"
+                  onChange={(e) => setPreUser({ ...preUser, email: e.target.value.toLowerCase() })}
+                  value={preUser.email}
+                  placeholder={preUserPlaceHolder.email || "4) a valid email adress"}
+                  className={
+                    !validationsOther[2] ? "ng-dirty textos small w95" : "ng-valid textos small w95"
+                  }
+                />
+                📧
+                {/*  {console.log("validacionesotro", validationsOther)} */}
+              </div>
+              {/*  <div className="small border mt-1"> */}
+              {/* </div> */}
+              <div className="w-25 mt-3 d-flex justify-content-between">
+                <span className="small italics">show your password </span>
+                <label htmlFor="eye" className="ml-5">
+                  <i className={eyeState ? "pl-5 fas fa-eye-slash" : "fas fa-eye"}></i>
+                  <input
+                    id="eye"
+                    className="hidden"
+                    type="checkbox"
+                    onChange={() => setEyeState(!eyeState)}
+                  ></input>{" "}
+                </label>
+              </div>
+              <div className="w-25 border mb-2 ">
+                <input
+                  onChange={(e) => setPreUser({ ...preUser, password: e.target.value })}
+                  onFocus={() => setPassGuideVisible(true)}
+                  value={preUser.password}
+                  type={eyeState ? "password" : "text"}
+                  placeholder="5) your password"
+                  className={
+                    !validationsPass.includes(false) ? "ng-valid textos " : "ng-dirty textos "
+                  }
+                ></input>
+              </div>
+              {/* errorPassContainer */}
+              <div className="mb-3">
+                <span
+                  style={{
+                    display: passGuideVisible && validationsPass.includes(false) ? "block" : "none",
+                  }}
                 >
-                  <div className=""></div>
-                  <i className="w-25 pt-1 pl-5 ml-5 fab fa-google"></i>
-                  <div className="w-50 text-center">SignUp with Google</div>
-                </div>
-              )}
-              buttonText="Login"
-              /*   onSuccess={responseGoogle}
-              onFailure={responseGoogle} */
-              cookiePolicy={"single_host_origin"}
-            />
-            <NavLink to="/SignIn">
-              <label className="mt-2 w-100 btn btn-warning myBtn h6">
-                Have an Account Already? click here <span className="mirror">👉</span>
-              </label>{" "}
-            </NavLink>
+                  **Password guidelines**
+                </span>
+                <ul>
+                  {/*  {console.log("soy el validations", validations)} */}
+                  <li
+                    style={{
+                      display:
+                        passGuideVisible && validationsPass.includes(false) ? "block" : "none",
+                    }}
+                    className="small"
+                  >
+                    {validationsPass[0] ? "😎✔" : "❎"}At least 6 character
+                  </li>
+                  <li
+                    style={{
+                      display:
+                        passGuideVisible && validationsPass.includes(false) ? "block" : "none",
+                    }}
+                    className="small"
+                  >
+                    {validationsPass[1] ? "😎✔" : "❎"}Contain a capital Letter
+                  </li>
+                  <li
+                    style={{
+                      display:
+                        passGuideVisible && validationsPass.includes(false) ? "block" : "none",
+                    }}
+                    className="small"
+                  >
+                    {validationsPass[2] ? "😎✔" : "❎"}Contain a number{" "}
+                  </li>
+                  <li
+                    style={{
+                      display:
+                        passGuideVisible && validationsPass.includes(false) ? "block" : "none",
+                    }}
+                    className="small"
+                  >
+                    {validationsPass[3] ? "😎✔" : "❎"}Contain one of $/¿,:;?@# chars{" "}
+                  </li>
+                </ul>
+              </div>
+              <div>--------------------------------------------</div>
+              <button
+                className="btn mb-1 btn-danger myBtn "
+                onClick={() => {
+                  fcreateAndLogIn();
+                }}
+              >
+                Continue
+              </button>
+              <GoogleLogin
+                clientId="829812608617-0sn9cfi15261rmp12hd06m7sj55plu0u.apps.googleusercontent.com"
+                render={(renderProps) => (
+                  <div
+                    onClick={renderProps.onClick}
+                    disabled={renderProps.disabled}
+                    className="myBtn btn btn-primary  d-flex"
+                  >
+                    <div className=""></div>
+                    <i className="w-25 pt-1 pl-5 ml-5 fab fa-google"></i>
+                    <div className="w-50 text-center">SignUp with Google</div>
+                  </div>
+                )}
+                buttonText="Login"
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+                cookiePolicy={"single_host_origin"}
+              />
+              <NavLink to="/SignIn">
+                <label className="mt-2 w-100 btn btn-warning myBtn h6">
+                  Have an Account Already? click here <span className="mirror">👉</span>
+                </label>{" "}
+              </NavLink>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="signUpVideoContainer w-50 h-50 bg-dark" controls>
-        <video className="signUpVideo w-100" autoPlay muted loop>
-          <source
-            src={"https://baravdg.com/wp-content/uploads/2021/05/production-ID_4761432.mp4"}
-            type={"video/mp4"}
-          />
-        </video>
+        <div className="signUpVideoContainer w-50 h-50 bg-dark" controls>
+          <video className="signUpVideo w-100" autoPlay muted loop>
+            <source
+              src={"https://baravdg.com/wp-content/uploads/2021/05/production-ID_4761432.mp4"}
+              type={"video/mp4"}
+            />
+          </video>
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

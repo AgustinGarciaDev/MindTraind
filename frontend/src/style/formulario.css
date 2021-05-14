@@ -92,6 +92,7 @@
 }
 
 #close {
+  text-align: center;
   width: 40px;
   float: right;
   display: block;
@@ -103,9 +104,11 @@
 #close:hover {
   /* float:right; */
   display: inline-block;
+  text-align: center;
   padding: 2px 5px;
   /*  background: #ccc; */
   color: #fff;
+  background-color: red;
 }
 
 .g-signin2 {
@@ -158,6 +161,10 @@ html {
 
 .w40 {
   width: 40%;
+}
+
+.w95 {
+  width: 95%;
 }
 
 .italics {

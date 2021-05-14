@@ -3,8 +3,7 @@ import React from "react";
 import Footer from "./Footer"; */
 import { useEffect, useState } from "react";
 /* import { connect } from "react-redux"; */
-
-/* import GoogleLogin from "react-google-login"; */
+import GoogleLogin from "react-google-login";
 import { NavLink } from "react-router-dom";
 import usersActions from "../redux/actions/usersActions";
 import { connect } from "react-redux";
@@ -40,18 +39,6 @@ const SignIn = (props) => {
     setValidationsOther([otherInput.email.search(/^\S+@\S+\.\S+$/) > -1]);
   }, [preUser]);
 
-  /*  const respuestaGoogle = (response) => {
-    const { givenName, email, googleId, imageUrl } = response.profileObj;
-    props.createAndLogIn({
-      name: givenName,
-      email: email,
-      country: "",
-      pass: "a" + googleId,
-      url: imageUrl,
-    });
-    props.history.push("/");
-  }; */
-
   const flogInUser = async () => {
     /* props.logInUser(preUser) */
     try {
@@ -65,6 +52,21 @@ const SignIn = (props) => {
       console.log("no funciono");
     }
   };
+
+  const responseGoogle = (response) => {
+    alert("entre");
+    const { givenName, email, googleId, imageUrl } = response.profileObj;
+    props.logInUser({
+      firstName: givenName,
+      lastName: givenName,
+      email: email,
+      profilePicture: imageUrl,
+      password: "Cx1" + googleId,
+      role: "noRole",
+    });
+    props.history.push("/");
+  };
+
   return (
     <div
       className="SignInContainer d-flex "
@@ -136,14 +138,24 @@ const SignIn = (props) => {
             <button className="btn mb-1 btn-danger myBtn " onClick={() => flogInUser()}>
               Continue
             </button>
-            {/*     <GoogleLogin
-            className="small w-50 text-white bg-primary"
-            clientId="834257531526-ouhj5beccvjj3nhvrqjrjvmdga8qjvu9.apps.googleusercontent.com"
-            buttonText="Sign Up with Google"
-            onSuccess={respuestaGoogle}
-            onFailure={respuestaGoogle}
-            cookiePolicy={"single_host_origin"}
-          /> */}
+            <GoogleLogin
+              clientId="829812608617-0sn9cfi15261rmp12hd06m7sj55plu0u.apps.googleusercontent.com"
+              render={(renderProps) => (
+                <div
+                  onClick={renderProps.onClick}
+                  disabled={renderProps.disabled}
+                  className="myBtn btn btn-primary  d-flex"
+                >
+                  <div className=""></div>
+                  <i className="w-25 pt-1 pl-5 ml-5 fab fa-google"></i>
+                  <div className="w-50 text-center">SignUp with Google</div>
+                </div>
+              )}
+              buttonText="Login"
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              cookiePolicy={"single_host_origin"}
+            />
 
             {/* facebook btn */}
             <div
