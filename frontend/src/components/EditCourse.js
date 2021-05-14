@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import coursesActions from "../redux/actions/coursesActtions"
 import Category from './Category'
 import Lesson from './Lesson'
+import { showToast } from '../helpers/myToast'
 
 const EditCourse = (props) => {
     const [course, setCourse] = useState({})
@@ -57,7 +58,7 @@ const EditCourse = (props) => {
         const data = { ...course, id: props.course._id }
         const response = await props.editCourse(data)
         if (response) {
-            props.cancel()
+            showToast('success', "The changes were saved")
         }
     }
 
@@ -87,14 +88,13 @@ const EditCourse = (props) => {
             <div className="editCourseContainer">
 
                 <form className="editForm">
-                    <h3>Data</h3>
                     <input type="text" placeholder="Course name" name="nameCourse" onChange={readInput} />
                     <input type="text" placeholder="Program description" name="programDescription" onChange={readInput} />
                     <input type="text" placeholder="Coach " name="coach" onChange={readInput} />
                     <input type="text" placeholder="Picture refence " name="pictureRefence" onChange={readInput} />
                     <input type="text" placeholder="Duration" name="duration" onChange={readInput} />
                     <input type="text" placeholder="Difficulty" name="difficulty" onChange={readInput} />
-                    <h3>Categorys</h3>
+                    <h3 className="h3Form">Categorys</h3>
                     <div className="categoryNew">
                         <input onChange={readInput} name="name" placeholder="Category name" value={newCategory.name} />
                         <i className="fas fa-plus" onClick={() => addCategory({ action: 'add' })}></i>
@@ -104,7 +104,7 @@ const EditCourse = (props) => {
                             props.course.categories.map(category => <Category addCategory={addCategory} key={category._id} category={category} />)
                         }
                     </div>
-                    <h3>Lessons</h3>
+                    <h3 className="h3Form">Lessons</h3>
                     <div className="lessonsNew">
                         <div className="lessonInput">
                             <div className="lessonInputError">
@@ -120,7 +120,6 @@ const EditCourse = (props) => {
                         }
                     </div>
                     <div className="formButtons">
-                        <button className="formButtonsEdit" onClick={props.cancel}>Go back</button>
                         <button className="formButtonsEdit" onClick={sendData} >Send</button>
                     </div>
                 </form>

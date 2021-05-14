@@ -4,7 +4,6 @@
 .asideNav{
     width: 4%;
     background: #080d13;
-    height: 48vw;
     position: sticky;
     top: 0;
 }
@@ -58,4 +57,9 @@
 
 .heroJobs > h1{
         font-size: 5rem;
+}
+
+.listIconNav{
+    position: sticky;
+    top: 3vh;
 }
