@@ -2,27 +2,28 @@ import { useState } from "react"
 import Reply from '../components/Reply'
 import coursesActions from "../redux/actions/coursesActtions"
 import { connect } from "react-redux"
-import { toast } from 'react-toastify';
+
 
 const Post = (props) => {
 
-    const { title, text, user: { profilePicture, lastName, firstName } } = props.post
-    console.log(props)
-    const reply = [
-        { comentario: "hola" },
-        { comentario: "hola" }
-    ]
 
-
+    const { title, text, user: { profilePicture, lastName, firstName }, reply } = props.post
     const [commentReply, setCommentReply] = useState(false)
-    const [comentario, setComentario] = useState({
-        mensaje: "",
+    const { token, email } = props.userLogged
+
+    const [objConsult, setobjConsult] = useState({
+        text: "",
+        idCourse: props.idCourse,
+        token: token,
+        action: "add",
+        userReply: email
     })
 
 
     const datosInput = (e) => {
-        setComentario({
-            mensaje: e.target.value
+        setobjConsult({
+            ...objConsult,
+            text: e.target.value
         })
     }
 
@@ -44,9 +45,9 @@ const Post = (props) => {
             </div>
             { commentReply &&
                 <>
-                    <div>{reply.map(reply => <Reply reply={reply} />)}</div>
+                    {/*    <div>{reply.map(reply => <Reply reply={reply} />)}</div> */}
                     <div className="contenedorInputComment">
-                        <input onChange={datosInput} name="comentario" className="inputComment" type="text" />
+                        <input onChange={datosInput} name="text" className="inputComment" type="text" />
                         <div className="contenedorIconoSearch">
                             <i class="fas fa-paper-plane"></i>
                         </div>
@@ -59,12 +60,21 @@ const Post = (props) => {
 }
 
 
-
-const mapDispatchToProps = {
-
-    editComment: coursesActions.editComment,
-    deleteComment: coursesActions.deleteComment,
+const mapStateToProps = state => {
+    return {
+        userLogged: state.user.userLogged,
+        courses: state.courses.courses
+    }
 }
 
 
-export default connect(null, mapDispatchToProps)(Post)
+const mapDispatchToProps = {
+
+    /*     editComment: coursesActions.editComment,
+        deleteComment: coursesActions.deleteComment, */
+    sendPost: coursesActions.sendPost,
+    getCourseById: coursesActions.getCourseById,
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Post)

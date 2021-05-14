@@ -240,8 +240,11 @@ const courseControllers = {
                 case "add":
 
                     try {
-                        const userReply = await User.findOne({ email: userEmailReply });
-                        const reply = { userReply: userReply._id, textReply };
+                        let reply = {}
+                        if (userEmailReply) {
+                            const userReply = await User.findOne({ email: userEmailReply });
+                            reply = { userReply: userReply._id, textReply };
+                        }
                         querySelector = { _id: idCourse };
                         updateOperator = { $push: { comments: { user: userId, title, text, reply } } };
                     } catch (err) {

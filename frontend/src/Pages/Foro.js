@@ -12,7 +12,7 @@ const Foro = (props) => {
     const idCourse = props.match.params.id
     const [commentsCourse, setCommentsCourse] = useState([]);
     const { courses, getCourseById } = props
-    const { firstName, lastName, profilePicture, email, token } = props.userLogged
+    const { firstName, lastName, profilePicture, token } = props.userLogged
     const [modalShow, setModalShow] = useState(false);
     const [objConsult, setobjConsult] = useState({
         title: "",
@@ -20,7 +20,6 @@ const Foro = (props) => {
         idCourse: idCourse,
         token: token,
         action: "add",
-        userEmailReply: email
     })
 
     console.log(objConsult)
@@ -115,7 +114,7 @@ const Foro = (props) => {
                         }
                     </div>
                     <div className="contenedorComentarios">
-                        {commentsCourse.map(post => <Post post={post} />)}
+                        {commentsCourse.map(post => <Post idCourse={idCourse} post={post} />)}
                     </div>
 
                 </div>
