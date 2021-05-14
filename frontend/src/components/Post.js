@@ -1,40 +1,43 @@
 import { useState } from "react"
 import Reply from '../components/Reply'
+import coursesActions from "../redux/actions/coursesActtions"
+import { connect } from "react-redux"
+
 
 const Post = (props) => {
 
-    const reply = [
-        { comentario: "hola" },
-        { comentario: "hola" }
-    ]
 
-
+    const { title, text, user: { profilePicture, lastName, firstName }, reply } = props.post
     const [commentReply, setCommentReply] = useState(false)
-    const [comentario, setComentario] = useState({
-        mensaje: "",
+    const { token, email } = props.userLogged
+
+    const [objConsult, setobjConsult] = useState({
+        text: "",
+        idCourse: props.idCourse,
+        token: token,
+        action: "add",
+        userReply: email
     })
 
 
     const datosInput = (e) => {
-        setComentario({
-            mensaje: e.target.value
+        setobjConsult({
+            ...objConsult,
+            text: e.target.value
         })
     }
 
-    console.log(comentario)
-
-    const { apellido, name, titulo, comment, foto } = props.post
     return (
         <div className="contenedorPost">
-            <h2 className="tituloPost">{titulo}</h2>
+            <h2 className="tituloPost">{title}</h2>
             <div className="contedorDatosUsuario">
-                <img className="comentarioFotoUser" src={foto} alt="" />
+                <img className="comentarioFotoUser" src={profilePicture} alt="" />
                 <div className="contenedorNameUser">
-                    <h3>{name} {apellido}</h3>
+                    <h3>{firstName} {lastName}</h3>
                 </div>
             </div>
             <div className="contenedorComentario">
-                <p>{comment}</p>
+                <p>{text}</p>
             </div>
             <div onClick={() => { setCommentReply(!commentReply) }} className="contenedorComentario replyBtn">
                 <i class="fas fa-reply"></i>
@@ -42,9 +45,9 @@ const Post = (props) => {
             </div>
             { commentReply &&
                 <>
-                    <div>{reply.map(reply => <Reply reply={reply} />)}</div>
+                    {/*    <div>{reply.map(reply => <Reply reply={reply} />)}</div> */}
                     <div className="contenedorInputComment">
-                        <input onChange={datosInput} name="comentario" className="inputComment" type="text" />
+                        <input onChange={datosInput} name="text" className="inputComment" type="text" />
                         <div className="contenedorIconoSearch">
                             <i class="fas fa-paper-plane"></i>
                         </div>
@@ -56,4 +59,22 @@ const Post = (props) => {
     )
 }
 
-export default Post
+
+const mapStateToProps = state => {
+    return {
+        userLogged: state.user.userLogged,
+        courses: state.courses.courses
+    }
+}
+
+
+const mapDispatchToProps = {
+
+    /*     editComment: coursesActions.editComment,
+        deleteComment: coursesActions.deleteComment, */
+    sendPost: coursesActions.sendPost,
+    getCourseById: coursesActions.getCourseById,
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Post)
