@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 const CourseCard = (props) => {
 
     const userPic = "http://baravdg.com/wp-content/uploads/2021/05/1.jpg"
@@ -16,8 +16,7 @@ const CourseCard = (props) => {
                 </div>
             </div>
             <div className="contenedorBtn">
-                <Link to = {`/class/${props.curso._id}`}  ><button className="btnDashBoard">Go course!</button></Link>
-                
+                <Link to={`/class/${props.curso._id}`} ><button className="btnDashBoard">Go course!</button></Link>
             </div>
         </div>
     )

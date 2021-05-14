@@ -2,29 +2,29 @@ import React, { useEffect, useState } from 'react';
 import NavBarDashBoard from '../components/NavBarDashBoard'
 import CourseCard from '../components/CourseCard'
 
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import coursesActions from '../redux/actions/coursesActtions';
-import {showToast,showTostError500} from '../helpers/myToast'
+import { showToast, showTostError500 } from '../helpers/myToast'
 
-const Dashboard = ({getCoursesByIdStudent,userLogged}) => {
-    const [studentCourses,setStudentCourses] = useState([])
+const Dashboard = ({ getCoursesByIdStudent, userLogged }) => {
+    const [studentCourses, setStudentCourses] = useState([])
 
-    async function fetchAPI () {
+    async function fetchAPI() {
         console.log(userLogged)
-        if(userLogged){
+        if (userLogged) {
             try {
                 let data = await getCoursesByIdStudent(userLogged.token)
                 console.log(data)
-                data.success? setStudentCourses(data.response) : showToast("error",data.error)
+                data.success ? setStudentCourses(data.response) : showToast("error", data.error)
             } catch (err) {
                 console.log(err)
                 showTostError500();
             }
         }
     }
-    useEffect( ()=>{
+    useEffect(() => {
         fetchAPI()
-    },[])
+    }, [])
 
     /*const cursos = [
         { nameCourse: "Zumba", pictureRefence: "http://baravdg.com/wp-content/uploads/2021/05/pexels-andrea-piacquadio-3775566-1-scaled.jpg", nombre: "profesor", fecha: "17-05-2022", duration: "3 meses", dificultad: "extrema" },
@@ -44,13 +44,13 @@ const Dashboard = ({getCoursesByIdStudent,userLogged}) => {
 }
 
 const mapStateToProps = (state) => {
-    
+
     return {
         userLogged: state.user.userLogged,
     }
 }
 const mapDispatchToProps = {
-    getCoursesByIdStudent : coursesActions.getCoursesByIdStudent
+    getCoursesByIdStudent: coursesActions.getCoursesByIdStudent
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Dashboard)
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
