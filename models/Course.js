@@ -10,7 +10,11 @@ const courseSchemma = new mongoose.Schema({
     duration: { type: Number, required: true },
     difficulty: { type: Number, required: true, min: 1 },
     students: { type: [{ type: mongoose.Types.ObjectId, ref: 'user' }], default: [] },
-    comments: [{user:{type: mongoose.Types.ObjectId, ref:'user'},text:{type:String} }]
+    comments: [{
+            user:{type: mongoose.Types.ObjectId, ref:'user',required:true},
+            text:{type:String},
+            reply:{userReply:{type:mongoose.Types.ObjectId,ref:"user",required: true},textReply:{type:String,required: true}} 
+    }]
 })
 //comentarios :[{usuarioId:{type: mongoose.Types.ObjectId, ref: 'user'},comentario:{type:String} }],
 const Course = mongoose.model('course', courseSchemma)
