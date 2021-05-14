@@ -13,6 +13,10 @@ const SignUp = (props) => {
   const [hidden, setHidden] = useState(true);
   const [eyeState, setEyeState] = useState(true);
   const [errorVisible, setErrorVisible] = useState(false);
+  const [validationsPass, setValidationsPass] = useState([]);
+  const [passGuideVisible, setPassGuideVisible] = useState(false);
+  const [validationsOther, setValidationsOther] = useState([]);
+  const [erroresSignUp, setErroresSignUp] = useState([]);
   /* const [countries, setCountries] = useState([]); */
   const [preUser, setPreUser] = useState({
     firstName: "",
@@ -22,9 +26,6 @@ const SignUp = (props) => {
     password: "",
     role: "noRole",
   });
-  const [validationsPass, setValidationsPass] = useState([]);
-  const [validationsOther, setValidationsOther] = useState([]);
-  const [erroresSignUp, setErroresSignUp] = useState([]);
 
   useEffect(() => {
     /*  console.log("1v) soy el didmount"); */
@@ -38,6 +39,9 @@ const SignUp = (props) => {
       pass.search(/[0-9]/) > -1,
       pass.search(/[$&+,:;=?@#]/) > -1,
     ]);
+
+    console.log("validationsPass", validationsPass.length);
+    console.log("passguide", passGuideVisible);
   }, [preUser.password]);
 
   useEffect(() => {
@@ -80,8 +84,8 @@ const SignUp = (props) => {
   return (
     <div
       className="signUpContainer d-flex "
-      onMouseOver={() => setHidden(false)}
-      onMouseOut={() => setHidden(false)}
+      /* onMouseOver={() => setHidden(false)}
+      onMouseOut={() => setHidden(false)} */
     >
       {props.theUser && console.log("X", props.theUser)}
       {/*  <p> "hola" {hidden && "hola"}</p> */}
@@ -163,9 +167,24 @@ const SignUp = (props) => {
             </div>
             {/*  <div className="small border mt-1"> */}
             {/* </div> */}
-            <div className="border mt-2 ">
+
+            <div className="w-25 mt-2 d-flex justify-content-between">
+              <span className="small italics">show your password </span>
+              <label htmlFor="eye" className="ml-5">
+                <i className={eyeState ? "pl-5 fas fa-eye-slash" : "fas fa-eye"}></i>
+                <input
+                  id="eye"
+                  className="hidden"
+                  type="checkbox"
+                  onChange={() => setEyeState(!eyeState)}
+                ></input>{" "}
+              </label>
+            </div>
+
+            <div className="border mb-2 ">
               <input
                 onChange={(e) => setPreUser({ ...preUser, password: e.target.value })}
+                onFocus={() => setPassGuideVisible(true)}
                 value={preUser.password}
                 type={eyeState ? "password" : "text"}
                 placeholder="your secret password"
@@ -176,16 +195,29 @@ const SignUp = (props) => {
                 }
               ></input>
             </div>
-            <span className="small">show your password</span>
-            <label htmlFor="eye">
-              <i className={eyeState ? "fas fa-eye-slash" : "fas fa-eye"}></i>
-              <input
-                id="eye"
-                className="hidden"
-                type="checkbox"
-                onChange={() => setEyeState(!eyeState)}
-              ></input>{" "}
-            </label>
+
+            {/* errorPassContainer */}
+            <div className="mb-3">
+              <span style={{ display: passGuideVisible ? "block" : "none" }}>
+                **Password should be**
+              </span>
+              <ul>
+                {/*  {console.log("soy el validations", validations)} */}
+                <li style={{ display: passGuideVisible ? "block" : "none" }} className="small">
+                  {validationsPass[0] ? "✔" : "❎"}At least 6 character
+                </li>
+                <li style={{ display: passGuideVisible ? "block" : "none" }} className="small">
+                  {validationsPass[1] ? "✔" : "❎"}Contain a capital Letter
+                </li>
+                <li style={{ display: passGuideVisible ? "block" : "none" }} className="small">
+                  {validationsPass[2] ? "✔" : "❎"}Contain a number{" "}
+                </li>
+                <li style={{ display: passGuideVisible ? "block" : "none" }} className="small">
+                  {validationsPass[3] ? "✔" : "❎"}Contain one of $/¿,:;?@# chars{" "}
+                </li>
+              </ul>
+            </div>
+
             <button
               className="btn mb-1 btn-danger myBtn "
               onClick={() => {
@@ -194,7 +226,6 @@ const SignUp = (props) => {
             >
               Continue
             </button>
-
             <GoogleLogin
               clientId="829812608617-0sn9cfi15261rmp12hd06m7sj55plu0u.apps.googleusercontent.com"
               render={(renderProps) => (
@@ -213,22 +244,11 @@ const SignUp = (props) => {
               onFailure={responseGoogle} */
               cookiePolicy={"single_host_origin"}
             />
-
             <NavLink to="/SignIn">
               <label className="mt-2 w-100 btn btn-warning myBtn h6">
                 Have an Account Already? click here <span className="mirror">👉</span>
               </label>{" "}
             </NavLink>
-            <ul className="pl-3 small">
-              {/*  {console.log("soy el validations", validations)} */}
-              <span className="small">**Password should be**</span>
-              <li className="small">{validationsPass[0] ? "✔" : "❌"}At least 6 character</li>
-              <li className="small">{validationsPass[1] ? "✔" : "❌"}Contain a capital Letter</li>
-              <li className="small">{validationsPass[2] ? "✔" : "❌"}Contain a number </li>
-              <li className="small">
-                {validationsPass[3] ? "✔" : "❌"}Contain one of $/¿,:;?@# chars
-              </li>
-            </ul>
           </div>
         </div>
       </div>
@@ -236,7 +256,7 @@ const SignUp = (props) => {
       <div className="signUpVideoContainer w-50 h-50 bg-dark" controls>
         <video className="signUpVideo w-100" autoPlay muted loop>
           <source
-            src={"https://baravdg.com/wp-content/uploads/2021/05/Pexels-Videos-1596861.mp4"}
+            src={"https://baravdg.com/wp-content/uploads/2021/05/production-ID_4761432.mp4"}
             type={"video/mp4"}
           />
         </video>
