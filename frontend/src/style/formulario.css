@@ -52,9 +52,12 @@
   font-family: "Roboto";
 }
 
-.hidden,
-.hidden > div {
+.hidden {
   display: none;
+}
+
+.block {
+  display: block;
 }
 
 .myBtn {
@@ -89,6 +92,7 @@
 }
 
 #close {
+  text-align: center;
   width: 40px;
   float: right;
   display: block;
@@ -100,9 +104,11 @@
 #close:hover {
   /* float:right; */
   display: inline-block;
+  text-align: center;
   padding: 2px 5px;
   /*  background: #ccc; */
   color: #fff;
+  background-color: red;
 }
 
 .g-signin2 {
@@ -128,7 +134,7 @@ html {
 .signUpVideo {
   position: absolute;
   left: 50%;
-  bottom: 0%;
+  bottom: -200%;
   overflow-x: hidden;
 
   /* transform: translate(-50%, -50%); /* % of current element*/
@@ -155,4 +161,12 @@ html {
 
 .w40 {
   width: 40%;
+}
+
+.w95 {
+  width: 95%;
+}
+
+.italics {
+  font-weight: italics;
 }
