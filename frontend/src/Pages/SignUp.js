@@ -190,16 +190,11 @@ const SignUp = (props) => {
               className="btn mb-1 btn-danger myBtn "
               onClick={() => {
                 fcreateAndLogIn();
-                /* console.log("el usuario", props.theUser && props) */
-                /* console.log("0 preuser", preUser); */
-                /*     props.history.push("/"); */
               }}
             >
               Continue
             </button>
-            {/* <button onClick={renderProps.onClick} disabled={renderProps.disabled}>
-                  This is my custom Google button
-                </button> */}
+
             <GoogleLogin
               clientId="829812608617-0sn9cfi15261rmp12hd06m7sj55plu0u.apps.googleusercontent.com"
               render={(renderProps) => (
@@ -218,7 +213,7 @@ const SignUp = (props) => {
               onFailure={responseGoogle} */
               cookiePolicy={"single_host_origin"}
             />
-            , document.getElementById('googleButton') );
+
             <NavLink to="/SignIn">
               <label className="mt-2 w-100 btn btn-warning myBtn h6">
                 Have an Account Already? click here <span className="mirror">👉</span>
@@ -237,10 +232,21 @@ const SignUp = (props) => {
           </div>
         </div>
       </div>
-      <div className="w-50 bg-dark">hola</div>
+
+      <div className="signUpVideoContainer w-50 h-50 bg-dark" controls>
+        <video className="w-50" autoPlay muted loop>
+          <source
+            src={
+              "https://baravdg.com/wp-content/uploads/2021/05/pexels-karolina-grabowska-7710488.mp4"
+            }
+            type={"video/mp4"}
+          />
+        </video>
+      </div>
     </div>
   );
 };
+
 /* REDUX */
 const mapStateToProps = (state) => {
   return {

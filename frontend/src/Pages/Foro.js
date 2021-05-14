@@ -3,11 +3,13 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Post from '../components/Post'
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { toast } from 'react-toastify';
+import { showToast } from '../helpers/myToast'
 import coursesActions from "../redux/actions/coursesActtions"
 import { connect } from "react-redux"
 
-const Foro = () => {
+const Foro = (props) => {
+
+    const { firstName, lastName, profilePicture, email } = props.userLogged
     const [modalShow, setModalShow] = useState(false);
     const [objConsult, setobjConsult] = useState({
         title: "",
@@ -23,7 +25,16 @@ const Foro = () => {
         })
     }
 
-    const nameUser = "Agustin"
+    const sendComent = () => {
+
+        if (objConsult.title === "" || objConsult.comment === "") {
+            showToast('error', "You cant add text")
+        } else {
+            alert("E")
+        }
+    }
+
+
     const post = [
         { name: "agustin", apellido: "garcia", comment: "commentario nuevo", titulo: "Consulta 1", foto: "http://baravdg.com/wp-content/uploads/2021/04/46.jpg" },
         { name: "agustin", apellido: "garcia", comment: "commentario nuevo", titulo: "Consulta 1", foto: "http://baravdg.com/wp-content/uploads/2021/04/46.jpg" },
@@ -58,8 +69,8 @@ const Foro = () => {
                     <div className="contenedorBtnTextArea">
 
                         <div onClick={() => { setModalShow(!modalShow) }} className="contenedorBienvenidaUsuario">
-                            <img className="logoDashBoard" src="http://baravdg.com/wp-content/uploads/2021/04/46.jpg" alt="" />
-                            <h4 className="tituloForm"> Hi {nameUser}, doubts? Contact your tutor</h4>
+                            <img className="logoDashBoard" src={profilePicture} alt="" />
+                            <h4 className="tituloForm"> Hi {firstName} {lastName}, doubts? Contact your tutor</h4>
                         </div>
                         <div>
                         </div>
@@ -74,7 +85,7 @@ const Foro = () => {
                                     <textarea onChange={inputData} value={objConsult.comment} name="comment" className="textAreaConsulta" cols="30" rows="10"></textarea>
                                 </div>
                                 <div className="contenedorBtn">
-                                    <button className="btnDashBoard btnForm">Send</button>
+                                    <button onClick={sendComent} className="btnDashBoard btnForm">Send</button>
                                 </div>
 
                             </div>
@@ -99,11 +110,13 @@ const Foro = () => {
 
 const mapStateToProps = state => {
     return {
-
+        userLogged: state.user.userLogged
     }
 }
 
 const mapDispatchToProps = {
+
+    loadComment: coursesActions.loadComment,
 
 }
 

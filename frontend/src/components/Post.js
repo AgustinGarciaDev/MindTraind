@@ -1,5 +1,8 @@
 import { useState } from "react"
 import Reply from '../components/Reply'
+import coursesActions from "../redux/actions/coursesActtions"
+import { connect } from "react-redux"
+import { toast } from 'react-toastify';
 
 const Post = (props) => {
 
@@ -20,8 +23,6 @@ const Post = (props) => {
             mensaje: e.target.value
         })
     }
-
-    console.log(comentario)
 
     const { apellido, name, titulo, comment, foto } = props.post
     return (
@@ -56,4 +57,17 @@ const Post = (props) => {
     )
 }
 
-export default Post
+const mapStateToProps = state => {
+    return {
+
+    }
+}
+
+const mapDispatchToProps = {
+
+    editComment: coursesActions.editComment,
+    deleteComment: coursesActions.deleteComment,
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Post)
