@@ -275,7 +275,7 @@ const courseControllers = {
                     break;
                 default:
                     error = "unknown action on modificarComentario : " + action;
-                    respondFrontend(res, response, error);
+                    return respondFrontend(res, response, error);
             }
             let document = await Course.findOneAndUpdate(querySelector, updateOperator, { new: true })
             response = await populateOneDocument(document)
@@ -288,7 +288,55 @@ const courseControllers = {
         respondFrontend(res, response, error);
 
     },
-    
+    replyAComment: async (req, res) => {
+        let response, error, querySelector, updateOperator;
+        try {
+            const idUser = req.user._id;
+            const idCourse = req.params.id;
+            
+            const { idComment, action, textReply, idCommentReply } = req.body;
+
+            switch (action) {
+                case "add":
+                    //requiere  idCourse, idComment , idUser, textReply
+                    querySelector = { _id: idCourse, "comments._id": idComment };
+                    updateOperator = { $push: { "comments.$.reply": { userReply: idUser, textReply } } }
+                    break;
+                case "update":
+                    let course = await Course.findById(idCourse);
+                    let newComments = course.comments.map(aComment => {
+                        if(aComment._id.toString() === idComment){
+                            let newReply = aComment.reply.map(aReply => {
+                                if(aReply._id.toString() === idCommentReply)
+                                    return {...aReply.toObject(),textReply}
+                                return aReply;
+                            })
+                            
+                            return {...aComment.toObject(),reply:newReply}      
+                        }
+                        return aComment
+                    })
+                    let newCourse =  {...course.toObject(),comments : newComments}
+                    querySelector = { _id: idCourse};
+                    updateOperator = { ...newCourse}
+                    break;
+                case "delete":
+                    //requiere  idCourse, idComment , idUser, textReply
+                    querySelector = { _id: idCourse, "comments._id": idComment };
+                    updateOperator = { $pull: { "comments.$.reply": { _id: idCommentReply } } }
+                    break;
+                default:
+                    error = "unknown action on replyAComment : " + action;
+                    return respondFrontend(res, response, error);
+            }
+            let document = await Course.findOneAndUpdate(querySelector, updateOperator, { new: true });
+            response = await populateOneDocument(document);
+            response || (error = "course or document not found")
+        } catch (err) {
+            console.log(err);
+        }
+        respondFrontend(res, response, error);
+    }
 
 }
 
