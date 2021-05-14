@@ -250,36 +250,26 @@ const courseControllers = {
         try {
             const idCourse = req.params.id;
             const userId = req.user._id;
-            const { idComment, title, text, userEmailReply, textReply, action } = req.body;
-
+            const { idComment, title, text, action } = req.body;
             let querySelector;
             let updateOperator;
             switch (action) {
                 case "add":
-
+                    //requiere idCourse, text, title
                     try {
-                        let reply = {}
-                        if (userEmailReply) {
-                            const userReply = await User.findOne({ email: userEmailReply });
-                            reply = { userReply: userReply._id, textReply };
-                        }
                         querySelector = { _id: idCourse };
-                        updateOperator = { $push: { comments: { user: userId, title, text, reply } } };
+                        updateOperator = { $push: { comments: { user: userId, title, text, } } };
                     } catch (err) {
                         return respondFrontend(res, response, `user with email: "${userEmailReply}" doesn't exist`)
                     }
-
                     break;
                 case "update":
+                    //requiere idCourse, idComment, text,title
                     querySelector = { _id: idCourse, "comments._id": idComment };
-                    let setValue = {};
-                    if (title)
-                        setValue = { "comments.$.text": text, "comments.$.title": title }
-                    else
-                        setValue = { "comments.$.text": text }
-                    updateOperator = { $set: setValue };
+                    updateOperator = { $set: { "comments.$.text": text, "comments.$.title": title } };
                     break;
                 case "delete":
+                    //requiere idCourse, idComment
                     querySelector = { _id: idCourse };
                     updateOperator = { $pull: { comments: { _id: idComment } } };
                     break;
@@ -289,7 +279,7 @@ const courseControllers = {
             }
             let document = await Course.findOneAndUpdate(querySelector, updateOperator, { new: true })
             response = await populateOneDocument(document)
-            response || (error = errorCourseNotFound);
+            response || (error = "course or comment not found");
 
         } catch (e) {
             console.log(e)
@@ -298,6 +288,8 @@ const courseControllers = {
         respondFrontend(res, response, error);
 
     },
+    
+
 }
 
 module.exports = courseControllers;

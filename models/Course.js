@@ -14,10 +14,10 @@ const courseSchemma = new mongoose.Schema({
             user:{type: mongoose.Types.ObjectId, ref:'user',required:true},
             text:{type:String},
             title:{type:String},
-            reply:{userReply:{type:mongoose.Types.ObjectId,ref:"user",required: true},textReply:{type:String,required: true}} 
+            reply:[{userReply:{type:mongoose.Types.ObjectId,ref:"user",required: true},textReply:{type:String,required: true}} ]
     }]
 })
-//comentarios :[{usuarioId:{type: mongoose.Types.ObjectId, ref: 'user'},comentario:{type:String} }],
+
 const Course = mongoose.model('course', courseSchemma)
 
 module.exports = Course
