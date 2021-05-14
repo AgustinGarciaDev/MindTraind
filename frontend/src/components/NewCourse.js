@@ -118,28 +118,28 @@ const NewCourse = (props) => {
             <form className="newCourseForm">
                 <h3 className="h3Form">Add new course</h3>
 
-                <input type="text" placeholder="Course name" name="nameCourse" value={course.nameCourse} onChange={readInput} />
+                <input className="newInput" type="text" placeholder="Course name" name="nameCourse" value={course.nameCourse} onChange={readInput} />
                 {error.nameCourse && <small>{error.nameCourse}</small>}
 
-                <input type="text" placeholder="Program description" name="programDescription" value={course.programDescription} onChange={readInput} />
+                <input className="newInput" type="text" placeholder="Program description" name="programDescription" value={course.programDescription} onChange={readInput} />
                 {error.programDescription && <small>{error.programDescription}</small>}
 
-                <input type="text" placeholder="Coach " name="coach" value={course.coach} onChange={readInput} />
+                <input className="newInput" type="text" placeholder="Coach " name="coach" value={course.coach} onChange={readInput} />
                 {error.coach && <small>{error.coach}</small>}
 
-                <input type="text" placeholder="Picture refence " name="pictureRefence" value={course.pictureRefence} onChange={readInput} />
+                <input className="newInput" type="text" placeholder="Picture refence " name="pictureRefence" value={course.pictureRefence} onChange={readInput} />
                 {error.pictureRefence && <small>{error.pictureRefence}</small>}
 
-                <input type="number" placeholder="Duration" name="duration" value={course.duration} onChange={readInput} />
+                <input className="newInput" type="number" placeholder="Duration" name="duration" value={course.duration} onChange={readInput} />
                 {error.duration && <small>{error.duration}</small>}
 
-                <input type="number" placeholder="Difficulty" name="difficulty" value={course.difficulty} onChange={readInput} />
+                <input className="newInput" type="number" placeholder="Difficulty" name="difficulty" value={course.difficulty} onChange={readInput} />
                 {error.difficulty && <small>{error.difficulty}</small>}
 
                 <h3 className="h3Form">Categories</h3>
                 <div className="categoryNew">
                     <div className="lessonInputError">
-                        <input type="text" placeholder="categories" onChange={createCategory} name="name" value={category.name} />
+                        <input className="newInput" type="text" placeholder="categories" onChange={createCategory} name="name" value={category.name} />
                         {error.categories && <small>{error.categories}</small>}
                     </div>
                     <i className="fas fa-plus" onClick={addCategory}></i>
@@ -153,8 +153,8 @@ const NewCourse = (props) => {
                 <div className="lessonsNew">
                     <div className="lessonInput">
                         <div className="lessonInputError">
-                            <input type="text" placeholder="lesson name" onChange={createLesson} name="lessonName" value={lesson.lessonName} />
-                            <input type="text" placeholder="video" onChange={createLesson} name="videoLink" value={lesson.videoLink} />
+                            <input className="newInput"  type="text" placeholder="lesson name" onChange={createLesson} name="lessonName" value={lesson.lessonName} />
+                            <input className="newInput" type="text" placeholder="video" onChange={createLesson} name="videoLink" value={lesson.videoLink} />
                             {error.lessons && <small>{error.lessons}</small>}
                         </div>
                     </div>
@@ -165,7 +165,10 @@ const NewCourse = (props) => {
                         course.lessons.map(lesson => <LessonText changeLesson={changeLesson} key={lesson.lessonName} lesson={lesson} deleteLesson={deleteLesson} />)
                     }
                 </div>
-                <button className="formButtonsNew" onClick={sendData}>Add</button>
+                <div className="formButtons">
+                    <button className="formButtonsNew" onClick={() => props.setShow()}>Go back</button>
+                    <button className="formButtonsNew" onClick={sendData}>Add</button>
+                </div>
             </form>
         </div>
     )
