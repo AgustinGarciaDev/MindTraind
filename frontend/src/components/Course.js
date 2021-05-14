@@ -17,17 +17,18 @@ const Course = (props) => {
     }
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>Edit</Button>
 
             <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} >
-                <Modal.Header closeButton>
+                <Modal.Header>
                     <h3 className="h3Form">Edit course</h3>
+                    <div className="contenedorBtnClose"> <i onClick={handleClose} className="fas fa-times"></i></div>
                 </Modal.Header>
                 <Modal.Body>
                     <EditCourse course={props.course} setEdit={setEdit} cancel={cancel} handleClose={handleClose} />
                 </Modal.Body>
             </Modal>
             <div className="courseCardContainer" style={{ backgroundImage: `url('${props.course.pictureRefence}')` }}>
+                <Button variant="primary" onClick={handleShow}>Edit</Button>
                 <h4>{props.course.nameCourse}</h4>
             </div>
         </>

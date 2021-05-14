@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import coursesActions from "../redux/actions/coursesActtions"
 import Category from './Category'
 import Lesson from './Lesson'
+import { showToast } from '../helpers/myToast'
 
 const EditCourse = (props) => {
     const [course, setCourse] = useState({})
@@ -57,7 +58,7 @@ const EditCourse = (props) => {
         const data = { ...course, id: props.course._id }
         const response = await props.editCourse(data)
         if (response) {
-            props.cancel()
+            showToast('success', "The changes were saved")
         }
     }
 
