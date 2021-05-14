@@ -197,38 +197,28 @@ const SignUp = (props) => {
             >
               Continue
             </button>
-
-            <div>
-              <div
-                className="w-10"
-                style={{
-                  backgroundImage:
-                    "url(data:image/png;base64,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)",
-                }}
-              >
-                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-              </div>
-              <button className="btn-google">btn-google</button>
-            </div>
-
+            {/* <button onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                  This is my custom Google button
+                </button> */}
             <GoogleLogin
-              className="small text-center pl-5 ml-5 w-100 text-white myBtn bg-primary"
               clientId="829812608617-0sn9cfi15261rmp12hd06m7sj55plu0u.apps.googleusercontent.com"
-              buttonText="Sign Up with Google"
-              /*   onSuccess={respuestaGoogle}
-              onFailure={respuestaGoogle} */
+              render={(renderProps) => (
+                <div
+                  onClick={renderProps.onClick}
+                  disabled={renderProps.disabled}
+                  className="myBtn btn btn-primary  d-flex"
+                >
+                  <div className=""></div>
+                  <i className="w-25 pt-1 pl-5 ml-5 fab fa-google"></i>
+                  <div className="w-50 text-center">SignUp with Google</div>
+                </div>
+              )}
+              buttonText="Login"
+              /*   onSuccess={responseGoogle}
+              onFailure={responseGoogle} */
               cookiePolicy={"single_host_origin"}
             />
-            {/* facebook btn */}
-            <div
-              className="fb-login-button"
-              data-width=""
-              data-size="large"
-              data-button-type="continue_with"
-              data-layout="rounded"
-              data-auto-logout-link="true"
-              data-use-continue-as="true"
-            ></div>
+            , document.getElementById('googleButton') );
             <NavLink to="/SignIn">
               <label className="mt-2 w-100 btn btn-warning myBtn h6">
                 Have an Account Already? click here <span className="mirror">👉</span>

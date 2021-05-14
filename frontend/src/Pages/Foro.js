@@ -3,6 +3,9 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Post from '../components/Post'
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from 'react-toastify';
+import coursesActions from "../redux/actions/coursesActtions"
+import { connect } from "react-redux"
 
 const Foro = () => {
     const [modalShow, setModalShow] = useState(false);
@@ -19,9 +22,6 @@ const Foro = () => {
             [campo]: valor
         })
     }
-
-    console.log(objConsult)
-
 
     const nameUser = "Agustin"
     const post = [
@@ -97,4 +97,14 @@ const Foro = () => {
     )
 }
 
-export default Foro
+const mapStateToProps = state => {
+    return {
+
+    }
+}
+
+const mapDispatchToProps = {
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Foro)

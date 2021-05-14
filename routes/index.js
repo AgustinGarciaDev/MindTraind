@@ -8,7 +8,7 @@ const courseControllers = require('../controllers/courseControllers')
 const userControllers = require('../controllers/userControllers')
 const jobControllers = require('../controllers/jobControllers')
 
-const {addCourse, getAllCourses, getCourseById, updateCourse, deleteCourse,getCourseByIdUser, modifyCategories, modifyLesson, modifyStudents} = courseControllers
+const {addCourse, getAllCourses, getCourseById, updateCourse, deleteCourse,getCourseByIdUser, modifyCategories, modifyLesson, modifyStudents,modifyComments} = courseControllers
 const {addUser, getAllUsers, getUserById, updateUser, deleteUser,loginUser,forcedLogin} = userControllers
 const {addJob,getAllJobs,getJobById,updateJob,deleteJob} = jobControllers
 
@@ -33,6 +33,8 @@ router.route('/coursesmodifyLesson/:id')
 router.route('/coursesmodifyStudents/:id')
     .put(passport.authenticate('jwt',{session:false}),modifyStudents)
 
+router.route('/coursesmodifyComments/:id')
+    .put(passport.authenticate('jwt',{session:false}),modifyComments)    
 //USER ROUTES
 router.route('/users')
     .get(getAllUsers)
