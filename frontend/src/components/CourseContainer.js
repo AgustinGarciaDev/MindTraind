@@ -28,6 +28,7 @@ const CourseContainer = (props) => {
                         props.coursesList.map(course => <Course key={course._id} course={course} />)
                 }
             </div>
+            <button className="formButtonsNew" onClick={() => props.setShow()}>Go back</button>
         </div>
     )
 }

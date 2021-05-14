@@ -1,10 +1,4 @@
-.adminContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: ghostwhite;
-    min-height: 100vh;
-}
+
 
 .courseContainer{
     width: 100%;
@@ -117,14 +111,19 @@
     width: 100%;
 }   
 
-.newCourseForm input{
-    margin-bottom: 1vh;
-    border: none;
-    border-bottom: 1px solid black;
-    background: none;
-    outline: none;
+.newInput{
     font-family: 'Roboto';
-    width: 100%;
+    margin: 1vh 2vh;
+    width: 90%;
+    text-align: left;
+    padding: 3px;
+    font-size: large;
+    border: none;
+    background: none;
+    border-bottom: solid 2px;
+    letter-spacing: 1px;
+    outline: none;
+    color: black;
 }   
 
 
@@ -266,4 +265,50 @@ small{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.adminContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: ghostwhite;
+    min-height: 100vh;
+    justify-content: center;
+}
+
+.selectCardContainer{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.selectCard{
+    background-size: cover;
+    background-position: center;
+    width: 35%;
+    height: 60vh;
+    margin: 2vh 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.selectCard h3{
+    background-color: rgb(0, 0, 0, 0.7);
+    color: whitesmoke;
+    text-align: center;
+    width: 100%;
+    padding: 0.7vh;
+}
+
+.jobOptions{
+    border: none;
+    border-bottom: 1px solid black;
+    background: none;
+    margin-bottom: 1vh;
+    outline: none;
+    width: 100%;
 }

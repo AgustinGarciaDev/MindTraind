@@ -3,6 +3,7 @@ const router = express.Router()
 const passport = require('passport')
 const validator = require('../config/validator') 
 const courseValidator = require('../config/courseValidator')
+const newJobValidator = require('../config/newJobValidator')
 
 const courseControllers = require('../controllers/courseControllers')
 const userControllers = require('../controllers/userControllers')
@@ -55,7 +56,7 @@ router.route('/usersforcedlogin')
 
 //JOB ROUTES
 router.route('/jobs')
-    .post(addJob)
+    .post(newJobValidator ,addJob)
     .get(getAllJobs)
 
 router.route('/jobs/:id')
