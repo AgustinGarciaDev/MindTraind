@@ -8,6 +8,15 @@ const respondFrontend = (res, response, error) => {
         error
     })
 }
+const updateDocumentAndPopulate = async (querySelector,updateOperator) => {
+    try {
+        const response = await Course.findOneAndUpdate(querySelector, updateOperator, { new: true });
+        return response;
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 const errorBackend = "error 500 , avisar al  team backend";
 const errorCourseNotFound = "error: Course not found";
 
