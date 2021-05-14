@@ -13,6 +13,7 @@ const courseSchemma = new mongoose.Schema({
     comments: [{
             user:{type: mongoose.Types.ObjectId, ref:'user',required:true},
             text:{type:String},
+            title:{type:String},
             reply:{userReply:{type:mongoose.Types.ObjectId,ref:"user",required: true},textReply:{type:String,required: true}} 
     }]
 })
