@@ -231,7 +231,7 @@ const courseControllers = {
         try {
             const idCourse = req.params.id;
             const userId = req.user._id;
-            const {idComment,text,userEmailReply,textReply,action} = req.body ;
+            const {idComment,title,text,userEmailReply,textReply,action} = req.body ;
             
             let querySelector ;
             let updateOperator ;
@@ -242,7 +242,7 @@ const courseControllers = {
                         const userReply = await User.findOne({email:userEmailReply});
                         const reply = {userReply:userReply._id,textReply};
                         querySelector = {_id : idCourse };
-                        updateOperator = { $push:{ comments:{ user:userId,text,reply} } };    
+                        updateOperator = { $push:{ comments:{ user:userId,title,text,reply} } };    
                     } catch (err) {
                         return respondFrontend(res,response,`user with email: "${userEmailReply}" doesn't exist` )
                     }
@@ -250,7 +250,12 @@ const courseControllers = {
                     break;
                 case "update": 
                     querySelector = { _id : idCourse ,"comments._id":idComment  } ; 
-                    updateOperator = {$set : {"comments.$.text": text }}; 
+                    let setValue = {};
+                    if(title)
+                        setValue = {"comments.$.text": text , "comments.$.title": title}  
+                    else
+                        setValue = {"comments.$.text": text }
+                    updateOperator = {$set : setValue}; 
                     break;
                 case "delete" : 
                     querySelector = { _id: idCourse };
