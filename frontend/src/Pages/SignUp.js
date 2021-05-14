@@ -87,10 +87,10 @@ const SignUp = (props) => {
         email: "👉" + miRespuesta[3].message + "👈",
         password: "",
       });
-      /*       setErrorVisible(!errorVisible); */
+
       setErrorVisible(true);
 
-      console.log("errpres", miRespuesta);
+      console.log("errores", miRespuesta);
     } catch {
       console.log("no funciono");
     }
@@ -120,8 +120,8 @@ const SignUp = (props) => {
       >
         {props.theUser && console.log("X", props.theUser)}
         {/*  <p> "hola" {hidden && "hola"}</p> */}
-        <div className={"w-50"}>
-          <div className="ti  titleForm titulos m-3 h2 ">Sign Up Form</div>
+        <div className="w-50 mi100">
+          <div className="titleForm titulos mt-2 h3 ">Sign Up Form</div>
           <div className="h6 small textos text-center">Change your life⚡</div>
           <div className="h6 text-danger small textos text-center">
             join us in 5 simple steps (all fields are mandatory)
@@ -143,16 +143,10 @@ const SignUp = (props) => {
               🚫 sorry we couldn't create an account with your provided info, please refer to the
               folowing problems{" "}
             </div>
-            {/*    {erroresSignUp.length > 0 &&
-            setPreUser({
-              ...preUser,
-              firstName: erroresSignUp[0].message || "k",
-              lastName: erroresSignUp[1].message || "l",
-            })} */}
           </div>
 
           <div className="bg-secondary">
-            <div className="font-italic  mb-2 bg-white border-1 p-3 d-flex flex-column">
+            <div className="font-italic bg-white border-1 p-2 d-flex flex-column">
               <div className="border">
                 <input
                   type="text"
@@ -167,8 +161,8 @@ const SignUp = (props) => {
                       : "ng-valid  textos small  w95"
                   }
                 />
+                👤
               </div>
-
               <div className="border mt-1 ">
                 <input
                   type="text"
@@ -179,6 +173,7 @@ const SignUp = (props) => {
                     !validationsOther[1] ? "ng-dirty textos small w95" : "ng-valid textos small w95"
                   }
                 />
+                👤
               </div>
               <div className="border mt-1 ">
                 <input
@@ -208,7 +203,7 @@ const SignUp = (props) => {
               </div>
               {/*  <div className="small border mt-1"> */}
               {/* </div> */}
-              <div className="w-25 mt-3 d-flex justify-content-between">
+              <div className="w-25 mt-2 d-flex justify-content-between">
                 <span className="small italics">show your password </span>
                 <label htmlFor="eye" className="ml-5">
                   <i className={eyeState ? "pl-5 fas fa-eye-slash" : "fas fa-eye"}></i>
@@ -235,6 +230,7 @@ const SignUp = (props) => {
               {/* errorPassContainer */}
               <div className="mb-3">
                 <span
+                  className="small"
                   style={{
                     display: passGuideVisible && validationsPass.includes(false) ? "block" : "none",
                   }}
@@ -242,7 +238,6 @@ const SignUp = (props) => {
                   **Password guidelines**
                 </span>
                 <ul>
-                  {/*  {console.log("soy el validations", validations)} */}
                   <li
                     style={{
                       display:
@@ -281,7 +276,6 @@ const SignUp = (props) => {
                   </li>
                 </ul>
               </div>
-              <div>--------------------------------------------</div>
               <button
                 className="btn mb-1 btn-danger myBtn "
                 onClick={() => {
@@ -309,7 +303,7 @@ const SignUp = (props) => {
                 cookiePolicy={"single_host_origin"}
               />
               <NavLink to="/SignIn">
-                <label className="mt-2 w-100 btn btn-warning myBtn h6">
+                <label className="mt-1 w-100 btn btn-warning myBtn h6">
                   Have an Account Already? click here <span className="mirror">👉</span>
                 </label>{" "}
               </NavLink>
@@ -326,7 +320,6 @@ const SignUp = (props) => {
           </video>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

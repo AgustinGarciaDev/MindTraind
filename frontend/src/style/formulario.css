@@ -121,6 +121,7 @@
 
 html {
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 .signUpVideoContainer {
   height: 600px;
@@ -163,10 +164,27 @@ html {
   width: 40%;
 }
 
+.w35 {
+  width: 35%;
+}
+
 .w95 {
   width: 95%;
 }
 
 .italics {
   font-weight: italics;
+}
+
+.signUpContainer {
+  height: 450px;
+}
+
+@media screen and (max-width: 992px) {
+  .mi100 {
+    width: 100% !important;
+  }
+  .signUpVideoContainer {
+    display: none;
+  }
 }
