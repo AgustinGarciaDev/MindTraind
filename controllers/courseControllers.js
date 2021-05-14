@@ -19,6 +19,7 @@ const courseControllers = {
             let newCourse = new Course(req.body);
             await newCourse.save();
             response = await Course.find()
+            .populate({ path: 'coach', select: '-_id -password' })
 
         } catch (err) {
             console.log(err);
@@ -33,6 +34,8 @@ const courseControllers = {
             response = await Course.find()
                 .populate({ path: 'coach', select: '-_id -password' })
                 .populate({ path: 'students', select: '-_id -password' });
+                .populate({ path: 'comments.user', select: '-_id -password' })
+                .populate({ path: 'comments.reply.userReply', select: '-_id -password' })
         } catch (err) {
             console.log(err);
             error = errorBackend;
@@ -47,6 +50,8 @@ const courseControllers = {
             response = await Course.findById(courseId)
                 .populate({ path: 'coach', select: '-_id -password' })
                 .populate({ path: 'students', select: '-_id -password' });
+                .populate({ path: 'comments.user', select: '-_id -password' })
+                .populate({ path: 'comments.reply.userReply', select: '-_id -password' })
             response || (error = errorCourseNotFound);
         } catch (err) {
             console.log(err);
@@ -80,6 +85,8 @@ const courseControllers = {
             response = await Course.find()
                 .populate({ path: 'coach', select: '-_id -password' })
                 .populate({ path: 'students', select: '-_id -password' });
+                .populate({ path: 'comments.user', select: '-_id -password' })
+                .populate({ path: 'comments.reply.userReply', select: '-_id -password' })
 
         } catch (err) {
             console.log(err);
@@ -95,6 +102,8 @@ const courseControllers = {
             response = await Course.find({ students: { $all: [idUser] } })
                 .populate({ path: 'coach', select: '-_id -password' })
                 .populate({ path: 'students', select: '-_id -password' });
+                .populate({ path: 'comments.user', select: '-_id -password' })
+                .populate({ path: 'comments.reply.userReply', select: '-_id -password' })
             response || (error = errorCourseNotFound)
         } catch (err) {
             error = errorBackend;
@@ -129,6 +138,8 @@ const courseControllers = {
             response = await Course.findOneAndUpdate(querySelector, updateOperator, { new: true })
                 .populate({ path: 'coach', select: '-_id -password' })
                 .populate({ path: 'students', select: '-_id -password' });
+                .populate({ path: 'comments.user', select: '-_id -password' })
+                .populate({ path: 'comments.reply.userReply', select: '-_id -password' })
 
             response || (error = errorCourseNotFound);
         } catch (err) {
@@ -165,6 +176,8 @@ const courseControllers = {
             response = await Course.findOneAndUpdate(querySelector, updateOperator, { new: true })
                 .populate({ path: 'coach', select: '-_id -password' })
                 .populate({ path: 'students', select: '-_id -password' });
+                .populate({ path: 'comments.user', select: '-_id -password' })
+                .populate({ path: 'comments.reply.userReply', select: '-_id -password' })
 
             response || (error = errorCourseNotFound);
         } catch (err) {
@@ -203,6 +216,8 @@ const courseControllers = {
             response = await Course.findOneAndUpdate(querySelector, updateOperator, { new: true })
                 .populate({ path: 'coach', select: '-_id -password' })
                 .populate({ path: 'students', select: '-_id -password' });
+                .populate({ path: 'comments.user', select: '-_id -password' })
+                .populate({ path: 'comments.reply.userReply', select: '-_id -password' })
 
             response || (error = errorCourseNotFound);
         } catch (err) {
