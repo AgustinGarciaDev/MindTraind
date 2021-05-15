@@ -147,7 +147,7 @@ const SignUp = (props) => {
 
           <div className="bg-secondary">
             <div className="font-italic bg-white border-1 p-2 d-flex flex-column">
-              <div className="border">
+              <div className="borderBottom">
                 <input
                   type="text"
                   onChange={(e) => setPreUser({ ...preUser, firstName: e.target.value })}
@@ -163,7 +163,7 @@ const SignUp = (props) => {
                 />
                 👤
               </div>
-              <div className="border mt-1 ">
+              <div className="borderBottom mt-1">
                 <input
                   type="text"
                   onChange={(e) => setPreUser({ ...preUser, lastName: e.target.value })}
@@ -175,7 +175,7 @@ const SignUp = (props) => {
                 />
                 👤
               </div>
-              <div className="border mt-1 ">
+              <div className="borderBottom mt-1 ">
                 <input
                   type="text"
                   onChange={(e) => setPreUser({ ...preUser, firstName: e.target.value })}
@@ -188,7 +188,7 @@ const SignUp = (props) => {
                 />
                 👤
               </div>
-              <div className="border mt-1">
+              <div className="borderBottom mt-1">
                 <input
                   type="mail"
                   onChange={(e) => setPreUser({ ...preUser, email: e.target.value.toLowerCase() })}
@@ -203,7 +203,7 @@ const SignUp = (props) => {
               </div>
               {/*  <div className="small border mt-1"> */}
               {/* </div> */}
-              <div className="w-25 mt-2 d-flex justify-content-between">
+              <div className="w35 mt-2 d-flex justify-content-between">
                 <span className="small italics">show your password </span>
                 <label htmlFor="eye" className="ml-5">
                   <i className={eyeState ? "pl-5 fas fa-eye-slash" : "fas fa-eye"}></i>
@@ -215,7 +215,7 @@ const SignUp = (props) => {
                   ></input>{" "}
                 </label>
               </div>
-              <div className="w-25 border mb-2 ">
+              <div className="w35 borderBottom mb-2 ">
                 <input
                   onChange={(e) => setPreUser({ ...preUser, password: e.target.value })}
                   onFocus={() => setPassGuideVisible(true)}
@@ -223,7 +223,9 @@ const SignUp = (props) => {
                   type={eyeState ? "password" : "text"}
                   placeholder="5) your password"
                   className={
-                    !validationsPass.includes(false) ? "ng-valid textos " : "ng-dirty textos "
+                    !validationsPass.includes(false)
+                      ? "ng-valid titulos w-100"
+                      : "ng-dirty titulos w-100"
                   }
                 ></input>
               </div>

@@ -1,6 +1,6 @@
 import React from "react";
-/* import Header from "./Header";
-import Footer from "./Footer"; */
+import Header from "../components/Header";
+/* import Footer from "./Footer"; */
 import { useEffect, useState } from "react";
 /* import { connect } from "react-redux"; */
 import GoogleLogin from "react-google-login";
@@ -69,6 +69,7 @@ const SignIn = (props) => {
 
   return (
     <>
+      <Header />
       <div
         className="SignInContainer d-flex "
         onMouseOver={() => setHidden(false)}
@@ -78,7 +79,7 @@ const SignIn = (props) => {
         {/*  <p> "hola" {hidden && "hola"}</p> */}
         <div className={" w40 "}>
           <div className="titleForm titulos m-3 h3 ">Sign In</div>
-          <div className="h6 small textos text-center">welcome back</div>
+          <div className="h6 small textos text-center">welcome back 💪</div>
           <div className="errorContainer" style={{ display: errorVisible ? "block" : "none" }}>
             <span
               id="close"
@@ -102,8 +103,8 @@ const SignIn = (props) => {
                   placeholder="a valid email address"
                   className={
                     !validationsOther[2]
-                      ? "ng-dirty border-0 textos small w-75"
-                      : "ng-valid border-0  textos small w-75"
+                      ? "ng-dirty border-0 textos small w95"
+                      : "ng-valid border-0  textos small w95"
                   }
                 />
                 📧
@@ -111,6 +112,18 @@ const SignIn = (props) => {
               </div>
               {/*  <div className="small border mt-1"> */}
               {/* </div> */}
+              <span className="small">show your password</span>
+
+              <label htmlFor="eye">
+                <i className={eyeState ? "fas fa-eye-slash" : "fas fa-eye"}></i>
+                <input
+                  id="eye"
+                  className="hidden"
+                  type="checkbox"
+                  onChange={() => setEyeState(!eyeState)}
+                ></input>{" "}
+              </label>
+
               <div className="mt-1 ">
                 <input
                   onChange={(e) => setPreUser({ ...preUser, password: e.target.value })}
@@ -125,17 +138,7 @@ const SignIn = (props) => {
                   }
                 ></input>
               </div>
-              <span className="small">show your password</span>
 
-              <label htmlFor="eye">
-                <i className={eyeState ? "fas fa-eye-slash" : "fas fa-eye"}></i>
-                <input
-                  id="eye"
-                  className="hidden"
-                  type="checkbox"
-                  onChange={() => setEyeState(!eyeState)}
-                ></input>{" "}
-              </label>
               <button className="btn mb-1 btn-danger myBtn " onClick={() => flogInUser()}>
                 Continue
               </button>
@@ -174,16 +177,6 @@ const SignIn = (props) => {
                   New at TrainedMind?,Join us here. <span className="mirror">👉</span>
                 </label>{" "}
               </NavLink>
-              <ul className="pl-3 small">
-                {/*  {console.log("soy el validations", validations)} */}
-                <span className="small">**Password should be**</span>
-                <li className="small">{validationsPass[0] ? "✔" : "❌"}At least 6 character</li>
-                <li className="small">{validationsPass[1] ? "✔" : "❌"}Contain a capital Letter</li>
-                <li className="small">{validationsPass[2] ? "✔" : "❌"}Contain a number </li>
-                <li className="small">
-                  {validationsPass[3] ? "✔" : "❌"}Contain one of $/¿,:;?@# chars
-                </li>
-              </ul>
             </div>
           </div>
         </div>

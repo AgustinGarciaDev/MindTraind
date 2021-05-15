@@ -188,3 +188,11 @@ html {
     display: none;
   }
 }
+
+.borderBottom {
+  border-bottom: 1px solid lightgrey;
+}
+
+.borderX:focus {
+  border: none;
+}
