@@ -199,7 +199,7 @@ const coursesActions = {
     },
 
     /* Reply Comment */
-    sendPost: (data) => {
+    sendReply: (data) => {
 
         return async (dispatch, getState) => {
             try {

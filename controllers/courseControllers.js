@@ -295,7 +295,7 @@ const courseControllers = {
         try {
             const idUser = req.user._id;
             const idCourse = req.params.id;
-            
+
             const { idComment, action, textReply, idCommentReply } = req.body;
 
             switch (action) {
@@ -307,20 +307,20 @@ const courseControllers = {
                 case "update":
                     let course = await Course.findById(idCourse);
                     let newComments = course.comments.map(aComment => {
-                        if(aComment._id.toString() === idComment){
+                        if (aComment._id.toString() === idComment) {
                             let newReply = aComment.reply.map(aReply => {
-                                if(aReply._id.toString() === idCommentReply)
-                                    return {...aReply.toObject(),textReply}
+                                if (aReply._id.toString() === idCommentReply)
+                                    return { ...aReply.toObject(), textReply }
                                 return aReply;
                             })
-                            
-                            return {...aComment.toObject(),reply:newReply}      
+
+                            return { ...aComment.toObject(), reply: newReply }
                         }
                         return aComment
                     })
-                    let newCourse =  {...course.toObject(),comments : newComments}
-                    querySelector = { _id: idCourse};
-                    updateOperator = { ...newCourse}
+                    let newCourse = { ...course.toObject(), comments: newComments }
+                    querySelector = { _id: idCourse };
+                    updateOperator = { ...newCourse }
                     break;
                 case "delete":
                     //requiere  idCourse, idComment , idUser, textReply

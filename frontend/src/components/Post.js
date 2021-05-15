@@ -13,20 +13,17 @@ const Post = (props) => {
     const [editInput, setEditInput] = useState(false);
     const [editInputTitle, setEditInputTitle] = useState(false)
     const { idCourse } = props
-    /* const { courses, getCourseById } = props */
     const { title, _id, text, user: { profilePicture, lastName, firstName }, reply } = props.post
     const [commentReply, setCommentReply] = useState(false)
     const { token, email } = props.userLogged
-    const [replyCourse, setReplyCourse] = useState(props.post);
+    const [replyCourse, setReplyCourse] = useState(null);
     const [objConsult, setobjConsult] = useState({
         textReply: "",
         idCourse: idCourse,
         token: token,
-        action: "",
-        idComment: _id
+        action: "add",
+        userEmailReply: email
     })
-
-
 
     const [editPost, setEditPost] = useState({
         text: text,
@@ -41,8 +38,8 @@ const Post = (props) => {
     const inputData = (e) => {
         const campo = e.target.name
         const valor = e.target.value
-        setobjConsult({
-            ...objConsult,
+        setEditPost({
+            ...editPost,
             [campo]: valor
         })
     }
@@ -52,31 +49,29 @@ const Post = (props) => {
         setEditInput(!editInput)
     }
 
-    const editCommentChange = (e) => {
-
-        props.editPost(_id, editPost.title, editPost.text)
-        if (e.target.id === "btnText") {
-            setEditInput(!editInput)
-        } else {
-            setEditInputTitle(!editInputTitle)
-        }
-
-
-    }
-
-
     const sendReply = async () => {
 
         if (objConsult.textReply === "") {
             showToast('error', "You cant add text")
         } else {
-            const respuesta = await props.sendPost({ ...objConsult, action: "add" })
-            /*             console.log(respuesta.comments) */
-            /*    setReplyCourse(respuesta) */
-            /*      console.log(replyCourse) */
+            const respuesta = await props.sendPost(objConsult)
+            setReplyCourse(respuesta.comments)
         }
     }
 
+    const editCommentChange = (e) => {
+
+        props.editPost(_id, editPost.title, editPost.text)
+        if (e.target.id === "btnText") {
+            setEditInput(!editInput)
+        }
+        if (e.target.id === "btnTitle") {
+            setEditInputTitle(!editInputTitle)
+        }
+
+
+
+    }
 
 
     const popover = (
@@ -102,7 +97,6 @@ const Post = (props) => {
             </Popover.Content>
         </Popover>
     )
-
 
     return (
         <div className="contenedorPost">
@@ -159,15 +153,17 @@ const Post = (props) => {
             </div>
             { commentReply &&
                 <>
-                    <div>
-                        {/*          {replyCourse.reply.map(reply => <Reply reply={reply} />)} */}
-                    </div>
+                    { replyCourse === undefined
+                        ? alert("hola")
+                        : <Reply replyCourse={replyCourse} />
 
+                    }
                     <div className="contenedorInputComment">
-                        <input value={objConsult.textReply} onChange={inputData} name="textReply" className="inputComment" type="text" />
+                        <input onChange={inputData} name="textReply" className="inputComment" type="text" />
                         <div onClick={sendReply} className="contenedorIconoSearch">
                             <i className="fas fa-paper-plane"></i>
                         </div>
+
                     </div>
                 </>
             }
@@ -190,7 +186,7 @@ const mapDispatchToProps = {
     /*     editComment: coursesActions.editComment,
         deleteComment: coursesActions.deleteComment, */
     sendPost: coursesActions.sendPost,
-    /*    getCourseById: coursesActions.getCourseById, */
+    getCourseById: coursesActions.getCourseById,
 }
 
 
