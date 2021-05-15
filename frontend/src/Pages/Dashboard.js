@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import NavBarDashBoard from '../components/NavBarDashBoard'
 import CourseCard from '../components/CourseCard'
-
+import AsideNav from '../components/AsideNav'
 import { connect } from 'react-redux'
 import coursesActions from '../redux/actions/coursesActtions';
 import { showToast, showTostError500 } from '../helpers/myToast'
@@ -28,13 +28,16 @@ const Dashboard = ({ getCoursesByIdStudent, userLogged }) => {
 
 
     return (
-        <>
-            <NavBarDashBoard />
-            <h1 className="tituloDasboard">My courses</h1>
-            <div className="ContenedorDeLosCursos">
-                {studentCourses.map(curso => <CourseCard key={curso._id} curso={curso} />)}
+        <div className="contenedorMenu">
+            <AsideNav />
+            <div className="contenedorWeb">
+                <NavBarDashBoard />
+                <h1 className="tituloDasboard">My courses</h1>
+                <div className="ContenedorDeLosCursos">
+                    {studentCourses.map(curso => <CourseCard key={curso._id} curso={curso} />)}
+                </div>
             </div>
-        </>
+        </div>
     )
 }
 

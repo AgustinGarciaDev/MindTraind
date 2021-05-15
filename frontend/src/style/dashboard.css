@@ -427,7 +427,7 @@
 
 }
 
-@media only screen and (min-device-width : 701px) and (max-device-width : 1800px) {
+@media only screen and (min-device-width : 701px) and (max-device-width : 1500px) {
     .contenedorCourseAndSideBar{
         width: 100%;
         display: flex;
