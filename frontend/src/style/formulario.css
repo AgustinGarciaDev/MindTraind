@@ -125,13 +125,12 @@
 }
 .signUpVideoContainer {
   height: 600px;
-
 }
 
 .signUpVideo {
-    position: relative;
-    bottom: 18vw;
-    width: 100%;
+  position: relative;
+  bottom: 18vw;
+  width: 100%;
 }
 
 .signInVideo {
@@ -142,8 +141,8 @@
 }
 
 .signInVideoContainer {
-     width: 50vw;
-     height: 100vw;
+  width: 50vw;
+  height: 100vw;
 }
 
 .w40 {
@@ -158,22 +157,26 @@
   width: 95%;
 }
 
+.w90 {
+  width: 90%;
+}
+
 .italics {
   font-weight: italics;
 }
 
 .signUpContainer,
 .signInContainer {
-  height: 42.19vw;
+  height: 50vw;
 }
 
-.titleSignUp{
-    font-size: 3vw;
-    color: black;
-    font-family: "anton";
-    font-style: italic;
-    margin-bottom: 2vw;
-    margin-top: 2vw;
+.titleSignUp {
+  font-size: 3vw;
+  color: black;
+  font-family: "anton";
+  font-style: italic;
+  margin-bottom: 2vw;
+  margin-top: 2vw;
 }
 
 @media screen and (max-width: 992px) {
@@ -196,4 +199,9 @@
 
 input::placeholder {
   font-style: italic;
+}
+
+.afterRed::after {
+  content: "*";
+  color: red;
 }

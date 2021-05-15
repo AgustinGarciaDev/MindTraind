@@ -48,7 +48,7 @@ const SignUp = (props) => {
       pass.length > 5,
       pass.search(/[A-Z]/) > -1,
       pass.search(/[0-9]/) > -1,
-      pass.search(/[$&+,:;=?@#]/) > -1,
+      /*   pass.search(/[$&+,:;=?@#]/) > -1, */
     ]);
 
     console.log("validationsPass", validationsPass.length);
@@ -98,7 +98,6 @@ const SignUp = (props) => {
   };
 
   const responseGoogle = (response) => {
-    alert("entre");
     const { givenName, familyName, email, googleId, imageUrl } = response.profileObj;
     props.createAndLogIn({
       firstName: givenName,
@@ -116,16 +115,15 @@ const SignUp = (props) => {
       <Header />
       <div
         className="signUpContainer d-flex "
-      /* onMouseOver={() => setHidden(false)}
+        /* onMouseOver={() => setHidden(false)}
     onMouseOut={() => setHidden(false)} */
       >
-        {props.theUser && console.log("X", props.theUser)}
+        {/*    {props.theUser && console.log("X", props.theUser)} */}
         {/*  <p> "hola" {hidden && "hola"}</p> */}
         <div className="w-50 mi100">
           <div className="titleForm titulos mt-2 h3 ">Sign Up Form</div>
           <div className=" small textos text-center">
-            <h2 className="titleSignUp"> join us in 5 simple steps </h2>
-
+            <h2 className="titleSignUp"> Start Free Today⚡ </h2>
           </div>
           <div
             className="errorContainer especial"
@@ -146,37 +144,40 @@ const SignUp = (props) => {
             </div>
           </div>
 
-          <div className="bg-secondary">
-            <div className="font-italic bg-white border-1 p-2 d-flex flex-column">
-              <div className="borderBottom">
+          <div className="">
+            <span className="afterRed small m-2">hi, please enter your name</span>
+            <div className="font-italic bg-white border-1 p-2 pt-0 d-flex flex-column">
+              <div className="border">
                 <input
                   type="text"
                   onChange={(e) => setPreUser({ ...preUser, firstName: e.target.value })}
                   value={preUser.firstName}
-                  placeholder={preUserPlaceHolder.firstName || "Please, enter your name"}
+                  placeholder={preUserPlaceHolder.firstName || "e.g: John"}
                   autoFocus
                   /*    className="ng-dirty  w-100" */
                   className={
                     !validationsOther[0]
-                      ? "ng-dirty textos small  w95"
-                      : "ng-valid  textos small  w95"
+                      ? "ng-dirty textos small pl-4 w-100"
+                      : "ng-valid  textos small pl-4 w-100"
                   }
                 />
-
               </div>
-              <div className="borderBottom mt-1">
+              <span className="mt-1 small afterRed ">your lastname</span>
+              <div className="border">
                 <input
                   type="text"
                   onChange={(e) => setPreUser({ ...preUser, lastName: e.target.value })}
                   value={preUser.lastName}
-                  placeholder={preUserPlaceHolder.lastName || " your last name"}
+                  placeholder={preUserPlaceHolder.lastName || "e.g: Doe"}
                   className={
-                    !validationsOther[1] ? "ng-dirty textos small w95" : "ng-valid textos small w95"
+                    !validationsOther[1]
+                      ? "ng-dirty textos small  w-100"
+                      : "ng-valid textos small  w-100"
                   }
                 />
-
               </div>
-              <div className="borderBottom mt-1 ">
+              <span className="small mt-1 afterRed">an url of your personal image</span>
+              <div className="border">
                 <input
                   type="text"
                   onChange={(e) => setPreUser({ ...preUser, firstName: e.target.value })}
@@ -184,19 +185,23 @@ const SignUp = (props) => {
                   value={preUser.profilePicture}
                   placeholder={preUserPlaceHolder.profilePicture || " your url image"}
                   className={
-                    !validationsOther[3] ? "ng-dirty textos small w95" : "ng-valid textos small w95"
+                    !validationsOther[3]
+                      ? "ng-dirty textos small  w-100"
+                      : "ng-valid textos small w-100"
                   }
                 />
-
               </div>
-              <div className="borderBottom mt-1">
+              <span className="small mt-1 afterRed">a valid email address</span>
+              <div className="border">
                 <input
                   type="mail"
                   onChange={(e) => setPreUser({ ...preUser, email: e.target.value.toLowerCase() })}
                   value={preUser.email}
-                  placeholder={preUserPlaceHolder.email || " a valid email adress"}
+                  placeholder={preUserPlaceHolder.email || "e.g: john.doe@gmail.com"}
                   className={
-                    !validationsOther[2] ? "ng-dirty textos small w95" : "ng-valid textos small w95"
+                    !validationsOther[2]
+                      ? "ng-dirty textos small w-100"
+                      : "ng-valid textos small w-100"
                   }
                 />
 
@@ -204,19 +209,10 @@ const SignUp = (props) => {
               </div>
               {/*  <div className="small border mt-1"> */}
               {/* </div> */}
-              <div className="w35 mt-2 d-flex justify-content-between">
-                <span className="small italics">show your password </span>
-                <label htmlFor="eye" className="ml-5">
-                  <i className={eyeState ? "pl-5 fas fa-eye-slash" : "fas fa-eye"}></i>
-                  <input
-                    id="eye"
-                    className="hidden"
-                    type="checkbox"
-                    onChange={() => setEyeState(!eyeState)}
-                  ></input>{" "}
-                </label>
+              <div className="w40 mt-2 d-flex justify-content-between">
+                {/*   <span className="small italics">show your password </span> */}
               </div>
-              <div className="w35 border mb-2 ">
+              <div className="w40 border mt-1 mb-1 ">
                 <input
                   onChange={(e) => setPreUser({ ...preUser, password: e.target.value })}
                   onFocus={() => setPassGuideVisible(true)}
@@ -225,10 +221,19 @@ const SignUp = (props) => {
                   placeholder=" your password"
                   className={
                     !validationsPass.includes(false)
-                      ? "ng-valid titulos w-100"
-                      : "ng-dirty titulos w-100"
+                      ? "ng-valid titulos w90"
+                      : "ng-dirty titulos w90"
                   }
                 ></input>
+                <label htmlFor="eye" className="ml-5">
+                  <input
+                    id="eye"
+                    className="hidden"
+                    type="checkbox"
+                    onChange={() => setEyeState(!eyeState)}
+                  ></input>{" "}
+                  <i className={eyeState ? "pl-5 fas fa-eye-slash" : "fas fa-eye"}></i>
+                </label>
               </div>
               {/* errorPassContainer */}
               <div className="mb-3">
@@ -268,48 +273,42 @@ const SignUp = (props) => {
                   >
                     {validationsPass[2] ? "😎✔" : "❎"}Contain a number{" "}
                   </li>
-                  <li
-                    style={{
-                      display:
-                        passGuideVisible && validationsPass.includes(false) ? "block" : "none",
-                    }}
-                    className="small"
-                  >
-                    {validationsPass[3] ? "😎✔" : "❎"}Contain one of $/¿,:;?@# chars{" "}
-                  </li>
                 </ul>
               </div>
-              <button
-                className="btn mb-1 btn-danger myBtn "
-                onClick={() => {
-                  fcreateAndLogIn();
-                }}
-              >
-                Continue
-              </button>
-              <GoogleLogin
-                clientId="829812608617-0sn9cfi15261rmp12hd06m7sj55plu0u.apps.googleusercontent.com"
-                render={(renderProps) => (
-                  <div
-                    onClick={renderProps.onClick}
-                    disabled={renderProps.disabled}
-                    className="myBtn btn btn-primary  d-flex"
-                  >
-                    <div className=""></div>
-                    <i className="w-25 pt-1 pl-5 ml-5 fab fa-google"></i>
-                    <div className="w-50 text-center">SignUp with Google</div>
-                  </div>
-                )}
-                buttonText="Login"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-                cookiePolicy={"single_host_origin"}
-              />
-              <NavLink to="/SignIn">
-                <label className="mt-1 w-100 btn btn-warning myBtn h6">
-                  Have an Account Already? click here <span className="mirror">👉</span>
-                </label>{" "}
-              </NavLink>
+              <div className="m-auto w-50 d-flex flex-column justify-content-center text-center">
+                {" "}
+                <button
+                  className="btn mb-2 btn-danger myBtn "
+                  onClick={() => {
+                    fcreateAndLogIn();
+                  }}
+                >
+                  Continue
+                </button>
+                <GoogleLogin
+                  clientId="829812608617-0sn9cfi15261rmp12hd06m7sj55plu0u.apps.googleusercontent.com"
+                  render={(renderProps) => (
+                    <div
+                      onClick={renderProps.onClick}
+                      disabled={renderProps.disabled}
+                      className="myBtn btn btn-primary mb-2 d-flex"
+                    >
+                      <div className=""></div>
+                      <i className="w-25 pt-1 pl-5 ml-5 fab fa-google"></i>
+                      <div className="w-50 text-center">SignUp with Google</div>
+                    </div>
+                  )}
+                  buttonText="Login"
+                  onSuccess={responseGoogle}
+                  onFailure={responseGoogle}
+                  cookiePolicy={"single_host_origin"}
+                />
+                <NavLink to="/SignIn">
+                  <label className="w-100 btn btn-warning myBtn h6">
+                    Have an Account Already? click here <span className="mirror">👉</span>
+                  </label>{" "}
+                </NavLink>
+              </div>
             </div>
           </div>
         </div>

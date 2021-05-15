@@ -25,12 +25,7 @@ const SignIn = (props) => {
   useEffect(() => {
     /*  console.log("entre a validr"); */
     const pass = preUser.password;
-    setValidationsPass([
-      pass.length > 5,
-      pass.search(/[A-Z]/) > -1,
-      pass.search(/[0-9]/) > -1,
-      pass.search(/[$&+,:;=?@#]/) > -1,
-    ]);
+    setValidationsPass([pass.length > 5, pass.search(/[A-Z]/) > -1, pass.search(/[0-9]/) > -1]);
   }, [preUser.password]);
 
   useEffect(() => {
@@ -95,27 +90,39 @@ const SignIn = (props) => {
           </div>
           <div className="bg-secondary">
             <div className="font-italic  mt-3 mb-2 bg-white border-1 p-3 d-flex flex-column">
-              <div className="borderBottom mt-1">
+              <span className="small mt-1 afterRed">your registered email</span>
+              <div className="border mt-1">
                 <input
                   type="mail"
                   autoFocus
                   onChange={(e) => setPreUser({ ...preUser, email: e.target.value.toLowerCase() })}
                   value={preUser.email}
-                  placeholder="1) your registered email address"
+                  placeholder="your registered email address"
                   className={
                     !validationsOther[2]
-                      ? "ng-dirty border-0 textos small w95"
-                      : "ng-valid border-0  textos small w95"
+                      ? "ng-dirty border-0 textos small w-100"
+                      : "ng-valid border-0  textos small w-100"
                   }
                 />
-                📧
+
                 {/*  {console.log("validacionesotro", validationsOther)} */}
               </div>
               {/*  <div className="small border mt-1"> */}
               {/* </div> */}
-              <div className="w35 mt-4 d-flex justify-content-between">
-                <span className="small">show your password</span>
-
+              <div className="w35 mt-4 d-flex justify-content-between"></div>
+              <div className="mt-1 mb-5  border w35">
+                <input
+                  onChange={(e) => setPreUser({ ...preUser, password: e.target.value })}
+                  value={preUser.password}
+                  type={eyeState ? "password" : "text"}
+                  placeholder="your secret password"
+                  className="mb-1 ng-dirty"
+                  className={
+                    !validationsPass.includes(false)
+                      ? "ng-valid textos w90 small"
+                      : "ng-dirty textos w90 small"
+                  }
+                ></input>
                 <label htmlFor="eye">
                   <i className={eyeState ? "fas fa-eye-slash" : "fas fa-eye"}></i>
                   <input
@@ -126,59 +133,36 @@ const SignIn = (props) => {
                   ></input>{" "}
                 </label>
               </div>
-              <div className="mt-1 mb-5  border w35">
-                <input
-                  onChange={(e) => setPreUser({ ...preUser, password: e.target.value })}
-                  value={preUser.password}
-                  type={eyeState ? "password" : "text"}
-                  placeholder="2) your secret password"
-                  className="mb-1 ng-dirty"
-                  className={
-                    !validationsPass.includes(false)
-                      ? "ng-valid textos w-100 small"
-                      : "ng-dirty textos w-100 small"
-                  }
-                ></input>
+
+              <div className="m-auto w-50 d-flex flex-column justify-content-center text-center">
+                <button className="btn mb-1 btn-danger myBtn " onClick={() => flogInUser()}>
+                  Continue
+                </button>
+                <GoogleLogin
+                  clientId="829812608617-0sn9cfi15261rmp12hd06m7sj55plu0u.apps.googleusercontent.com"
+                  render={(renderProps) => (
+                    <div
+                      onClick={renderProps.onClick}
+                      disabled={renderProps.disabled}
+                      className="myBtn btn btn-primary  d-flex"
+                    >
+                      <div className=""></div>
+                      <i className="w-25 pt-1 pl-5 ml-5 fab fa-google"></i>
+                      <div className="w-50 text-center">SignUp with Google</div>
+                    </div>
+                  )}
+                  buttonText="Login"
+                  onSuccess={responseGoogle}
+                  onFailure={responseGoogle}
+                  cookiePolicy={"single_host_origin"}
+                />
+
+                <NavLink to="/SignUp">
+                  <label className="mt-2 w-100 btn btn-info myBtn h6">
+                    New at TrainedMind?,Join us here. <span className="mirror">👉</span>
+                  </label>{" "}
+                </NavLink>
               </div>
-
-              <button className="btn mb-1 btn-danger myBtn " onClick={() => flogInUser()}>
-                Continue
-              </button>
-              <GoogleLogin
-                clientId="829812608617-0sn9cfi15261rmp12hd06m7sj55plu0u.apps.googleusercontent.com"
-                render={(renderProps) => (
-                  <div
-                    onClick={renderProps.onClick}
-                    disabled={renderProps.disabled}
-                    className="myBtn btn btn-primary  d-flex"
-                  >
-                    <div className=""></div>
-                    <i className="w-25 pt-1 pl-5 ml-5 fab fa-google"></i>
-                    <div className="w-50 text-center">SignUp with Google</div>
-                  </div>
-                )}
-                buttonText="Login"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-                cookiePolicy={"single_host_origin"}
-              />
-
-              {/* facebook btn */}
-              <div
-                className="fb-login-button"
-                data-width=""
-                data-size="large"
-                data-button-type="continue_with"
-                data-layout="rounded"
-                data-auto-logout-link="true"
-                data-use-continue-as="true"
-              ></div>
-
-              <NavLink to="/SignUp">
-                <label className="mt-2 w-100 btn btn-info myBtn h6">
-                  New at TrainedMind?,Join us here. <span className="mirror">👉</span>
-                </label>{" "}
-              </NavLink>
             </div>
           </div>
         </div>
@@ -194,13 +178,7 @@ const SignIn = (props) => {
     </>
   );
 };
-/* REDUX */
-/*
- const mapStateToProps = (state) => {
-  return {
 
-  };
-};*/
 const mapDispatchToProps = {
   logInUser: usersActions.logInUser,
 };
