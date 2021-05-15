@@ -77,7 +77,7 @@ const SignIn = (props) => {
       >
         {props.theUser && console.log("X", props.theUser)}
 
-        <div className=" w40 mi100 ">
+        <div className=" w-50 mi100 ">
           <div className="titleForm titulos m-3 h3 ">Sign In</div>
           <div className="h6 small textos text-center">welcome back 💪</div>
           <div className="errorContainer" style={{ display: errorVisible ? "block" : "none" }}>

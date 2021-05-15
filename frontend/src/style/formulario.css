@@ -143,7 +143,7 @@ html {
 
 .signInVideo {
   position: absolute;
-  left: 40%;
+  left: 50%;
   bottom: -30%;
 
   overflow-x: hidden;
@@ -153,11 +153,6 @@ html {
 
 .signInVideoContainer {
   height: 600px;
-
-  /* top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%; */
 }
 
 .w40 {
@@ -197,4 +192,8 @@ html {
 
 .borderX:focus {
   border: none;
+}
+
+input::placeholder {
+  font-style: italic;
 }
