@@ -60,6 +60,7 @@ const ClassList = (props) => {
                     </div>
                     <div className="contenedorProfesorYbtn">
                         <div className="cardProfesor">
+                            <div className="titleCardTeacher"><h2>Teacher</h2></div>
                             <div className="fotoYnombreProfesor">
                                 <div className="fotoProfesor" style={{ backgroundImage: `url(${profilePicture})` }}> </div>
                                 <h2>{firstName} {lastName}</h2>
@@ -69,7 +70,7 @@ const ClassList = (props) => {
                                 <p>{email}</p>
                             </div>
                         </div>
-                        <div> <Link to={`/foro/${props.match.params.id}`} ><button className="btnDashBoard">Go course!</button></Link></div>
+                        <div className="contenedorForumConsultas"> <Link to={`/foro/${props.match.params.id}`} ><button className="btnDashBoard">Consultation forum</button></Link></div>
                     </div>
                     <div className="contenedorTitle">
                         <h2>Program Course</h2>

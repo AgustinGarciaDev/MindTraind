@@ -348,6 +348,11 @@
            font-size: 3vw;
     font-family: 'Anton';
    }
+    .titleCardTeacher > h2{
+    position: relative;
+    font-family: 'Anton';
+   }
+
 /* Responsive lista de cursos*/
 
 
@@ -425,9 +430,30 @@
     margin:1vh;
 }
 
+
 }
 
-@media only screen and (min-device-width : 701px) and (max-device-width : 1500px) {
+@media only screen and (min-device-width : 768px) and (max-device-width : 1500px) {
+    
+    .cardProfesor {
+       height: 13vw;
+    }
+    .contenedorTitle{
+            margin-top: 5vw;
+    margin-bottom: 2vw;
+    }
+    .btnClass {
+        width: 19vw;
+    }
+    .contenedorClase{
+        width: 81vw;
+        height: 7vw;
+    }
+    
+.contenedorTitle > h2 {
+    font-size: 4vw;
+
+}
     .contenedorCourseAndSideBar{
         width: 100%;
         display: flex;
@@ -511,7 +537,46 @@
 
 
 
+
+@media only screen and (min-device-width : 225px) and (max-device-width : 768px){
+   
+    .contenedorForumConsultas{
+        margin-top: 2vw;
+        margin-bottom: 2vw;
+    }
+   .contenedorProfesorYbtn{
+       flex-direction: column;
+   }
+  
+
+    .cardProfesor {
+      height: 30vw;
+    }
+
+    .contenedorTitle{
+            margin-top: 5vw;
+    margin-bottom: 2vw;
+    }
+  .btnClass {
+    width: 100%;
+}
+    .contenedorClase{
+        width: 86vw;
+        height: 14vw;
+    }
+    
+    .contenedorTitle > h2 {
+            font-size: 7vw;
+    }
+    .fa-envelope{
+        font-size: 4vw;
+    }
+}
+
+
 @media only screen and (min-device-width : 451px) and (max-device-width : 700px) {
+   
+   
     .contenedorCourseAndSideBar{
         width: 100%;
         display: flex;
