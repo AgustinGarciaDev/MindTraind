@@ -10,8 +10,8 @@ import { connect } from "react-redux"
 const Foro = (props) => {
 
     const idCourse = props.match.params.id
-    const [commentsCourse, setCommentsCourse] = useState([]);
-    const { courses, getCourseById } = props
+    
+    const { getCourseById, currentCourse } = props
     const { firstName, lastName, profilePicture, token } = props.userLogged
     const [modalShow, setModalShow] = useState(false);
     const [objConsult, setobjConsult] = useState({
@@ -22,29 +22,15 @@ const Foro = (props) => {
         action: ""
     })
 
-    async function fetchAPI(idCourse) {
-        try {
-            const course = await getCourseById(idCourse)
-            setCommentsCourse(course.comments)
-
-        } catch (err) {
-            console.log(err)
-        }
-    }
     useEffect(() => {
-
-        if (courses.length !== 0) {
-            let course = courses.find(aCourse => aCourse._id === idCourse)
-            setCommentsCourse(course.comments)
-        }
-        else {
-            fetchAPI(idCourse)
+        if (!currentCourse) {
+            getCourseById(idCourse)
         }
     }, [])
 
 
 
-    const inputData = (e) => {
+    const inputData = (e=null) => {
         const campo = e.target.name
         const valor = e.target.value
         setobjConsult({
@@ -53,30 +39,29 @@ const Foro = (props) => {
         })
     }
 
-    const sendComent = async () => {
+    const sendComent =  () => {
         console.log(objConsult)
         if (objConsult.title === "" || objConsult.comment === "") {
             showToast('error', "You cant add text")
         } else {
-            const respuesta = await props.sendPost({ ...objConsult, action: "add", token: token })
-            console.log(respuesta)
-            setCommentsCourse(respuesta.comments)
+            props.sendPost({ ...objConsult, action: "add", token: token })
         }
     }
 
-    const editPost = async (idComment, title, text) => {
-        const respuesta = await props.editPost({ ...objConsult, action: "update", idComment: idComment, title: title, text: text })
-        setCommentsCourse(respuesta.comments)
+    const editPost =  (idComment, title, text) => {
+        props.editPost({ ...objConsult, action: "update", idComment: idComment, title: title, text: text })
+        
     }
 
-    const deletePost = async (e) => {
+    const deletePost =  (e) => {
 
-        const respuesta = await props.deletePost({ ...objConsult, action: "delete", idComment: e.idComment, token: token })
+        props.deletePost({ ...objConsult, action: "delete", idComment: e.idComment, token: token })
         showToast('success', "Delete Post")
-        setCommentsCourse(respuesta.comments)
-
     }
-
+    
+    if(!props.currentCourse || !props.userLogged){
+        return null
+    }
     return (
         <>
             <NavBarDashBoard />
@@ -124,7 +109,7 @@ const Foro = (props) => {
                         }
                     </div>
                     <div className="contenedorComentarios">
-                        {commentsCourse.map(post => <Post editPost={editPost} deletePost={deletePost} idCourse={idCourse} post={post} />)}
+                        {props.currentCourse.comments.map(post => <Post editPost={editPost} deletePost={deletePost} idCourse={idCourse} post={post} />)}
                     </div>
 
                 </div>
@@ -138,7 +123,7 @@ const Foro = (props) => {
 const mapStateToProps = state => {
     return {
         userLogged: state.user.userLogged,
-        courses: state.courses.courses
+        currentCourse: state.courses.currentCourse
     }
 }
 

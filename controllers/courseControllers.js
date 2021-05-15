@@ -249,7 +249,6 @@ const courseControllers = {
         console.log(req.params.id)
         let response, error;
         try {
-            console.log(req.user)
             const idCourse = req.params.id;
             const userId = req.user._id;
             const { idComment, title, text, action } = req.body;
