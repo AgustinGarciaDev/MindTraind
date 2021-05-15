@@ -2,31 +2,42 @@ import { useState, useEffect } from "react"
 import Reply from '../components/Reply'
 import coursesActions from "../redux/actions/coursesActtions"
 import { connect } from "react-redux"
-import { showToast } from '../helpers/myToast'
+import { showToast, showTostError500 } from '../helpers/myToast'
 import { OverlayTrigger } from 'react-bootstrap'
 import { Popover } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 
 const Post = (props) => {
+    useEffect(()=>{
+        if(!props.currentCourse){
+            fetchAPI();
+        }
+    },[]);
+    const fetchAPI = async () => {
+        try {
+            props.getCourseById(props.idCourse);
+            
+        } catch (err) {
+            console.log(err);
+            showTostError500();
+        }
+    }
     const [show, setShow] = useState(false);
     const [editInput, setEditInput] = useState(false);
     const [editInputTitle, setEditInputTitle] = useState(false)
-    const { idCourse } = props
-    const { title, _id, text, user: { profilePicture, lastName, firstName }, reply } = props.post
+    const { title, _id, text, user: { profilePicture, lastName, firstName } } = props.post
     const [commentReply, setCommentReply] = useState(false)
     const { token, email } = props.userLogged
-    const [replyCourse, setReplyCourse] = useState(null);
     const [objConsult, setobjConsult] = useState({
         textReply: "",
-        idCourse: idCourse,
+        idCourse: props.currentCourse._id,
         token: token,
         action: "add",
         userEmailReply: email,
         idComment: _id
     })
 
-    console.log(objConsult)
 
     const [editPost, setEditPost] = useState({
         text: text,
@@ -57,18 +68,16 @@ const Post = (props) => {
     }
 
     const changeInput = () => {
-
         setEditInput(!editInput)
     }
 
-    const sendReplyComment = async () => {
+    const sendReplyComment =  () => {
 
         if (objConsult.textReply === "") {
             showToast('error', "You cant add text")
         } else {
-            const respuesta = await props.sendReply(objConsult)
-            console.log(respuesta)
-            /*  setReplyCourse(respuesta.comments) */
+             props.sendReply(objConsult)
+
         }
     }
 
@@ -81,9 +90,6 @@ const Post = (props) => {
         if (e.target.id === "btnTitle") {
             setEditInputTitle(!editInputTitle)
         }
-
-
-
     }
 
 
@@ -150,7 +156,8 @@ const Post = (props) => {
                         <textarea
                             className="textAreaEdit"
                             onChange={inputData}
-                            name="text" type="text"
+                            name="text" 
+                            type="text"
                             value={editPost.text}
                         ></textarea>
                         <button id="btnText" onClick={editCommentChange} >
@@ -164,13 +171,10 @@ const Post = (props) => {
                 <i class="fas fa-reply"></i>
                 <p>Reply</p>
             </div>
-            { commentReply &&
+            
                 <>
-                    { replyCourse === undefined
-                        ? alert("hola")
-                        : <Reply replyCourse={replyCourse} />
+                    {props.post.reply.map(aReply => <Reply key={aReply._id} replyComment={aReply} idComment = {props.post._id} idCourse={props.currentCourse._id}/>)}
 
-                    }
                     <div className="contenedorInputComment">
                         <input
                             value={objConsult.textReply}
@@ -184,7 +188,7 @@ const Post = (props) => {
 
                     </div>
                 </>
-            }
+            
 
         </div>
     )
@@ -194,7 +198,7 @@ const Post = (props) => {
 const mapStateToProps = state => {
     return {
         userLogged: state.user.userLogged,
-        courses: state.courses.courses
+        currentCourse: state.courses.currentCourse
     }
 }
 
@@ -203,7 +207,7 @@ const mapDispatchToProps = {
 
     /*     editComment: coursesActions.editComment,
         deleteComment: coursesActions.deleteComment, */
-    sendReply: coursesActions.sendReply,
+    sendReply: coursesActions.modifyReply,
     getCourseById: coursesActions.getCourseById,
 }
 
