@@ -4,6 +4,7 @@ import CourseContainer from "../components/CourseContainer"
 import NewCourse from "../components/NewCourse"
 import { useState } from "react"
 import NewJob from "../components/NewJob"
+import JobsContainer from "../components/JobsContainer"
 
 const Admin = () => {
     const [show, setShow] = useState()
@@ -24,7 +25,7 @@ const Admin = () => {
                                     <div className="selectCard" onClick={() => setShow(<NewCourse setShow={setShow} />)} style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/pexels-estudio-polaroid-3112004-scaled.jpg')` }}>
                                         <h3>New course</h3>
                                     </div>
-                                    <div className="selectCard" onClick={() => setShow(<NewCourse setShow={setShow} />)} style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/pexels-estudio-polaroid-3112004-scaled.jpg')` }}>
+                                    <div className="selectCard" onClick={() => setShow(<JobsContainer setShow={setShow} />)} style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/pexels-estudio-polaroid-3112004-scaled.jpg')` }}>
                                         <h3>Jobs</h3>
                                     </div>
                                     <div className="selectCard" onClick={() => setShow(<NewJob setShow={setShow} />)} style={{ backgroundImage: `url('http://baravdg.com/wp-content/uploads/2021/05/pexels-lukas-669584-scaled.jpg')` }}>

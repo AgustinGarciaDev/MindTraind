@@ -296,6 +296,12 @@ small{
     justify-content: flex-end;
 }
 
+@media (max-width: 600px){
+    .selectCard{
+        width: 70%;
+    }
+}
+
 .selectCard h3{
     background-color: rgb(0, 0, 0, 0.7);
     color: whitesmoke;

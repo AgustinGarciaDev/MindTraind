@@ -166,8 +166,8 @@ const NewCourse = (props) => {
                     }
                 </div>
                 <div className="formButtons">
-                    <button className="formButtonsNew" onClick={() => props.setShow()}>Go back</button>
-                    <button className="formButtonsNew" onClick={sendData}>Add</button>
+                    <button className="formButtonsNew" type="button" onClick={() => props.setShow()}>Go back</button>
+                    <button className="formButtonsNew" type="button" onClick={sendData}>Add</button>
                 </div>
             </form>
         </div>

@@ -17,7 +17,7 @@ const jobControllers = {
         try {
             let newJob = new Job(req.body);
             await newJob.save();
-            response = newJob;
+            response = await Job.find();
         } catch (err) {
             console.log(err);
             error = "error missing required fields ";
