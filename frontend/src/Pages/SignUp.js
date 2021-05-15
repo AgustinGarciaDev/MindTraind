@@ -116,16 +116,16 @@ const SignUp = (props) => {
       <Header />
       <div
         className="signUpContainer d-flex "
-        /* onMouseOver={() => setHidden(false)}
-      onMouseOut={() => setHidden(false)} */
+      /* onMouseOver={() => setHidden(false)}
+    onMouseOut={() => setHidden(false)} */
       >
         {props.theUser && console.log("X", props.theUser)}
         {/*  <p> "hola" {hidden && "hola"}</p> */}
         <div className="w-50 mi100">
           <div className="titleForm titulos mt-2 h3 ">Sign Up Form</div>
-          <div className="h6 small textos text-center">Change your life⚡</div>
-          <div className="h6 text-danger small textos text-center">
-            join us in 5 simple steps (all fields are mandatory)
+          <div className=" small textos text-center">
+            <h2 className="titleSignUp"> join us in 5 simple steps </h2>
+
           </div>
           <div
             className="errorContainer especial"
@@ -153,7 +153,7 @@ const SignUp = (props) => {
                   type="text"
                   onChange={(e) => setPreUser({ ...preUser, firstName: e.target.value })}
                   value={preUser.firstName}
-                  placeholder={preUserPlaceHolder.firstName || "1) Please, enter your name"}
+                  placeholder={preUserPlaceHolder.firstName || "Please, enter your name"}
                   autoFocus
                   /*    className="ng-dirty  w-100" */
                   className={
@@ -162,19 +162,19 @@ const SignUp = (props) => {
                       : "ng-valid  textos small  w95"
                   }
                 />
-                👤
+
               </div>
               <div className="borderBottom mt-1">
                 <input
                   type="text"
                   onChange={(e) => setPreUser({ ...preUser, lastName: e.target.value })}
                   value={preUser.lastName}
-                  placeholder={preUserPlaceHolder.lastName || "2) your last name"}
+                  placeholder={preUserPlaceHolder.lastName || " your last name"}
                   className={
                     !validationsOther[1] ? "ng-dirty textos small w95" : "ng-valid textos small w95"
                   }
                 />
-                👤
+
               </div>
               <div className="borderBottom mt-1 ">
                 <input
@@ -182,24 +182,24 @@ const SignUp = (props) => {
                   onChange={(e) => setPreUser({ ...preUser, firstName: e.target.value })}
                   onChange={(e) => setPreUser({ ...preUser, profilePicture: e.target.value })}
                   value={preUser.profilePicture}
-                  placeholder={preUserPlaceHolder.profilePicture || "3) your url image"}
+                  placeholder={preUserPlaceHolder.profilePicture || " your url image"}
                   className={
                     !validationsOther[3] ? "ng-dirty textos small w95" : "ng-valid textos small w95"
                   }
                 />
-                👤
+
               </div>
               <div className="borderBottom mt-1">
                 <input
                   type="mail"
                   onChange={(e) => setPreUser({ ...preUser, email: e.target.value.toLowerCase() })}
                   value={preUser.email}
-                  placeholder={preUserPlaceHolder.email || "4) a valid email adress"}
+                  placeholder={preUserPlaceHolder.email || " a valid email adress"}
                   className={
                     !validationsOther[2] ? "ng-dirty textos small w95" : "ng-valid textos small w95"
                   }
                 />
-                📧
+
                 {/*  {console.log("validacionesotro", validationsOther)} */}
               </div>
               {/*  <div className="small border mt-1"> */}
@@ -222,7 +222,7 @@ const SignUp = (props) => {
                   onFocus={() => setPassGuideVisible(true)}
                   value={preUser.password}
                   type={eyeState ? "password" : "text"}
-                  placeholder="5) your password"
+                  placeholder=" your password"
                   className={
                     !validationsPass.includes(false)
                       ? "ng-valid titulos w-100"

@@ -119,40 +119,31 @@
   margin: 0 auto;
 }
 
-html {
+.signUpContainer {
   overflow-x: hidden;
   overflow-y: hidden;
 }
 .signUpVideoContainer {
   height: 600px;
-  /*  overflow-x: hidden; */
-  /* top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%; */
+
 }
 
 .signUpVideo {
-  position: absolute;
-  left: 50%;
-  bottom: -200%;
-  overflow-x: hidden;
-
-  /* transform: translate(-50%, -50%); /* % of current element*/
+    position: relative;
+    bottom: 18vw;
+    width: 100%;
 }
 
 .signInVideo {
   position: absolute;
   left: 50%;
   bottom: -30%;
-
   overflow-x: hidden;
-
-  /* transform: translate(-50%, -50%); /* % of current element*/
 }
 
 .signInVideoContainer {
-  height: 600px;
+     width: 50vw;
+     height: 100vw;
 }
 
 .w40 {
@@ -173,7 +164,16 @@ html {
 
 .signUpContainer,
 .signInContainer {
-  height: 450px;
+  height: 42.19vw;
+}
+
+.titleSignUp{
+    font-size: 3vw;
+    color: black;
+    font-family: "anton";
+    font-style: italic;
+    margin-bottom: 2vw;
+    margin-top: 2vw;
 }
 
 @media screen and (max-width: 992px) {
