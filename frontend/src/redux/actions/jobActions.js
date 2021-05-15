@@ -16,9 +16,24 @@ const JobActions = {
                 console.log(err);
                 showTostError500();
             }
-
         }
+    },
 
+    getJobs: () => {
+        return async (dispatch, getState) => {
+            try {
+                const response = await axios.get('http://localhost:4000/api/jobs')
+                if (response.data.success) {
+                    dispatch({ type: 'GET_JOBS', payload: response.data.response })
+                    return response
+                } else {
+                    return response
+                }
+            } catch (err) {
+                console.log(err);
+                showTostError500();
+            }
+        }
     }
 }
 

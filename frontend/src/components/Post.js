@@ -76,8 +76,14 @@ const Post = (props) => {
         if (objConsult.textReply === "") {
             showToast('error', "You cant add text")
         } else {
+<<<<<<< HEAD
              props.sendReply(objConsult)
 
+=======
+            const respuesta = await props.sendReply(objConsult)
+            console.log(respuesta.comments)
+            /*  setReplyCourse(respuesta.comments) */
+>>>>>>> 00ca7d9e6e184ff74b5114f646cc29278c3fb4a2
         }
     }
 
@@ -175,7 +181,12 @@ const Post = (props) => {
                 <>
                     {props.post.reply.map(aReply => <Reply key={aReply._id} replyComment={aReply} idComment = {props.post._id} idCourse={props.currentCourse._id}/>)}
 
+<<<<<<< HEAD
                     <div className="contenedorInputComment">
+=======
+                    }
+                    <div className="contenedorInputComment comment">
+>>>>>>> 00ca7d9e6e184ff74b5114f646cc29278c3fb4a2
                         <input
                             value={objConsult.textReply}
                             onChange={inputDataReply}

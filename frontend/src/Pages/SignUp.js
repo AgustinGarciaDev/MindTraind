@@ -81,33 +81,34 @@ const SignUp = (props) => {
         password: "",
       });
       setPreUserPlaceHolder({
-        firstName: "👉" + miRespuesta[0].message + "👈",
-        lastName: "👉" + miRespuesta[1].message + "👈",
-        profilePicture: "👉" + miRespuesta[2].message + "👈",
-        email: "👉" + miRespuesta[3].message + "👈",
+        firstName: "🚩" + miRespuesta[0].message,
+        lastName: "🚩" + miRespuesta[1].message,
+        profilePicture: "🚩" + miRespuesta[2].message,
+        email: "🚩" + miRespuesta[3].message,
         password: "",
       });
-      /*       setErrorVisible(!errorVisible); */
+
       setErrorVisible(true);
 
-      console.log("errpres", miRespuesta);
+      console.log("errores", miRespuesta);
     } catch {
+      props.history.push("/dashboard");
       console.log("no funciono");
     }
   };
 
   const responseGoogle = (response) => {
     alert("entre");
-    const { givenName, email, googleId, imageUrl } = response.profileObj;
+    const { givenName, familyName, email, googleId, imageUrl } = response.profileObj;
     props.createAndLogIn({
       firstName: givenName,
-      lastName: givenName,
+      lastName: familyName,
       email: email,
       profilePicture: imageUrl,
       password: "Cx1" + googleId,
       role: "noRole",
     });
-    props.history.push("/");
+    props.history.push("/dashboard");
   };
 
   return (
@@ -115,16 +116,16 @@ const SignUp = (props) => {
       <Header />
       <div
         className="signUpContainer d-flex "
-        /* onMouseOver={() => setHidden(false)}
-      onMouseOut={() => setHidden(false)} */
+      /* onMouseOver={() => setHidden(false)}
+    onMouseOut={() => setHidden(false)} */
       >
         {props.theUser && console.log("X", props.theUser)}
         {/*  <p> "hola" {hidden && "hola"}</p> */}
-        <div className={"w-50"}>
-          <div className="ti  titleForm titulos m-3 h2 ">Sign Up Form</div>
-          <div className="h6 small textos text-center">Change your life⚡</div>
-          <div className="h6 text-danger small textos text-center">
-            join us in 5 simple steps (all fields are mandatory)
+        <div className="w-50 mi100">
+          <div className="titleForm titulos mt-2 h3 ">Sign Up Form</div>
+          <div className=" small textos text-center">
+            <h2 className="titleSignUp"> join us in 5 simple steps </h2>
+
           </div>
           <div
             className="errorContainer especial"
@@ -140,25 +141,19 @@ const SignUp = (props) => {
             </span>
             <div className="text-center">
               {" "}
-              🚫 sorry we couldn't create an account with your provided info, please refer to the
-              folowing problems{" "}
+              🚫 sorry we couldn't create an account with your provided info, please watch below for
+              the missing details.{" "}
             </div>
-            {/*    {erroresSignUp.length > 0 &&
-            setPreUser({
-              ...preUser,
-              firstName: erroresSignUp[0].message || "k",
-              lastName: erroresSignUp[1].message || "l",
-            })} */}
           </div>
 
           <div className="bg-secondary">
-            <div className="font-italic  mb-2 bg-white border-1 p-3 d-flex flex-column">
-              <div className="border">
+            <div className="font-italic bg-white border-1 p-2 d-flex flex-column">
+              <div className="borderBottom">
                 <input
                   type="text"
                   onChange={(e) => setPreUser({ ...preUser, firstName: e.target.value })}
                   value={preUser.firstName}
-                  placeholder={preUserPlaceHolder.firstName || "1) Please, enter your name"}
+                  placeholder={preUserPlaceHolder.firstName || "Please, enter your name"}
                   autoFocus
                   /*    className="ng-dirty  w-100" */
                   className={
@@ -167,48 +162,49 @@ const SignUp = (props) => {
                       : "ng-valid  textos small  w95"
                   }
                 />
-              </div>
 
-              <div className="border mt-1 ">
+              </div>
+              <div className="borderBottom mt-1">
                 <input
                   type="text"
                   onChange={(e) => setPreUser({ ...preUser, lastName: e.target.value })}
                   value={preUser.lastName}
-                  placeholder={preUserPlaceHolder.lastName || "2) your last name"}
+                  placeholder={preUserPlaceHolder.lastName || " your last name"}
                   className={
                     !validationsOther[1] ? "ng-dirty textos small w95" : "ng-valid textos small w95"
                   }
                 />
+
               </div>
-              <div className="border mt-1 ">
+              <div className="borderBottom mt-1 ">
                 <input
                   type="text"
                   onChange={(e) => setPreUser({ ...preUser, firstName: e.target.value })}
                   onChange={(e) => setPreUser({ ...preUser, profilePicture: e.target.value })}
                   value={preUser.profilePicture}
-                  placeholder={preUserPlaceHolder.profilePicture || "3) your url image"}
+                  placeholder={preUserPlaceHolder.profilePicture || " your url image"}
                   className={
                     !validationsOther[3] ? "ng-dirty textos small w95" : "ng-valid textos small w95"
                   }
                 />
-                👤
+
               </div>
-              <div className="border mt-1">
+              <div className="borderBottom mt-1">
                 <input
                   type="mail"
                   onChange={(e) => setPreUser({ ...preUser, email: e.target.value.toLowerCase() })}
                   value={preUser.email}
-                  placeholder={preUserPlaceHolder.email || "4) a valid email adress"}
+                  placeholder={preUserPlaceHolder.email || " a valid email adress"}
                   className={
                     !validationsOther[2] ? "ng-dirty textos small w95" : "ng-valid textos small w95"
                   }
                 />
-                📧
+
                 {/*  {console.log("validacionesotro", validationsOther)} */}
               </div>
               {/*  <div className="small border mt-1"> */}
               {/* </div> */}
-              <div className="w-25 mt-3 d-flex justify-content-between">
+              <div className="w35 mt-2 d-flex justify-content-between">
                 <span className="small italics">show your password </span>
                 <label htmlFor="eye" className="ml-5">
                   <i className={eyeState ? "pl-5 fas fa-eye-slash" : "fas fa-eye"}></i>
@@ -220,21 +216,24 @@ const SignUp = (props) => {
                   ></input>{" "}
                 </label>
               </div>
-              <div className="w-25 border mb-2 ">
+              <div className="w35 border mb-2 ">
                 <input
                   onChange={(e) => setPreUser({ ...preUser, password: e.target.value })}
                   onFocus={() => setPassGuideVisible(true)}
                   value={preUser.password}
                   type={eyeState ? "password" : "text"}
-                  placeholder="5) your password"
+                  placeholder=" your password"
                   className={
-                    !validationsPass.includes(false) ? "ng-valid textos " : "ng-dirty textos "
+                    !validationsPass.includes(false)
+                      ? "ng-valid titulos w-100"
+                      : "ng-dirty titulos w-100"
                   }
                 ></input>
               </div>
               {/* errorPassContainer */}
               <div className="mb-3">
                 <span
+                  className="small"
                   style={{
                     display: passGuideVisible && validationsPass.includes(false) ? "block" : "none",
                   }}
@@ -242,7 +241,6 @@ const SignUp = (props) => {
                   **Password guidelines**
                 </span>
                 <ul>
-                  {/*  {console.log("soy el validations", validations)} */}
                   <li
                     style={{
                       display:
@@ -281,7 +279,6 @@ const SignUp = (props) => {
                   </li>
                 </ul>
               </div>
-              <div>--------------------------------------------</div>
               <button
                 className="btn mb-1 btn-danger myBtn "
                 onClick={() => {
@@ -309,7 +306,7 @@ const SignUp = (props) => {
                 cookiePolicy={"single_host_origin"}
               />
               <NavLink to="/SignIn">
-                <label className="mt-2 w-100 btn btn-warning myBtn h6">
+                <label className="mt-1 w-100 btn btn-warning myBtn h6">
                   Have an Account Already? click here <span className="mirror">👉</span>
                 </label>{" "}
               </NavLink>
@@ -326,7 +323,6 @@ const SignUp = (props) => {
           </video>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

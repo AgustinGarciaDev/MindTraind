@@ -74,11 +74,19 @@ const Reply = ( {replyComment,modifyReply,idComment,idCourse,userLogged }) => {
         <>
             <div className="contenedorEditorYcomentario">
                 <div className="contenedorReply">
+<<<<<<< HEAD
                     {   <div className="fotoProfesor" style={{ backgroundImage: `url("${userReply.profilePicture}")` }}></div> }
                     <div className="contenedorDatosUserReply">
                             <h5>{userReply.firstName} {userReply.lastName}</h5> 
                         {!editInput
                             ? <div><p>{ textReply }</p></div>
+=======
+                    <div className="fotoProfesor" style={{ backgroundImage: `url("http://baravdg.com/wp-content/uploads/2021/05/1.jpg")` }}></div>
+                    <div className="contenedorDatosUserReply">
+                        <h5>Agustin Garcia</h5>
+                        {!editInput
+                            ? <div><p>respuesta</p></div>
+>>>>>>> 00ca7d9e6e184ff74b5114f646cc29278c3fb4a2
                             : <div className="contenedorInputEdit">
                                 <input
                                     className="inputEdit"

@@ -24,6 +24,7 @@ const EditCourse = (props) => {
                 [name]: value
             })
         }
+        console.log(course)
     }
 
     const createNewLesson = e => {
