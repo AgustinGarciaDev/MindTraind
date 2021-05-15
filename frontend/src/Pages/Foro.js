@@ -54,13 +54,12 @@ const Foro = (props) => {
     }
 
     const sendComent = async () => {
-        console.log(objConsult)
         if (objConsult.title === "" || objConsult.comment === "") {
             showToast('error', "You cant add text")
         } else {
             const respuesta = await props.sendPost({ ...objConsult, action: "add", token: token })
             console.log(respuesta)
-            setCommentsCourse(respuesta.comments)
+            /*  setCommentsCourse(respuesta.comments) */
         }
     }
 

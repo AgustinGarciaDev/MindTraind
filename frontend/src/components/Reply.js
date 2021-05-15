@@ -6,13 +6,17 @@ import { useState } from 'react'
 
 const Reply = (props) => {
 
+    console.log(props)
+
+    /*  const { textReply, userReply: { firstName, lastName, profilePicture } } = props.reply */
+
+    /*     console.log(props.reply) */
     const [show, setShow] = useState(false);
     const [editInput, setEditInput] = useState(false);
     const [comentario, setComentario] = useState({
         mensaje: "",
     })
 
-    /*   const { textReply, userReply: { firstName, lastName, profilePicture } } = props.reply */
 
 
 
@@ -57,11 +61,11 @@ const Reply = (props) => {
         <>
             <div className="contenedorEditorYcomentario">
                 <div className="contenedorReply">
-                    <div className="fotoProfesor" style={{ backgroundImage: `url("jh")` }}></div>
+                    {/*   <div className="fotoProfesor" style={{ backgroundImage: `url("${profilePicture}")` }}></div> */}
                     <div className="contenedorDatosUserReply">
-                        <h5>ff</h5>
+                        {/*      <h5>{firstName} {lastName}</h5> */}
                         {!editInput
-                            ? <div><p></p></div>
+                            ? <div><p>{/* {textReply} */}</p></div>
                             : <div className="contenedorInputEdit">
                                 <input
                                     className="inputEdit"

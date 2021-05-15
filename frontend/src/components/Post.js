@@ -13,17 +13,20 @@ const Post = (props) => {
     const [editInput, setEditInput] = useState(false);
     const [editInputTitle, setEditInputTitle] = useState(false)
     const { idCourse } = props
+    /* const { courses, getCourseById } = props */
     const { title, _id, text, user: { profilePicture, lastName, firstName }, reply } = props.post
     const [commentReply, setCommentReply] = useState(false)
     const { token, email } = props.userLogged
-    const [replyCourse, setReplyCourse] = useState(null);
+    const [replyCourse, setReplyCourse] = useState(props.post);
     const [objConsult, setobjConsult] = useState({
         textReply: "",
         idCourse: idCourse,
         token: token,
-        action: "add",
-        userEmailReply: email
+        action: "",
+        idComment: _id
     })
+
+
 
     const [editPost, setEditPost] = useState({
         text: text,
@@ -38,8 +41,8 @@ const Post = (props) => {
     const inputData = (e) => {
         const campo = e.target.name
         const valor = e.target.value
-        setEditPost({
-            ...editPost,
+        setobjConsult({
+            ...objConsult,
             [campo]: valor
         })
     }
@@ -47,16 +50,6 @@ const Post = (props) => {
     const changeInput = () => {
 
         setEditInput(!editInput)
-    }
-
-    const sendReply = async () => {
-
-        if (objConsult.textReply === "") {
-            showToast('error', "You cant add text")
-        } else {
-            const respuesta = await props.sendPost(objConsult)
-            setReplyCourse(respuesta.comments)
-        }
     }
 
     const editCommentChange = (e) => {
@@ -70,6 +63,20 @@ const Post = (props) => {
 
 
     }
+
+
+    const sendReply = async () => {
+
+        if (objConsult.textReply === "") {
+            showToast('error', "You cant add text")
+        } else {
+            const respuesta = await props.sendPost({ ...objConsult, action: "add" })
+            /*             console.log(respuesta.comments) */
+            /*    setReplyCourse(respuesta) */
+            /*      console.log(replyCourse) */
+        }
+    }
+
 
 
     const popover = (
@@ -95,6 +102,7 @@ const Post = (props) => {
             </Popover.Content>
         </Popover>
     )
+
 
     return (
         <div className="contenedorPost">
@@ -151,17 +159,15 @@ const Post = (props) => {
             </div>
             { commentReply &&
                 <>
-                    { replyCourse === undefined
-                        ? alert("hola")
-                        : <Reply replyCourse={replyCourse} />
+                    <div>
+                        {/*          {replyCourse.reply.map(reply => <Reply reply={reply} />)} */}
+                    </div>
 
-                    }
                     <div className="contenedorInputComment">
-                        <input onChange={inputData} name="textReply" className="inputComment" type="text" />
+                        <input value={objConsult.textReply} onChange={inputData} name="textReply" className="inputComment" type="text" />
                         <div onClick={sendReply} className="contenedorIconoSearch">
                             <i className="fas fa-paper-plane"></i>
                         </div>
-
                     </div>
                 </>
             }
@@ -184,7 +190,7 @@ const mapDispatchToProps = {
     /*     editComment: coursesActions.editComment,
         deleteComment: coursesActions.deleteComment, */
     sendPost: coursesActions.sendPost,
-    getCourseById: coursesActions.getCourseById,
+    /*    getCourseById: coursesActions.getCourseById, */
 }
 
 

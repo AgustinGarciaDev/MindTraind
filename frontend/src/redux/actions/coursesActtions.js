@@ -198,6 +198,25 @@ const coursesActions = {
 
     },
 
+    /* Reply Comment */
+    sendPost: (data) => {
+
+        return async (dispatch, getState) => {
+            try {
+                const response = await axios.put('http://localhost:4000/api/coursesReplyAComment/' + data.idCourse, data, {
+                    headers: { Authorization: "Bearer " + data.token },
+                })
+
+                if (response.data.success) {
+                    return response.data.response
+                }
+            } catch (err) {
+                console.log(err);
+                showTostError500();
+            }
+        }
+    },
+
 
 
 }
