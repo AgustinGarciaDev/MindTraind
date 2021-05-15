@@ -128,11 +128,6 @@ const Foro = (props) => {
                     </div>
 
                 </div>
-                <div className="contenedorBtn">
-                    <button className="btnDashBoard spaceBtnQuery">
-                        Question
-                    </button>
-                </div>
             </main>
 
 

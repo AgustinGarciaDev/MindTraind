@@ -22,8 +22,11 @@ const Post = (props) => {
         idCourse: idCourse,
         token: token,
         action: "add",
-        userEmailReply: email
+        userEmailReply: email,
+        idComment: _id
     })
+
+    console.log(objConsult)
 
     const [editPost, setEditPost] = useState({
         text: text,
@@ -44,18 +47,28 @@ const Post = (props) => {
         })
     }
 
+    const inputDataReply = (e) => {
+        const campo = e.target.name
+        const valor = e.target.value
+        setobjConsult({
+            ...objConsult,
+            [campo]: valor
+        })
+    }
+
     const changeInput = () => {
 
         setEditInput(!editInput)
     }
 
-    const sendReply = async () => {
+    const sendReplyComment = async () => {
 
         if (objConsult.textReply === "") {
             showToast('error', "You cant add text")
         } else {
-            const respuesta = await props.sendPost(objConsult)
-            setReplyCourse(respuesta.comments)
+            const respuesta = await props.sendReply(objConsult)
+            console.log(respuesta)
+            /*  setReplyCourse(respuesta.comments) */
         }
     }
 
@@ -159,8 +172,13 @@ const Post = (props) => {
 
                     }
                     <div className="contenedorInputComment">
-                        <input onChange={inputData} name="textReply" className="inputComment" type="text" />
-                        <div onClick={sendReply} className="contenedorIconoSearch">
+                        <input
+                            value={objConsult.textReply}
+                            onChange={inputDataReply}
+                            name="textReply"
+                            className="inputComment"
+                            type="text" />
+                        <div onClick={sendReplyComment} className="contenedorIconoSearch">
                             <i className="fas fa-paper-plane"></i>
                         </div>
 
@@ -185,7 +203,7 @@ const mapDispatchToProps = {
 
     /*     editComment: coursesActions.editComment,
         deleteComment: coursesActions.deleteComment, */
-    sendPost: coursesActions.sendPost,
+    sendReply: coursesActions.sendReply,
     getCourseById: coursesActions.getCourseById,
 }
 

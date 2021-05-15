@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 const Reply = (props) => {
 
-    console.log(props)
+    /*  console.log(props) */
 
     /*  const { textReply, userReply: { firstName, lastName, profilePicture } } = props.reply */
 

@@ -380,3 +380,63 @@ flex-direction: column;
 .fas{
     margin-right: 0;
 }
+
+@media screen and  (max-width:1000px)  and  (min-width:768px) {
+
+        .contenedorComentarios {
+            height: 59vw;
+        }
+        .contenedorComentarioYbuscador{
+                width: 65vw;
+        }
+        .contenedorBannerForo{
+            height: 42vw;
+            width: 26vw;
+        }
+        .spaceBtnForo{
+            margin-top: 14px;
+            height: 4vw;
+        }
+        .inputSearch {
+            width: 102%;
+            height: 4vw;
+            padding: 10px;
+        }
+        .contenedorComentario > p{
+            font-size: 20px;
+        }
+
+    }
+@media screen and  (max-width:600px)  and  (min-width:376px) {
+   
+    .contenedorPosteos{
+            flex-direction: column-reverse;
+            align-items: center;
+    }
+    .barraBuscadora{
+            width: 75vw;
+    }
+    .inputSearch{
+        height: 7vw;
+    }
+    .tituloForm{
+        font-size: 3vw;
+    }
+    .contenedorComentarios{ 
+            height: 87vw;
+    }
+
+    .contenedorIconoSearch{
+        height: 7vw;
+        width: 10vw;
+    }
+
+    .contenedorPost {
+        width: 80vw;
+    }
+
+    .contenedorBannerForo{
+            height: 49vw;
+    width: 105vw;
+    }
+}
