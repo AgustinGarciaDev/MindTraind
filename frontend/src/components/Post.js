@@ -67,7 +67,7 @@ const Post = (props) => {
             showToast('error', "You cant add text")
         } else {
             const respuesta = await props.sendReply(objConsult)
-            console.log(respuesta)
+            console.log(respuesta.comments)
             /*  setReplyCourse(respuesta.comments) */
         }
     }
@@ -171,7 +171,7 @@ const Post = (props) => {
                         : <Reply replyCourse={replyCourse} />
 
                     }
-                    <div className="contenedorInputComment">
+                    <div className="contenedorInputComment comment">
                         <input
                             value={objConsult.textReply}
                             onChange={inputDataReply}

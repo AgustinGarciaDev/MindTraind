@@ -61,11 +61,11 @@ const Reply = (props) => {
         <>
             <div className="contenedorEditorYcomentario">
                 <div className="contenedorReply">
-                    {/*   <div className="fotoProfesor" style={{ backgroundImage: `url("${profilePicture}")` }}></div> */}
+                    <div className="fotoProfesor" style={{ backgroundImage: `url("http://baravdg.com/wp-content/uploads/2021/05/1.jpg")` }}></div>
                     <div className="contenedorDatosUserReply">
-                        {/*      <h5>{firstName} {lastName}</h5> */}
+                        <h5>Agustin Garcia</h5>
                         {!editInput
-                            ? <div><p>{/* {textReply} */}</p></div>
+                            ? <div><p>respuesta</p></div>
                             : <div className="contenedorInputEdit">
                                 <input
                                     className="inputEdit"

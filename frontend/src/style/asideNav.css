@@ -9,7 +9,8 @@
 }
 
 .contenedorWeb{
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
     background: #F0F0F0;
 }
 

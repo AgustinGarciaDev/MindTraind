@@ -36,6 +36,9 @@
 
 .tituloDasboard{
     text-align: center;
+    font-family: "Anton";
+        margin-top: 6vw;
+    margin-bottom: 2vw;
 }
 
 .contenedorBtn{
@@ -235,6 +238,7 @@
     height: 5vw;
     padding: 20px;
     justify-content: space-between;
+    border-radius: 3vw;
 }
 
 .btnClass{
@@ -266,6 +270,84 @@
     justify-content: center;
 }
 
+.portadaCourse{
+    height: 32vw;
+    background-position: initial;
+    background-size: cover;
+}
+
+.superposicionPortada{
+    backdrop-filter: brightness(0.5);
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.textTitle{
+    font-family: "Anton";
+    color: white;
+    font-size: 5vw;
+}
+.contenedorProfesorYbtn{
+        display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cardProfesor{
+    display: flex;
+    background: #f7f7f7;
+     height: 10vw;
+    padding: 20px;
+    box-shadow: 0 5px 25px 10px rgb(0 0 0 / 14%);
+    border-radius: 2vw;
+        margin-top: 2vw;
+    flex-direction: column;
+}
+    .fotoYnombreProfesor > h2{
+        margin-left: 11px;
+           font-family: 'Anton'
+    }
+    .fa-envelope{
+            font-size: 1.5vw;
+         
+    }
+
+    .cardProfesor > h2{
+        margin-left: 16px;
+    }
+
+    .fotoYnombreProfesor{
+        display: flex;
+    }
+
+    .contenedorCorreoProfesor{
+        display: flex;
+        margin-left: 2vw;
+        margin-top: 1vw;
+         align-items: center;
+    }
+
+   .contenedorCorreoProfesor > p{
+    font-size: 20px;
+        margin-left: 23px;
+        font-weight: bold;
+   }
+
+   .contenedorTitle{
+           display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+   }
+
+   .contenedorTitle > h2{
+           font-size: 3vw;
+    font-family: 'Anton';
+   }
 /* Responsive lista de cursos*/
 
 
@@ -345,7 +427,7 @@
 
 }
 
-@media only screen and (min-device-width : 701px) and (max-device-width : 1800px) {
+@media only screen and (min-device-width : 701px) and (max-device-width : 1500px) {
     .contenedorCourseAndSideBar{
         width: 100%;
         display: flex;
@@ -506,4 +588,6 @@
         width: 30vw;
         margin:1vh;
     }
+  
+
 }
