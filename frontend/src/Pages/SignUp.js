@@ -81,10 +81,10 @@ const SignUp = (props) => {
         password: "",
       });
       setPreUserPlaceHolder({
-        firstName: "👉" + miRespuesta[0].message,
-        lastName: "👉" + miRespuesta[1].message,
-        profilePicture: "👉" + miRespuesta[2].message,
-        email: "👉" + miRespuesta[3].message,
+        firstName: "🚩" + miRespuesta[0].message,
+        lastName: "🚩" + miRespuesta[1].message,
+        profilePicture: "🚩" + miRespuesta[2].message,
+        email: "🚩" + miRespuesta[3].message,
         password: "",
       });
 
@@ -215,7 +215,7 @@ const SignUp = (props) => {
                   ></input>{" "}
                 </label>
               </div>
-              <div className="w35 borderBottom mb-2 ">
+              <div className="w35 border mb-2 ">
                 <input
                   onChange={(e) => setPreUser({ ...preUser, password: e.target.value })}
                   onFocus={() => setPassGuideVisible(true)}
