@@ -81,10 +81,10 @@ const SignUp = (props) => {
         password: "",
       });
       setPreUserPlaceHolder({
-        firstName: "👉" + miRespuesta[0].message + "👈",
-        lastName: "👉" + miRespuesta[1].message + "👈",
-        profilePicture: "👉" + miRespuesta[2].message + "👈",
-        email: "👉" + miRespuesta[3].message + "👈",
+        firstName: "👉" + miRespuesta[0].message,
+        lastName: "👉" + miRespuesta[1].message,
+        profilePicture: "👉" + miRespuesta[2].message,
+        email: "👉" + miRespuesta[3].message,
         password: "",
       });
 
@@ -140,8 +140,8 @@ const SignUp = (props) => {
             </span>
             <div className="text-center">
               {" "}
-              🚫 sorry we couldn't create an account with your provided info, please refer to the
-              folowing problems{" "}
+              🚫 sorry we couldn't create an account with your provided info, please watch below for
+              the missing details.{" "}
             </div>
           </div>
 
