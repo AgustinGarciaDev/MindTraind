@@ -124,12 +124,13 @@
   overflow-y: hidden;
 }
 .signUpVideoContainer {
-  height: 600px;
+  height: 500px;
 }
 
 .signUpVideo {
   position: relative;
   bottom: 18vw;
+  height: 60%;
   width: 100%;
 }
 
@@ -142,7 +143,7 @@
 
 .signInVideoContainer {
   width: 50vw;
-  height: 100vw;
+  height: 50%;
 }
 
 .w40 {
@@ -167,7 +168,7 @@
 
 .signUpContainer,
 .signInContainer {
-  height: 50vw;
+  height: 70%;
 }
 
 .titleSignUp {

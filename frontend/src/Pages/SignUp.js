@@ -113,13 +113,7 @@ const SignUp = (props) => {
   return (
     <>
       <Header />
-      <div
-        className="signUpContainer d-flex "
-        /* onMouseOver={() => setHidden(false)}
-    onMouseOut={() => setHidden(false)} */
-      >
-        {/*    {props.theUser && console.log("X", props.theUser)} */}
-        {/*  <p> "hola" {hidden && "hola"}</p> */}
+      <div className="signUpContainer d-flex ">
         <div className="w-50 mi100">
           <div className="titleForm titulos mt-2 h3 ">Sign Up Form</div>
           <div className=" small textos text-center">
@@ -144,7 +138,7 @@ const SignUp = (props) => {
             </div>
           </div>
 
-          <div className="">
+          <div className="w-100">
             <span className="afterRed small m-2">hi, please enter your name</span>
             <div className="font-italic bg-white border-1 p-2 pt-0 d-flex flex-column">
               <div className="border">
