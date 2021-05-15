@@ -98,10 +98,10 @@ const SignUp = (props) => {
 
   const responseGoogle = (response) => {
     alert("entre");
-    const { givenName, email, googleId, imageUrl } = response.profileObj;
+    const { givenName, familyName, email, googleId, imageUrl } = response.profileObj;
     props.createAndLogIn({
       firstName: givenName,
-      lastName: givenName,
+      lastName: familyName,
       email: email,
       profilePicture: imageUrl,
       password: "Cx1" + googleId,
