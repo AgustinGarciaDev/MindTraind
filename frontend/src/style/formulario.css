@@ -121,6 +121,7 @@
 
 html {
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 .signUpVideoContainer {
   height: 600px;
@@ -142,7 +143,7 @@ html {
 
 .signInVideo {
   position: absolute;
-  left: 40%;
+  left: 50%;
   bottom: -30%;
 
   overflow-x: hidden;
@@ -152,15 +153,14 @@ html {
 
 .signInVideoContainer {
   height: 600px;
-
-  /* top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%; */
 }
 
 .w40 {
   width: 40%;
+}
+
+.w35 {
+  width: 35%;
 }
 
 .w95 {
@@ -169,4 +169,31 @@ html {
 
 .italics {
   font-weight: italics;
+}
+
+.signUpContainer,
+.signInContainer {
+  height: 450px;
+}
+
+@media screen and (max-width: 992px) {
+  .mi100 {
+    width: 100% !important;
+  }
+  .signUpVideoContainer,
+  .signInVideoContainer {
+    display: none;
+  }
+}
+
+.borderBottom {
+  border-bottom: 1px solid lightgrey;
+}
+
+.borderX:focus {
+  border: none;
+}
+
+input::placeholder {
+  font-style: italic;
 }
