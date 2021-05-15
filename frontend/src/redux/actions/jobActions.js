@@ -34,7 +34,26 @@ const JobActions = {
                 showTostError500();
             }
         }
-    }
+    },
+
+    updateJob: (data) => {
+        return async (dispatch, getState) => {
+            try {
+                const response = await axios.put('http://localhost:4000/api/jobs/' + data.id, {...data.job})
+                if (response.data.success) {
+                    dispatch({ type: 'UPDATE_JOBS', payload: response.data.response })
+                    return response
+                } else {
+                    return response
+                }
+            } catch (err) {
+                console.log(err);
+                showTostError500();
+            }
+        }
+    },
+
+
 }
 
 export default JobActions

@@ -22,8 +22,9 @@ const coursesActions = {
 
     editCourse: (data) => {
         return async (dispatch, getState) => {
+            console.log(data)
             try {
-                const response = await axios.put('http://localhost:4000/api/courses/' + data.id, data)
+                const response = await axios.put('http://localhost:4000/api/courses/' + data.id, { data: data.data, email: data.email })
                 if (response.data.success) {
                     dispatch({ type: 'GET_COURSES', payload: response.data.response })
                     return response

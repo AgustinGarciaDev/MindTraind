@@ -14,12 +14,26 @@ const errorCourseNotFound = "error: Course not found";
 const courseControllers = {
     //pre: el usuario es admin (passport)
     addCourse: async (req, res) => {
-        let response, error;
+        let response, error, coach;
+        const user = await User.findOne({ email: req.body.email })
+
+        if (user) {
+            if (user.role === 'coach') {
+                coach = user._id
+            } else {
+                error = "Wrong email "
+                return respondFrontend(res, response, error)
+            }
+        } else {
+            error = "Wrong email "
+            return respondFrontend(res, response, error)
+
+        }
         try {
-            let newCourse = new Course(req.body);
+            let newCourse = new Course({ ...req.body, coach: coach });
             await newCourse.save();
             response = await Course.find()
-            .populate({ path: 'coach', select: '-_id -password' })
+                .populate({ path: 'coach', select: '-_id -password' })
 
         } catch (err) {
             console.log(err);
@@ -62,13 +76,20 @@ const courseControllers = {
 
     updateCourse: async (req, res) => {
         const id = req.params.id;
+        const email = await User.findOne({ email: req.body.email })
+        const data = req.body.data
         let response, error;
+
         try {
-            await Course.findByIdAndUpdate(id, req.body, { new: true })
+            if (email) {
+                await Course.findByIdAndUpdate(id, { coach: email._id }, { new: true })
+            }
+            await Course.findByIdAndUpdate(id, data, { new: true })
             response = await Course.find()
                 .populate({ path: 'coach', select: '-_id -password' })
                 .populate({ path: 'students', select: '-_id -password' });
             response || (error = errorCourseNotFound);
+
         } catch (err) {
             console.log(err);
             error = errorBackend;
@@ -231,49 +252,49 @@ const courseControllers = {
         try {
             const idCourse = req.params.id;
             const userId = req.user._id;
-            const {idComment,text,userEmailReply,textReply,action} = req.body ;
-            
-            let querySelector ;
-            let updateOperator ;
-            switch(action){
+            const { idComment, text, userEmailReply, textReply, action } = req.body;
+
+            let querySelector;
+            let updateOperator;
+            switch (action) {
                 case "add":
 
                     try {
-                        const userReply = await User.findOne({email:userEmailReply});
-                        const reply = {userReply:userReply._id,textReply};
-                        querySelector = {_id : idCourse };
-                        updateOperator = { $push:{ comments:{ user:userId,text,reply} } };    
+                        const userReply = await User.findOne({ email: userEmailReply });
+                        const reply = { userReply: userReply._id, textReply };
+                        querySelector = { _id: idCourse };
+                        updateOperator = { $push: { comments: { user: userId, text, reply } } };
                     } catch (err) {
-                        return respondFrontend(res,response,`user with email: "${userEmailReply}" doesn't exist` )
+                        return respondFrontend(res, response, `user with email: "${userEmailReply}" doesn't exist`)
                     }
-                    
+
                     break;
-                case "update": 
-                    querySelector = { _id : idCourse ,"comments._id":idComment  } ; 
-                    updateOperator = {$set : {"comments.$.text": text }}; 
+                case "update":
+                    querySelector = { _id: idCourse, "comments._id": idComment };
+                    updateOperator = { $set: { "comments.$.text": text } };
                     break;
-                case "delete" : 
+                case "delete":
                     querySelector = { _id: idCourse };
-                    updateOperator = {$pull : {comments:{_id : idComment}}}; 
+                    updateOperator = { $pull: { comments: { _id: idComment } } };
                     break;
                 default:
                     error = "unknown action on modificarComentario : " + action;
-                    respondFrontend(res,response,error);
+                    respondFrontend(res, response, error);
             }
-            response = await Course.findOneAndUpdate(querySelector, updateOperator,{ new: true })
-            .populate({ path: 'coach', select: '-_id -password' })
-            .populate({ path: 'students', select: '-_id -password' })
-            .populate({ path: 'comments.user', select: '-_id -password' })
-            .populate({ path: 'comments.reply.userReply', select: '-_id -password' })
+            response = await Course.findOneAndUpdate(querySelector, updateOperator, { new: true })
+                .populate({ path: 'coach', select: '-_id -password' })
+                .populate({ path: 'students', select: '-_id -password' })
+                .populate({ path: 'comments.user', select: '-_id -password' })
+                .populate({ path: 'comments.reply.userReply', select: '-_id -password' })
 
             response || (error = errorCourseNotFound);
-            
+
         } catch (e) {
             console.log(e)
             error = errorBD;
         }
-        respondFrontend(res, response, error) ;
-        
+        respondFrontend(res, response, error);
+
     },
 }
 

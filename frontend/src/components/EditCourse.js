@@ -6,7 +6,15 @@ import Lesson from './Lesson'
 import { showToast } from '../helpers/myToast'
 
 const EditCourse = (props) => {
-    const [course, setCourse] = useState({})
+    const [course, setCourse] = useState({
+        nameCourse: props.course.nameCourse,
+        email: props.course.coach.email,
+        pictureRefence: props.course.pictureRefence,
+        programDescription: props.course.programDescription,
+        duration: props.course.duration,
+        difficulty: props.course.difficulty
+    })
+
     const [input, setInput] = useState(false)
     const [newCategory, setNewCategory] = useState({ name: '' })
     const [newLesson, setNewLesson] = useState({ newName: '', newVideoLink: '' })
@@ -24,7 +32,6 @@ const EditCourse = (props) => {
                 [name]: value
             })
         }
-        console.log(course)
     }
 
     const createNewLesson = e => {
@@ -38,12 +45,12 @@ const EditCourse = (props) => {
 
     const deleteLesson = e => {
         console.log(e)
-        const data = {  idCourse: props.course._id, action: e.action, idLesson: e.id  }
+        const data = { idCourse: props.course._id, action: e.action, idLesson: e.id }
         props.modifyLesson(data)
     }
-    
+
     const updateLesson = e => {
-        const data = {  idCourse: props.course._id, action: e.action, idLesson: e.id, newName: e.newName, newVideoLink: e.newVideoLink  }
+        const data = { idCourse: props.course._id, action: e.action, idLesson: e.id, newName: e.newName, newVideoLink: e.newVideoLink }
         props.modifyLesson(data)
     }
 
@@ -56,7 +63,14 @@ const EditCourse = (props) => {
 
     const sendData = async (e) => {
         e.preventDefault()
-        const data = { ...course, id: props.course._id }
+        const newData = {
+            nameCourse: course.nameCourse,
+            pictureRefence: course.pictureRefence,
+            programDescription: course.programDescription,
+            duration: course.duration,
+            difficulty: course.difficulty
+        }
+        const data = { data: newData, id: props.course._id, email: course.email }
         const response = await props.editCourse(data)
         if (response) {
             showToast('success', "The changes were saved")
@@ -89,12 +103,13 @@ const EditCourse = (props) => {
             <div className="editCourseContainer">
 
                 <form className="editForm">
-                    <input type="text" placeholder="Course name" name="nameCourse" onChange={readInput} />
-                    <input type="text" placeholder="Program description" name="programDescription" onChange={readInput} />
-                    <input type="text" placeholder="Coach " name="coach" onChange={readInput} />
-                    <input type="text" placeholder="Picture refence " name="pictureRefence" onChange={readInput} />
-                    <input type="text" placeholder="Duration" name="duration" onChange={readInput} />
-                    <input type="text" placeholder="Difficulty" name="difficulty" onChange={readInput} />
+                    <input type="text" placeholder="Course name" name="nameCourse" onChange={readInput} value={course.nameCourse} />
+                    <input type="text" placeholder="Program description" name="programDescription" onChange={readInput} value={course.programDescription} />
+                    <input type="text" placeholder="Coach " name="email" onChange={readInput} value={course.email} />
+                    <input type="text" placeholder="Picture refence " name="pictureRefence" onChange={readInput} value={course.pictureRefence} />
+                    <input type="text" placeholder="Duration" name="duration" onChange={readInput} value={course.duration} />
+                    <input type="text" placeholder="Difficulty" name="difficulty" onChange={readInput} value={course.difficulty} />
+
                     <h3 className="h3Form">Categorys</h3>
                     <div className="categoryNew">
                         <input onChange={readInput} name="name" placeholder="Category name" value={newCategory.name} />
