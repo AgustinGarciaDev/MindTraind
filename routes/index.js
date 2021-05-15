@@ -65,7 +65,7 @@ router.route('/jobs')
 
 router.route('/jobs/:id')
     .get(getJobById)
-    .put(updateJob)
+    .put(newJobValidator ,updateJob)
     .delete(deleteJob)
 
 module.exports = router
