@@ -83,13 +83,18 @@ const Post = (props) => {
 
     const editCommentChange = (e) => {
 
+        console.log("me mando")
         props.editPost(_id, editPost.title, editPost.text)
         if (e.target.id === "btnText") {
+            console.log("envioTexto")
             setEditInput(!editInput)
-        }
-        if (e.target.id === "btnTitle") {
+        } else {
             setEditInputTitle(!editInputTitle)
         }
+        /*    if (e.target.id === "btnTitle") {
+               console.log("envioTexto")
+              
+           } */
     }
 
 

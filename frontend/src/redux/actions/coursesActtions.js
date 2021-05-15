@@ -83,7 +83,7 @@ const coursesActions = {
                 const { data } = await axios.get("http://localhost:4000/api/coursesOfUser", {
                     headers: { "Authorization": "Bearer " + token }
                 })
-                
+
                 return data
 
             } catch (err) {
@@ -101,8 +101,8 @@ const coursesActions = {
         return async (dispatch) => {
             try {
                 const { data } = await axios.get('http://localhost:4000/api/courses/' + idCourse)
-                if (data.success){
-                    dispatch({type:"UPDATE_CURRENT_COURSE",payload:data.response});
+                if (data.success) {
+                    dispatch({ type: "UPDATE_CURRENT_COURSE", payload: data.response });
                     return data.response
                 }
                 else
@@ -156,7 +156,7 @@ const coursesActions = {
                 })
 
                 if (response.data.success) {
-                    dispatch({type:"UPDATE_COURSE",payload:response.data.response})
+                    dispatch({ type: "UPDATE_COURSE", payload: response.data.response })
                 }
             } catch (err) {
                 console.log(err);
@@ -166,7 +166,6 @@ const coursesActions = {
     },
 
     editPost: (data) => {
-        console.log(data)
 
         return async (dispatch, getState) => {
             try {
@@ -174,7 +173,7 @@ const coursesActions = {
                     headers: { Authorization: "Bearer " + data.token },
                 })
                 if (response.data.success) {
-                    dispatch({type:"UPDATE_COURSE",payload:response.data.response})
+                    dispatch({ type: "UPDATE_COURSE", payload: response.data.response })
                 }
             } catch (err) {
                 console.log(err);
@@ -190,7 +189,7 @@ const coursesActions = {
                     headers: { Authorization: "Bearer " + data.token },
                 })
                 if (response.data.success) {
-                    dispatch({type:"UPDATE_COURSE",payload:response.data.response})
+                    dispatch({ type: "UPDATE_COURSE", payload: response.data.response })
                 }
             } catch (err) {
                 console.log(err);
@@ -199,7 +198,7 @@ const coursesActions = {
         }
 
     },
-    
+
     /* Reply Comment */
     modifyReply: (data) => {
 
@@ -209,7 +208,7 @@ const coursesActions = {
                     headers: { Authorization: "Bearer " + data.token },
                 })
                 if (response.data.success) {
-                    dispatch({type:"UPDATE_COURSE",payload: response.data.response});
+                    dispatch({ type: "UPDATE_COURSE", payload: response.data.response });
                 }
             } catch (err) {
                 console.log(err);
@@ -217,8 +216,8 @@ const coursesActions = {
             }
         }
     },
-    
-    
+
+
 
 
 
