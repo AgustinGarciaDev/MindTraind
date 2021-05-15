@@ -107,6 +107,7 @@
 .contedorDatosUsuario{
     display: flex;
     align-items: center;
+        margin-left: 14px;
 }
 
 .contenedorIconoSearch{
@@ -182,6 +183,7 @@
 
 .contenedorDatosUserReply{
     margin-left: 1vw;
+    
 }
 .contenedorDatosUserReply > h5{
     margin-bottom: 0;
@@ -294,4 +296,87 @@ flex-direction: column;
 .spaceBtnQuery{
     position: relative;
     top: 19px;
+}
+
+.contenedorTextAreaEdit{
+    width: 31vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.textAreaEdit{
+     width: 44vw;
+    height: 7vw;
+     border: 1px solid #ff0034;
+     padding: 10px;
+}
+
+.btnTextAreaEdit{
+    border: none;
+    background: FF0034;
+    background: #FF0034;
+    color: white;
+    width: 11vw;
+    height: 3vw;
+    border-radius: 10px;
+    box-shadow: 1px 1px 9px 2px #ff0034;
+    margin-top: 11px;
+    
+}
+
+.contenedorEditInputs{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1vw;
+     margin-left: 14px;
+}
+
+.btnModificarInputs{
+     margin-bottom: 2vw;
+    margin-right: 0;
+    margin-left: auto;
+    font-size: 2vw;
+    background: none;
+    color: black;
+    border: none;
+}
+
+.inputTitle{
+    width: 88%;
+    height: 3vw;
+    border: none;
+    border: 1px solid #ff0034;
+    padding: 10px;
+
+}
+
+#btnTitle{
+    border: none;
+    background: #ff0034;
+    color: #ffffff;
+    border-radius: 0vw;
+    width: 3vw;
+    height: 3vw;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+#btnText{
+        border: none;
+    background: #ff0034;
+    color: #ffffff;
+    border-radius: 0vw;
+    width: 3vw;
+    height: 3vw;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+        margin-top: 10px;
+}
+
+.fas{
+    margin-right: 0;
 }

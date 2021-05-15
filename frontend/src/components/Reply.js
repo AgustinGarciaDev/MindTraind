@@ -12,6 +12,9 @@ const Reply = (props) => {
         mensaje: "",
     })
 
+    /*   const { textReply, userReply: { firstName, lastName, profilePicture } } = props.reply */
+
+
 
     const datosInput = (e) => {
         setComentario({
@@ -19,7 +22,6 @@ const Reply = (props) => {
         })
     }
 
-    console.log(comentario)
     const changeInput = () => {
         setEditInput(!editInput)
     }
@@ -51,19 +53,15 @@ const Reply = (props) => {
         </Popover>
     )
 
-
-    const userPic = "http://baravdg.com/wp-content/uploads/2021/05/1.jpg"
-    const nombreProfesor = "Juan Marquina"
-    console.log(props)
     return (
         <>
             <div className="contenedorEditorYcomentario">
                 <div className="contenedorReply">
-                    <div className="fotoProfesor" style={{ backgroundImage: `url("${userPic}")` }}></div>
+                    <div className="fotoProfesor" style={{ backgroundImage: `url("jh")` }}></div>
                     <div className="contenedorDatosUserReply">
-                        <h5>{nombreProfesor}</h5>
+                        <h5>ff</h5>
                         {!editInput
-                            ? <div><p>sadasd</p></div>
+                            ? <div><p></p></div>
                             : <div className="contenedorInputEdit">
                                 <input
                                     className="inputEdit"

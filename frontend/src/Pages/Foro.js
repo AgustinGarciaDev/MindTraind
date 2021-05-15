@@ -19,10 +19,9 @@ const Foro = (props) => {
         text: "",
         idCourse: idCourse,
         token: token,
-        action: "add",
+        action: ""
     })
 
-    console.log(objConsult)
     async function fetchAPI(idCourse) {
         try {
             const course = await getCourseById(idCourse)
@@ -55,17 +54,28 @@ const Foro = (props) => {
     }
 
     const sendComent = async () => {
-
+        console.log(objConsult)
         if (objConsult.title === "" || objConsult.comment === "") {
             showToast('error', "You cant add text")
         } else {
-            const respuesta = await props.sendPost(objConsult)
+            const respuesta = await props.sendPost({ ...objConsult, action: "add", token: token })
+            console.log(respuesta)
             setCommentsCourse(respuesta.comments)
         }
     }
 
+    const editPost = async (idComment, title, text) => {
+        const respuesta = await props.editPost({ ...objConsult, action: "update", idComment: idComment, title: title, text: text })
+        setCommentsCourse(respuesta.comments)
+    }
 
+    const deletePost = async (e) => {
 
+        const respuesta = await props.deletePost({ ...objConsult, action: "delete", idComment: e.idComment, token: token })
+        showToast('success', "Delete Post")
+        setCommentsCourse(respuesta.comments)
+
+    }
 
     return (
         <>
@@ -114,7 +124,7 @@ const Foro = (props) => {
                         }
                     </div>
                     <div className="contenedorComentarios">
-                        {commentsCourse.map(post => <Post idCourse={idCourse} post={post} />)}
+                        {commentsCourse.map(post => <Post editPost={editPost} deletePost={deletePost} idCourse={idCourse} post={post} />)}
                     </div>
 
                 </div>
@@ -141,6 +151,8 @@ const mapDispatchToProps = {
 
     sendPost: coursesActions.sendPost,
     getCourseById: coursesActions.getCourseById,
+    editPost: coursesActions.editPost,
+    deletePost: coursesActions.deletePost,
 
 }
 

@@ -228,6 +228,7 @@ a:link, a:visited, a:active {
     width: 38vw;
     position:absolute;
     margin: 5vh;
+    box-shadow: -2px 2px 20px 15px #ff003469;
 }
 .fondo-videoTM{
     background-image: url("http://baravdg.com/wp-content/uploads/2021/05/rayas-red-izq-1.png") ;
@@ -277,7 +278,8 @@ a:link, a:visited, a:active {
        margin: 1rem;
    }
    #video{
-       width: 85vw;   
+       width: 85vw;
+           left: 10px;
    }
    .img-rp{
        display: flex;

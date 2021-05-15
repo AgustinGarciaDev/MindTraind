@@ -245,9 +245,11 @@ const courseControllers = {
         respondFrontend(res, response, error);
     },
     modifyComments: async (req, res) => {
-        let response, error;
         console.log(req.body)
+        console.log(req.params.id)
+        let response, error;
         try {
+            console.log(req.user)
             const idCourse = req.params.id;
             const userId = req.user._id;
             const { idComment, title, text, userEmailReply, textReply, action } = req.body;
@@ -285,7 +287,7 @@ const courseControllers = {
                     break;
                 default:
                     error = "unknown action on modificarComentario : " + action;
-                    respondFrontend(res, response, error);
+                    return respondFrontend(res, response, error);
             }
             let document = await Course.findOneAndUpdate(querySelector, updateOperator, { new: true })
             response = await populateOneDocument(document)
