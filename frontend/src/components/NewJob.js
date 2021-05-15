@@ -29,7 +29,8 @@ const NewCourse = (props) => {
         e.preventDefault()
         const response = await props.addJob(job)
         if (response) {
-            if (response.data.succes === false) {
+            console.log(response)
+            if (response.data.success === false) {
                 response.data.error.details.map(error => {
                     errorsImput[error.context.label] = error.message
                     return null

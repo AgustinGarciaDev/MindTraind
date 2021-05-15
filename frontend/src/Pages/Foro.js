@@ -10,7 +10,7 @@ import { connect } from "react-redux"
 const Foro = (props) => {
 
     const idCourse = props.match.params.id
-    
+
     const { getCourseById, currentCourse } = props
     const { firstName, lastName, profilePicture, token } = props.userLogged
     const [modalShow, setModalShow] = useState(false);
@@ -30,7 +30,7 @@ const Foro = (props) => {
 
 
 
-    const inputData = (e=null) => {
+    const inputData = (e = null) => {
         const campo = e.target.name
         const valor = e.target.value
         setobjConsult({
@@ -39,27 +39,27 @@ const Foro = (props) => {
         })
     }
 
-    const sendComent =  () => {
-        console.log(objConsult)
+    const sendComent = () => {
         if (objConsult.title === "" || objConsult.comment === "") {
             showToast('error', "You cant add text")
         } else {
+            console.log("h")
             props.sendPost({ ...objConsult, action: "add", token: token })
         }
     }
 
-    const editPost =  (idComment, title, text) => {
+    const editPost = (idComment, title, text) => {
         props.editPost({ ...objConsult, action: "update", idComment: idComment, title: title, text: text })
-        
+
     }
 
-    const deletePost =  (e) => {
+    const deletePost = (e) => {
 
         props.deletePost({ ...objConsult, action: "delete", idComment: e.idComment, token: token })
         showToast('success', "Delete Post")
     }
-    
-    if(!props.currentCourse || !props.userLogged){
+
+    if (!props.currentCourse || !props.userLogged) {
         return null
     }
     return (

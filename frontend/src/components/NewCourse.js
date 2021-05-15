@@ -7,11 +7,11 @@ import LessonText from "../components/LessonText"
 
 const NewCourse = (props) => {
 
-    const [course, setCourse] = useState({ nameCourse: '', categories: [], coach: '', pictureRefence: '', programDescription: '', lessons: [], duration: '', difficulty: '' })
+    const [course, setCourse] = useState({ nameCourse: '', categories: [], email: '', pictureRefence: '', programDescription: '', lessons: [], duration: '', difficulty: '' })
     const [category, setCategory] = useState({ name: '' })
     const [lesson, setLesson] = useState({ lessonName: '', videoLink: '' })
     const [error, setError] = useState({})
-    const errorsImput = { nameCourse: null, coach: null, categories: null, pictureRefence: null, programDescription: null, duration: null, difficulty: null, lessons: null }
+    const errorsImput = { nameCourse: null, email: null, categories: null, pictureRefence: null, programDescription: null, duration: null, difficulty: null, lessons: null }
 
     const readInput = e => {
         const value = e.target.value
@@ -64,14 +64,18 @@ const NewCourse = (props) => {
         } else {
             const response = await props.addCourse(course)
             if (response.data.success) {
-                setCourse({ nameCourse: '', categories: [], coach: '', pictureRefence: '', programDescription: '', lessons: [], duration: '', difficulty: '' })
+                showToast('success', 'Course added successfully')
+                setCourse({ nameCourse: '', categories: [], email: '', pictureRefence: '', programDescription: '', lessons: [], duration: '', difficulty: '' })
             } else {
-                console.log(response.data.error.details)
-                response.data.error.details.map(error => {
-                    errorsImput[error.path[0]] = error.message
-                    return null
-                })
-                setError(errorsImput)
+                if (response.data.error.details) {
+                    response.data.error.details.map(error => {
+                        errorsImput[error.path[0]] = error.message
+                        return null
+                    })
+                    setError(errorsImput)
+                }else{
+                    console.log(response)
+                }
             }
         }
     }
@@ -124,8 +128,8 @@ const NewCourse = (props) => {
                 <input className="newInput" type="text" placeholder="Program description" name="programDescription" value={course.programDescription} onChange={readInput} />
                 {error.programDescription && <small>{error.programDescription}</small>}
 
-                <input className="newInput" type="text" placeholder="Coach " name="coach" value={course.coach} onChange={readInput} />
-                {error.coach && <small>{error.coach}</small>}
+                <input className="newInput" type="text" placeholder="Coach email " name="email" value={course.email} onChange={readInput} />
+                {error.email && <small>{error.email}</small>}
 
                 <input className="newInput" type="text" placeholder="Picture refence " name="pictureRefence" value={course.pictureRefence} onChange={readInput} />
                 {error.pictureRefence && <small>{error.pictureRefence}</small>}
@@ -153,7 +157,7 @@ const NewCourse = (props) => {
                 <div className="lessonsNew">
                     <div className="lessonInput">
                         <div className="lessonInputError">
-                            <input className="newInput"  type="text" placeholder="lesson name" onChange={createLesson} name="lessonName" value={lesson.lessonName} />
+                            <input className="newInput" type="text" placeholder="lesson name" onChange={createLesson} name="lessonName" value={lesson.lessonName} />
                             <input className="newInput" type="text" placeholder="video" onChange={createLesson} name="videoLink" value={lesson.videoLink} />
                             {error.lessons && <small>{error.lessons}</small>}
                         </div>

@@ -47,12 +47,26 @@ const errorCourseNotFound = "error: Course not found";
 const courseControllers = {
     //pre: el usuario es admin (passport)
     addCourse: async (req, res) => {
-        let response, error;
+        let response, error, coach;
+        const user = await User.findOne({ email: req.body.email })
+
+        if (user) {
+            if (user.role === 'coach') {
+                coach = user._id
+            } else {
+                error = "Wrong email "
+                return respondFrontend(res, response, error)
+            }
+        } else {
+            error = "Wrong email "
+            return respondFrontend(res, response, error)
+
+        }
         try {
-            let newCourse = new Course(req.body);
+            let newCourse = new Course({ ...req.body, coach: coach });
             await newCourse.save();
-            let documents = await Course.find();
-            response = await populateArrayDocument(documents);
+            response = await Course.find()
+                .populate({ path: 'coach', select: '-_id -password' })
 
         } catch (err) {
             console.log(err);
@@ -89,12 +103,20 @@ const courseControllers = {
 
     updateCourse: async (req, res) => {
         const id = req.params.id;
+        const email = await User.findOne({ email: req.body.email })
+        const data = req.body.data
         let response, error;
+
         try {
-            await Course.findByIdAndUpdate(id, req.body, { new: true })
-            let documents = await Course.find();
-            response = await populateArrayDocument(documents);
+            if (email) {
+                await Course.findByIdAndUpdate(id, { coach: email._id }, { new: true })
+            }
+            await Course.findByIdAndUpdate(id, data, { new: true })
+            response = await Course.find()
+                .populate({ path: 'coach', select: '-_id -password' })
+                .populate({ path: 'students', select: '-_id -password' });
             response || (error = errorCourseNotFound);
+
         } catch (err) {
             console.log(err);
             error = errorBackend;
