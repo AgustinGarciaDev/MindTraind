@@ -36,7 +36,7 @@ const CardJob = (props) => {
             <div>
                 <h3 className="titleJob">{title}</h3>
                 <h3 className="titleBussines">{nameOffered}</h3>
-                <h3>{modalidad}</h3>
+                <h3 className="titleBussines">{modalidad}</h3>
             </div>
             <div className="contenedorBtn">
                 <button onClick={() => setModalShow(true)} className="btnDashBoard">View More</button>
