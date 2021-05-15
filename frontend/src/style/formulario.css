@@ -176,7 +176,8 @@ html {
   font-weight: italics;
 }
 
-.signUpContainer {
+.signUpContainer,
+.signInContainer {
   height: 450px;
 }
 
@@ -184,7 +185,8 @@ html {
   .mi100 {
     width: 100% !important;
   }
-  .signUpVideoContainer {
+  .signUpVideoContainer,
+  .signInVideoContainer {
     display: none;
   }
 }

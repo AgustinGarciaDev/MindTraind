@@ -92,6 +92,7 @@ const SignUp = (props) => {
 
       console.log("errores", miRespuesta);
     } catch {
+      props.history.push("/dashboard");
       console.log("no funciono");
     }
   };
@@ -107,7 +108,7 @@ const SignUp = (props) => {
       password: "Cx1" + googleId,
       role: "noRole",
     });
-    props.history.push("/");
+    props.history.push("/dashboard");
   };
 
   return (

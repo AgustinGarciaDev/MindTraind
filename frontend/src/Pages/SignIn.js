@@ -46,7 +46,7 @@ const SignIn = (props) => {
       console.log("0props", miRespuesta);
       setErroresSignIn(miRespuesta);
       setErrorVisible(!errorVisible);
-
+      props.history.push("/dashboard");
       console.log("errpres", miRespuesta);
     } catch {
       console.log("no funciono");
@@ -64,20 +64,20 @@ const SignIn = (props) => {
       password: "Cx1" + googleId,
       role: "noRole",
     });
-    props.history.push("/");
+    props.history.push("/dashboard");
   };
 
   return (
     <>
       <Header />
       <div
-        className="SignInContainer d-flex "
+        className="signInContainer d-flex "
         onMouseOver={() => setHidden(false)}
         onMouseOut={() => setHidden(false)}
       >
         {props.theUser && console.log("X", props.theUser)}
-        {/*  <p> "hola" {hidden && "hola"}</p> */}
-        <div className={" w40 "}>
+
+        <div className=" w40 mi100 ">
           <div className="titleForm titulos m-3 h3 ">Sign In</div>
           <div className="h6 small textos text-center">welcome back 💪</div>
           <div className="errorContainer" style={{ display: errorVisible ? "block" : "none" }}>
@@ -95,12 +95,13 @@ const SignIn = (props) => {
           </div>
           <div className="bg-secondary">
             <div className="font-italic  mt-3 mb-2 bg-white border-1 p-3 d-flex flex-column">
-              <div className="border mt-1">
+              <div className="borderBottom mt-1">
                 <input
                   type="mail"
+                  autoFocus
                   onChange={(e) => setPreUser({ ...preUser, email: e.target.value.toLowerCase() })}
                   value={preUser.email}
-                  placeholder="a valid email address"
+                  placeholder="1) your registered email address"
                   className={
                     !validationsOther[2]
                       ? "ng-dirty border-0 textos small w95"
@@ -112,29 +113,30 @@ const SignIn = (props) => {
               </div>
               {/*  <div className="small border mt-1"> */}
               {/* </div> */}
-              <span className="small">show your password</span>
+              <div className="w35 mt-4 d-flex justify-content-between">
+                <span className="small">show your password</span>
 
-              <label htmlFor="eye">
-                <i className={eyeState ? "fas fa-eye-slash" : "fas fa-eye"}></i>
-                <input
-                  id="eye"
-                  className="hidden"
-                  type="checkbox"
-                  onChange={() => setEyeState(!eyeState)}
-                ></input>{" "}
-              </label>
-
-              <div className="mt-1 ">
+                <label htmlFor="eye">
+                  <i className={eyeState ? "fas fa-eye-slash" : "fas fa-eye"}></i>
+                  <input
+                    id="eye"
+                    className="hidden"
+                    type="checkbox"
+                    onChange={() => setEyeState(!eyeState)}
+                  ></input>{" "}
+                </label>
+              </div>
+              <div className="mt-1 mb-5  border w35">
                 <input
                   onChange={(e) => setPreUser({ ...preUser, password: e.target.value })}
                   value={preUser.password}
                   type={eyeState ? "password" : "text"}
-                  placeholder="your secret password"
+                  placeholder="2) your secret password"
                   className="mb-1 ng-dirty"
                   className={
                     !validationsPass.includes(false)
-                      ? "ng-valid textos small"
-                      : "ng-dirty textos small"
+                      ? "ng-valid textos w-100 small"
+                      : "ng-dirty textos w-100 small"
                   }
                 ></input>
               </div>
