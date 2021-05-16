@@ -15,7 +15,7 @@ const Info=()=>{
                 </div>
                 <div className="fondo-videoTM">
                     <video autoPlay loop muted id="video">
-                        <source src="http://baravdg.com/wp-content/uploads/2021/05/WhatsApp-Video-2021-05-14-at-12.18.47-AM.mp4" type="video/mp4"></source>
+                        <source src="http://baravdg.com/wp-content/uploads/2021/05/videoHome.mp4" type="video/mp4"></source>
                     </video>          
                 </div>                   
             </div>

@@ -14,15 +14,17 @@ const CardJob = (props) => {
                     <div className="contenedorBtnClose"> <i onClick={props.onHide} className="fas fa-times"></i></div>
                     <Modal.Title id="contained-modal-title-vcenter">
                         <div>
-                            <h2>About the company:</h2>
+                            <h2 className="title-wiewmore-jobs">About the company:</h2>
                         </div>
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                    <div className="viewmore-info">
                     <h2>{jobtittle}</h2>
                     <p>{description}</p>
                     <p>Type job: {typeJob}</p>
                     <p>Contact: {email}</p>
+                    </div>
                 </Modal.Body >
 
             </Modal >
