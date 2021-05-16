@@ -32,6 +32,7 @@ const App = (props) => {
     props.loginForced(JSON.parse(token), props.history)
     return null;
   }
+
   //let role ;
   /*if(!props.userLogged){
     role = "routerUserDontLogged" 
