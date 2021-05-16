@@ -74,6 +74,7 @@ const EditCourse = (props) => {
         const response = await props.editCourse(data)
         if (response) {
             showToast('success', "The changes were saved")
+            props.handleClose()
         }
     }
 

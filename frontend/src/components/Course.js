@@ -4,7 +4,6 @@ import { Modal, Button } from "react-bootstrap";
 
 
 const Course = (props) => {
-    const [edit, setEdit] = useState(false)
     const [show, setShow] = useState(false);
 
     const handleClose = () => {
@@ -12,9 +11,6 @@ const Course = (props) => {
     }
     const handleShow = () => setShow(true);
 
-    const cancel = () => {
-        setEdit(!edit)
-    }
     return (
         <>
 
@@ -24,11 +20,10 @@ const Course = (props) => {
                     <div className="contenedorBtnClose"> <i onClick={handleClose} className="fas fa-times"></i></div>
                 </Modal.Header>
                 <Modal.Body>
-                    <EditCourse course={props.course} setEdit={setEdit} cancel={cancel} handleClose={handleClose} />
+                    <EditCourse course={props.course} handleClose={handleClose} />
                 </Modal.Body>
             </Modal>
-            <div className="courseCardContainer" style={{ backgroundImage: `url('${props.course.pictureRefence}')` }}>
-                <Button variant="primary" onClick={handleShow}>Edit</Button>
+            <div className="courseCardContainer" onClick={handleShow} style={{ backgroundImage: `url('${props.course.pictureRefence}')` }}>
                 <h4>{props.course.nameCourse}</h4>
             </div>
         </>

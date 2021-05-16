@@ -41,6 +41,7 @@ const EditJob = (props) => {
         if (response.data.success === true) {
             showToast('success', "The changes were saved")
             setError({})
+            props.handleClose()
         } else {
             response.data.error.details.map(error => {
                 errorsImput[error.context.label] = error.message

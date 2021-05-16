@@ -18,11 +18,15 @@ import ClassList from './Pages/ClassList'
 import Foro from './Pages/Foro'
 import Chat from './Pages/Chat'
 import Jobs from './Pages/Jobs'
+import NewJob from "./components/NewJob"
+import NewCourse from "./components/NewCourse"
+import CourseContainer from "./components/CourseContainer"
 
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { connect } from 'react-redux'
 import usersActions from "./redux/actions/usersActions";
+import JobsContainer from "./components/JobsContainer";
 
 const App = (props) => {
   const token = localStorage.getItem("token");
@@ -47,6 +51,10 @@ const App = (props) => {
         <Route exact path="/jobs" component={Jobs} /> {/* SOLO ALUMNO /PROFESOR/ADMIN*/}
         <Route exact path="/class/:id" component={ClassList} /> {/* SOLO ALUMNO /PROFESOR/ADMIN*/}
         <Route exact path="/foro/:id" component={Foro} />{/* SOLO ALUMNO /PROFESOR/ADMIN */}
+        <Route exact path="/NewJob" component={NewJob}/>{/* ADMIN */}
+        <Route exact path="/EditJobs" component={JobsContainer}/>{/* ADMIN */}
+        <Route exact path="/NewCourse" component={NewCourse}/>{/* ADMIN */}
+        <Route exact path="/EditCourse" component={CourseContainer}/>{/* ADMIN */}
       </Switch>
     </BrowserRouter>
   );
