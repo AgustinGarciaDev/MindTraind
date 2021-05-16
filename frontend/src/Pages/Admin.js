@@ -1,39 +1,33 @@
 import AsideNav from "../components/AsideNav"
 import Header from '../components/Header'
-import CourseContainer from "../components/CourseContainer"
-import NewCourse from "../components/NewCourse"
-import { useState } from "react"
-import NewJob from "../components/NewJob"
-import JobsContainer from "../components/JobsContainer"
+import { useEffect } from "react"
+import { NavLink } from 'react-router-dom'
 
 const Admin = () => {
-    const [show, setShow] = useState()
-
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
         <>
             <div className="contenedorMenu">
                 <AsideNav />
                 <div className="contenedorWeb">
                     <Header />
-                    <div className="adminContainer">
-                        {!show &&
-                            (
-                                <div className="selectCardContainer">
-                                    <div className="selectCard" onClick={() => setShow(<CourseContainer setShow={setShow} />)} style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/pexels-victor-freitas-841130-scaled.jpg')` }}>
-                                        <h3>Courses</h3>
-                                    </div>
-                                    <div className="selectCard" onClick={() => setShow(<NewCourse setShow={setShow} />)} style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/pexels-estudio-polaroid-3112004-scaled.jpg')` }}>
-                                        <h3>New course</h3>
-                                    </div>
-                                    <div className="selectCard" onClick={() => setShow(<JobsContainer setShow={setShow} />)} style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/pexels-estudio-polaroid-3112004-scaled.jpg')` }}>
-                                        <h3>Jobs</h3>
-                                    </div>
-                                    <div className="selectCard" onClick={() => setShow(<NewJob setShow={setShow} />)} style={{ backgroundImage: `url('http://baravdg.com/wp-content/uploads/2021/05/pexels-lukas-669584-scaled.jpg')` }}>
-                                        <h3>New job</h3>
-                                    </div>
-                                </div>
-                            )}
-                        {show}
+                    <div className="adminContainer" style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/rayas-red-izq-1.png')` }}>
+                        <div className="selectCardContainer">
+                            <NavLink className="selectCard" to={"/EditCourse"} style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/pexels-victor-freitas-841130-scaled.jpg')` }}>
+                                <h3>Courses</h3>
+                            </NavLink>
+                            <NavLink className="selectCard" to={"/NewCourse"} style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/pexels-estudio-polaroid-3112004-scaled.jpg')` }}>
+                                <h3>New course</h3>
+                            </NavLink>
+                            <NavLink className="selectCard" to={"/EditJobs"} style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/pexels-estudio-polaroid-3112004-scaled.jpg')` }}>
+                                <h3>Jobs</h3>
+                            </NavLink>
+                            <NavLink className="selectCard" to={'/NewJob'} style={{ backgroundImage: `url('http://baravdg.com/wp-content/uploads/2021/05/pexels-lukas-669584-scaled.jpg')` }}>
+                                <h3>New job</h3>
+                            </NavLink>
+                        </div>
                     </div>
                 </div>
             </div>

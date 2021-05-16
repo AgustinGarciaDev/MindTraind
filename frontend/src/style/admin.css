@@ -6,11 +6,12 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    min-height: 100vh;
 }
 
 .courseCardContainer{
     width: 40%;
-    height: 30vh;
+    height: 40vh;
     background-position: center;
     background-size: cover;
     display: flex;
@@ -18,6 +19,12 @@
     align-items: center;
     justify-content: flex-end;
     margin: 1vh 1vh;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+.courseCardContainer:hover{
+    transform: scale(1.02);
 }
 
 .courseCardContainer h4{
@@ -54,16 +61,17 @@
 .editInput{
     width: 95%;
 }
-.editInputVideo{
-    width: 95%;
-    overflow: hidden;
-}
 
 .newCourseContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
+    min-height: 100vh;
+    background-color: black;
+    background-position: center;
+    background-size: cover;
 }
 
 .newCourseForm{
@@ -144,7 +152,7 @@
 .lessonInput{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
     margin-right: 2vw;
 }
 
@@ -153,9 +161,6 @@
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
-}
-.newCategories p {
-    margin: 0 1vh;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -178,7 +183,7 @@ small{
     display: flex;
     flex-direction: column;
     margin-bottom: 1vh;
-    width: 100%;
+    width: 90%;
 }
 
 .categoryIcons{
@@ -204,14 +209,19 @@ small{
     display: flex;
     flex-direction: column;
     border-radius: 20px;
-    width: 100%;
     height: auto;
     padding: 10px;
+    overflow: hidden;
 }
 
 .h3Form{
     font-family: 'Anton', sans-serif;
-    margin-bottom: 2vh;
+    margin: 1vh 1vh;
+}
+.h3tittle{
+    font-family: 'Anton', sans-serif;
+    margin: 1vh 1vh;
+    color: white;
 }
 
 .fas{
@@ -265,15 +275,20 @@ small{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: black;
+    background-position: center;
+    background-size: cover;
 }
 
 .adminContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: ghostwhite;
+    background-color: black;
     min-height: 100vh;
     justify-content: center;
+    background-position: center;
+    background-size: cover;
 }
 
 .selectCardContainer{

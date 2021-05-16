@@ -37,14 +37,12 @@ const validator = (req, res, next) => {
     })
 
     const validation = schema.validate(req.body, { abortEarly: false })
-    console.log(validation)
+
     if (validation.error) {
-        let errors =  validation.error.details.map(error => {
-            return {message:error.message,label: error.context.label}
-        });
-        return res.json({success:false, errors})
+        return res.json({ succes: false, error: validation.error })
     }
     next()
 }
+
 
 module.exports = validator

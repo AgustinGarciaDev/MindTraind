@@ -5,16 +5,14 @@ import { showToast, showTostError500 } from "../../helpers/myToast";
 
 const usersActions = {
   signUpUser: (objInputsValues) => {
-    /*  const notify = (msg) => toast("errores del baack end"); */
     return async (dispatch, getState) => {
       try {
-        let { data } = await axios.post("http://localhost:4000/api/users/signup", objInputsValues);
-        if (data.success) {
-          showToast("success", data.error);
-          dispatch({ type: "LOGIN_USER", payload: data.response });
-          showToast("success", `Welcome ${data.response.firstName} ${data.response.lastName}`);
+        const response = await axios.post("http://localhost:4000/api/users/signup", objInputsValues);
+        if (response.data.success) {
+          dispatch({ type: "LOGIN_USER", payload: response.data.response });
+          showToast("success", `Welcome ${response.data.response.firstName} ${response.data.response.lastName}`);
         } else {
-          return data.errors ? data.errors : data.error;
+          return response
         }
       } catch (err) {
         console.log(err);
@@ -25,13 +23,12 @@ const usersActions = {
   logInUser: (objInputsValues) => {
     return async (dispatch) => {
       try {
-        let { data } = await axios.post("http://localhost:4000/api/users/login", objInputsValues);
-        console.log(data);
-        if (data.success) {
-          dispatch({ type: "LOGIN_USER", payload: data.response });
-          showToast("success", `Welcome ${data.response.firstName} ${data.response.lastName}`);
+        const response = await axios.post("http://localhost:4000/api/users/login", objInputsValues);
+        if (response.data.success) {
+          dispatch({ type: "LOGIN_USER", payload: response.data.response });
+          showToast("success", `Welcome ${response.data.response.firstName} ${response.data.response.lastName}`);
         } else {
-          return data.error ? data.error : data.error;
+          return response
         }
       } catch (err) {
         console.log(err);
@@ -47,7 +44,6 @@ const usersActions = {
         });
 
         dispatch({ type: "LOGIN_USER", payload: { ...data.response, token } });
-        showToast("success", `Welcome ${data.response.firstName} ${data.response.lastName}`);
       } catch (err) {
         alert("Error 500 , please come back later");
         console.log(err);
