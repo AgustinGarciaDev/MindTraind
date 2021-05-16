@@ -18,11 +18,12 @@ import ClassList from './Pages/ClassList'
 import Foro from './Pages/Foro'
 import Chat from './Pages/Chat'
 import Jobs from './Pages/Jobs'
-
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { connect } from 'react-redux'
 import usersActions from "./redux/actions/usersActions";
+import routesRole from "./helpers/routesRole"
+
 
 const App = (props) => {
   const token = localStorage.getItem("token");
@@ -31,23 +32,25 @@ const App = (props) => {
     props.loginForced(JSON.parse(token), props.history)
     return null;
   }
-
+  //let role ;
+  /*if(!props.userLogged){
+    role = "routerUserDontLogged" 
+  }else{
+    if(props.userLogged.role === "admin")
+      role = "routerUserLoggedAdmin"
+    else
+      role = "routerUserLoggedCommon" 
+  }*/
+   let role = props.userLogged || "routerUserDontLogged";
+   role = props?.userLogged?.role === "admin" ? "routerUserLoggedAdmin": role;
+   role = props?.userLogged?.role === 'noRole' ? "routerUserLoggedCommon": role;
+  
+  console.log(role,props.userLogged)
 
   return (
     <BrowserRouter>
       <ToastContainer />
-      <Switch>
-        <Route exact path="/" component={Home} /> {/* Todos */}
-        <Route exact path="/signup" component={SignUp} /> {/* Todos */}
-        <Route exact path="/signin" component={SignIn} /> {/* Todos */}
-        <Route exact path="/dashboard" component={Dashboard} /> {/* SOLO ALUMNO /PROFESOR/ADMIN */}
-        <Route exact path="/admin" component={Admin} /> {/* ADMIN */}
-        <Route exact path="/courselist" component={CourseList} /> {/*  SOLO ALUMNO /PROFESOR/ADMIN*/}
-        <Route exact path="/chat" component={Chat} /> {/* SOLO ALUMNO /PROFESOR/ADMIN*/}
-        <Route exact path="/jobs" component={Jobs} /> {/* SOLO ALUMNO /PROFESOR/ADMIN*/}
-        <Route exact path="/class/:id" component={ClassList} /> {/* SOLO ALUMNO /PROFESOR/ADMIN*/}
-        <Route exact path="/foro/:id" component={Foro} />{/* SOLO ALUMNO /PROFESOR/ADMIN */}
-      </Switch>
+      {routesRole[role]()}    
     </BrowserRouter>
   );
 };
