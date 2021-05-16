@@ -17,10 +17,12 @@ html *{
 .logo{
     height: 8vh;
     margin:1vh;
+    margin-left: 3vh;
 }
 .title{
     color:white;
     font-size: 10vh;
+
 }
 .footer{
     display: flex;

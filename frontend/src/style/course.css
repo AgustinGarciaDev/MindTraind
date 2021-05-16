@@ -49,6 +49,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 }
 
 .titleClass{
@@ -151,7 +152,8 @@
    
 
     .cardProfesor {
-      height: 18vw;
+      height: 25vh;
+      width: 40vw;
     }
     .contenedorTitle{
             margin-top: 5vw;
@@ -215,6 +217,9 @@
 
 @media only screen and (min-device-width : 425px) and (max-device-width : 768px) {
    
+    .classContainer{
+      margin-left: 6vh;
+    }
     .contenedorProfesorYbtn{
         flex-direction: column;
     }
@@ -234,6 +239,7 @@
   .contenedorClase {
     width: 88vw;
     height: 12vw;
+    
 }
     
 .contenedorTitle > h2 {
@@ -259,61 +265,72 @@
 @media only screen and (min-device-width : 200px) and (max-device-width : 425px){
 
     .cursoModalTitle {
-    font-size: 2vw;
-}
-    
-
-
+       font-size: 1vw;
+    }
     .titlePrincipal{
-            font-size: 2rem;
+        font-size: 1rem;
     }
 
     .fotoPortadaCourse{
-            height: 55vw;
+        height: 55vw;
+    }
+    .titleCardTeacher h2{
+        font-size: 1rem;
+    }
+    .fotoYnombreProfesor h2{
+        font-size: 1rem;
+    }
+    .contenedorCorreoProfesor p{
+        font-size: 1rem;
     }
 
-
-    .btnDashBoard{
-            
-        width: 50vw;
-        height: 14vw;
+    .btnDashBoard{    
+        width: 38vw;
+        height: 20vw;
     }
       .contenedorProfesorYbtn{
-       flex-direction: column;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 50vh;
    }
-  
-
     .cardProfesor {
-      height: 30vw;
+      height: 25vh;
     }
 
     .contenedorTitle{
             margin-top: 5vw;
-    margin-bottom: 2vw;
+        margin-bottom: 2vw;
     }
-  .btnClass {
-    width: 100%;
-}
+    .btnClass {
+        width: 100%;
+    }
     .contenedorClase{
-        width: 86vw;
-        height: 14vw;
+        width: 80vw;
+        height: 20vw;
     }
     
     .contenedorTitle > h2 {
-            font-size: 7vw;
+            font-size: 5vw;
+            margin-top: 4vh;
     }
     .fa-envelope{
         font-size: 4vw;
     }
-    .cardProfesor {
-    height: 43vw;
-    margin-bottom: 3vw;
-}
-
-
     .titleClass{
-        font-size: 22px;
+        font-size: 15px;
+        margin:1rem;
     }
+    .tituloForm{
+        font-size: 0.7rem;
+    }
+    .contenedorForumConsultas{
+        height: 10vh;
+    }
+    
+  
+ 
+    
 }
 
 
