@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom'
 import { useState } from "react"
 
 const AsideNav = () => {
@@ -9,47 +9,44 @@ const AsideNav = () => {
         setNavHide(!navHide)
     }
 
+    const dataNav = [
+        { path: "/dashboard", icon: "fas fa-border-all", text: "Dashboard" },
+        { path: "/courselist", icon: "fas fa-graduation-cap", text: "Courses" },
+        { path: "/jobs", icon: "fas fa-briefcase", text: "Jobs" },
+        { path: "/chat", icon: "fab fa-discord", text: "Discord" },
+        { path: "/admin", icon: "fas fa-users-cog", text: "Admin" },
+        { path: "/", icon: "fas fa-door-open", text: "Sign Out" },
+    ]
+
 
     return (
         <>
             {
                 navHide
-                    ? <div className="asideNav asideNavActive">
+                    ? <div className=" asideNavActive">
                         <div className="listIconNav">
                             <div onClick={changeStatus} className="contenedorIconNav contenedorIconNavActive"><i className="fas fa-align-left"></i> </div>
-                            <div className="contenedorIconNav contenedorIconNavActive">
-                                <i className="fas fa-graduation-cap"></i><p> Courses</p>
-                            </div>
-                            <div className="contenedorIconNav contenedorIconNavActive">
-                                <i className="fas fa-border-all"></i><p> Dashboard</p>
-                            </div>
-                            <div className="contenedorIconNav contenedorIconNavActive">
-                                <i className="fas fa-briefcase"></i><p>Jobs</p>
-                            </div>
-                            <div className="contenedorIconNav contenedorIconNavActive">
-                                <i className="fab fa-discord"></i><p> Discord</p>
-                            </div>
-                            <div className="contenedorIconNav contenedorIconNavActive">
-                                <i className="fab fa-spotify"></i><p>Spotify</p>
-                            </div>
-                            <div className="contenedorIconNav contenedorIconNavActive">
-                                <i className="fas fa-users-cog"></i><p> Admin</p>
-                            </div>
-                            <div className="contenedorIconNav contenedorIconNavActive">
-                                <i className="fas fa-door-open"></i><p> Sign out</p>
-                            </div>
+                            <>
+                                {dataNav.map(element => {
+                                    return (
+                                        <div className="contenedorIconNav contenedorIconNavActive">
+                                            <Link className="contenedorIconSide" to={element.path}><i className={element.icon}></i><p>{element.text}</p></Link>
+                                        </div>
+                                    )
+                                })}
+                            </>
                         </div>
                     </div>
                     : <div className="asideNav">
                         <div className="listIconNav">
                             <div onClick={changeStatus} className="contenedorIconNav"><i className="fas fa-align-left"></i> </div>
-                            <div onClick={changeStatus} className="contenedorIconNav"><i className="fas fa-briefcase"></i> </div>
-                            <div onClick={changeStatus} className="contenedorIconNav"><i className="fas fa-graduation-cap"></i></div>
-                            <div onClick={changeStatus} className="contenedorIconNav"><i className="fas fa-border-all"></i></div>
-                            <div onClick={changeStatus} className="contenedorIconNav"><i className="fab fa-discord"></i></div>
-                            <div onClick={changeStatus} className="contenedorIconNav"><i className="fab fa-spotify"></i></div>
-                            <div onClick={changeStatus} className="contenedorIconNav"><i className="fas fa-users-cog"></i></div>
-                            <div onClick={changeStatus} className="contenedorIconNav"> <i className="fas fa-door-open"></i></div>
+                            {dataNav.map(element => {
+                                return (
+                                    <div onClick={changeStatus} className="contenedorIconNav"><i className={element.icon}></i></div>
+                                )
+
+                            })}
+
                         </div>
                     </div>
             }

@@ -2,23 +2,43 @@ import React from "react";
 /* import Header from "./Header";
 import Footer from "./Footer"; */
 import { useEffect, useState } from "react";
-/* import { connect } from "react-redux"; */
-
-/* import GoogleLogin from "react-google-login"; */
-import { NavLink } from "react-router-dom";
-import usersActions from "../redux/actions/usersActions";
 import { connect } from "react-redux";
+import usersActions from "../redux/actions/usersActions";
+import axios from "axios";
+import { NavLink } from "react-router-dom";
+import GoogleLogin from "react-google-login";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+
 const SignIn = (props) => {
+  /*   console.log(props); */
   const [hidden, setHidden] = useState(true);
   const [eyeState, setEyeState] = useState(true);
   const [errorVisible, setErrorVisible] = useState(false);
-  const [preUser, setPreUser] = useState({
-    email: "",
-    password: "",
-  });
   const [validationsPass, setValidationsPass] = useState([]);
+  const [passGuideVisible, setPassGuideVisible] = useState(false);
   const [validationsOther, setValidationsOther] = useState([]);
-  const [erroresSignIn, setErroresSignIn] = useState("");
+  const [erroresSignIn, setErroresSignIn] = useState([]);
+  /* const [countries, setCountries] = useState([]); */
+  const [preUser, setPreUser] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    profilePicture: "",
+    password: "",
+    /*  role: "noRole", */
+  });
+
+  const [preUserPlaceHolder, setPreUserPlaceHolder] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    profilePicture: "",
+    password: "",
+    /*  role: "noRole", */
+  });
+
+  let miRespuesta2 = [{ message: "" }, { message: "" }, { message: "" }, { message: "" }];
 
   useEffect(() => {
     /*  console.log("1v) soy el didmount"); */
@@ -27,30 +47,26 @@ const SignIn = (props) => {
     /*  console.log("entre a validr"); */
     const pass = preUser.password;
     setValidationsPass([
-      pass.length > 5,
-      pass.search(/[A-Z]/) > -1,
+      pass.length > 4,
+      pass.search(/[A-z]/) > -1,
       pass.search(/[0-9]/) > -1,
-      pass.search(/[$&+,:;=?@#]/) > -1,
+      /*   pass.search(/[$&+,:;=?@#]/) > -1, */
     ]);
+
+    console.log("validationsPass", validationsPass.length);
+    console.log("passguide", passGuideVisible);
   }, [preUser.password]);
 
   useEffect(() => {
     const otherInput = preUser;
     /*  console.log("otherInput", otherInput); */
-    setValidationsOther([otherInput.email.search(/^\S+@\S+\.\S+$/) > -1]);
+    setValidationsOther([
+      otherInput.firstName.length > 1,
+      otherInput.lastName.length > 1,
+      otherInput.email.search(/^\S+@\S+\.\S+$/) > -1,
+      otherInput.profilePicture.length > 0,
+    ]);
   }, [preUser]);
-
-  /*  const respuestaGoogle = (response) => {
-    const { givenName, email, googleId, imageUrl } = response.profileObj;
-    props.createAndLogIn({
-      name: givenName,
-      email: email,
-      country: "",
-      pass: "a" + googleId,
-      url: imageUrl,
-    });
-    props.history.push("/");
-  }; */
 
   const flogInUser = async () => {
     /* props.logInUser(preUser) */
@@ -59,133 +75,165 @@ const SignIn = (props) => {
       console.log("0props", miRespuesta);
       setErroresSignIn(miRespuesta);
       setErrorVisible(!errorVisible);
-
       console.log("errpres", miRespuesta);
     } catch {
+      props.history.push("/dashboard");
       console.log("no funciono");
     }
   };
+
+  const responseGoogle = (response) => {
+    const { givenName, familyName, email, googleId, imageUrl } = response.profileObj;
+    props.flogInUser({
+      firstName: givenName,
+      lastName: familyName,
+      email: email,
+      profilePicture: imageUrl,
+      password: "Cx1" + googleId,
+      /*  role: "noRole", */
+    });
+    props.history.push("/dashboard");
+  };
+
   return (
-    <div
-      className="SignInContainer d-flex "
-      onMouseOver={() => setHidden(false)}
-      onMouseOut={() => setHidden(false)}
-    >
-      {props.theUser && console.log("X", props.theUser)}
-      {/*  <p> "hola" {hidden && "hola"}</p> */}
-      <div className={"w-50"}>
-        <div className="titleForm titulos m-3 h2 ">Sign In</div>
-        <div className="h6 small textos text-center">welcome back</div>
-        <div className="errorContainer" style={{ display: errorVisible ? "block" : "none" }}>
-          <span
-            id="close"
+    <>
+      <Header />
+      <div className="signUpContainer d-flex ">
+        <div className="w-50 mi100">
+          <div className="titleForm titulos mt-2 h3 ">Sign In Form</div>
+          <div className=" small textos text-center">
+            <h2 className="titleSignUp"> Welcome Back💪 </h2>
+          </div>
+          <div
+            className="errorContainer especial"
             style={{ display: errorVisible ? "block" : "none" }}
-            onClick={() => setErrorVisible(!errorVisible)}
           >
-            {" "}
-            x{" "}
-          </span>
-          🚫 sorry we couldn't login to your account with your provided info, please refer to the
-          folowing messages.
-          <div>{erroresSignIn}</div>
-        </div>
-        <div className="bg-secondary">
-          <div className="font-italic  mt-3 mb-2 bg-white border-1 p-3 d-flex flex-column">
-            <div className="border mt-1">
-              <input
-                type="mail"
-                onChange={(e) => setPreUser({ ...preUser, email: e.target.value.toLowerCase() })}
-                value={preUser.email}
-                placeholder="a valid email address"
-                className={
-                  !validationsOther[2]
-                    ? "ng-dirty border-0 textos small w-75"
-                    : "ng-valid border-0  textos small w-75"
-                }
-              />
-              📧
-              {/*  {console.log("validacionesotro", validationsOther)} */}
+            <span
+              id="close"
+              style={{ display: errorVisible ? "block" : "none" }}
+              onClick={() => setErrorVisible(!errorVisible)}
+            >
+              {" "}
+              x{" "}
+            </span>
+            <div className="text-center">
+              {" "}
+              🚫 sorry we couldn't Log in your account with your provided info, please watch below
+              for the missing details.{" "}
             </div>
-            {/*  <div className="small border mt-1"> */}
-            {/* </div> */}
-            <div className="mt-1 ">
-              <input
-                onChange={(e) => setPreUser({ ...preUser, password: e.target.value })}
-                value={preUser.password}
-                type={eyeState ? "password" : "text"}
-                placeholder="your secret password"
-                className="mb-1 ng-dirty"
-                className={
-                  !validationsPass.includes(false)
-                    ? "ng-valid textos small"
-                    : "ng-dirty textos small"
-                }
-              ></input>
+          </div>
+
+          <div className="w-100">
+            <div className="font-italic bg-white border-1 align-items-center pt-0 d-flex flex-column">
+              <span className="small mt-1 afterRed w-75">
+                hi, please enter your registered email
+              </span>
+              <div className="border w-75">
+                <input
+                  type="mail"
+                  onChange={(e) => setPreUser({ ...preUser, email: e.target.value.toLowerCase() })}
+                  value={preUser.email}
+                  placeholder={preUserPlaceHolder.email || "e.g: john.doe@gmail.com"}
+                  className={
+                    !validationsOther[2]
+                      ? "ng-dirty textos small w-100"
+                      : "ng-valid textos small w-100"
+                  }
+                />
+
+                {/*  {console.log("validacionesotro", validationsOther)} */}
+              </div>
+              {/*  <div className="small border mt-1"> */}
+              {/* </div> */}
+              <div className="w40 mt-2 d-flex justify-content-between">
+                {/*   <span className="small italics">show your password </span> */}
+              </div>
+              <div className="w-75 border mt-1 mb-1 ">
+                <input
+                  onChange={(e) => setPreUser({ ...preUser, password: e.target.value })}
+                  onFocus={() => setPassGuideVisible(true)}
+                  value={preUser.password}
+                  type={eyeState ? "password" : "text"}
+                  placeholder=" your password"
+                  className={
+                    !validationsPass.includes(false)
+                      ? "ng-valid titulos w90"
+                      : "ng-dirty titulos w90"
+                  }
+                ></input>
+                <label htmlFor="eye" className="ml-5">
+                  <input
+                    id="eye"
+                    className="hidden"
+                    type="checkbox"
+                    onChange={() => setEyeState(!eyeState)}
+                  ></input>{" "}
+                  <i className={eyeState ? "pl-5 fas fa-eye-slash" : "fas fa-eye"}></i>
+                </label>
+              </div>
+              {/* errorPassContainer */}
+
+              <div className="m-auto w-50 d-flex flex-column justify-content-center text-center">
+                {" "}
+                <button
+                  className="btn mt-4 mb-2 btn-danger myBtn "
+                  onClick={() => {
+                    flogInUser();
+                  }}
+                >
+                  Continue
+                </button>
+                <GoogleLogin
+                  clientId="829812608617-0sn9cfi15261rmp12hd06m7sj55plu0u.apps.googleusercontent.com"
+                  render={(renderProps) => (
+                    <div
+                      onClick={renderProps.onClick}
+                      disabled={renderProps.disabled}
+                      className="myBtn btn btn-primary mb-2 d-flex"
+                    >
+                      <div className=""></div>
+                      <i className="w-25 pt-1 pl-5 ml-5 fab fa-google"></i>
+                      <div className="w-50 text-center">SignIn with Google</div>
+                    </div>
+                  )}
+                  buttonText="Login"
+                  onSuccess={responseGoogle}
+                  onFailure={responseGoogle}
+                  cookiePolicy={"single_host_origin"}
+                />
+                <NavLink to="/SignUp">
+                  <label className="w-100 btn small btn-warning bg-info myBtn h6">
+                    New at TrainedMind? start here! <span className="mirror">👉</span>
+                  </label>{" "}
+                </NavLink>
+              </div>
             </div>
-            <span className="small">show your password</span>
-
-            <label htmlFor="eye">
-              <i className={eyeState ? "fas fa-eye-slash" : "fas fa-eye"}></i>
-              <input
-                id="eye"
-                className="hidden"
-                type="checkbox"
-                onChange={() => setEyeState(!eyeState)}
-              ></input>{" "}
-            </label>
-            <button className="btn mb-1 btn-danger myBtn " onClick={() => flogInUser()}>
-              Continue
-            </button>
-            {/*     <GoogleLogin
-            className="small w-50 text-white bg-primary"
-            clientId="834257531526-ouhj5beccvjj3nhvrqjrjvmdga8qjvu9.apps.googleusercontent.com"
-            buttonText="Sign Up with Google"
-            onSuccess={respuestaGoogle}
-            onFailure={respuestaGoogle}
-            cookiePolicy={"single_host_origin"}
-          /> */}
-
-            {/* facebook btn */}
-            <div
-              className="fb-login-button"
-              data-width=""
-              data-size="large"
-              data-button-type="continue_with"
-              data-layout="rounded"
-              data-auto-logout-link="true"
-              data-use-continue-as="true"
-            ></div>
-
-            <NavLink to="/SignUp">
-              <label className="mt-2 w-100 btn btn-info myBtn h6">
-                New at TrainedMind?,Join us here. <span className="mirror">👉</span>
-              </label>{" "}
-            </NavLink>
-            <ul className="pl-3 small">
-              {/*  {console.log("soy el validations", validations)} */}
-              <span className="small">**Password should be**</span>
-              <li className="small">{validationsPass[0] ? "✔" : "❌"}At least 6 character</li>
-              <li className="small">{validationsPass[1] ? "✔" : "❌"}Contain a capital Letter</li>
-              <li className="small">{validationsPass[2] ? "✔" : "❌"}Contain a number </li>
-              <li className="small">
-                {validationsPass[3] ? "✔" : "❌"}Contain one of $/¿,:;?@# chars
-              </li>
-            </ul>
           </div>
         </div>
+
+        <div className="signUpVideoContainer w-50 h-50 bg-dark" controls>
+          <video className="signUpVideo w-100" autoPlay muted loop>
+            <source
+              src={"https://baravdg.com/wp-content/uploads/2021/05/production-ID_4761432.mp4"}
+              type={"video/mp4"}
+            />
+          </video>
+        </div>
       </div>
-      <div className="w-50 bg-dark">hola</div>
-    </div>
+    </>
   );
 };
-/* REDUX */
-/*
- const mapStateToProps = (state) => {
-  return {
 
+/* REDUX */
+const mapStateToProps = (state) => {
+  return {
+    theUser: state.user.userLogged,
   };
-};*/
+};
 const mapDispatchToProps = {
+  /*  fetchCountries: countriesActions.actionLoadCountries, */
   logInUser: usersActions.logInUser,
 };
-export default connect(null, mapDispatchToProps)(SignIn);
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+/* export default SignUp; */

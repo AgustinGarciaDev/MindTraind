@@ -3,14 +3,19 @@ import { Popover } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { useState } from 'react'
+import { connect } from 'react-redux'
+import coursesActions from "../redux/actions/coursesActtions"
 
-const Reply = (props) => {
 
+const Reply = ({ replyComment, modifyReply, idComment, idCourse, userLogged }) => {
+    const { textReply, userReply, _id } = replyComment;
     const [show, setShow] = useState(false);
     const [editInput, setEditInput] = useState(false);
     const [comentario, setComentario] = useState({
         mensaje: "",
     })
+
+
 
 
     const datosInput = (e) => {
@@ -19,14 +24,28 @@ const Reply = (props) => {
         })
     }
 
-    console.log(comentario)
     const changeInput = () => {
+        setComentario({
+            ...comentario,
+            mensaje: textReply
+        })
         setEditInput(!editInput)
     }
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const requestModifyReply = (action, e) => {
+        if (action === "update") {
+            modifyReply({ action, textReply: comentario.mensaje, idCourse, idCommentReply: _id, token: userLogged.token, idComment })
+            setEditInput(!editInput)
+
+        }
+
+        else {
+            modifyReply({ action, idCourse, idCommentReply: _id, token: userLogged.token, idComment })
+        }
+    }
 
     const popover = (
         <Popover delay={{ show: 250, hide: 400 }}>
@@ -41,7 +60,7 @@ const Reply = (props) => {
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
-                        <Button variant="primary">
+                        <Button variant="primary" onClick={() => requestModifyReply("delete")}>
                             Delete
                  </Button>
                     </Modal.Footer>
@@ -51,27 +70,25 @@ const Reply = (props) => {
         </Popover>
     )
 
-
-    const userPic = "http://baravdg.com/wp-content/uploads/2021/05/1.jpg"
-    const nombreProfesor = "Juan Marquina"
-    console.log(props)
     return (
         <>
             <div className="contenedorEditorYcomentario">
                 <div className="contenedorReply">
-                    <div className="fotoProfesor" style={{ backgroundImage: `url("${userPic}")` }}></div>
+                    {<div className="fotoProfesor" style={{ backgroundImage: `url("${userReply.profilePicture}")` }}></div>}
                     <div className="contenedorDatosUserReply">
-                        <h5>{nombreProfesor}</h5>
+                        <h5>{userReply.firstName} {userReply.lastName}</h5>
                         {!editInput
-                            ? <div><p>sadasd</p></div>
+                            ? <div><p>{textReply}</p></div>
                             : <div className="contenedorInputEdit">
                                 <input
                                     className="inputEdit"
-                                    onChange={datosInput}
+                                    onChange={(e) => datosInput(e)}
                                     name="comentario" type="text"
+                                    value={comentario.mensaje}
                                 />
-                                <button className="btnSendEdit">
+                                <button className="btnSendEdit" onClick={() => requestModifyReply("update")}>
                                     <i class="fas fa-paper-plane"></i>
+
                                 </button>
 
                             </div>
@@ -87,4 +104,13 @@ const Reply = (props) => {
     )
 }
 
-export default Reply
+const mapDispatchToProps = {
+    modifyReply: coursesActions.modifyReply
+}
+
+const mapStateToProps = (state) => {
+    return {
+        userLogged: state.user.userLogged
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Reply)

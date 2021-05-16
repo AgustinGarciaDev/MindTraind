@@ -1,5 +1,6 @@
 .logoDashBoard{
-    width: 5vw;
+    height: 8vh;
+    margin:1vh;
 }
 
 .DashBoardfotoUsuario{
@@ -19,9 +20,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    top: 6vw;
 }
+
+
+.ContenedorPresentacion{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     background: #080d13;
+}
+
 
 .contenedorCurso{
     box-shadow: 1px 1px 5px 0px #000000a6;
@@ -34,7 +42,10 @@
 }
 
 .tituloDasboard{
-    text-align: center;
+   text-align: center;
+    font-family: "Anton";
+    margin-top: 4vw;
+    margin-bottom: 2vw;
 }
 
 .contenedorBtn{
@@ -85,16 +96,15 @@
 }
 .contenedorCourseAndSideBar{
     display: flex;
-        margin-top: 39px;
+        margin: 39px;
+    justify-content: center;    
 }
 .contenedorInscripcionCursos{
     display: flex;
     align-items: center;
-    position: relative;
     top: 6vw;
     align-items: flex-start;
         flex-wrap: wrap;
-    width: 83vw;
 }
 
 .courseList{
@@ -123,7 +133,7 @@
     margin: 20px;
 }
 .contenedorAsideNav{
-    width: 30vw;
+   width: 49vw;
     position: sticky;
      height: 48vw;
     background:#080D13;
@@ -145,9 +155,10 @@
 .lineaTitle{
     background: #FF0034;
     height: 0.5vw;
-    width: 5vw;
+    width: 80%;
     position: relative;
     top: -7px;
+    margin-top: 0.5rem;
 
 }
 .textoCourseAside > h2{
@@ -202,66 +213,183 @@
 .cursoModalSubtitle > span{
     margin-left: 5px;
 }
-.modalTextContent{
-    display: flex;
-    align-items: center;
-    margin-left: 16px;
-    margin-bottom: 10px;
+
+.videoDash{
+    width: 77%;
 }
 
-.fotoPortadaCourse {
-    background-image: url("http://baravdg.com/wp-content/uploads/2021/05/pexels-li-sun-2294361-1-scaled.jpg");
-     background-size: cover;
-    background-position: center;
-    height: 29vw;
+.sobreVideo{
+    position: absolute;
+    width: 100%;
+    backdrop-filter: brightness(0.2);
+    height: 89%;
     display: flex;
-    align-items: center;
-}
-
-.titlePrincipal{
-    color: white;
-    font-size: 4rem;
-    margin-left: 7vw;
-}
-.contenedorClase{
-    width: 71vw;
-    margin-bottom: 23px;
-    margin-top: 23px;
-    background: #F7F7F7;
-    box-shadow: 0 5px 25px 10px rgb(0 0 0 / 15%);
-    display: flex;
-    align-items: center;
-    height: 5vw;
-    padding: 20px;
-    justify-content: space-between;
-}
-
-.btnClass{
-    width: 14vw;
-    border: 1px solid #FF0034;
-    border-radius: 20vw;
-    background: white;
-    font-family: 'Roboto';
-    padding: 6px;
-    font-weight: bold;
-}
-
-.classContainer{
-    display: flex;
+    align-items: baseline;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
-.titleClass{
-     font-family: 'Roboto';
+.sobreVideo > h1{
+        color: white;
     font-weight: bold;
-    font-size: 29px;
+    font-family: 'Anton';
+    font-size: 9vw;
+  margin-left: 14vw;
 }
 
-.contenedorFrame {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.sobreVideo > a > button{
+    margin-left: 14vw;
+    margin-top: 4vw;
+    width: 21vw;
+    height: 4vw;
+    background: #ff0034;
+    color: white;
+    border: none;
+    border-radius: 2vw;
+    font-size: 2vw;
+        font-family: 'Anton';
 }
+
+
+/* Responsive lista de cursos*/
+
+@media only screen and (min-device-width : 425px) and (max-device-width : 1200px) {
+   
+
+    .ContenedorPresentacion{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #030304    
+}
+
+    .sobreVideo{
+    width: 100vw;
+    backdrop-filter: brightness(0.2);
+    height: 66vw;
+    justify-content: center;
+
+    }
+
+    .videoDash {
+    width: 100%;
+}
+
+   
+
+
+    .contenedorAsideNav{
+            width: 86vw;
+            height: 63vw;
+    }
+    .contenedorCourseAndSideBar{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        margin-top: 2vh;
+        z-index: 1;
+    }
+    .contenedorInscripcionCursos{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+       
+    }
+    .contenedorCurso{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+         width: 89%;
+        
+    }
+    .fotoCurso{
+        height: 20rem;
+        background-size: cover;
+    }
+    
+    .btnDashBoard{
+        width: 10rem;
+        height: 3rem;
+    }
+    
+    .titleContenedorAside{
+        width: 100%;
+    }
+    .cursoModalTitle{
+
+    font-size: 6vw;
+    }
+    .logoDashBoard{
+        width: 2rem;
+        height: 2rem;
+        margin: 0.5em;
+    }
+
+  
+    .titleContenedorAside{
+        font-size: 1.4rem;
+        margin: 5px 0px 5px 0px;
+    }
+    .nameTitleAside{
+        font-size: 1.2rem;
+        margin-top: 1rem;
+    }
+    .lineaTitle{
+        width: 80%;
+        margin-top: 1vh;
+    }
+    .textoCourseAside{
+        font-size: 0.9rem;
+    }
+
+ 
+ 
+}
+
+@media only screen and (min-device-width : 100px) and (max-device-width : 425px){
+ .navbar{
+        z-index: 1;
+    }
+
+    .fotoCurso {
+    height: 53vw;
+}
+
+    .ContenedorPresentacion{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #030304    
+}
+
+    .sobreVideo{
+     height: 184vw;
+    justify-content: center;
+
+    }
+
+    .videoDash {
+   width: 220vh;
+    }
+
+
+    .sobreVideo > h1{
+            font-size: 16vw;
+    }
+
+    .sobreVideo > a > button {
+    width: 45vw;
+    height: 13vw;
+    font-size: 5vw;
+    margin-top: 7vw;
+}
+
+}
+
 

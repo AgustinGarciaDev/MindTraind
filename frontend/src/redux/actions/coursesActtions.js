@@ -84,7 +84,7 @@ const coursesActions = {
                 const { data } = await axios.get("http://localhost:4000/api/coursesOfUser", {
                     headers: { "Authorization": "Bearer " + token }
                 })
-                console.log(data)
+
                 return data
 
             } catch (err) {
@@ -99,11 +99,13 @@ const coursesActions = {
         }
     },
     getCourseById: (idCourse) => {
-        return async () => {
+        return async (dispatch) => {
             try {
                 const { data } = await axios.get('http://localhost:4000/api/courses/' + idCourse)
-                if (data.success)
+                if (data.success) {
+                    dispatch({ type: "UPDATE_CURRENT_COURSE", payload: data.response });
                     return data.response
+                }
                 else
                     showToast("error", data.error)
 
@@ -143,7 +145,83 @@ const coursesActions = {
                 showTostError500();
             }
         }
-    }
+    },
+
+    /* Comments */
+    sendPost: (data) => {
+
+        return async (dispatch, getState) => {
+            try {
+                const response = await axios.put('http://localhost:4000/api/coursesmodifyComments/' + data.idCourse, data, {
+                    headers: { Authorization: "Bearer " + data.token },
+                })
+
+                if (response.data.success) {
+                    dispatch({ type: "UPDATE_COURSE", payload: response.data.response })
+                }
+            } catch (err) {
+                console.log(err);
+                showTostError500();
+            }
+        }
+    },
+
+    editPost: (data) => {
+
+        return async (dispatch, getState) => {
+            try {
+                const response = await axios.put('http://localhost:4000/api/coursesmodifyComments/' + data.idCourse, data, {
+                    headers: { Authorization: "Bearer " + data.token },
+                })
+                if (response.data.success) {
+                    dispatch({ type: "UPDATE_COURSE", payload: response.data.response })
+                }
+            } catch (err) {
+                console.log(err);
+                showTostError500();
+            }
+        }
+
+    },
+    deletePost: (data) => {
+        return async (dispatch, getState) => {
+            try {
+                const response = await axios.put('http://localhost:4000/api/coursesmodifyComments/' + data.idCourse, data, {
+                    headers: { Authorization: "Bearer " + data.token },
+                })
+                if (response.data.success) {
+                    dispatch({ type: "UPDATE_COURSE", payload: response.data.response })
+                }
+            } catch (err) {
+                console.log(err);
+                showTostError500();
+            }
+        }
+
+    },
+
+    /* Reply Comment */
+    modifyReply: (data) => {
+
+        return async (dispatch, getState) => {
+            try {
+                const response = await axios.put('http://localhost:4000/api/coursesReplyAComment/' + data.idCourse, data, {
+                    headers: { Authorization: "Bearer " + data.token },
+                })
+                if (response.data.success) {
+                    dispatch({ type: "UPDATE_COURSE", payload: response.data.response });
+                }
+            } catch (err) {
+                console.log(err);
+                showTostError500();
+            }
+        }
+    },
+
+
+
+
+
 }
 
 export default coursesActions

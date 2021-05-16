@@ -34,6 +34,11 @@
     box-shadow: 0 5px 25px 10px rgb(0 0 0 / 15%);
 }
 
+.contenedorPost:hover{
+    box-shadow: 0 5px 25px 10px rgb(0 0 0 / 15%);
+}
+
+
 .contenedorTextArea{
     width: 51vw;
     display: flex;
@@ -107,6 +112,7 @@
 .contedorDatosUsuario{
     display: flex;
     align-items: center;
+        margin-left: 14px;
 }
 
 .contenedorIconoSearch{
@@ -124,7 +130,7 @@
 .tituloPost{
     font-family: 'Roboto';
     font-weight: bold;
-    font-size: 3vw;
+    font-size: 2vw;
     margin-bottom: 2vw;
 }
 
@@ -155,7 +161,7 @@
 
 .inputComment{
     display: flex;
-    width: 85%;
+    width: 90%;
     border-radius: 5vw;
     border: none;
     height: 3vw;
@@ -182,6 +188,7 @@
 
 .contenedorDatosUserReply{
     margin-left: 1vw;
+    
 }
 .contenedorDatosUserReply > h5{
     margin-bottom: 0;
@@ -228,6 +235,7 @@ flex-direction: column;
 
 .contenedorEditorYcomentario{
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
 }   
 
@@ -262,12 +270,12 @@ flex-direction: column;
 
 .contenedorBannerForo{
     background-image: url("http://baravdg.com/wp-content/uploads/2021/05/Diseno-sin-titulo-22.jpg");
-    background-size: cover;
+     background-size: cover;
     background-position: center;
-    height: 33vw;
-    width: 21vw;
+    height: 34vw;
+    width: 27vw;
     position: relative;
-    right: 2vw;
+    right: 5vw;
     justify-content: center;
     align-items: flex-end;
     display: flex;
@@ -278,6 +286,7 @@ flex-direction: column;
     font-size: 2vw;
     color: white;
     font-family: "Anton";
+    margin-left: 2vw;
 }
 
 .contenedorBtnyTextBanner{
@@ -294,4 +303,219 @@ flex-direction: column;
 .spaceBtnQuery{
     position: relative;
     top: 19px;
+}
+
+.contenedorTextAreaEdit{
+    width: 31vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.textAreaEdit{
+     width: 44vw;
+    height: 7vw;
+     border: 1px solid #ff0034;
+     padding: 10px;
+}
+
+.btnTextAreaEdit{
+    border: none;
+    background: FF0034;
+    background: #FF0034;
+    color: white;
+    width: 11vw;
+    height: 3vw;
+    border-radius: 10px;
+    box-shadow: 1px 1px 9px 2px #ff0034;
+    margin-top: 11px;
+    
+}
+
+.contenedorEditInputs{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1vw;
+     margin-left: 14px;
+}
+
+.btnModificarInputs{
+     margin-bottom: 2vw;
+    margin-right: 0;
+    margin-left: auto;
+    font-size: 2vw;
+    background: none;
+    color: black;
+    border: none;
+}
+
+.inputTitle{
+    width: 88%;
+    height: 3vw;
+    border: none;
+    border: 1px solid #ff0034;
+    padding: 10px;
+
+}
+
+#btnTitle{
+    border: none;
+    background: #ff0034;
+    color: #ffffff;
+    border-radius: 0vw;
+    width: 3vw;
+    height: 3vw;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.btnText{
+        border: none;
+    background: #ff0034;
+    color: #ffffff;
+    border-radius: 0vw;
+    width: 3vw;
+    height: 3vw;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+        margin-top: 10px;
+}
+
+.fas{
+    margin-right: 0;
+}
+
+@media screen and  (max-width:1000px)  and  (min-width:700px) {
+
+        .contenedorComentarios {
+            height: 59vw;
+        }
+        .contenedorComentarioYbuscador{
+                width: 65vw;
+        }
+        .contenedorBannerForo{
+            height: 42vw;
+            width: 26vw;
+        }
+        .spaceBtnForo{
+            margin-top: 14px;
+            height: 4vw;
+        }
+        .inputSearch {
+            width: 102%;
+            height: 4vw;
+            padding: 10px;
+        }
+        .contenedorComentario > p{
+            font-size: 20px;
+        }
+
+    }
+@media screen and  (max-width:700px)  and  (min-width:200px) {
+   
+
+    .contenedorBtnTextArea{
+            width: 93vw;
+    }
+
+    .contenedorPosteos{
+            flex-direction: column-reverse;
+            align-items: center;
+    }
+    .barraBuscadora{
+               width: 80vw;
+    }
+    .inputSearch{
+        height: 7vw;
+    }
+    .tituloForm{
+        font-size: 3vw;
+    }
+    .contenedorComentarios{ 
+         height: 127vw;
+    }
+
+    .contenedorIconoSearch{
+           height: 7vw;
+        width: 10vw;
+    }
+
+    .comment{
+         height: 9vw;
+    } 
+
+    .contenedorPost {
+           width: 93vw;
+    }
+
+    .contenedorBannerForo{
+            height: 49vw;
+            width: 103vw;
+    }
+
+      .titleHelp {
+    font-size: 6vw;
+    margin-bottom: 2vw;
+    }
+
+    .postYtitulo {
+        margin-top: 9vw;
+        width: 91%;
+    }
+    .inputPost{
+         height: 5vw;
+    }
+    .btnForm {
+    width: 26vw;
+    font-weight: bold;
+    height: 6vw;
+    }
+    .titleInternalForm {
+    font-size: 5vw;
+    }
+    .tituloPost{
+        font-size: 5vw;
+    }
+    .contenedorComentario {
+    font-size: 3.4vw;
+    }
+    .comentarioFotoUser {
+    width: 9vw;
+}
+
+    .contenedorEditorYcomentario{
+        width: 74vw;
+            margin-top: 4vw;
+    }
+
+    .contenedorReply {
+            width: 67vw;
+    }
+
+    .contenedorDatosUserReply > h5 {
+    padding: 0;
+}
+
+    .fotoProfesor{
+        width: 10vw;
+    height: 10vw;
+    }
+
+    #btnTitle{
+            width: 6vw;
+    height: 5vw;
+    }
+
+      .btnText{
+            width: 6vw;
+    height: 5vw;
+    }
+
+    .textAreaEdit{
+         width: 68vw;
+        height: 22vw;
+    }
 }

@@ -7,6 +7,7 @@ import './style/admin.css'
 import './style/foro.css'
 import './style/jobs.css'
 import './style/asideNav.css'
+import './style/course.css'
 import SignIn from './Pages/SignIn'
 import SignUp from './Pages/SignUp'
 import Home from './Pages/Home'
@@ -45,7 +46,7 @@ const App = (props) => {
         <Route exact path="/chat" component={Chat} /> {/* SOLO ALUMNO /PROFESOR/ADMIN*/}
         <Route exact path="/jobs" component={Jobs} /> {/* SOLO ALUMNO /PROFESOR/ADMIN*/}
         <Route exact path="/class/:id" component={ClassList} /> {/* SOLO ALUMNO /PROFESOR/ADMIN*/}
-        <Route exact path="/foro" component={Foro} />{/* SOLO ALUMNO /PROFESOR/ADMIN */}
+        <Route exact path="/foro/:id" component={Foro} />{/* SOLO ALUMNO /PROFESOR/ADMIN */}
       </Switch>
     </BrowserRouter>
   );

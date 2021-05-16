@@ -53,7 +53,7 @@ const usersActions = {
         console.log(err);
         if (err.response && err.response.status === 401) {
           alert("try harder next time");
-          localStorage.clear();
+          //localStorage.clear();
           window.location.reload(true);
           //history.push("/");
         }

@@ -2,14 +2,18 @@
     display: flex;
 }
 .asideNav{
-    width: 4%;
-    background: #080d13;
-    position: sticky;
+    position: fixed;
+    overflow: hidden;
     top: 0;
+    bottom: 0;
+    left: 0;
+    background: #080D13;
+    z-index: 2;
+    width: 3%;
 }
 
 .contenedorWeb{
-    width: 100%;
+    width: 100vw;
     background: #F0F0F0;
 }
 
@@ -22,12 +26,17 @@
 }
 
 .asideNavActive{
-        width: 21%;
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: #080D13;
+    z-index: 2;
 }
 
 .contenedorIconNavActive{
      margin-left: 2vw; 
-
      justify-content: flex-start;
 }
 
@@ -42,18 +51,7 @@
    cursor: pointer;
 }
 
-.heroJobs{
-    height: 32vw;
-    background-position: bottom;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: url("http://baravdg.com/wp-content/uploads/2021/05/Diseno-sin-titulo-10.png");
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-family: "Anton";
-}
+
 
 .heroJobs > h1{
         font-size: 5rem;
@@ -62,4 +60,40 @@
 .listIconNav{
     position: sticky;
     top: 3vh;
+}
+
+.contenedorIconText{
+    display: flex;
+    align-items: center;
+}
+
+.contenedorIconSide{
+    display: flex;
+    align-items: center; 
+    color: white;
+}
+
+.contenedorIconSide:hover{
+   color:#FF0034;
+   cursor: pointer;
+}
+
+.contenedorIconSide > p{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.fa-discord {
+    color: white;
+    font-size: 2.8vh;
+}
+
+
+@media screen and  (max-width:700px)  and  (min-width:381px) {
+.asideNav{
+
+    width: 8%;
+}
+
+
 }

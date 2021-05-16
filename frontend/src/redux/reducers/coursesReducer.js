@@ -1,5 +1,6 @@
 const initialState = {
-    courses: []
+    courses: [],
+    currentCourse: null
 }
 
 const courseReducer = (state = initialState, action) => {
@@ -29,8 +30,17 @@ const courseReducer = (state = initialState, action) => {
             })
             return {
                 ...state,
-                courses : newCourses
+                courses : newCourses,
+                currentCourse: action.payload
             }
+        case 'UPDATE_CURRENT_COURSE':
+            console.log(action.payload)
+            return {
+                ...state,
+                currentCourse: action.payload
+            }
+
+
         default:
             return state
     }
