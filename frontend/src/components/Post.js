@@ -83,18 +83,15 @@ const Post = (props) => {
 
     const editCommentChange = (e) => {
 
-        console.log("me mando")
+        console.log(e.target.dataset.input)
+
         props.editPost(_id, editPost.title, editPost.text)
-        if (e.target.id === "btnText") {
-            console.log("envioTexto")
+        if (e.target.dataset.input === "btnText") {
             setEditInput(!editInput)
         } else {
             setEditInputTitle(!editInputTitle)
         }
-        /*    if (e.target.id === "btnTitle") {
-               console.log("envioTexto")
-              
-           } */
+
     }
 
 
@@ -165,8 +162,8 @@ const Post = (props) => {
                             type="text"
                             value={editPost.text}
                         ></textarea>
-                        <button id="btnText" onClick={editCommentChange} >
-                            <i class="fas fa-edit"></i>
+                        <button className="btnText" data-input="btnText" onClick={editCommentChange} >
+                            <i data-input="btnText" class="fas fa-edit"></i>
                         </button>
                     </div>
 

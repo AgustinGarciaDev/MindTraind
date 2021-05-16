@@ -11,9 +11,6 @@ const Class = (props) => {
             <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered >
                 <Modal.Header >
                     <div className="contenedorBtnClose"> <i onClick={props.onHide} className="fas fa-times"></i></div>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                        <h3 className="cursoModalTitle" >Professional career</h3>
-                    </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className="contenedorFrame">
@@ -21,7 +18,7 @@ const Class = (props) => {
                     </div>
                 </Modal.Body >
                 <Modal.Footer>
-                    <Link to="/foro">
+                    <Link to={`/foro/${props._id}`}>
                         <button onClick={() => setModalShow(true)} className="btnInscripcion">Foro Consultas</button>
                     </Link>
                 </Modal.Footer>

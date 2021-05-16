@@ -5,6 +5,7 @@ import AsideNav from '../components/AsideNav'
 import { connect } from 'react-redux'
 import coursesActions from '../redux/actions/coursesActtions';
 import { showToast, showTostError500 } from '../helpers/myToast'
+import { Link } from 'react-router-dom'
 
 const Dashboard = ({ getCoursesByIdStudent, userLogged }) => {
     const [studentCourses, setStudentCourses] = useState([])
@@ -32,10 +33,25 @@ const Dashboard = ({ getCoursesByIdStudent, userLogged }) => {
             <AsideNav />
             <div className="contenedorWeb">
                 <NavBarDashBoard />
-                <h1 className="tituloDasboard">My courses</h1>
-                <div className="ContenedorDeLosCursos">
-                    {studentCourses.map(curso => <CourseCard key={curso._id} curso={curso} />)}
-                </div>
+                {/*   <h1 className="tituloDasboard">My courses</h1> */}
+
+                {studentCourses.length === 0
+                    ? <>
+                        {/* <h1>anotate en nuestro cursos</h1> */}
+                        <div className="ContenedorPresentacion">
+                            <video className="videoDash" autoPlay loop muted >
+                                <source src="http://baravdg.com/wp-content/uploads/2021/05/pexels-produtora-midtrack-6509537-1.mp4" type="video/mp4"></source>
+                            </video>
+                            <div className="sobreVideo">
+                                <h1>What's your next challenge?</h1>
+                                <Link to="/courselist" ><button>Choose your course</button></Link>
+                            </div>
+                        </div>
+                    </>
+                    : <div className="ContenedorDeLosCursos">
+                        {studentCourses.map(curso => <CourseCard key={curso._id} curso={curso} />)}
+                    </div>
+                }
             </div>
         </div>
     )
