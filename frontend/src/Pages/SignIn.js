@@ -74,10 +74,14 @@ const SignIn = (props) => {
       let miRespuesta = await props.logInUser(preUser);
       console.log("0props", miRespuesta);
       setErroresSignIn(miRespuesta);
-      setErrorVisible(!errorVisible);
+      setErrorVisible(true);
       console.log("errpres", miRespuesta);
-      props.history.push("/dashboard");
+
+      if (miRespuesta.success) {
+        props.history.push("/dashboard");
+      }
     } catch {
+      props.history.push("/dashboard");
       console.log("no funciono");
     }
   };
@@ -104,7 +108,7 @@ const SignIn = (props) => {
           <div className=" small textos text-center">
             <h2 className="titleSignUp"> Welcome Back💪 </h2>
           </div>
-          {/*  <div
+          <div
             className="errorContainer especial"
             style={{ display: errorVisible ? "block" : "none" }}
           >
@@ -116,12 +120,8 @@ const SignIn = (props) => {
               {" "}
               x{" "}
             </span>
-            <div className="text-center">
-              {" "}
-              🚫 sorry we couldn't Log in your account with your provided info, please watch below
-              for the missing details.{" "}
-            </div>
-          </div> */}
+            <div className="text-center"> 🚫 Plese provided a valid email and/or password </div>
+          </div>
 
           <div className="w-100">
             <div className="font-italic bg-white border-1 align-items-center pt-0 d-flex flex-column">
