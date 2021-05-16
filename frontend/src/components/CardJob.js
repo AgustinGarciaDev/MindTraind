@@ -4,6 +4,7 @@ import { useState } from "react";
 
 const CardJob = (props) => {
 
+    //HOLA AGUSTIN YA PUSHEEEEEEEEEE . GRACIAS
     const { jobtittle, modality, nameOfferent, email, description, urlImage, typeJob } = props.job
     const [modalShow, setModalShow] = useState(false);
 
