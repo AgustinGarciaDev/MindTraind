@@ -76,8 +76,8 @@ const SignIn = (props) => {
       setErroresSignIn(miRespuesta);
       setErrorVisible(!errorVisible);
       console.log("errpres", miRespuesta);
-    } catch {
       props.history.push("/dashboard");
+    } catch {
       console.log("no funciono");
     }
   };
@@ -104,7 +104,7 @@ const SignIn = (props) => {
           <div className=" small textos text-center">
             <h2 className="titleSignUp"> Welcome Back💪 </h2>
           </div>
-          <div
+          {/*  <div
             className="errorContainer especial"
             style={{ display: errorVisible ? "block" : "none" }}
           >
@@ -121,7 +121,7 @@ const SignIn = (props) => {
               🚫 sorry we couldn't Log in your account with your provided info, please watch below
               for the missing details.{" "}
             </div>
-          </div>
+          </div> */}
 
           <div className="w-100">
             <div className="font-italic bg-white border-1 align-items-center pt-0 d-flex flex-column">
