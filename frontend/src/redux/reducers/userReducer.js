@@ -6,16 +6,18 @@ const userReducer = (state = initialState, action) => {
       localStorage.setItem("token", JSON.stringify(action.payload.token));
       return {
         ...state,
-        userLogged: action.payload,
+        userLogged: action.payload
       };
 
     case "LOG_OUT":
-      localStorage.clear();
-      /*   console.log("2)solo se limpia storage"); */
-      return { ...state, userLogged: null };
+      localStorage.clear()
+      return {
+        ...state,
+        userLogged: null
+      }
 
     default:
       return state;
   }
 };
-export default userReducer;
+export default userReducer

@@ -1,5 +1,4 @@
-import { Modal, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Modal } from "react-bootstrap";
 import { useState } from "react";
 
 const CardJob = (props) => {

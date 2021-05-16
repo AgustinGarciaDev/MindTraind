@@ -1,7 +1,7 @@
 const SuscribeCardCourse = (props) => {
 
 
-    const { nameCourse, pictureRefence, programDescription, duration, difficulty } = props.course
+    const { nameCourse, pictureRefence } = props.course
     return (
         <div className={"contenedorCurso"}>
             <div className="fotoCurso" style={{ backgroundImage: `url("${pictureRefence}")` }}></div>

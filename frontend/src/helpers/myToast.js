@@ -1,4 +1,3 @@
-import { ToastHeader } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 const defaultConfiguration = (position) => {
     return {

@@ -13,6 +13,7 @@ const Post = (props) => {
         if (!props.currentCourse) {
             fetchAPI();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     const fetchAPI = async () => {
         try {
