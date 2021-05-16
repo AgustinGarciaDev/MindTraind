@@ -34,7 +34,7 @@ const Class = (props) => {
                     <h1 className="titleClass">{lessonName}</h1>
                 </div>
                 <div>
-                    <button className="btnClass " onClick={() => setModalShow(true)} ><i class="fas fa-play"></i> View Class</button>
+                    <button className="btnClass " onClick={() => setModalShow(true)} ><i className="fas fa-play"></i> View Class</button>
                 </div>
             </div>
             <MyVerticallyCenteredModal

@@ -8,21 +8,12 @@ import './style/foro.css'
 import './style/jobs.css'
 import './style/asideNav.css'
 import './style/course.css'
-import SignIn from './Pages/SignIn'
-import SignUp from './Pages/SignUp'
-import Home from './Pages/Home'
-import Dashboard from './Pages/Dashboard'
-import Admin from './Pages/Admin'
-import CourseList from './Pages/CourseList'
-import ClassList from './Pages/ClassList'
-import Foro from './Pages/Foro'
-import Chat from './Pages/Chat'
-import Jobs from './Pages/Jobs'
-
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { connect } from 'react-redux'
 import usersActions from "./redux/actions/usersActions";
+import routesRole from "./helpers/routesRole"
+
 
 const App = (props) => {
   const token = localStorage.getItem("token");
@@ -32,22 +23,17 @@ const App = (props) => {
     return null;
   }
 
+  /*let role = props.userLogged || "routerUserDontLogged";
+  role = props?.userLogged?.role === "admin" ? "routerUserLoggedAdmin": role;
+  role = props?.userLogged?.role === 'noRole' ? "routerUserLoggedCommon": role;*/
+  let role = "allRoutes"
+
+  console.log(role, props.userLogged)
 
   return (
     <BrowserRouter>
       <ToastContainer />
-      <Switch>
-        <Route exact path="/" component={Home} /> {/* Todos */}
-        <Route exact path="/signup" component={SignUp} /> {/* Todos */}
-        <Route exact path="/signin" component={SignIn} /> {/* Todos */}
-        <Route exact path="/dashboard" component={Dashboard} /> {/* SOLO ALUMNO /PROFESOR/ADMIN */}
-        <Route exact path="/admin" component={Admin} /> {/* ADMIN */}
-        <Route exact path="/courselist" component={CourseList} /> {/*  SOLO ALUMNO /PROFESOR/ADMIN*/}
-        <Route exact path="/chat" component={Chat} /> {/* SOLO ALUMNO /PROFESOR/ADMIN*/}
-        <Route exact path="/jobs" component={Jobs} /> {/* SOLO ALUMNO /PROFESOR/ADMIN*/}
-        <Route exact path="/class/:id" component={ClassList} /> {/* SOLO ALUMNO /PROFESOR/ADMIN*/}
-        <Route exact path="/foro/:id" component={Foro} />{/* SOLO ALUMNO /PROFESOR/ADMIN */}
-      </Switch>
+      {routesRole[role]()}
     </BrowserRouter>
   );
 };

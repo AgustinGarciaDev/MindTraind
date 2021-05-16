@@ -53,8 +53,8 @@ const SignUp = (props) => {
       /*   pass.search(/[$&+,:;=?@#]/) > -1, */
     ]);
 
-    console.log("validationsPass", validationsPass.length);
-    console.log("passguide", passGuideVisible);
+    /*  console.log("validationsPass", validationsPass.length);
+    console.log("passguide", passGuideVisible); */
   }, [preUser.password]);
 
   useEffect(() => {
@@ -71,7 +71,7 @@ const SignUp = (props) => {
   const fcreateAndLogIn = async () => {
     try {
       let miRespuesta = await props.createAndLogIn(preUser);
-      console.log("0props", miRespuesta);
+      /*    console.log("0props", miRespuesta); */
       setErroresSignUp(miRespuesta);
 
       /*   console.log("x", miRespuesta[0].message); */
@@ -111,10 +111,10 @@ const SignUp = (props) => {
 
       setErrorVisible(true);
 
-      console.log("errores", miRespuesta2);
+      /*  console.log("errores", miRespuesta2); */
     } catch {
       props.history.push("/dashboard");
-      console.log("no funciono");
+      /*  console.log("no funciono"); */
     }
   };
 
@@ -320,7 +320,7 @@ const SignUp = (props) => {
                 />
                 <NavLink to="/SignIn">
                   <label className="w-100 btn btn-warning myBtn h6">
-                    Have an Account Already? click here <span className="mirror">👉</span>
+                    Have an account already? click here <span className="mirror">👉</span>
                   </label>{" "}
                 </NavLink>
               </div>
@@ -328,7 +328,7 @@ const SignUp = (props) => {
           </div>
         </div>
 
-        <div className="signUpVideoContainer w-50 h-50 bg-dark" controls>
+        <div className="signUpVideoContainer w-50 bg-dark" controls>
           <video className="signUpVideo w-100" autoPlay muted loop>
             <source
               src={"https://baravdg.com/wp-content/uploads/2021/05/production-ID_4761432.mp4"}

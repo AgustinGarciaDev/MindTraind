@@ -15,7 +15,6 @@ const ClassList = (props) => {
     async function fetchAPI(idCourse) {
         try {
             const course = await getCourseById(idCourse)
-            console.log(course)
             setCourseData(course)
             setLessonsCourse(course.lessons)
 
@@ -29,7 +28,6 @@ const ClassList = (props) => {
         const idCourse = props.match.params.id
         if (courses.length !== 0) {
             let course = courses.find(aCourse => aCourse._id === idCourse)
-            console.log(course)
             setCourseData(course)
             setLessonsCourse(course.lessons)
 
@@ -44,7 +42,6 @@ const ClassList = (props) => {
     }
     const { pictureRefence, lessons, nameCourse, coach: { lastName, firstName, profilePicture, email } } = courseData
 
-    console.log(lessons)
     return (
         <>
             <div className="contenedorMenu">
@@ -66,7 +63,7 @@ const ClassList = (props) => {
                                 <h2>{firstName} {lastName}</h2>
                             </div>
                             <div className="contenedorCorreoProfesor">
-                                <i class="fas fa-envelope"></i>
+                                <i className="fas fa-envelope"></i>
                                 <p>{email}</p>
                             </div>
                         </div>

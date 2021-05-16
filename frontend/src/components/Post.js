@@ -83,8 +83,6 @@ const Post = (props) => {
 
     const editCommentChange = (e) => {
 
-        console.log(e.target.dataset.input)
-
         props.editPost(_id, editPost.title, editPost.text)
         if (e.target.dataset.input === "btnText") {
             setEditInput(!editInput)
@@ -98,7 +96,7 @@ const Post = (props) => {
     const popover = (
         <Popover delay={{ show: 250, hide: 400 }}>
             <Popover.Content>
-                <button className="btnOpcionED" onClick={handleShow}><i class="fas fa-trash-alt"></i> Delete</button>
+                <button className="btnOpcionED" onClick={handleShow}><i className="fas fa-trash-alt"></i> Delete</button>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                         <Modal.Title>Delete comment</Modal.Title>
@@ -114,7 +112,7 @@ const Post = (props) => {
                     </Modal.Footer>
                 </Modal>
                 <button onClick={changeInput} className="btnOpcionED"><i className="fas fa-edit"></i>Edit text</button>
-                <button onClick={() => { setEditInputTitle(!editInputTitle) }} className="btnOpcionED"><i class="fas fa-heading"></i>Edit title</button>
+                <button onClick={() => { setEditInputTitle(!editInputTitle) }} className="btnOpcionED"><i className="fas fa-heading"></i>Edit title</button>
             </Popover.Content>
         </Popover>
     )
@@ -137,7 +135,7 @@ const Post = (props) => {
                         value={editPost.title}
                     />
                     <button id="btnTitle" onClick={editCommentChange} >
-                        <i class="fas fa-edit"></i>
+                        <i className="fas fa-edit"></i>
                     </button>
                     <OverlayTrigger rootClose={true} trigger="click" placement="right" overlay={popover}>
                         <Button className="btnOpciones" ><i className="fas fa-ellipsis-h"></i></Button>
@@ -170,7 +168,7 @@ const Post = (props) => {
                 }
             </div>
             <div onClick={() => { setCommentReply(!commentReply) }} className="contenedorComentario replyBtn">
-                <i class="fas fa-reply"></i>
+                <i className="fas fa-reply"></i>
                 <p>Reply</p>
             </div>
 
