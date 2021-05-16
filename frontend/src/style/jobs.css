@@ -13,8 +13,8 @@
 
 
 .fotoCardJob{
-    width: 16vw;
-    height: 12vw;
+    width: 19vw;
+    height: 16vw;
     background-position: center;
     background-size: cover;
 }
@@ -22,28 +22,33 @@
 
 .contenedorCardJob{
     box-shadow: 0 0 40px 0 rgb(0 0 0 / 44%);
-    padding: 3vw;
-    height: 28vw;
-    margin: 2vw;
+    padding: 2vw;
+    height: 55vh;
+    margin: 1vw;
+    width: 24vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
 }
 
 .contenedorPrincipalCardsJobs{
       display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin: 4vw;
+    margin: 2vw;
 }
 .titleJob{
     font-family: "Anton";
     margin-top: 10px;
     margin-bottom: 10px;
-    font-weight: 300;
     margin-top: 10px;
     margin-bottom: 10px;
+    font-size: 25px;
 }
 
 .titleBussines{
-     font-size: 17px;
+     font-size: 25px;
     font-family: 'Roboto';
     font-weight: bold;
         margin-top: 10px;
@@ -60,6 +65,13 @@
     font-size: 1vw;
     font-family: 'Anton';
 }
+.title-wiewmore-jobs{
+    font-family: 'Anton';
+}
+.viewmore-info{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
 
 @media screen and  (max-width:1000px)  and  (min-width:700px) {
    
@@ -72,7 +84,7 @@
    
     .contenedorCardJob {
     padding: 2vw;
-    height: 46vw;  
+    height: 40vw;  
     margin: 1vw;
     display: flex;
     flex-direction: column;
@@ -81,9 +93,10 @@
     .asideNav {
     width: 9%;
     }
-       .fotoCardJob{
-        width: 29vw;
-    height: 27vw;
+    .fotoCardJob{
+    background-size: cover;
+    background-position: center;
+    width: 90%;
     }
 }
 
@@ -95,10 +108,16 @@
    .heroJobs > h1 {
     font-size: 3rem;
     }   
-   
+   .contenedorPrincipalCardsJobs{
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: center;
+       align-content: center;
+   }
     .contenedorCardJob {
-    padding: 2vw;
-    height: 74vw;
+    padding: 1vw;
+    height: 50vh;
+    width: 36vw;
     margin: 2vw;
     display: flex;
     flex-direction: column;
@@ -109,14 +128,14 @@
     }
 
     .fotoCardJob{
-        width: 39vw;
-    height: 29vw;
+        width: 30vw;
+    height: 30vh;
     }
 
     .btnJobs{
     width: 25vw;
     height: 8vw;
-    font-size: 3vw;
+    font-size: 2.5vw;
     }
 }
 
@@ -137,17 +156,28 @@
 }
    
     .contenedorCardJob {
-     padding: 3vw;
-     height: 97vw;
-    margin: 2vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+        padding: 1vw;
+        height: 45vh;
+        width: 65vw;
+        margin: 2vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
 
     .fotoCardJob{
-        width: 52vw;
-    height: 32vw;
+        margin-top: 1rem;
+        width: 50vw;
+    height: 40vw;
+    }
+    .contenedorPrincipalCardsJobs{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+    }
+    .titleBussiness{
+        font-size: 18px;
     }
 }
