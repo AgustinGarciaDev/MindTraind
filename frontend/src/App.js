@@ -26,6 +26,7 @@ const App = (props) => {
   /*let role = props.userLogged || "routerUserDontLogged";
   role = props?.userLogged?.role === "admin" ? "routerUserLoggedAdmin": role;
   role = props?.userLogged?.role === 'noRole' ? "routerUserLoggedCommon": role;*/
+  console.log(props.userLogged)
   let role = "notLogged"
   if (props.userLogged)
     role = props.userLogged.role
