@@ -29,7 +29,6 @@ const NewCourse = (props) => {
         e.preventDefault()
         const response = await props.addJob(job)
         if (response) {
-            console.log(response)
             if (response.data.success === false) {
                 response.data.error.details.map(error => {
                     errorsImput[error.context.label] = error.message
@@ -65,7 +64,7 @@ const NewCourse = (props) => {
                 {error.description && <small>{error.description}</small>}
 
                 <select className="newInput" name="country" value={job.country} onChange={readInput}>
-                    <option value="default">Choose your country</option>
+                    <option value=" ">Choose your country</option>
                     {
                         options.map(option => <option key={option.name} value={option.name}>{option.name}</option>)
                     }
@@ -73,14 +72,14 @@ const NewCourse = (props) => {
                 {error.country && <small>{error.country}</small>}
 
                 <select name="typeJob" value={job.typeJob} onChange={readInput} className="newInput">
-                    <option value="default">Type of job</option>
+                    <option value=" ">Type of job</option>
                     <option value="Part-Time">Part-Time</option>
                     <option value="Full-Time">Full-Time</option>
                 </select>
                 {error.typeJob && <small>{error.typeJob}</small>}
 
                 <select name="modality" value={job.modality} onChange={readInput} className="newInput">
-                    <option value="default">Modality</option>
+                    <option value=" ">Modality</option>
                     <option value="Remote">Remote</option>
                     <option value="presential">presential</option>
                 </select>

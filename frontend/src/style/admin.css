@@ -144,7 +144,7 @@
 .lessonInput{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
     margin-right: 2vw;
 }
 
@@ -178,7 +178,7 @@ small{
     display: flex;
     flex-direction: column;
     margin-bottom: 1vh;
-    width: 100%;
+    width: 90%;
 }
 
 .categoryIcons{

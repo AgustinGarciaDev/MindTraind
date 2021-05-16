@@ -15,6 +15,7 @@ const EditJob = (props) => {
         typeJob: props.job.typeJob,
         modality: props.job.modality
     })
+    const [btnVisible, setBtnVisible] = useState(false)
     const [options, setOptions] = useState([])
     const [error, setError] = useState({})
     const errorsImput = { nameOfferent: null, email: null, description: null, urlImage: null, jobTittle: null, country: null, typeJob: null, modality: null }
@@ -32,6 +33,7 @@ const EditJob = (props) => {
             ...job,
             [name]: value
         })
+        setBtnVisible(!btnVisible)
     }
 
     const sendData = async () => {
@@ -49,8 +51,8 @@ const EditJob = (props) => {
     }
 
     return (
-        <div className="newCourseContainer">
-            <form className="newCourseForm">
+        <div className="editCourseContainer">
+            <form className="editForm">
                 <p>Offerent name</p>
                 <input className="newInput" type="text" placeholder="Offerent name" name="nameOfferent" value={job.nameOfferent} onChange={readInput} />
                 {error.nameOfferent && <small>{error.nameOfferent}</small>}
@@ -69,7 +71,7 @@ const EditJob = (props) => {
 
                 <p>Country</p>
                 <select className="newInput" name="country" value={job.country} onChange={readInput}>
-                    <option value="default">Choose your country</option>
+                    <option  disabled value="default">Country</option>
                     {
                         options.map(option => <option key={option.name} value={option.name}>{option.name}</option>)
                     }
@@ -78,7 +80,7 @@ const EditJob = (props) => {
 
                 <p>Type of job</p>
                 <select name="typeJob" value={job.typeJob} onChange={readInput} className="newInput">
-                    <option value="default">Type of job</option>
+                    <option  disabled value="default">Type job</option>
                     <option value="Part-Time">Part-Time</option>
                     <option value="Full-Time">Full-Time</option>
                 </select>
@@ -86,15 +88,14 @@ const EditJob = (props) => {
 
                 <p>Modality</p>
                 <select name="modality" value={job.modality} onChange={readInput} className="newInput">
-                    <option value="default">Modality</option>
+                    <option  disabled value="default">Modality</option>
                     <option value="Remote">Remote</option>
                     <option value="presential">presential</option>
                 </select>
                 {error.modality && <small>{error.modality}</small>}
 
                 <div className="formButtons">
-                    <button className="formButtonsNew" type="button" onClick={() => props.handleClose()}>Go back</button>
-                    <button className="formButtonsNew" type="button" onClick={sendData} >Add</button>
+                    {!btnVisible ? <button className="formButtonsNew" type="button" onClick={sendData} disabled >Add</button> : <button className="formButtonsNew" type="button" onClick={sendData} >Add</button>}
                 </div>
 
             </form>
