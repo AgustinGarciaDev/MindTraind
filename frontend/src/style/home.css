@@ -248,11 +248,20 @@ a:link, a:visited, a:active {
     font-size: 4.5vh;
     font-family: 'Anton', sans-serif; 
  }           
+ @media only screen and (min-device-width : 791px) and (max-device-width : 1000px) {
+.fondo-info{
+    display: flex;
+    flex-direction: column;
+}
+.img-f{
+    width: 100%;
+}
+
+ }
 
 
 
-
-@media only screen and (min-device-width : 300px) and (max-device-width : 1000px) {
+@media only screen and (min-device-width : 560px) and (max-device-width : 790px) {
    .img-f{
        display: none;
    }
@@ -262,8 +271,8 @@ a:link, a:visited, a:active {
        width: 100%;
    }
    .titulo{
-       font-size: 1.2rem;
-       padding:1.3rem;
+       font-size: 2.2rem;
+       padding:1.5rem;
    }
    .img-home{
        background-position: center;
@@ -312,14 +321,77 @@ a:link, a:visited, a:active {
    .information{
        width: 100%;
    }
-   .fondo-videoTM{
-   }
-   
-   
+   .barras-logo{
+       width: 60%;
        
-   
+   }
 
-
-  
 }
+@media only screen and (min-device-width : 300px) and (max-device-width : 559px) {
+    .img-f{
+        display: none;
+    }
+    .fondo-txt{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .titulo{
+        font-size: 1.5rem;
+        padding:1rem;
+    }
+    .img-home{
+        background-position: center;
+    }
+    .info-in{
+        display: flex;
+        flex-direction: column-reverse;
+        width: 100vw;
+    }
+    .more-info{
+        width: 84%;
+        margin: 1rem;
+    }
+    #video{
+        width: 85vw;
+            left: 12px;
+    }
+    .img-rp{
+        display: flex;
+        justify-content: space-around;
+        padding: 0;
+    }
+    .img-r{
+        height: 5vh;
+        padding:0;
+        margin:0;
+    }
+    .info{
+        width: 100%;
+    }
+    .cartel-rojo h4{
+     font-size: 1rem;
+    }
+    .cartel-rojo{
+        width: 85vw;
+    }
+    .btn-home{
+         width: 3.5rem;
+         height: 2rem;
+    }
+    .txt-call{
+        font-size: 1.2rem;
+        margin: 1.2rem;
+        margin-top: 2rem;
+    }
+    .information{
+        width: 100%;
+    }
+    .barras-logo{
+        width: 60%;
+        
+    }
+ 
+ }
+
 
