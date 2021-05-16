@@ -25,6 +25,7 @@ const routesProtected = {
             </Switch>
         )
     },
+
     routerUserLoggedCommon: () => {
         return (
             <Switch>
@@ -39,9 +40,11 @@ const routesProtected = {
             </Switch>
         )
     },
+    
     routerUserLoggedAdmin: () => {
         return (
             <Switch>
+                <Route exact path="/" component={Home} />
                 <Route exact path="/admin" component={Admin} /> {/* ADMIN */}
                 <Route exact path="/NewJob" component={NewJob} />{/* ADMIN */}
                 <Route exact path="/EditJobs" component={JobsContainer} />{/* ADMIN */}
