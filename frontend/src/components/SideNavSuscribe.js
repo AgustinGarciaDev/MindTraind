@@ -70,11 +70,11 @@ const SideNavSuscribe = (props) => {
                 <div className="contenedorDatosCourseAside">
                     <div className="textoCourseAside">
                         <h2>Duration</h2>
-                        <p>{duration}semanas</p>
+                        <p>{duration} weeks</p>
                     </div>
                     <div className="textoCourseAside">
                         <h2>Difficulty</h2>
-                        <p>{difficulty}semanas</p>
+                        <p>{difficulty} weeks</p>
                     </div>
                 </div>
                 <div>

@@ -6,20 +6,7 @@
     margin-bottom: 10px;
 }
 
-.fotoPortadaCourse {
-    background-image: url("http://baravdg.com/wp-content/uploads/2021/05/pexels-li-sun-2294361-1-scaled.jpg");
-     background-size: cover;
-    background-position: center;
-    height: 29vw;
-    display: flex;
-    align-items: center;
-}
 
-.titlePrincipal{
-    color: white;
-    font-size: 4rem;
-    margin-left: 7vw;
-}
 .contenedorClase{
     width: 71vw;
     margin-bottom: 23px;
@@ -49,7 +36,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
 }
 
 .titleClass{
@@ -152,8 +138,7 @@
    
 
     .cardProfesor {
-      height: 25vh;
-      width: 40vw;
+      height: 18vw;
     }
     .contenedorTitle{
             margin-top: 5vw;
@@ -217,9 +202,6 @@
 
 @media only screen and (min-device-width : 425px) and (max-device-width : 768px) {
    
-    .classContainer{
-      margin-left: 6vh;
-    }
     .contenedorProfesorYbtn{
         flex-direction: column;
     }
@@ -239,7 +221,6 @@
   .contenedorClase {
     width: 88vw;
     height: 12vw;
-    
 }
     
 .contenedorTitle > h2 {
@@ -264,73 +245,47 @@
 
 @media only screen and (min-device-width : 200px) and (max-device-width : 425px){
 
-    .cursoModalTitle {
-       font-size: 1vw;
-    }
-    .titlePrincipal{
-        font-size: 1rem;
-    }
 
-    .fotoPortadaCourse{
-        height: 55vw;
-    }
-    .titleCardTeacher h2{
-        font-size: 1rem;
-    }
-    .fotoYnombreProfesor h2{
-        font-size: 1rem;
-    }
-    .contenedorCorreoProfesor p{
-        font-size: 1rem;
-    }
-
-    .btnDashBoard{    
-        width: 38vw;
-        height: 20vw;
+    .btnDashBoard{
+        width: 50vw;
+        height: 14vw;
     }
       .contenedorProfesorYbtn{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 50vh;
+       flex-direction: column;
    }
+  
+
     .cardProfesor {
-      height: 25vh;
+      height: 30vw;
     }
 
     .contenedorTitle{
             margin-top: 5vw;
-        margin-bottom: 2vw;
+    margin-bottom: 2vw;
     }
-    .btnClass {
-        width: 100%;
-    }
+  .btnClass {
+    width: 100%;
+}
     .contenedorClase{
-        width: 80vw;
-        height: 20vw;
+        width: 86vw;
+        height: 14vw;
     }
     
     .contenedorTitle > h2 {
-            font-size: 5vw;
-            margin-top: 4vh;
+            font-size: 7vw;
     }
     .fa-envelope{
         font-size: 4vw;
     }
+    .cardProfesor {
+    height: 43vw;
+    margin-bottom: 3vw;
+}
+
+
     .titleClass{
-        font-size: 15px;
-        margin:1rem;
+        font-size: 22px;
     }
-    .tituloForm{
-        font-size: 0.7rem;
-    }
-    .contenedorForumConsultas{
-        height: 10vh;
-    }
-    
-  
- 
-    
 }
 
 
