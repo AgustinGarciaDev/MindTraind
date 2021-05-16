@@ -305,8 +305,13 @@
 }
 /* Responsive lista de cursos*/
 
-@media only screen and (min-device-width : 425px) and (max-device-width : 1200px) {
+@media only screen and (min-device-width : 676px) and (max-device-width : 1200px) {
    
+    .videoDash{
+            width: 100%;
+    height: 67vw;
+    }
+    
     .nombreProfesor {
         font-family: 'Roboto', sans-serif;
         font-size: 19px;
@@ -414,8 +419,17 @@
  
 }
 
-@media only screen and (min-device-width : 425px) and (max-device-width : 705px){
+@media only screen and (min-device-width : 590px) and (max-device-width : 676px){
    
+   
+   .videoDash {
+    width: 99%;
+    height: 77vw;
+}
+    .sobreVideo > h1 {
+    margin-top: 16vw;
+    }
+
     .contenedorDatosCursoDashBoard{
         flex-direction: column;
         align-items: center;
@@ -428,12 +442,18 @@
         height: 9vw;
     }
 
-        .fotoCursoDashBoard {
+     .fotoCursoDashBoard {
         height: 41vw;
     }
 }
 
-@media only screen and (min-device-width : 100px) and (max-device-width : 425px){
+@media only screen and (min-device-width : 425px) and (max-device-width : 590px) {
+.videoDash {
+    width: 98vw;
+    height: 88vw;
+}
+}
+@media only screen and (min-device-width : 100px) and (max-device-width : 525px){
 
     .contenedorDatosCursoDashBoard{
         flex-direction: column;
@@ -481,7 +501,7 @@
 
 
     .sobreVideo > h1{
-            font-size: 16vw;
+          font-size: 9vw;
     }
 
     .sobreVideo > a > button {
