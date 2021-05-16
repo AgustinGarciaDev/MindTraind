@@ -48,7 +48,7 @@ const Dashboard = ({ getCoursesByIdStudent, userLogged }) => {
                             </div>
                         </div>
                     </>
-                    : <div className="ContenedorDeLosCursos">
+                    : <div className="contenedorDatosCursoDashBoard">
                         {studentCourses.map(curso => <CourseCard key={curso._id} curso={curso} />)}
                     </div>
                 }

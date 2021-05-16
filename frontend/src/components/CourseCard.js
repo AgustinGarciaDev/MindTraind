@@ -10,7 +10,7 @@ const CourseCard = (props) => {
 
     return (
         <div className="contenedorCursoDashboard">
-            <div className="fotoCurso" style={{ backgroundImage: `url("${pictureRefence}")` }}></div>
+            <div className="fotoCursoDashBoard" style={{ backgroundImage: `url("${pictureRefence}")` }}></div>
             <div className="contenedorDatosCursoDashBoard">
                 <h2 className="tituloCursoDashboard">{nameCourse}</h2>
                 <div className="fotoProfesorNombre">
