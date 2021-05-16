@@ -8,16 +8,6 @@ import './style/foro.css'
 import './style/jobs.css'
 import './style/asideNav.css'
 import './style/course.css'
-import SignIn from './Pages/SignIn'
-import SignUp from './Pages/SignUp'
-import Home from './Pages/Home'
-import Dashboard from './Pages/Dashboard'
-import Admin from './Pages/Admin'
-import CourseList from './Pages/CourseList'
-import ClassList from './Pages/ClassList'
-import Foro from './Pages/Foro'
-import Chat from './Pages/Chat'
-import Jobs from './Pages/Jobs'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { connect } from 'react-redux'
@@ -32,18 +22,11 @@ const App = (props) => {
     props.loginForced(JSON.parse(token), props.history)
     return null;
   }
-  //let role ;
-  /*if(!props.userLogged){
-    role = "routerUserDontLogged" 
-  }else{
-    if(props.userLogged.role === "admin")
-      role = "routerUserLoggedAdmin"
-    else
-      role = "routerUserLoggedCommon" 
-  }*/
-   let role = props.userLogged || "routerUserDontLogged";
+  
+   /*let role = props.userLogged || "routerUserDontLogged";
    role = props?.userLogged?.role === "admin" ? "routerUserLoggedAdmin": role;
-   role = props?.userLogged?.role === 'noRole' ? "routerUserLoggedCommon": role;
+   role = props?.userLogged?.role === 'noRole' ? "routerUserLoggedCommon": role;*/
+   let role = "allRoutes"
   
   console.log(role,props.userLogged)
 

@@ -50,6 +50,23 @@ const  routesProtected = {
                 <Redirect to = "/" />
             </Switch>
         )
+    },
+    allRoutes : ()=>{
+        return(
+            <Switch>
+                <Route exact path="/" component={Home} /> 
+                <Route exact path="/signup" component={SignUp} /> 
+                <Route exact path="/signin" component={SignIn} /> 
+                <Route exact path="/dashboard" component={Dashboard} /> 
+                <Route exact path="/courselist" component={CourseList} /> 
+                <Route exact path="/chat" component={Chat} /> 
+                <Route exact path="/admin" component={Admin} /> 
+                <Route exact path="/jobs" component={Jobs} /> 
+                <Route exact path="/class/:id" component={ClassList} /> 
+                <Route exact path="/foro/:id" component={Foro} />            
+                <Redirect to = "/" />
+            </Switch>
+        )
     }
 }
 
