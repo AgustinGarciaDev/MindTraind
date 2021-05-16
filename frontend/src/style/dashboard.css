@@ -38,8 +38,12 @@
     margin-left: 20px;
     border-radius: 10px;
     width: 21vw;
-        margin-top: 10px;
+        margin-top: 2px;
     margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
 }
 
 .tituloDasboard{
@@ -98,7 +102,9 @@
 .contenedorCourseAndSideBar{
     display: flex;
         margin: 39px;
-    justify-content: center;    
+    justify-content: center; 
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 19%, rgba(136,130,130,1) 62%, rgba(255,250,250,0.9220063025210083) 93%);   
 }
 .contenedorInscripcionCursos{
     display: flex;
@@ -106,7 +112,7 @@
     top: 6vw;
     align-items: flex-start;
         flex-wrap: wrap;
-}
+    }
 
 .courseList{
 
@@ -303,6 +309,7 @@
     animation: 0.75s linear infinite spinner-border;
 
 }
+
 /* Responsive lista de cursos*/
 
 @media only screen and (min-device-width : 676px) and (max-device-width : 1200px) {
@@ -445,15 +452,58 @@
      .fotoCursoDashBoard {
         height: 41vw;
     }
+    .contenedorCurso{
+        width: 70vw;
+        height: 60vh;
+    }
+    .fotoCurso{
+        height: 35vh;
+    }
+    .contenedorInscripcionCursos{
+        display: flex;
+        justify-content: center;
+    }
+    .fotoPortadaCourse h1{
+        font-size: 2.2rem;
+        margin-left: 10vh;
+    }
+    
 }
 
-@media only screen and (min-device-width : 425px) and (max-device-width : 590px) {
+@media only screen and (min-device-width : 526px) and (max-device-width : 590px) {
 .videoDash {
     width: 98vw;
     height: 88vw;
 }
+.contenedorInscripcionCursos{
+    display: flex;
+    align-items: center;
+    top: 6vw;
+    align-items: flex-start;
+        flex-wrap: wrap;
+    margin-left: 4vh;
 }
-@media only screen and (min-device-width : 100px) and (max-device-width : 525px){
+.contenedorCurso{
+    width: 80vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.fotoCurso{
+    height: 65%;
+}
+.fotoPortadaCourse h1{
+    font-size: 2.2rem;
+    margin-left: 10vh;
+}
+.contenedorCourseAndSideBar{
+    display: flex;
+    justify-content: center;
+}
+
+}
+@media only screen and (min-device-width : 200px) and (max-device-width : 525px){
 
     .contenedorDatosCursoDashBoard{
         flex-direction: column;
@@ -512,8 +562,24 @@
 }
 
  .contenedorCurso{
-     width: auto;
+     width: 100%;
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    
  }
+ .contenedorInscripcionCursos{
+     width: 100%;
+    
+ }
+ .fotoPortadaCourse h1{
+    font-size: 2.2rem;
+    margin-left: 10vh;
+}
+.contenedorCourseAndSideBar{
+    display: flex;
+    justify-content: center;
+}
 
 }
 

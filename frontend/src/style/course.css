@@ -13,6 +13,7 @@
     height: 29vw;
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 .titlePrincipal{
