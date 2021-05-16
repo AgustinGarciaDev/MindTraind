@@ -320,7 +320,7 @@ const SignUp = (props) => {
                 />
                 <NavLink to="/SignIn">
                   <label className="w-100 btn btn-warning myBtn h6">
-                    Have an Account Already? click here <span className="mirror">👉</span>
+                    Have an account already? click here <span className="mirror">👉</span>
                   </label>{" "}
                 </NavLink>
               </div>
@@ -328,7 +328,7 @@ const SignUp = (props) => {
           </div>
         </div>
 
-        <div className="signUpVideoContainer w-50 h-50 bg-dark" controls>
+        <div className="signUpVideoContainer w-50 bg-dark" controls>
           <video className="signUpVideo w-100" autoPlay muted loop>
             <source
               src={"https://baravdg.com/wp-content/uploads/2021/05/production-ID_4761432.mp4"}

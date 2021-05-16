@@ -203,7 +203,7 @@ const SignIn = (props) => {
                 />
                 <NavLink to="/SignUp">
                   <label className="w-100 btn small btn-warning bg-info myBtn h6">
-                    New at TrainedMind? start here! <span className="mirror">👉</span>
+                    New? register now <span className="mirror">👉</span>
                   </label>{" "}
                 </NavLink>
               </div>
@@ -211,7 +211,7 @@ const SignIn = (props) => {
           </div>
         </div>
 
-        <div className="signUpVideoContainer w-50 h-50 bg-dark" controls>
+        <div className="signUpVideoContainer w-50 bg-dark" controls>
           <video className="signUpVideo w-100" autoPlay muted loop>
             <source
               src={"https://baravdg.com/wp-content/uploads/2021/05/production-ID_4761432.mp4"}

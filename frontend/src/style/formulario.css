@@ -130,7 +130,7 @@
 .signUpVideo {
   position: relative;
   bottom: 18vw;
-  height: 60%;
+  /*  height: 60%; */
   width: 100%;
 }
 
@@ -142,8 +142,10 @@
 }
 
 .signInVideoContainer {
+  height: 42vw;
   width: 50vw;
-  height: 50%;
+  /*   width: 50vw;
+  height: 50%; */
 }
 
 .w40 {
