@@ -53,8 +53,8 @@ const SignIn = (props) => {
       /*   pass.search(/[$&+,:;=?@#]/) > -1, */
     ]);
 
-    console.log("validationsPass", validationsPass.length);
-    console.log("passguide", passGuideVisible);
+    /*   console.log("validationsPass", validationsPass.length);
+    console.log("passguide", passGuideVisible); */
   }, [preUser.password]);
 
   useEffect(() => {
@@ -69,7 +69,7 @@ const SignIn = (props) => {
   }, [preUser]);
 
   const flogInUser = async () => {
-    /* props.logInUser(preUser) */
+    /* props.logInUser(preUser); */
     try {
       let miRespuesta = await props.logInUser(preUser);
       console.log("0props", miRespuesta);
@@ -84,7 +84,7 @@ const SignIn = (props) => {
 
   const responseGoogle = (response) => {
     const { givenName, familyName, email, googleId, imageUrl } = response.profileObj;
-    props.flogInUser({
+    props.logInUser({
       firstName: givenName,
       lastName: familyName,
       email: email,

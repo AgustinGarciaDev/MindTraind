@@ -53,8 +53,8 @@ const SignUp = (props) => {
       /*   pass.search(/[$&+,:;=?@#]/) > -1, */
     ]);
 
-    console.log("validationsPass", validationsPass.length);
-    console.log("passguide", passGuideVisible);
+    /*  console.log("validationsPass", validationsPass.length);
+    console.log("passguide", passGuideVisible); */
   }, [preUser.password]);
 
   useEffect(() => {
@@ -71,7 +71,7 @@ const SignUp = (props) => {
   const fcreateAndLogIn = async () => {
     try {
       let miRespuesta = await props.createAndLogIn(preUser);
-      console.log("0props", miRespuesta);
+      /*    console.log("0props", miRespuesta); */
       setErroresSignUp(miRespuesta);
 
       /*   console.log("x", miRespuesta[0].message); */
@@ -111,10 +111,10 @@ const SignUp = (props) => {
 
       setErrorVisible(true);
 
-      console.log("errores", miRespuesta2);
+      /*  console.log("errores", miRespuesta2); */
     } catch {
       props.history.push("/dashboard");
-      console.log("no funciono");
+      /*  console.log("no funciono"); */
     }
   };
 
