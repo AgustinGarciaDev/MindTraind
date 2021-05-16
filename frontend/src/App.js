@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { connect } from 'react-redux'
 import usersActions from "./redux/actions/usersActions";
-import routesRole from "./helpers/routesRole"
+import getRoutesByRole from "./helpers/routesRole"
 
 
 const App = (props) => {
@@ -26,14 +26,13 @@ const App = (props) => {
   /*let role = props.userLogged || "routerUserDontLogged";
   role = props?.userLogged?.role === "admin" ? "routerUserLoggedAdmin": role;
   role = props?.userLogged?.role === 'noRole' ? "routerUserLoggedCommon": role;*/
-  let role = "allRoutes"
-
-  console.log(role, props.userLogged)
-
+  let role = "notLogged"
+  if (props.userLogged)
+    role = props.userLogged.role
   return (
     <BrowserRouter>
       <ToastContainer />
-      {routesRole[role]()}
+      {getRoutesByRole(role)}
     </BrowserRouter>
   );
 };
