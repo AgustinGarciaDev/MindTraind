@@ -41,16 +41,16 @@ const App = (props) => {
     else
       role = "routerUserLoggedCommon" 
   }*/
-   let role = props.userLogged || "routerUserDontLogged";
-   role = props?.userLogged?.role === "admin" ? "routerUserLoggedAdmin": role;
-   role = props?.userLogged?.role === 'noRole' ? "routerUserLoggedCommon": role;
-  
-  console.log(role,props.userLogged)
+  let role = props.userLogged || "routerUserDontLogged";
+  role = props?.userLogged?.role === "admin" ? "routerUserLoggedAdmin" : role;
+  role = props?.userLogged?.role === 'noRole' || props?.userLogged?.role === 'students' ? "routerUserLoggedCommon" : role;
+
+  console.log(role, props.userLogged)
 
   return (
     <BrowserRouter>
       <ToastContainer />
-      {routesRole[role]()}    
+      {routesRole[role]()}
     </BrowserRouter>
   );
 };
