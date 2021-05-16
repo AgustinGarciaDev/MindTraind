@@ -63,3 +63,8 @@
     position: sticky;
     top: 3vh;
 }
+
+.contenedorIconText{
+    display: flex;
+    align-items: center;
+}

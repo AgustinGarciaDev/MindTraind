@@ -161,7 +161,7 @@
 
 .inputComment{
     display: flex;
-    width: 85%;
+    width: 90%;
     border-radius: 5vw;
     border: none;
     height: 3vw;
@@ -370,7 +370,7 @@ flex-direction: column;
     justify-content: center;
 }
 
-#btnText{
+.btnText{
         border: none;
     background: #ff0034;
     color: #ffffff;
@@ -509,7 +509,7 @@ flex-direction: column;
     height: 5vw;
     }
 
-      #btnText{
+      .btnText{
             width: 6vw;
     height: 5vw;
     }
