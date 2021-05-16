@@ -160,9 +160,9 @@ const SignUp = (props) => {
           </div>
 
           <div className="w-100">
-            <span className="afterRed small m-2">hi, please enter your name</span>
-            <div className="font-italic bg-white border-1 p-2 pt-0 d-flex flex-column">
-              <div className="border">
+            <div className="font-italic bg-white border-1 align-items-center pt-0 d-flex flex-column">
+              <span className="afterRed small w-75 m-2">hi, please enter your name</span>
+              <div className="border w-75">
                 <input
                   type="text"
                   onChange={(e) => setPreUser({ ...preUser, firstName: e.target.value })}
@@ -177,8 +177,8 @@ const SignUp = (props) => {
                   }
                 />
               </div>
-              <span className="mt-1 small afterRed ">your lastname</span>
-              <div className="border">
+              <span className="mt-1 small afterRed w-75 ">your lastname</span>
+              <div className="border w-75">
                 <input
                   type="text"
                   onChange={(e) => setPreUser({ ...preUser, lastName: e.target.value })}
@@ -191,8 +191,8 @@ const SignUp = (props) => {
                   }
                 />
               </div>
-              <span className="small mt-1 afterRed">an url of your personal image</span>
-              <div className="border">
+              <span className="small mt-1 afterRed w-75">an url of your personal image</span>
+              <div className="border w-75">
                 <input
                   type="text"
                   onChange={(e) => setPreUser({ ...preUser, firstName: e.target.value })}
@@ -206,8 +206,8 @@ const SignUp = (props) => {
                   }
                 />
               </div>
-              <span className="small mt-1 afterRed">a valid email address</span>
-              <div className="border">
+              <span className="small mt-1 afterRed w-75">a valid email address</span>
+              <div className="border w-75">
                 <input
                   type="mail"
                   onChange={(e) => setPreUser({ ...preUser, email: e.target.value.toLowerCase() })}
@@ -227,7 +227,7 @@ const SignUp = (props) => {
               <div className="w40 mt-2 d-flex justify-content-between">
                 {/*   <span className="small italics">show your password </span> */}
               </div>
-              <div className="w40 border mt-1 mb-1 ">
+              <div className="w-75 border mt-1 mb-1 ">
                 <input
                   onChange={(e) => setPreUser({ ...preUser, password: e.target.value })}
                   onFocus={() => setPassGuideVisible(true)}
