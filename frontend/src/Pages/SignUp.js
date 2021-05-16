@@ -38,6 +38,8 @@ const SignUp = (props) => {
     role: "noRole",
   });
 
+  let miRespuesta2 = [{ message: "" }, { message: "" }, { message: "" }, { message: "" }];
+
   useEffect(() => {
     /*  console.log("1v) soy el didmount"); */
   }, []);
@@ -60,7 +62,7 @@ const SignUp = (props) => {
     /*  console.log("otherInput", otherInput); */
     setValidationsOther([
       otherInput.firstName.length > 1,
-      otherInput.lastName.length > 2,
+      otherInput.lastName.length > 1,
       otherInput.email.search(/^\S+@\S+\.\S+$/) > -1,
       otherInput.profilePicture.length > 0,
     ]);
@@ -71,26 +73,45 @@ const SignUp = (props) => {
       let miRespuesta = await props.createAndLogIn(preUser);
       console.log("0props", miRespuesta);
       setErroresSignUp(miRespuesta);
-      console.log("x", miRespuesta[0].message);
-      setPreUser({
-        firstName: miRespuesta[0].message !== "" ? preUser.firstName : miRespuesta[0].message,
-        lastName: miRespuesta[1].message !== "" ? preUser.lastName : miRespuesta[1].message,
-        profilePicture:
-          miRespuesta[2].message !== "" ? preUser.profilePicture : miRespuesta[2].message,
-        email: miRespuesta[3].message !== "" ? preUser.email : miRespuesta[3].message,
+
+      /*   console.log("x", miRespuesta[0].message); */
+
+      miRespuesta.map((error) => {
+        switch (error.label) {
+          case "firstName":
+            miRespuesta2[0].message = error.message;
+
+            break;
+          case "lastName":
+            miRespuesta2[1].message = error.message;
+            break;
+          case "profilePicture":
+            miRespuesta2[2].message = error.message;
+          case "email":
+            miRespuesta2[3].message = error.message;
+            break;
+        }
+      });
+
+      setPreUserPlaceHolder({
+        firstName: miRespuesta2[0].message !== "" && "🚩" + miRespuesta2[0].message,
+        lastName: miRespuesta2[1].message !== "" && "🚩" + miRespuesta2[1].message,
+        profilePicture: miRespuesta2[2].message !== "" && "🚩" + miRespuesta2[2].message,
+        email: miRespuesta2[3].message !== "" && "🚩" + miRespuesta2[3].message,
         password: "",
       });
-      setPreUserPlaceHolder({
-        firstName: "🚩" + miRespuesta[0].message,
-        lastName: "🚩" + miRespuesta[1].message,
-        profilePicture: "🚩" + miRespuesta[2].message,
-        email: "🚩" + miRespuesta[3].message,
+
+      setPreUser({
+        firstName: miRespuesta2[0].message !== "" ? "" : preUser.firstName,
+        lastName: miRespuesta2[1].message !== "" ? "" : preUser.lastName,
+        profilePicture: miRespuesta2[2].message !== "" ? "" : preUser.lastName,
+        email: miRespuesta2[3].message !== "" ? "" : preUser.email,
         password: "",
       });
 
       setErrorVisible(true);
 
-      console.log("errores", miRespuesta);
+      console.log("errores", miRespuesta2);
     } catch {
       props.history.push("/dashboard");
       console.log("no funciono");
