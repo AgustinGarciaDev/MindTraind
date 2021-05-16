@@ -175,7 +175,7 @@ html *{
 .info-in{
     display: flex;
     background-color: black;
-    justify-content: center;
+    justify-content: space-around;
     justify-items: center;
     align-items: center;
     height: 70vh;
@@ -250,7 +250,7 @@ a:link, a:visited, a:active {
     font-size: 4.5vh;
     font-family: 'Anton', sans-serif; 
  }           
- @media only screen and (min-device-width : 791px) and (max-device-width : 1000px) {
+ @media only screen and (min-device-width : 700px) and (max-device-width : 1300px) {
 .fondo-info{
     display: flex;
     flex-direction: column;
@@ -258,14 +258,26 @@ a:link, a:visited, a:active {
 .img-f{
     width: 100%;
 }
+#video{
+    height: 40vh;
+    width: 45vw;
+}
+.information{
+    width: 100%;
+}
+.fondo-info{
+    display: flex;
+    flex-direction: column;
+}
+
 
  }
 
 
 
-@media only screen and (min-device-width : 560px) and (max-device-width : 790px) {
+@media only screen and (min-device-width : 381px) and (max-device-width : 699px) {
    .img-f{
-       display: none;
+      width: 100%; 
    }
    .fondo-txt{
        display: flex;
@@ -274,10 +286,11 @@ a:link, a:visited, a:active {
    }
    .titulo{
        font-size: 2.2rem;
-       padding:1.5rem;
+       padding:0.9rem;
    }
    .img-home{
        background-position: center;
+       
    }
    .info-in{
        display: flex;
@@ -285,12 +298,13 @@ a:link, a:visited, a:active {
        width: 100vw;
    }
    .more-info{
-       width: 84%;
+       width: 90%;
+       height: 30%;
        margin: 1rem;
    }
    #video{
-       width: 85vw;
-           left: 10px;
+       width: 70vw;
+           left: 50px;
    }
    .img-rp{
        display: flex;
@@ -324,12 +338,19 @@ a:link, a:visited, a:active {
        width: 100%;
    }
    .barras-logo{
-       width: 60%;
-       
+       width: 60%; 
+   }
+   .fondo-videoTM{
+      height: 100vh; 
+      width: 100vw;
+   }
+   .fondo-info{
+       display: flex;
+       flex-direction: column;
    }
 
 }
-@media only screen and (min-device-width : 300px) and (max-device-width : 559px) {
+@media only screen and (min-device-width : 200px) and (max-device-width : 380px) {
     .img-f{
         display: none;
     }
@@ -356,7 +377,7 @@ a:link, a:visited, a:active {
     }
     #video{
         width: 85vw;
-            left: 12px;
+            left: 5px;
     }
     .img-rp{
         display: flex;
@@ -375,7 +396,7 @@ a:link, a:visited, a:active {
      font-size: 1rem;
     }
     .cartel-rojo{
-        width: 85vw;
+        width: 95vw;
     }
     .btn-home{
          width: 3.5rem;
@@ -391,8 +412,12 @@ a:link, a:visited, a:active {
     }
     .barras-logo{
         width: 60%;
-        
     }
+    .footer{
+        height: 4rem;
+    }
+   
+
  
  }
 
