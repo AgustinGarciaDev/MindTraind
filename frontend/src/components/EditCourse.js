@@ -44,7 +44,7 @@ const EditCourse = (props) => {
     }
 
     const deleteLesson = e => {
-        console.log(e)
+
         const data = { idCourse: props.course._id, action: e.action, idLesson: e.id }
         props.modifyLesson(data)
     }

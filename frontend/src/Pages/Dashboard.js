@@ -6,17 +6,17 @@ import { connect } from 'react-redux'
 import coursesActions from '../redux/actions/coursesActtions';
 import { showToast, showTostError500 } from '../helpers/myToast'
 import { Link } from 'react-router-dom'
-
+import { Spinner } from "react-bootstrap";
 const Dashboard = ({ getCoursesByIdStudent, userLogged }) => {
     const [studentCourses, setStudentCourses] = useState([])
+    const [loading, setLaoding] = useState(true)
 
     async function fetchAPI() {
-        console.log(userLogged)
         if (userLogged) {
             try {
                 let data = await getCoursesByIdStudent(userLogged.token)
-                console.log(data)
                 data.success ? setStudentCourses(data.response) : showToast("error", data.error)
+                setLaoding(false)
             } catch (err) {
                 console.log(err)
                 showTostError500();
@@ -27,17 +27,21 @@ const Dashboard = ({ getCoursesByIdStudent, userLogged }) => {
         fetchAPI()
     }, [])
 
+    if (loading) {
 
+        return (
+            <div className="loader">
+                <Spinner animation="border" role="status" />
+            </div>
+        )
+    }
     return (
         <div className="contenedorMenu">
             <AsideNav />
             <div className="contenedorWeb">
                 <NavBarDashBoard />
-                {/*   <h1 className="tituloDasboard">My courses</h1> */}
-
                 {studentCourses.length === 0
                     ? <>
-                        {/* <h1>anotate en nuestro cursos</h1> */}
                         <div className="ContenedorPresentacion">
                             <video className="videoDash" autoPlay loop muted >
                                 <source src="http://baravdg.com/wp-content/uploads/2021/05/pexels-produtora-midtrack-6509537-1.mp4" type="video/mp4"></source>

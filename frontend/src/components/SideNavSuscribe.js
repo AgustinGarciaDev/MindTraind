@@ -7,7 +7,6 @@ import { showToast } from "../helpers/myToast";
 const SideNavSuscribe = (props) => {
     const [modalShow, setModalShow] = useState(false);
 
-    console.log(props)
     if (props.infoCourse === null) {
         return false
     }

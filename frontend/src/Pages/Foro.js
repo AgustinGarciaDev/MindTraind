@@ -80,7 +80,7 @@ const Foro = (props) => {
                         <div className="barraBuscadora">
                             <input className="inputSearch" placeholder="Search Post" type="text" />
                             <div className="contenedorIconoSearch">
-                                <i class="fas fa-search"></i>
+                                <i className="fas fa-search"></i>
                             </div>
                         </div>
                         <div className="contenedorBtnTextArea">
@@ -109,7 +109,7 @@ const Foro = (props) => {
                             }
                         </div>
                         <div className="contenedorComentarios">
-                            {props.currentCourse.comments.map(post => <Post editPost={editPost} deletePost={deletePost} idCourse={idCourse} post={post} />)}
+                            {props.currentCourse.comments.map(post => <Post key={post._id} editPost={editPost} deletePost={deletePost} idCourse={idCourse} post={post} />)}
                         </div>
 
                     </div>

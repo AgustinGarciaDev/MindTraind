@@ -1,9 +1,6 @@
 import { Link } from 'react-router-dom'
 const CourseCard = (props) => {
 
-    console.log(props)
-
-
     const { curso: { nameCourse, pictureRefence, coach: { firstName, lastName, profilePicture } } } = props
 
 
