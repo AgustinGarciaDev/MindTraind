@@ -1,6 +1,20 @@
+.heroJobs{
+    height: 32vw;
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("http://baravdg.com/wp-content/uploads/2021/05/Diseno-sin-titulo-10.png");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: "Anton";
+}
+
+
 .fotoCardJob{
- width: 16vw;
-height: 12vw;
+    width: 16vw;
+    height: 12vw;
     background-position: center;
     background-size: cover;
 }
@@ -9,15 +23,15 @@ height: 12vw;
 .contenedorCardJob{
     box-shadow: 0 0 40px 0 rgb(0 0 0 / 44%);
     padding: 3vw;
-    height: 33vw;
+    height: 28vw;
+    margin: 2vw;
 }
 
 .contenedorPrincipalCardsJobs{
-        display: flex;
+      display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-top: 4vw;
-    margin-bottom: 4vw;
+    margin: 4vw;
 }
 .titleJob{
     font-family: "Anton";
@@ -36,7 +50,26 @@ height: 12vw;
     margin-bottom: 10px;
 }
 
+.btnJobs{
+       width: 12vw;
+    height: 3vw;
+    background: #ff0034;
+    color: white;
+    border: none;
+    border-radius: 2vw;
+    font-size: 1vw;
+    font-family: 'Anton';
+}
+
 @media screen and  (max-width:1000px)  and  (min-width:700px) {
+   
+    .btnJobs{
+        width: 15vw;
+        height: 4vw;
+        font-size: 2vw;
+    }
+   
+   
     .contenedorCardJob {
     padding: 2vw;
     height: 46vw;  
@@ -57,11 +90,11 @@ height: 12vw;
 @media screen and  (max-width:700px)  and  (min-width:381px) {
    
     .heroJobs{
-         height: 46vw;
+        height: 54vw;
     }
    .heroJobs > h1 {
     font-size: 3rem;
-}
+    }   
    
     .contenedorCardJob {
     padding: 2vw;
@@ -79,12 +112,25 @@ height: 12vw;
         width: 39vw;
     height: 29vw;
     }
+
+    .btnJobs{
+    width: 25vw;
+    height: 8vw;
+    font-size: 3vw;
+    }
 }
 
 @media screen and  (max-width:381px)  and  (min-width:200px) {
    
+ .btnJobs{
+    width: 39vw;
+    height: 11vw;
+    font-size: 4vw;
+    }
+
+
     .heroJobs{
-         height: 46vw;
+         height: 57vw;
     }
    .heroJobs > h1 {
     font-size: 3rem;

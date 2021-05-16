@@ -15,16 +15,9 @@ const Jobs = (props) => {
         } else {
             setLoader(false)
         }
-       
+
     }, [props.jobs])
 
-    //const jobs = [
-        //{ img: "https://1000logos.net/wp-content/uploads/2016/10/Adidas-Logo.jpg", title: "Organizador", modalidad: "part time", nameOffered: "Accenture", email: "hola@gmail.com", infoJobs: "este es un trabajo a medio tiempo" },
-       // { img: "https://1000logos.net/wp-content/uploads/2016/10/Adidas-Logo.jpg", title: "Organizador", modalidad: "part time", nameOffered: "Accenture", email: "hola@gmail.com", infoJobs: "este es un trabajo a medio tiempo" },
-      //  { img: "https://1000logos.net/wp-content/uploads/2016/10/Adidas-Logo.jpg", title: "Organizador", modalidad: "part time", nameOffered: "Accenture", email: "hola@gmail.com", infoJobs: "este es un trabajo a medio tiempo" },
-       // { img: "https://1000logos.net/wp-content/uploads/2016/10/Adidas-Logo.jpg", title: "Organizador", modalidad: "part time", nameOffered: "Accenture", email: "hola@gmail.com", infoJobs: "este es un trabajo a medio tiempo" },
-
-   // ]
     return (
         <>
             <div className="contenedorMenu">
@@ -36,10 +29,10 @@ const Jobs = (props) => {
                     </div>
                     <div className="contenedorPrincipalCardsJobs">
                         {loader
-                        ?
-                        <Spinner animation="border" role="status" />
-                        : 
-                        props.jobs.map(job => <CardJob job={job} />)}
+                            ?
+                            <Spinner animation="border" role="status" />
+                            :
+                            props.jobs.map(job => <CardJob job={job} />)}
                     </div>
                 </div>
             </div>

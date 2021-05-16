@@ -23,14 +23,14 @@ const AsideNav = () => {
         <>
             {
                 navHide
-                    ? <div className="asideNav asideNavActive">
+                    ? <div className=" asideNavActive">
                         <div className="listIconNav">
                             <div onClick={changeStatus} className="contenedorIconNav contenedorIconNavActive"><i className="fas fa-align-left"></i> </div>
                             <>
                                 {dataNav.map(element => {
                                     return (
                                         <div className="contenedorIconNav contenedorIconNavActive">
-                                            <Link to={element.path}><i className={element.icon}></i><p>{element.text}</p></Link>
+                                            <Link className="contenedorIconSide" to={element.path}><i className={element.icon}></i><p>{element.text}</p></Link>
                                         </div>
                                     )
                                 })}

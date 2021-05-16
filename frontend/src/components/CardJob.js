@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const CardJob = (props) => {
 
-    const { jobtittle, modality, nameOfferent, email, description, urlImage , typeJob } = props.job
+    const { jobtittle, modality, nameOfferent, email, description, urlImage, typeJob } = props.job
     const [modalShow, setModalShow] = useState(false);
 
     function MyVerticallyCenteredModal(props) {
@@ -39,10 +39,10 @@ const CardJob = (props) => {
                 <h3 className="titleJob">{jobtittle}</h3>
                 <h3 className="titleBussines">{nameOfferent}</h3>
                 <p className="titleBussines">({modality})</p>
-              
+
             </div>
             <div className="contenedorBtn">
-                <button onClick={() => setModalShow(true)} className="btnDashBoard">View More</button>
+                <button onClick={() => setModalShow(true)} className="btnJobs">View More</button>
             </div>
             <MyVerticallyCenteredModal
                 show={modalShow}

@@ -219,10 +219,10 @@
 }
 
 .sobreVideo{
-     position: absolute;
-    width: 95vw;
-    backdrop-filter: grayscale(36);
-    height: 42vw;
+    position: absolute;
+    width: 100%;
+    backdrop-filter: brightness(0.2);
+    height: 89%;
     display: flex;
     align-items: baseline;
     flex-direction: column;
@@ -254,6 +254,31 @@
 
 @media only screen and (min-device-width : 425px) and (max-device-width : 1200px) {
    
+
+    .ContenedorPresentacion{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #030304    
+}
+
+    .sobreVideo{
+    width: 100vw;
+    backdrop-filter: brightness(0.2);
+    height: 66vw;
+    justify-content: center;
+
+    }
+
+    .videoDash {
+    width: 100%;
+}
+
+   
+
 
     .contenedorAsideNav{
             width: 86vw;
@@ -325,14 +350,45 @@
 }
 
 @media only screen and (min-device-width : 200px) and (max-device-width : 425px){
-
+ .navbar{
+        z-index: 1;
+    }
 
     .fotoCurso {
     height: 53vw;
 }
 
+    .ContenedorPresentacion{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #030304    
+}
+
+    .sobreVideo{
+     height: 184vw;
+    justify-content: center;
+
+    }
+
+    .videoDash {
+   width: 220vh;
+    }
 
 
+    .sobreVideo > h1{
+            font-size: 16vw;
+    }
+
+    .sobreVideo > a > button {
+    width: 45vw;
+    height: 13vw;
+    font-size: 5vw;
+    margin-top: 7vw;
+}
 
 }
 
