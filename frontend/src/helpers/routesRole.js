@@ -70,14 +70,16 @@ const  routesProtected = {
     }
 }
 
-export default routesProtected;
+const getRoutesByRole = (role) => {
+    if(role === "notLogged")
+        return routesProtected.routerUserDontLogged();
+    if(role === "students" || role === "coach" || role === "noRole")
+        return routesProtected.routerUserLoggedCommon();
+    if(role === "admin")
+        return routesProtected.routerUserLoggedAdmin();
+    
+    //return routesProtected.allRoutes()
+}
 
-/*
-    <Route exact path="/dashboard" component={Dashboard} /> 
-    <Route exact path="/admin" component={Admin} /> 
-    <Route exact path="/courselist" component={CourseList} /> 
-    <Route exact path="/chat" component={Chat} /> 
-    <Route exact path="/jobs" component={Jobs} /> 
-    <Route exact path="/class/:id" component={ClassList} /> 
-    <Route exact path="/foro/:id" component={Foro} />
-*/
+
+export default getRoutesByRole;
