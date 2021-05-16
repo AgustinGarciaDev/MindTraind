@@ -1,23 +1,44 @@
 import React from "react";
-import Header from "../components/Header";
-/* import Footer from "./Footer"; */
+/* import Header from "./Header";
+import Footer from "./Footer"; */
 import { useEffect, useState } from "react";
-/* import { connect } from "react-redux"; */
-import GoogleLogin from "react-google-login";
-import { NavLink } from "react-router-dom";
-import usersActions from "../redux/actions/usersActions";
 import { connect } from "react-redux";
+import usersActions from "../redux/actions/usersActions";
+import axios from "axios";
+import { NavLink } from "react-router-dom";
+import GoogleLogin from "react-google-login";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+
 const SignIn = (props) => {
+  /*   console.log(props); */
   const [hidden, setHidden] = useState(true);
   const [eyeState, setEyeState] = useState(true);
   const [errorVisible, setErrorVisible] = useState(false);
-  const [preUser, setPreUser] = useState({
-    email: "",
-    password: "",
-  });
   const [validationsPass, setValidationsPass] = useState([]);
+  const [passGuideVisible, setPassGuideVisible] = useState(false);
   const [validationsOther, setValidationsOther] = useState([]);
-  const [erroresSignIn, setErroresSignIn] = useState("");
+  const [erroresSignIn, setErroresSignIn] = useState([]);
+  /* const [countries, setCountries] = useState([]); */
+  const [preUser, setPreUser] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    profilePicture: "",
+    password: "",
+    /*  role: "noRole", */
+  });
+
+  const [preUserPlaceHolder, setPreUserPlaceHolder] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    profilePicture: "",
+    password: "",
+    /*  role: "noRole", */
+  });
+
+  let miRespuesta2 = [{ message: "" }, { message: "" }, { message: "" }, { message: "" }];
 
   useEffect(() => {
     /*  console.log("1v) soy el didmount"); */
@@ -25,13 +46,26 @@ const SignIn = (props) => {
   useEffect(() => {
     /*  console.log("entre a validr"); */
     const pass = preUser.password;
-    setValidationsPass([pass.length > 5, pass.search(/[A-Z]/) > -1, pass.search(/[0-9]/) > -1]);
+    setValidationsPass([
+      pass.length > 4,
+      pass.search(/[A-z]/) > -1,
+      pass.search(/[0-9]/) > -1,
+      /*   pass.search(/[$&+,:;=?@#]/) > -1, */
+    ]);
+
+    console.log("validationsPass", validationsPass.length);
+    console.log("passguide", passGuideVisible);
   }, [preUser.password]);
 
   useEffect(() => {
     const otherInput = preUser;
     /*  console.log("otherInput", otherInput); */
-    setValidationsOther([otherInput.email.search(/^\S+@\S+\.\S+$/) > -1]);
+    setValidationsOther([
+      otherInput.firstName.length > 1,
+      otherInput.lastName.length > 1,
+      otherInput.email.search(/^\S+@\S+\.\S+$/) > -1,
+      otherInput.profilePicture.length > 0,
+    ]);
   }, [preUser]);
 
   const flogInUser = async () => {
@@ -49,15 +83,14 @@ const SignIn = (props) => {
   };
 
   const responseGoogle = (response) => {
-    /*  alert("entre"); */
     const { givenName, familyName, email, googleId, imageUrl } = response.profileObj;
-    props.logInUser({
+    props.flogInUser({
       firstName: givenName,
       lastName: familyName,
       email: email,
       profilePicture: imageUrl,
       password: "Cx1" + googleId,
-      role: "noRole",
+      /*  role: "noRole", */
     });
     props.history.push("/dashboard");
   };
@@ -65,17 +98,16 @@ const SignIn = (props) => {
   return (
     <>
       <Header />
-      <div
-        className="signInContainer d-flex "
-        onMouseOver={() => setHidden(false)}
-        onMouseOut={() => setHidden(false)}
-      >
-        {/*    {props.theUser && console.log("X", props.theUser)} */}
-
-        <div className=" w-50 mi100 ">
-          <div className="titleForm titulos m-3 h3 ">Sign In</div>
-          <div className="h6 small textos text-center">welcome back 💪</div>
-          <div className="errorContainer" style={{ display: errorVisible ? "block" : "none" }}>
+      <div className="signUpContainer d-flex ">
+        <div className="w-50 mi100">
+          <div className="titleForm titulos mt-2 h3 ">Sign In Form</div>
+          <div className=" small textos text-center">
+            <h2 className="titleSignUp"> Welcome Back💪 </h2>
+          </div>
+          <div
+            className="errorContainer especial"
+            style={{ display: errorVisible ? "block" : "none" }}
+          >
             <span
               id="close"
               style={{ display: errorVisible ? "block" : "none" }}
@@ -84,24 +116,28 @@ const SignIn = (props) => {
               {" "}
               x{" "}
             </span>
-            🚫 sorry we couldn't login to your account with your provided info, please refer to the
-            folowing messages.
-            <div>{erroresSignIn}</div>
+            <div className="text-center">
+              {" "}
+              🚫 sorry we couldn't Log in your account with your provided info, please watch below
+              for the missing details.{" "}
+            </div>
           </div>
-          <div className="bg-secondary">
-            <div className="font-italic  mt-3 mb-2 bg-white border-1 p-3 d-flex flex-column">
-              <span className="small mt-1 afterRed">your registered email</span>
-              <div className="border mt-1">
+
+          <div className="w-100">
+            <div className="font-italic bg-white border-1 align-items-center pt-0 d-flex flex-column">
+              <span className="small mt-1 afterRed w-75">
+                hi, please enter your registered email
+              </span>
+              <div className="border w-75">
                 <input
                   type="mail"
-                  autoFocus
                   onChange={(e) => setPreUser({ ...preUser, email: e.target.value.toLowerCase() })}
                   value={preUser.email}
-                  placeholder="e.g: john.doe@gmail.com"
+                  placeholder={preUserPlaceHolder.email || "e.g: john.doe@gmail.com"}
                   className={
                     !validationsOther[2]
-                      ? "ng-dirty  textos small w-100"
-                      : "ng-valid  textos small w-100"
+                      ? "ng-dirty textos small w-100"
+                      : "ng-valid textos small w-100"
                   }
                 />
 
@@ -109,33 +145,42 @@ const SignIn = (props) => {
               </div>
               {/*  <div className="small border mt-1"> */}
               {/* </div> */}
-              <div className="w35 mt-4 d-flex justify-content-between"></div>
-              <div className="mt-1 mb-5  border w35">
+              <div className="w40 mt-2 d-flex justify-content-between">
+                {/*   <span className="small italics">show your password </span> */}
+              </div>
+              <div className="w-75 border mt-1 mb-1 ">
                 <input
                   onChange={(e) => setPreUser({ ...preUser, password: e.target.value })}
+                  onFocus={() => setPassGuideVisible(true)}
                   value={preUser.password}
                   type={eyeState ? "password" : "text"}
-                  placeholder="your secret password"
-                  className="mb-1 ng-dirty"
+                  placeholder=" your password"
                   className={
                     !validationsPass.includes(false)
-                      ? "ng-valid textos w90 small"
-                      : "ng-dirty textos w90 small"
+                      ? "ng-valid titulos w90"
+                      : "ng-dirty titulos w90"
                   }
                 ></input>
-                <label htmlFor="eye">
-                  <i className={eyeState ? "fas fa-eye-slash" : "fas fa-eye"}></i>
+                <label htmlFor="eye" className="ml-5">
                   <input
                     id="eye"
                     className="hidden"
                     type="checkbox"
                     onChange={() => setEyeState(!eyeState)}
                   ></input>{" "}
+                  <i className={eyeState ? "pl-5 fas fa-eye-slash" : "fas fa-eye"}></i>
                 </label>
               </div>
+              {/* errorPassContainer */}
 
               <div className="m-auto w-50 d-flex flex-column justify-content-center text-center">
-                <button className="btn mb-2 btn-danger myBtn " onClick={() => flogInUser()}>
+                {" "}
+                <button
+                  className="btn mt-4 mb-2 btn-danger myBtn "
+                  onClick={() => {
+                    flogInUser();
+                  }}
+                >
                   Continue
                 </button>
                 <GoogleLogin
@@ -144,11 +189,11 @@ const SignIn = (props) => {
                     <div
                       onClick={renderProps.onClick}
                       disabled={renderProps.disabled}
-                      className="myBtn btn btn-primary  d-flex"
+                      className="myBtn btn btn-primary mb-2 d-flex"
                     >
                       <div className=""></div>
                       <i className="w-25 pt-1 pl-5 ml-5 fab fa-google"></i>
-                      <div className="w-50 text-center">Sign In with Google</div>
+                      <div className="w-50 text-center">SignIn with Google</div>
                     </div>
                   )}
                   buttonText="Login"
@@ -156,20 +201,20 @@ const SignIn = (props) => {
                   onFailure={responseGoogle}
                   cookiePolicy={"single_host_origin"}
                 />
-
                 <NavLink to="/SignUp">
-                  <label className="mt-2 w-100 btn btn-info myBtn h6">
-                    New at TrainedMind?, join us here. <span className="mirror">👉</span>
+                  <label className="w-100 btn small btn-warning bg-info myBtn h6">
+                    New at TrainedMind? start here! <span className="mirror">👉</span>
                   </label>{" "}
                 </NavLink>
               </div>
             </div>
           </div>
         </div>
-        <div className="signInVideoContainer w-50 h-50 bg-dark" controls>
-          <video className="signInVideo w-100" autoPlay muted loop>
+
+        <div className="signUpVideoContainer w-50 h-50 bg-dark" controls>
+          <video className="signUpVideo w-100" autoPlay muted loop>
             <source
-              src={"https://baravdg.com/wp-content/uploads/2021/05/production-ID_4438098.mp4"}
+              src={"https://baravdg.com/wp-content/uploads/2021/05/production-ID_4761432.mp4"}
               type={"video/mp4"}
             />
           </video>
@@ -179,7 +224,16 @@ const SignIn = (props) => {
   );
 };
 
+/* REDUX */
+const mapStateToProps = (state) => {
+  return {
+    theUser: state.user.userLogged,
+  };
+};
 const mapDispatchToProps = {
+  /*  fetchCountries: countriesActions.actionLoadCountries, */
   logInUser: usersActions.logInUser,
 };
-export default connect(null, mapDispatchToProps)(SignIn);
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+/* export default SignUp; */

@@ -26,7 +26,7 @@ const SignUp = (props) => {
     email: "",
     profilePicture: "",
     password: "",
-    role: "noRole",
+    /*   role: "noRole", */
   });
 
   const [preUserPlaceHolder, setPreUserPlaceHolder] = useState({
@@ -35,7 +35,7 @@ const SignUp = (props) => {
     email: "",
     profilePicture: "",
     password: "",
-    role: "noRole",
+    /*   role: "noRole", */
   });
 
   let miRespuesta2 = [{ message: "" }, { message: "" }, { message: "" }, { message: "" }];
@@ -47,8 +47,8 @@ const SignUp = (props) => {
     /*  console.log("entre a validr"); */
     const pass = preUser.password;
     setValidationsPass([
-      pass.length > 5,
-      pass.search(/[A-Z]/) > -1,
+      pass.length > 4,
+      pass.search(/[A-z]/) > -1,
       pass.search(/[0-9]/) > -1,
       /*   pass.search(/[$&+,:;=?@#]/) > -1, */
     ]);
@@ -126,7 +126,7 @@ const SignUp = (props) => {
       email: email,
       profilePicture: imageUrl,
       password: "Cx1" + googleId,
-      role: "noRole",
+      /*   role: "noRole", */
     });
     props.history.push("/dashboard");
   };
@@ -268,7 +268,7 @@ const SignUp = (props) => {
                     }}
                     className="small"
                   >
-                    {validationsPass[0] ? "😎✔" : "❎"}At least 6 character
+                    {validationsPass[0] ? "😎✔" : "❎"}At least 5 character
                   </li>
                   <li
                     style={{
@@ -277,7 +277,7 @@ const SignUp = (props) => {
                     }}
                     className="small"
                   >
-                    {validationsPass[1] ? "😎✔" : "❎"}Contain a capital Letter
+                    {validationsPass[1] ? "😎✔" : "❎"}Contain a letter
                   </li>
                   <li
                     style={{
