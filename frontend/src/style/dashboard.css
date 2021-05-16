@@ -349,7 +349,7 @@
  
 }
 
-@media only screen and (min-device-width : 200px) and (max-device-width : 425px){
+@media only screen and (min-device-width : 100px) and (max-device-width : 425px){
  .navbar{
         z-index: 1;
     }
