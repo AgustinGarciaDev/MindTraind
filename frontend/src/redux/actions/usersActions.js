@@ -5,16 +5,14 @@ import { showToast, showTostError500 } from "../../helpers/myToast";
 
 const usersActions = {
   signUpUser: (objInputsValues) => {
-    /*  const notify = (msg) => toast("errores del baack end"); */
     return async (dispatch, getState) => {
       try {
-        let { data } = await axios.post("http://localhost:4000/api/users/signup", objInputsValues);
-        if (data.success) {
-          showToast("success", data.error);
-          dispatch({ type: "LOGIN_USER", payload: data.response });
-          showToast("success", `Welcome ${data.response.firstName} ${data.response.lastName}`);
+        const response = await axios.post("http://localhost:4000/api/users/signup", objInputsValues);
+        if (response.data.success) {
+          dispatch({ type: "LOGIN_USER", payload: response.data.response });
+          showToast("success", `Welcome ${response.data.response.firstName} ${response.data.response.lastName}`);
         } else {
-          return data.errors ? data.errors : data.error;
+          return response
         }
       } catch (err) {
         console.log(err);

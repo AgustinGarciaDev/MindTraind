@@ -27,9 +27,9 @@ const AsideNav = () => {
                         <div className="listIconNav">
                             <div onClick={changeStatus} className="contenedorIconNav contenedorIconNavActive"><i className="fas fa-align-left"></i> </div>
                             <>
-                                {dataNav.map(element => {
+                                {dataNav.map((element, index) => {
                                     return (
-                                        <div className="contenedorIconNav contenedorIconNavActive">
+                                        <div key={index} className="contenedorIconNav contenedorIconNavActive">
                                             <Link className="contenedorIconSide" to={element.path}><i className={element.icon}></i><p>{element.text}</p></Link>
                                         </div>
                                     )
@@ -40,9 +40,9 @@ const AsideNav = () => {
                     : <div className="asideNav">
                         <div className="listIconNav">
                             <div onClick={changeStatus} className="contenedorIconNav"><i className="fas fa-align-left"></i> </div>
-                            {dataNav.map(element => {
+                            {dataNav.map((element, index) => {
                                 return (
-                                    <div onClick={changeStatus} className="contenedorIconNav"><i className={element.icon}></i></div>
+                                    <div key={index} onClick={changeStatus} className="contenedorIconNav"><i className={element.icon}></i></div>
                                 )
 
                             })}
