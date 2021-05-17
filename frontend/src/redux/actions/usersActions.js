@@ -61,10 +61,10 @@ const usersActions = {
 
   logOutUser: () => {
     return (dispatch, getState) => {
-      showToast("info", "Come back later ", "top-right");
-      dispatch({ type: "LOG_OUT" });
-    };
+      showToast("info", "Come back later ", "top-right")
+      dispatch({ type: "LOG_OUT" })
+    }
   },
-};
+}
 
-export default usersActions;
+export default usersActions

@@ -45,7 +45,7 @@ const SignUp = (props) => {
   const responseGoogle = (response) => {
     if (!response.error) {
       const { givenName, familyName, email, googleId, imageUrl } = response.profileObj
-      sendNewUser(null, { firstName: givenName, lastName: familyName, email: email, profilePicture: imageUrl, password: 'a'+googleId, googleUser: true })
+      sendNewUser(null, { firstName: givenName, lastName: familyName, email: email, profilePicture: imageUrl, password: 'a' + googleId, googleUser: true })
     }
   }
 
@@ -54,44 +54,42 @@ const SignUp = (props) => {
   }
 
   return (
-    <div className="contenedorMenu">
-      <div className="contenedorWeb">
-        <Header />
-        <div className="signUpContainer">
-          <form className="formSign">
-            <h1>SIGN UP</h1>
+    <div className="signUpContainer" style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/rayas-red-izq-1.png')` }}>
+      <Header />
+      <formContainr className="formContainer">
+        <form className="formSign">
+          <h1>SIGN UP</h1>
 
-            <input type="text" className={error.firstName ? "errorInput" : "signInput"} placeholder="My first name" name="firstName" value={newUser.firstName} onChange={readInput} />
-            {error.firstName && <small>{error.firstName}</small>}
+          <input type="text" className={error.firstName ? "errorInput" : "signInput"} placeholder="My first name" name="firstName" value={newUser.firstName} onChange={readInput} />
+          {error.firstName && <small>{error.firstName}</small>}
 
-            <input type="text" className={error.lastName ? "errorInput" : "signInput"} placeholder="My last name" name="lastName" value={newUser.lastName} onChange={readInput} />
-            {error.lastName && <small>{error.lastName}</small>}
+          <input type="text" className={error.lastName ? "errorInput" : "signInput"} placeholder="My last name" name="lastName" value={newUser.lastName} onChange={readInput} />
+          {error.lastName && <small>{error.lastName}</small>}
 
-            <input type="text" className={error.email ? "errorInput" : "signInput"} placeholder="My e-mail" name="email" value={newUser.email} onChange={readInput} />
-            {error.email && <small>{error.email}</small>}
+          <input type="text" className={error.email ? "errorInput" : "signInput"} placeholder="My e-mail" name="email" value={newUser.email} onChange={readInput} />
+          {error.email && <small>{error.email}</small>}
 
-            <input type="password" className={error.password ? "errorInput" : "signInput"} placeholder="My password" name="password" value={newUser.password} onChange={readInput} />
-            {error.password && <small>{error.password}</small>}
+          <input type="password" className={error.password ? "errorInput" : "signInput"} placeholder="My password" name="password" value={newUser.password} onChange={readInput} />
+          {error.password && <small>{error.password}</small>}
 
-            <input type="text" className={error.profilePicture ? "errorInput" : "signInput"} placeholder="Profile picture url" name="profilePicture" value={newUser.profilePicture} onChange={readInput} />
-            {error.profilePicture && <small>{error.profilePicture}</small>}
+          <input type="text" className={error.profilePicture ? "errorInput" : "signInput"} placeholder="Profile picture url" name="profilePicture" value={newUser.profilePicture} onChange={readInput} />
+          {error.profilePicture && <small>{error.profilePicture}</small>}
 
-            <button className="signupButton" onKeyPress={keyPress} onClick={sendNewUser}>SIGN UP</button>
-            <div className="formbottom">
-              <p>Already have an account? <Link to="/signin">Sign in here !</Link></p>
-              <p>Or you can sign up with Google</p>
-            </div>
-            <GoogleLogin
-              className="google"
-              clientId="520488943337-q0bjrnkhhdn0iho4rmt6qapssseul2g3.apps.googleusercontent.com"
-              buttonText="Sign Up with Google"
-              onSuccess={responseGoogle}
-              onFailure={responseGoogle}
-              cookiePolicy={'single_host_origin'}
-            />
-          </form>
-        </div>
-      </div>
+          <button className="formButtonsNew" onKeyPress={keyPress} onClick={sendNewUser}>SIGN UP</button>
+          <div className="formbottom">
+            <p>Already have an account? <Link to="/signin">Sign in here !</Link></p>
+            <p>Or you can sign up with Google</p>
+          </div>
+          <GoogleLogin
+            className="google"
+            clientId="520488943337-q0bjrnkhhdn0iho4rmt6qapssseul2g3.apps.googleusercontent.com"
+            buttonText="Sign Up with Google"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+          />
+        </form>
+      </formContainr>
     </div>
   )
 }

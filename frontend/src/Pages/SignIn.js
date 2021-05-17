@@ -34,7 +34,7 @@ const SignIp = (props) => {
 
   const responseGoogle = (response) => {
     if (response.profileObj.email) {
-      signIn(null, { email: response.profileObj.email, password: 'a'+response.profileObj.googleId, googleUser: true })
+      signIn(null, { email: response.profileObj.email, password: 'a' + response.profileObj.googleId, googleUser: true })
     }
   }
 
@@ -43,36 +43,34 @@ const SignIp = (props) => {
   }
 
   return (
-    <div className="contenedorMenu">
-      <div className="contenedorWeb">
-        <Header />
-        <div className="signUpContainer">
-          <form className="formSign">
-            <h1>SIGN IN</h1>
-            <input type="text" placeholder="MY E-MAIL" className="signInput" name="email" value={userToLogin.email} onChange={readInput} />
-            <input type="password" placeholder="MY PASSWORD" className="signInput" name="password" value={userToLogin.password} onChange={readInput} />
-            <button onKeyPress={keyPress} className="signupButton" onClick={signIn}>SIGN UP</button>
-            <div className="formbottom">
-              <p>You do not have an account ? <Link to="/SignUp">Sign up here !</Link></p>
-              <p>Sign in with Google</p>
-            </div>
-            <GoogleLogin
-              className="google"
-              clientId="520488943337-q0bjrnkhhdn0iho4rmt6qapssseul2g3.apps.googleusercontent.com"
-              buttonText="Sign in with Google"
-              onSuccess={responseGoogle}
-              onFailure={responseGoogle}
-              cookiePolicy={'single_host_origin'}
-            />
-          </form>
-        </div>
-      </div>
+    <div className="signUpContainer" style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/rayas-red-izq-1.png')` }}>
+      <Header />
+      <formContainr className="formContainer">
+        <form className="formSign">
+          <h1>SIGN IN</h1>
+          <input type="text" placeholder="MY E-MAIL" className="signInput" name="email" value={userToLogin.email} onChange={readInput} />
+          <input type="password" placeholder="MY PASSWORD" className="signInput" name="password" value={userToLogin.password} onChange={readInput} />
+          <button onKeyPress={keyPress} className="formButtonsNew" onClick={signIn}>SIGN IN</button>
+          <div className="formbottom">
+            <p>You do not have an account ? <Link to="/SignUp">Sign up here !</Link></p>
+            <p>Sign in with Google</p>
+          </div>
+          <GoogleLogin
+            className="google"
+            clientId="520488943337-q0bjrnkhhdn0iho4rmt6qapssseul2g3.apps.googleusercontent.com"
+            buttonText="Sign in with Google"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+          />
+        </form>
+        </formContainr>
     </div>
   )
 }
 
 const mapDispatchToProps = {
-  logInUser: usersActions.logInUser
+        logInUser: usersActions.logInUser
 }
 
 export default connect(null, mapDispatchToProps)(SignIp);

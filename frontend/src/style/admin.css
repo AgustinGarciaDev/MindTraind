@@ -252,6 +252,7 @@ small{
     border-radius: 10px;
     box-shadow: 1px 1px 9px 2px #ff0034;
     padding: 1vh 4vh;
+    margin: 2vh 1vh;
 }
 .formButtonsEdit{
     border: none;
