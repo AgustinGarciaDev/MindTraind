@@ -174,7 +174,7 @@ const Post = (props) => {
                             value={editPost.text}
                         ></textarea>
                         <button className="btnText" data-input="btnText" onClick={editCommentChange} >
-                            <i data-input="btnText" class="fas fa-edit"></i>
+                            <i data-input="btnText" className="fas fa-edit"></i>
                         </button>
                     </div>
 

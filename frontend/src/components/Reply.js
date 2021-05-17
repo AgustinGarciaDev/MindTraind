@@ -50,7 +50,7 @@ const Reply = ({ replyComment, modifyReply, idComment, idCourse, userLogged }) =
     const popover = (
         <Popover delay={{ show: 250, hide: 400 }}>
             <Popover.Content>
-                <button className="btnOpcionED" onClick={handleShow}><i class="fas fa-trash-alt"></i> Delete</button>
+                <button className="btnOpcionED" onClick={handleShow}><i className="fas fa-trash-alt"></i> Delete</button>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                         <Modal.Title>Delete comment</Modal.Title>
@@ -65,7 +65,7 @@ const Reply = ({ replyComment, modifyReply, idComment, idCourse, userLogged }) =
                  </Button>
                     </Modal.Footer>
                 </Modal>
-                <button onClick={changeInput} className="btnOpcionED"><i class="fas fa-edit"></i>Edit</button>
+                <button onClick={changeInput} className="btnOpcionED"><i className="fas fa-edit"></i>Edit</button>
             </Popover.Content>
         </Popover>
     )
