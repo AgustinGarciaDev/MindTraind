@@ -515,6 +515,19 @@
 
 @media only screen and (min-device-width : 425px) and (max-device-width : 590px) {
    
+
+     .contenedorAsideNav{
+         position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        padding: 20vw;
+        background: #080d13f5;
+    }
+
        .btnInscripcion {
   width: 18vw;
     height: 7vw;
@@ -603,6 +616,17 @@
 }
 @media only screen and (min-device-width : 100px) and (max-device-width : 425px){
 
+     .contenedorAsideNav{
+         position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        padding: 20vw;
+        background: #080d13f5;
+    }
  .btnInscripcion {
     width: 39vw;
     height: 8vw;
