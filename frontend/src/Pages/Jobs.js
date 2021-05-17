@@ -15,7 +15,7 @@ const Jobs = (props) => {
         } else {
             setLoader(false)
         }
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.jobs])
 
     return (

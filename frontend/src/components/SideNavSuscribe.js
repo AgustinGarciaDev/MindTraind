@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Modal, Button } from "react-bootstrap";
+import {  useState } from "react";
+import { Modal } from "react-bootstrap";
 import coursesActions from '../redux/actions/coursesActtions'
 import { connect } from 'react-redux'
 import { showToast } from "../helpers/myToast";

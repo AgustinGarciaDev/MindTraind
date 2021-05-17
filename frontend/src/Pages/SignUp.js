@@ -14,7 +14,7 @@ const SignUp = (props) => {
   useEffect(() => {
     window.scrollTo(0, 0)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-}, [])
+  }, [])
 
 
   const errorsImput = { firstName: null, lastName: null, email: null, password: null, profilePicture: null }
@@ -46,8 +46,10 @@ const SignUp = (props) => {
   }
 
   const responseGoogle = (response) => {
-    const { givenName, familyName, email, googleId, imageUrl } = response.profileObj
-    sendNewUser(null, { firstName: givenName, lastName: familyName, email: email, profilePicture: imageUrl, password: 'a' + googleId, googleUser: true })
+    if (!response.error) {
+      const { givenName, familyName, email, googleId, imageUrl } = response.profileObj
+      sendNewUser(null, { firstName: givenName, lastName: familyName, email: email, profilePicture: imageUrl, password: 'a' + googleId, googleUser: true })
+    }
   }
 
   const keyPress = (e) => {

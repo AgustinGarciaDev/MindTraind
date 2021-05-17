@@ -25,6 +25,7 @@ const Foro = (props) => {
         if (!currentCourse) {
             getCourseById(idCourse)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 

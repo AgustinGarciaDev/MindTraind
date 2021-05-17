@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import EditCourse from '../components/EditCourse'
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 
 
 const Course = (props) => {

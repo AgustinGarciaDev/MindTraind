@@ -26,6 +26,7 @@ const CourseList = (props) => {
         if (props.coursesList.length !== 0) {
             setLoader(false)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps 
     }, [props.coursesList])
 
 

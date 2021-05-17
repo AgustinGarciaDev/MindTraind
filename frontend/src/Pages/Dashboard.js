@@ -25,6 +25,7 @@ const Dashboard = ({ getCoursesByIdStudent, userLogged }) => {
     }
     useEffect(() => {
         fetchAPI()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     if (loading) {

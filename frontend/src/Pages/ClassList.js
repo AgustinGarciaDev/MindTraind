@@ -35,12 +35,13 @@ const ClassList = (props) => {
         else {
             fetchAPI(idCourse)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     if (courseData.length === 0) {
         return null
     }
-    const { pictureRefence, lessons, nameCourse, coach: { lastName, firstName, profilePicture, email } } = courseData
+    const { pictureRefence, nameCourse, coach: { lastName, firstName, profilePicture, email } } = courseData
 
     return (
         <>

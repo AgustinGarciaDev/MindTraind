@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { showToast, showTostError500 } from "../../helpers/myToast"
+import {  showTostError500 } from "../../helpers/myToast"
 
 const JobActions = {
     addJob: (data) => {
