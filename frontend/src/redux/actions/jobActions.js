@@ -1,11 +1,11 @@
 import axios from 'axios'
-import {  showTostError500 } from "../../helpers/myToast"
+import { showTostError500 } from "../../helpers/myToast"
 
 const JobActions = {
     addJob: (data) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.post('http://localhost:4000/api/jobs', data)
+                const response = await axios.post('https://trained-mind.herokuapp.com/api/jobs', data)
                 if (response.data.success) {
                     dispatch({ type: 'ADD_JOB', payload: response.data.response })
                     return response
@@ -22,7 +22,7 @@ const JobActions = {
     getJobs: () => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.get('http://localhost:4000/api/jobs')
+                const response = await axios.get('https://trained-mind.herokuapp.com/api/jobs')
                 if (response.data.success) {
                     dispatch({ type: 'GET_JOBS', payload: response.data.response })
                     return response
@@ -39,7 +39,7 @@ const JobActions = {
     updateJob: (data) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.put('http://localhost:4000/api/jobs/' + data.id, {...data.job})
+                const response = await axios.put('https://trained-mind.herokuapp.com/api/jobs/' + data.id, { ...data.job })
                 if (response.data.success) {
                     dispatch({ type: 'UPDATE_JOBS', payload: response.data.response })
                     return response

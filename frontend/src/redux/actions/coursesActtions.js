@@ -6,7 +6,7 @@ const coursesActions = {
     getCourses: () => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.get('http://localhost:4000/api/courses')
+                const response = await axios.get('https://trained-mind.herokuapp.com/api/courses')
                 if (!response.data.success) {
                     showToast("error", response.data.error)
                     return response.data
@@ -24,7 +24,7 @@ const coursesActions = {
         return async (dispatch, getState) => {
             console.log(data)
             try {
-                const response = await axios.put('http://localhost:4000/api/courses/' + data.id, { data: data.data, email: data.email })
+                const response = await axios.put('https://trained-mind.herokuapp.com/api/courses/' + data.id, { data: data.data, email: data.email })
                 if (response.data.success) {
                     dispatch({ type: 'GET_COURSES', payload: response.data.response })
                     return response
@@ -41,7 +41,7 @@ const coursesActions = {
     addCourse: (data) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.post('http://localhost:4000/api/courses', data)
+                const response = await axios.post('https://trained-mind.herokuapp.com/api/courses', data)
                 if (response.data.success) {
                     dispatch({ type: 'GET_COURSES', payload: response.data.response })
                     return response
@@ -60,7 +60,7 @@ const coursesActions = {
         return async (dispatch) => {
             try {
 
-                const { data } = await axios.put("http://localhost:4000/api/coursesmodifyStudents/" + idCourse, { action }, {
+                const { data } = await axios.put("https://trained-mind.herokuapp.com/api/coursesmodifyStudents/" + idCourse, { action }, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 if (!data.success) {
@@ -81,7 +81,7 @@ const coursesActions = {
     getCoursesByIdStudent: (token) => {
         return async () => {
             try {
-                const { data } = await axios.get("http://localhost:4000/api/coursesOfUser", {
+                const { data } = await axios.get("https://trained-mind.herokuapp.com/api/coursesOfUser", {
                     headers: { "Authorization": "Bearer " + token }
                 })
 
@@ -101,7 +101,7 @@ const coursesActions = {
     getCourseById: (idCourse) => {
         return async (dispatch) => {
             try {
-                const { data } = await axios.get('http://localhost:4000/api/courses/' + idCourse)
+                const { data } = await axios.get('https://trained-mind.herokuapp.com/api/courses/' + idCourse)
                 if (data.success) {
                     dispatch({ type: "UPDATE_CURRENT_COURSE", payload: data.response });
                     return data.response
@@ -120,7 +120,7 @@ const coursesActions = {
     modifyCategory: (data) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.put('http://localhost:4000/api/coursesmodifyCategory/' + data.idCourse, data)
+                const response = await axios.put('https://trained-mind.herokuapp.com/api/coursesmodifyCategory/' + data.idCourse, data)
                 if (response.data.success) {
                     dispatch({ type: 'UPDATE_CATEGORY', payload: response.data.response })
                     return response.data.success
@@ -135,7 +135,7 @@ const coursesActions = {
     modifyLesson: (data) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.put('http://localhost:4000/api/coursesmodifyLesson/' + data.idCourse, data)
+                const response = await axios.put('https://trained-mind.herokuapp.com/api/coursesmodifyLesson/' + data.idCourse, data)
                 if (response.data.success) {
                     dispatch({ type: 'UPDATE_CATEGORY', payload: response.data.response })
                     return response.data.success
@@ -152,7 +152,7 @@ const coursesActions = {
 
         return async (dispatch, getState) => {
             try {
-                const response = await axios.put('http://localhost:4000/api/coursesmodifyComments/' + data.idCourse, data, {
+                const response = await axios.put('https://trained-mind.herokuapp.com/api/coursesmodifyComments/' + data.idCourse, data, {
                     headers: { Authorization: "Bearer " + data.token },
                 })
 
@@ -170,7 +170,7 @@ const coursesActions = {
 
         return async (dispatch, getState) => {
             try {
-                const response = await axios.put('http://localhost:4000/api/coursesmodifyComments/' + data.idCourse, data, {
+                const response = await axios.put('https://trained-mind.herokuapp.com/api/coursesmodifyComments/' + data.idCourse, data, {
                     headers: { Authorization: "Bearer " + data.token },
                 })
                 if (response.data.success) {
@@ -186,7 +186,7 @@ const coursesActions = {
     deletePost: (data) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.put('http://localhost:4000/api/coursesmodifyComments/' + data.idCourse, data, {
+                const response = await axios.put('https://trained-mind.herokuapp.com/api/coursesmodifyComments/' + data.idCourse, data, {
                     headers: { Authorization: "Bearer " + data.token },
                 })
                 if (response.data.success) {
@@ -205,7 +205,7 @@ const coursesActions = {
 
         return async (dispatch, getState) => {
             try {
-                const response = await axios.put('http://localhost:4000/api/coursesReplyAComment/' + data.idCourse, data, {
+                const response = await axios.put('https://trained-mind.herokuapp.com/api/coursesReplyAComment/' + data.idCourse, data, {
                     headers: { Authorization: "Bearer " + data.token },
                 })
                 if (response.data.success) {

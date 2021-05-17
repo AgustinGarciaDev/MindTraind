@@ -7,7 +7,7 @@ const usersActions = {
   signUpUser: (objInputsValues) => {
     return async (dispatch, getState) => {
       try {
-        const response = await axios.post("http://localhost:4000/api/users/signup", objInputsValues);
+        const response = await axios.post("https://trained-mind.herokuapp.com/api/users/signup", objInputsValues);
         if (response.data.success) {
           dispatch({ type: "LOGIN_USER", payload: response.data.response });
           showToast("success", `Welcome ${response.data.response.firstName} ${response.data.response.lastName}`);
@@ -23,7 +23,7 @@ const usersActions = {
   logInUser: (objInputsValues) => {
     return async (dispatch) => {
       try {
-        const response = await axios.post("http://localhost:4000/api/users/login", objInputsValues);
+        const response = await axios.post("https://trained-mind.herokuapp.com/api/users/login", objInputsValues);
         if (response.data.success) {
           dispatch({ type: "LOGIN_USER", payload: response.data.response });
           showToast("success", `Welcome ${response.data.response.firstName} ${response.data.response.lastName}`);
