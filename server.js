@@ -20,7 +20,6 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.join(__dirname + "/client/build/index.html"))
     })
 }
-
 const port = process.env.PORT
 const host = process.env.HOST || '0.0.0.0'
 app.listen(port, host, 4000, () => console.log("app listening on port 4000"))
