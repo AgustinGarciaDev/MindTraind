@@ -115,7 +115,6 @@ const Reply = (props) => {
         </>
     )
 }
-
 const mapDispatchToProps = {
     modifyReply: coursesActions.modifyReply
 }
