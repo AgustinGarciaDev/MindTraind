@@ -57,9 +57,6 @@ const SideNavSuscribe = (props) => {
         );
     }
 
-
-
-
     return (
         <div className="contenedorAsideNav">
             <div className="contenedorBtnClose"> <i onClick={() => props.closeModal()} className="fas fa-times"></i></div>
