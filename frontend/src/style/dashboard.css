@@ -38,8 +38,12 @@
     margin-left: 20px;
     border-radius: 10px;
     width: 21vw;
-        margin-top: 10px;
+        margin-top: 2px;
     margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
 }
 
 .tituloDasboard{
@@ -98,15 +102,22 @@
 .contenedorCourseAndSideBar{
     display: flex;
         margin: 39px;
-    justify-content: center;    
+    justify-content: center; 
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 19%, rgba(136,130,130,1) 62%, rgba(255,250,250,0.9220063025210083) 93%);   
 }
 .contenedorInscripcionCursos{
     display: flex;
     align-items: center;
     top: 6vw;
     align-items: flex-start;
+<<<<<<< HEAD
     flex-wrap: wrap;
 }
+=======
+        flex-wrap: wrap;
+    }
+>>>>>>> 63cefa269850caf7980b1fb528ff10945be42dc9
 
 .courseList{
 
@@ -306,6 +317,7 @@
 
 }
 
+<<<<<<< HEAD
 
 .fotoPortadaCourse {
     background-image: url("http://baravdg.com/wp-content/uploads/2021/05/pexels-li-sun-2294361-1-scaled.jpg");
@@ -324,6 +336,8 @@
 
 =======
 >>>>>>> a4d24955046a0d269cc66b1e7900cb136913ac02
+=======
+>>>>>>> 63cefa269850caf7980b1fb528ff10945be42dc9
 /* Responsive lista de cursos*/
 
 @media only screen and (min-device-width : 676px) and (max-device-width : 1200px) {
@@ -509,6 +523,7 @@
      .fotoCursoDashBoard {
         height: 41vw;
     }
+<<<<<<< HEAD
 
      .contenedorCurso {
     width: 75vw;
@@ -622,6 +637,60 @@
     width: 39vw;
     height: 8vw;
 }
+=======
+    .contenedorCurso{
+        width: 70vw;
+        height: 60vh;
+    }
+    .fotoCurso{
+        height: 35vh;
+    }
+    .contenedorInscripcionCursos{
+        display: flex;
+        justify-content: center;
+    }
+    .fotoPortadaCourse h1{
+        font-size: 2.2rem;
+        margin-left: 10vh;
+    }
+    
+}
+
+@media only screen and (min-device-width : 526px) and (max-device-width : 590px) {
+.videoDash {
+    width: 98vw;
+    height: 88vw;
+}
+.contenedorInscripcionCursos{
+    display: flex;
+    align-items: center;
+    top: 6vw;
+    align-items: flex-start;
+        flex-wrap: wrap;
+    margin-left: 4vh;
+}
+.contenedorCurso{
+    width: 80vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.fotoCurso{
+    height: 65%;
+}
+.fotoPortadaCourse h1{
+    font-size: 2.2rem;
+    margin-left: 10vh;
+}
+.contenedorCourseAndSideBar{
+    display: flex;
+    justify-content: center;
+}
+
+}
+@media only screen and (min-device-width : 200px) and (max-device-width : 525px){
+>>>>>>> 63cefa269850caf7980b1fb528ff10945be42dc9
 
   .cursoModalTitle {
     font-size: 20px;
@@ -688,6 +757,7 @@
     margin-top: 7vw;
 }
 
+<<<<<<< HEAD
 .contenedorCurso {
     width: 76vw;
 }
@@ -696,7 +766,27 @@
       width: 13vw;
     height: 13vw;
     margin-left: 17px;
+=======
+ .contenedorCurso{
+     width: 100%;
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    
  }
+ .contenedorInscripcionCursos{
+     width: 100%;
+    
+>>>>>>> 63cefa269850caf7980b1fb528ff10945be42dc9
+ }
+ .fotoPortadaCourse h1{
+    font-size: 2.2rem;
+    margin-left: 10vh;
+}
+.contenedorCourseAndSideBar{
+    display: flex;
+    justify-content: center;
+}
 
 }
 
