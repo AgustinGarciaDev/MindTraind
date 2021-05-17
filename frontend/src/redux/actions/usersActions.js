@@ -43,15 +43,16 @@ const usersActions = {
           headers: { Authorization: "Bearer " + token },
         });
 
-        dispatch({ type: "LOGIN_USER", payload: { ...data.response, token } });
+        dispatch({
+          type: "LOGIN_USER",
+          payload: {
+            ...data.response,
+            token
+          }
+        });
       } catch (err) {
-        alert("Error 500 , please come back later");
-        console.log(err);
         if (err.response && err.response.status === 401) {
-          alert("try harder next time");
-          //localStorage.clear();
-          window.location.reload(true);
-          //history.push("/");
+          showToast("error", "What are you trying to do ??")
         }
         localStorage.clear();
       }
