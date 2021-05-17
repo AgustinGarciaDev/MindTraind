@@ -58,7 +58,7 @@ const SignIp = (props) => {
             </div>
             <GoogleLogin
               className="google"
-              clientId="714215106747-270kd1ontnkpdopijelc4kc6mdivqotv.apps.googleusercontent.com"
+              clientId="520488943337-q0bjrnkhhdn0iho4rmt6qapssseul2g3.apps.googleusercontent.com"
               buttonText="Sign in with Google"
               onSuccess={responseGoogle}
               onFailure={responseGoogle}

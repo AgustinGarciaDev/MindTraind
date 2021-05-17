@@ -39,7 +39,7 @@ const usersActions = {
   loginForced: (token, history) => {
     return async (dispatch, getState) => {
       try {
-        const { data } = await axios.get("http://localhost:4000/api/usersforcedlogin", {
+        const { data } = await axios.get("https://trained-mind.herokuapp.com/api/usersforcedlogin", {
           headers: { Authorization: "Bearer " + token },
         });
 
