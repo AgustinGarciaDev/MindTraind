@@ -26,15 +26,16 @@ const Post = (props) => {
     const [show, setShow] = useState(false);
     const [editInput, setEditInput] = useState(false);
     const [editInputTitle, setEditInputTitle] = useState(false)
-    const { title, _id, text, user: { profilePicture, lastName, firstName } } = props.post
+    const { title, _id, text, user: { profilePicture, lastName, firstName, email } } = props.post
     const [commentReply, setCommentReply] = useState(false)
-    const { token, email } = props.userLogged
+    const [btnEdit, setBtnEdit] = useState(false)
+    const { token } = props.userLogged
     const [objConsult, setobjConsult] = useState({
         textReply: "",
         idCourse: props.currentCourse._id,
         token: token,
         action: "add",
-        userEmailReply: email,
+        userEmailReply: props.email,
         idComment: _id
     })
 
@@ -93,6 +94,14 @@ const Post = (props) => {
     }
 
 
+    useEffect(() => {
+        if (props.userLogged) {
+            if (email === props.userLogged.email) {
+                setBtnEdit(!btnEdit)
+            }
+        }
+    }, [props.userLogged])
+
     const popover = (
         <Popover delay={{ show: 250, hide: 400 }}>
             <Popover.Content>
@@ -123,9 +132,11 @@ const Post = (props) => {
             {!editInputTitle
                 ? <div className="contenedorEditInputs">
                     <h2 className="tituloPost">{title}</h2>
-                    <OverlayTrigger rootClose={true} trigger="click" placement="right" overlay={popover}>
-                        <Button className="btnModificarInputs" ><i className="fas fa-ellipsis-h"></i></Button>
-                    </OverlayTrigger>
+                    {btnEdit &&
+                        <OverlayTrigger rootClose={true} trigger="click" placement="right" overlay={popover}>
+                            <Button className="btnModificarInputs" ><i className="fas fa-ellipsis-h"></i></Button>
+                        </OverlayTrigger>
+                    }
                 </div>
                 : <div className="contenedorEditInputs" >
                     <input
@@ -137,6 +148,7 @@ const Post = (props) => {
                     <button id="btnTitle" onClick={editCommentChange} >
                         <i className="fas fa-edit"></i>
                     </button>
+
                     <OverlayTrigger rootClose={true} trigger="click" placement="right" overlay={popover}>
                         <Button className="btnOpciones" ><i className="fas fa-ellipsis-h"></i></Button>
                     </OverlayTrigger>
@@ -204,9 +216,6 @@ const mapStateToProps = state => {
 
 
 const mapDispatchToProps = {
-
-    /*     editComment: coursesActions.editComment,
-        deleteComment: coursesActions.deleteComment, */
     sendReply: coursesActions.modifyReply,
     getCourseById: coursesActions.getCourseById,
 }

@@ -13,6 +13,7 @@ const Foro = (props) => {
     const { getCourseById, currentCourse } = props
     const { firstName, lastName, profilePicture, token } = props.userLogged
     const [modalShow, setModalShow] = useState(false);
+    const [searchPost, setSearchPost] = useState(props.currentCourse.comment)
     const [objConsult, setobjConsult] = useState({
         title: "",
         text: "",
@@ -57,9 +58,28 @@ const Foro = (props) => {
         showToast('success', "Delete Post")
     }
 
+
     if (!props.currentCourse || !props.userLogged) {
         return null
     }
+
+
+    const filterPost = (e) => {
+        let valueInput = e.target.value
+
+        let search = props.currentCourse.comments.filter(post =>
+            valueInput.toLowerCase().trim() === post.title.slice(0, valueInput.length).toLowerCase()
+        )
+        setSearchPost(search)
+    }
+
+
+
+
+
+
+
+
     return (
         <div className="contenedorMenu">
             <AsideNav />
@@ -78,7 +98,7 @@ const Foro = (props) => {
                     </div>
                     <div>
                         <div className="barraBuscadora">
-                            <input className="inputSearch" placeholder="Search Post" type="text" />
+                            <input onChange={filterPost} className="inputSearch" placeholder="Search Post" type="text" />
                             <div className="contenedorIconoSearch">
                                 <i className="fas fa-search"></i>
                             </div>
@@ -109,7 +129,7 @@ const Foro = (props) => {
                             }
                         </div>
                         <div className="contenedorComentarios">
-                            {props.currentCourse.comments.map(post => <Post key={post._id} editPost={editPost} deletePost={deletePost} idCourse={idCourse} post={post} />)}
+                            {searchPost.map(post => <Post key={post._id} editPost={editPost} deletePost={deletePost} idCourse={idCourse} post={post} />)}
                         </div>
 
                     </div>
