@@ -38,7 +38,9 @@ const Dashboard = ({ getCoursesByIdStudent, userLogged }) => {
     }
     return (
         <div className="contenedorMenu">
-            <AsideNav />
+            <div className="asideContainer">
+                <AsideNav />
+            </div>
             <div className="contenedorWeb">
                 <NavBarDashBoard />
                 {studentCourses.length === 0

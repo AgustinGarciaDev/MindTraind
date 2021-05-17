@@ -10,7 +10,9 @@ const Admin = () => {
     return (
         <>
             <div className="contenedorMenu">
-                <AsideNav />
+                <div className="asideContainer">
+                    <AsideNav />
+                </div>
                 <div className="contenedorWeb">
                     <Header />
                     <div className="adminContainer" style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/rayas-red-izq-1.png')` }}>

@@ -59,7 +59,6 @@ const usersActions = {
   },
 
   logOutUser: () => {
-    console.log("entro aca")
     return (dispatch, getState) => {
       showToast("info", "Come back later ", "top-right");
       dispatch({ type: "LOG_OUT" });
