@@ -2,21 +2,21 @@ import { OverlayTrigger } from 'react-bootstrap'
 import { Popover } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import coursesActions from "../redux/actions/coursesActtions"
 
 
-const Reply = ({ replyComment, modifyReply, idComment, idCourse, userLogged }) => {
+const Reply = (props) => {
+
+    const { replyComment, modifyReply, idComment, idCourse, userLogged } = props
     const { textReply, userReply, _id } = replyComment;
     const [show, setShow] = useState(false);
+    const [btnEdit, setBtnEdit] = useState(false)
     const [editInput, setEditInput] = useState(false);
     const [comentario, setComentario] = useState({
         mensaje: "",
     })
-
-
-
 
     const datosInput = (e) => {
         setComentario({
@@ -46,6 +46,15 @@ const Reply = ({ replyComment, modifyReply, idComment, idCourse, userLogged }) =
             modifyReply({ action, idCourse, idCommentReply: _id, token: userLogged.token, idComment })
         }
     }
+
+
+    useEffect(() => {
+        if (props.userLogged) {
+            if (userReply.email === props.userLogged.email) {
+                setBtnEdit(!btnEdit)
+            }
+        }
+    }, [props.userLogged])
 
     const popover = (
         <Popover delay={{ show: 250, hide: 400 }}>
@@ -96,9 +105,12 @@ const Reply = ({ replyComment, modifyReply, idComment, idCourse, userLogged }) =
 
                     </div>
                 </div>
-                <OverlayTrigger rootClose={true} trigger="click" placement="right" overlay={popover}>
-                    <Button className="btnOpciones" ><i className="fas fa-ellipsis-h"></i></Button>
-                </OverlayTrigger>
+                {btnEdit &&
+                    <OverlayTrigger rootClose={true} trigger="click" placement="right" overlay={popover}>
+                        <Button className="btnOpciones" ><i className="fas fa-ellipsis-h"></i></Button>
+                    </OverlayTrigger>
+
+                }
             </div>
         </>
     )

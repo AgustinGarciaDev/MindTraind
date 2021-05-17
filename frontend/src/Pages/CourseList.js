@@ -29,26 +29,25 @@ const CourseList = (props) => {
     }, [props.coursesList])
 
     return (
-        <div className="contenedorMenu">
-            <div className="contenedorWeb">
-                <Header />
-                <div className="fotoPortadaCourse">
-                    <h1 className="cursoModalTitle titlePrincipal" >Boost your career with our courses</h1>
-                </div>
-                <div className="contenedorCourseAndSideBar">
-                    <div className="contenedorInscripcionCursos courseList">
-                        {
-                            loader
-                                ?
-                                <Spinner animation="border" role="status" />
-                                :
-                                props.coursesList.map(course => <SuscribeCardCourse key={course._id} close={close} courseSubscription={courseSubscription} course={course} />)
-                        }
-                    </div>
-                    {!close && <SideNavSuscribe closeModal={closeModal} infoCourse={infoCourse} />}
-                </div>
 
+        <div className="contenedorWeb">
+            <Header />
+            <div className="fotoPortadaCourse">
+                <h1 className="cursoModalTitle titlePrincipal" >Boost your career with our courses</h1>
             </div>
+            <div className="contenedorCourseAndSideBar">
+                <div className="contenedorInscripcionCursos courseList">
+                    {
+                        loader
+                            ?
+                            <Spinner animation="border" role="status" />
+                            :
+                            props.coursesList.map(course => <SuscribeCardCourse key={course._id} close={close} courseSubscription={courseSubscription} course={course} />)
+                    }
+                </div>
+                {!close && <SideNavSuscribe closeModal={closeModal} infoCourse={infoCourse} />}
+            </div>
+
         </div>
 
     )

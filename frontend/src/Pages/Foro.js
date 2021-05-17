@@ -66,53 +66,51 @@ const Foro = (props) => {
 
 
     return (
-        <div className="contenedorMenu">
-            <div className="contenedorWeb">
-                <Header />
-                <main className="contenedorPosteos">
-                    <div className="contenedorBannerForo">
-                        <div className="contenedorBtnyTextBanner">
-                            <h4 className="titleHelp"> Wanna be part of our community? <br />
+        <div className="contenedorWeb">
+            <Header />
+            <main className="contenedorPosteos">
+                <div className="contenedorBannerForo">
+                    <div className="contenedorBtnyTextBanner">
+                        <h4 className="titleHelp"> Wanna be part of our community? <br />
                     Join our discord channel
                     </h4>
-                            <button className="btnDashBoard spaceBtnForo">
-                                <Link to="/chat">Go!</Link>
-                            </button>
-                        </div>
+                        <button className="btnDashBoard spaceBtnForo">
+                            <Link to="/chat">Go!</Link>
+                        </button>
                     </div>
-                    <div>
-                        <div className="contenedorBtnTextArea">
+                </div>
+                <div>
+                    <div className="contenedorBtnTextArea">
 
-                            <div onClick={() => { setModalShow(!modalShow) }} className="contenedorBienvenidaUsuario">
-                                <img className="logoDashBoard" src={profilePicture} alt="" />
-                                <h4 className="tituloForm"> Hi {firstName} {lastName}, doubts? Contact your tutor</h4>
-                            </div>
-                            <div>
-                            </div>
-                            {!modalShow &&
-                                <div className="postYtitulo">
-                                    <div>
-                                        <h2 className="titleInternalForm">titulo</h2>
-                                        <input onChange={inputData} value={objConsult.title} name="title" className="inputPost" type="text" />
-                                    </div>
-                                    <div>
-                                        <h2 className="titleInternalForm" >Content</h2>
-                                        <textarea onChange={inputData} value={objConsult.text} name="text" className="textAreaConsulta" cols="30" rows="10"></textarea>
-                                    </div>
-                                    <div className="contenedorBtn">
-                                        <button onClick={sendComent} className="btnDashBoard btnForm">Send</button>
-                                    </div>
-
+                        <div onClick={() => { setModalShow(!modalShow) }} className="contenedorBienvenidaUsuario">
+                            <img className="logoDashBoard" src={profilePicture} alt="" />
+                            <h4 className="tituloForm"> Hi {firstName} {lastName}, doubts? Contact your tutor</h4>
+                        </div>
+                        <div>
+                        </div>
+                        {!modalShow &&
+                            <div className="postYtitulo">
+                                <div>
+                                    <h2 className="titleInternalForm">titulo</h2>
+                                    <input onChange={inputData} value={objConsult.title} name="title" className="inputPost" type="text" />
                                 </div>
-                            }
-                        </div>
-                        <div className="contenedorComentarios">
-                            {props.currentCourse.comments.map(post => <Post key={post._id} editPost={editPost} deletePost={deletePost} idCourse={idCourse} post={post} />)}
-                        </div>
+                                <div>
+                                    <h2 className="titleInternalForm" >Content</h2>
+                                    <textarea onChange={inputData} value={objConsult.text} name="text" className="textAreaConsulta" cols="30" rows="10"></textarea>
+                                </div>
+                                <div className="contenedorBtn">
+                                    <button onClick={sendComent} className="btnDashBoard btnForm">Send</button>
+                                </div>
 
+                            </div>
+                        }
                     </div>
-                </main>
-            </div>
+                    <div className="contenedorComentarios">
+                        {props.currentCourse.comments.map(post => <Post key={post._id} editPost={editPost} deletePost={deletePost} idCourse={idCourse} post={post} />)}
+                    </div>
+
+                </div>
+            </main>
         </div>
     )
 }

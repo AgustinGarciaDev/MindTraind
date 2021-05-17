@@ -44,39 +44,36 @@ const ClassList = (props) => {
 
     return (
         <>
-            <div className="contenedorMenu">
-                <div className="contenedorWeb">
-                    <Header />
-                    <div>
-                        <div className="portadaCourse" style={{ backgroundImage: `url(${pictureRefence})` }}>
-                            <div className="superposicionPortada">
-                                <h2 className="textTitle">{nameCourse}</h2>
-                            </div>
+            <div className="contenedorWeb">
+                <Header />
+                <div>
+                    <div className="portadaCourse" style={{ backgroundImage: `url(${pictureRefence})` }}>
+                        <div className="superposicionPortada">
+                            <h2 className="textTitle">{nameCourse}</h2>
                         </div>
-                    </div>
-                    <div className="contenedorProfesorYbtn">
-                        <div className="cardProfesor">
-                            <div className="titleCardTeacher"><h2>Teacher</h2></div>
-                            <div className="fotoYnombreProfesor">
-                                <div className="fotoProfesor" style={{ backgroundImage: `url(${profilePicture})` }}> </div>
-                                <h2>{firstName} {lastName}</h2>
-                            </div>
-                            <div className="contenedorCorreoProfesor">
-                                <i className="fas fa-envelope"></i>
-                                <p>{email}</p>
-                            </div>
-                        </div>
-                        <div className="contenedorForumConsultas"> <Link to={`/foro/${props.match.params.id}`} ><button className="btnDashBoard">Consultation forum</button></Link></div>
-                    </div>
-                    <div className="contenedorTitle">
-                        <h2>Program Course</h2>
-                    </div>
-                    <div className="classContainer">
-                        {lessonsCourse.map(lesson => <Class key={lesson._id} clase={lesson} />)}
                     </div>
                 </div>
             </div>
-
+            <div className="contenedorProfesorYbtn">
+                <div className="cardProfesor">
+                    <div className="titleCardTeacher"><h2>Teacher</h2></div>
+                    <div className="fotoYnombreProfesor">
+                        <div className="fotoProfesor" style={{ backgroundImage: `url(${profilePicture})` }}> </div>
+                        <h2>{firstName} {lastName}</h2>
+                    </div>
+                    <div className="contenedorCorreoProfesor">
+                        <i className="fas fa-envelope"></i>
+                        <p>{email}</p>
+                    </div>
+                </div>
+                <div className="contenedorForumConsultas"> <Link to={`/foro/${props.match.params.id}`} ><button className="btnDashBoard">Consultation forum</button></Link></div>
+            </div>
+            <div className="contenedorTitle">
+                <h2>Program Course</h2>
+            </div>
+            <div className="classContainer">
+                {lessonsCourse.map(lesson => <Class key={lesson._id} clase={lesson} />)}
+            </div>
         </>
 
     )

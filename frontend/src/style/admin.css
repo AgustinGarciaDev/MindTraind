@@ -23,6 +23,12 @@
     transition: all 0.4s;
 }
 
+@media (max-width:500px){
+    .courseCardContainer{
+          width: 70%;
+    }
+}
+
 .courseCardContainer:hover{
     transform: scale(1.02);
 }
