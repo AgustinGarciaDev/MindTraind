@@ -1,9 +1,8 @@
-import NavBarDashBoard from '../components/NavBarDashBoard'
+import Header from '../components/Header'
 import Class from '../components/Class'
 import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import AsideNav from '../components/AsideNav'
 import coursesActions from '../redux/actions/coursesActtions'
 const ClassList = (props) => {
 
@@ -46,9 +45,8 @@ const ClassList = (props) => {
     return (
         <>
             <div className="contenedorMenu">
-                <AsideNav />
                 <div className="contenedorWeb">
-                    <NavBarDashBoard />
+                    <Header />
                     <div>
                         <div className="portadaCourse" style={{ backgroundImage: `url(${pictureRefence})` }}>
                             <div className="superposicionPortada">

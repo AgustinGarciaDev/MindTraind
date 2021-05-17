@@ -1,8 +1,7 @@
 import SuscribeCardCourse from '../components/SuscribeCardCourse'
-import NavBarDashBoard from '../components/NavBarDashBoard'
+import Header from '../components/Header'
 import SideNavSuscribe from '../components/SideNavSuscribe'
 import coursesActions from "../redux/actions/coursesActtions"
-import AsideNav from '../components/AsideNav'
 import { connect } from "react-redux"
 import { Spinner } from "react-bootstrap";
 import { useEffect, useState } from 'react'
@@ -29,14 +28,10 @@ const CourseList = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps 
     }, [props.coursesList])
 
-
     return (
-
-
         <div className="contenedorMenu">
-            <AsideNav />
             <div className="contenedorWeb">
-                <NavBarDashBoard />
+                <Header />
                 <div className="fotoPortadaCourse">
                     <h1 className="cursoModalTitle titlePrincipal" >Boost your career with our courses</h1>
                 </div>
@@ -47,7 +42,7 @@ const CourseList = (props) => {
                                 ?
                                 <Spinner animation="border" role="status" />
                                 :
-                                props.coursesList.map(course => <SuscribeCardCourse close={close} courseSubscription={courseSubscription} course={course} />)
+                                props.coursesList.map(course => <SuscribeCardCourse key={course._id} close={close} courseSubscription={courseSubscription} course={course} />)
                         }
                     </div>
                     {!close && <SideNavSuscribe closeModal={closeModal} infoCourse={infoCourse} />}

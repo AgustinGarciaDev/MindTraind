@@ -3,45 +3,23 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
 import Info from '../components/Info'
-import { connect } from 'react-redux'
-import { useEffect, useState } from "react"
-import AsideNav from '../components/AsideNav'
+import { useEffect } from "react"
 
-const Home = (props) => {
-    const [user, setUser] = useState(false)
+const Home = () => {
+
     useEffect(() => {
-        if (props.userLogged.userLogged !== null) {
-            setUser(true)
-        } else {
-            setUser(false)
-        }
-    }, [props.userLogged.userLogged])
+        window.scrollTo(0, 0)
+    }, [])
 
     return (
-        <div className="contenedorMenu">
-            {user &&
-                (
-                    <div className="asideContainer">
-                        <AsideNav />
-                    </div>
 
-                )}
-            <div className="contenedorWeb">
-                <div className="home">
-                    <Header />
-                    <Hero />
-                    <Info />
-                    <Footer />
-                </div>
-            </div>
+        <div className="home">
+            <Header />
+            <Hero />
+            <Info />
+            <Footer />
         </div>
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        userLogged: state.user
-    }
-}
-
-export default connect(mapStateToProps, null)(Home)
+export default Home

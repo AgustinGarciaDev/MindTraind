@@ -15,8 +15,6 @@ const SignIp = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-
-
   const readInput = e => {
     const value = e.target.value
     const name = e.target.name
@@ -36,7 +34,7 @@ const SignIp = (props) => {
 
   const responseGoogle = (response) => {
     if (response.profileObj.email) {
-      signIn(null, { email: response.profileObj.email, password: 'a' + response.profileObj.googleId, googleUser: true })
+      signIn(null, { email: response.profileObj.email, password: 'a'+response.profileObj.googleId, googleUser: true })
     }
   }
 

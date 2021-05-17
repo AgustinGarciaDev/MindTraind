@@ -3,7 +3,6 @@ import Course from '../components/Course'
 import Spinner from 'react-bootstrap/Spinner'
 import { useEffect, useState } from "react"
 import coursesActions from "../redux/actions/coursesActtions"
-import AsideNav from "../components/AsideNav"
 import Header from '../components/Header'
 import { Link } from 'react-router-dom'
 
@@ -21,7 +20,6 @@ const CourseContainer = (props) => {
 
     return (
         <div className="contenedorMenu">
-            <AsideNav />
             <div className="contenedorWeb">
                 <Header />
                 <div className="courseBigContainer" style={{backgroundImage:`url('https://baravdg.com/wp-content/uploads/2021/05/rayas-red-izq-1.png')`}}>

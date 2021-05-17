@@ -6,18 +6,15 @@ import GoogleLogin from "react-google-login";
 import usersActions from "../redux/actions/usersActions";
 import { showToast } from '../helpers/myToast'
 
-
 const SignUp = (props) => {
   const [newUser, setNewUser] = useState({ firstName: '', lastName: '', email: '', password: '', profilePicture: '' })
   const [error, setError] = useState({})
+  const errorsImput = { firstName: null, lastName: null, email: null, password: null, profilePicture: null }
 
   useEffect(() => {
     window.scrollTo(0, 0)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-
-  const errorsImput = { firstName: null, lastName: null, email: null, password: null, profilePicture: null }
 
   const readInput = e => {
     const value = e.target.value
@@ -48,7 +45,7 @@ const SignUp = (props) => {
   const responseGoogle = (response) => {
     if (!response.error) {
       const { givenName, familyName, email, googleId, imageUrl } = response.profileObj
-      sendNewUser(null, { firstName: givenName, lastName: familyName, email: email, profilePicture: imageUrl, password: 'a' + googleId, googleUser: true })
+      sendNewUser(null, { firstName: givenName, lastName: familyName, email: email, profilePicture: imageUrl, password: 'a'+googleId, googleUser: true })
     }
   }
 
@@ -103,4 +100,4 @@ const mapDispatchToProps = {
   signUpUser: usersActions.signUpUser,
 }
 
-export default connect(null, mapDispatchToProps)(SignUp);
+export default connect(null, mapDispatchToProps)(SignUp)

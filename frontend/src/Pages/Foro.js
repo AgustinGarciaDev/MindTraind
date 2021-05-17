@@ -1,4 +1,4 @@
-import NavBarDashBoard from '../components/NavBarDashBoard'
+import Header from '../components/Header'
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Post from '../components/Post'
 import { useEffect, useState } from "react";
@@ -6,9 +6,8 @@ import { Link } from "react-router-dom";
 import { showToast } from '../helpers/myToast'
 import coursesActions from "../redux/actions/coursesActtions"
 import { connect } from "react-redux"
-import AsideNav from '../components/AsideNav'
-const Foro = (props) => {
 
+const Foro = (props) => {
     const idCourse = props.match.params.id
     const { getCourseById, currentCourse } = props
     const { firstName, lastName, profilePicture, token } = props.userLogged
@@ -68,9 +67,8 @@ const Foro = (props) => {
 
     return (
         <div className="contenedorMenu">
-            <AsideNav />
             <div className="contenedorWeb">
-                <NavBarDashBoard />
+                <Header />
                 <main className="contenedorPosteos">
                     <div className="contenedorBannerForo">
                         <div className="contenedorBtnyTextBanner">

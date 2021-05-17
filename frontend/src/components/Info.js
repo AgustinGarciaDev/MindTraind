@@ -8,7 +8,7 @@ const Info=()=>{
            
         <div className="info">
            
-            <div className="info-in">
+            <div className="info-in" style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/rayas-red-izq-1.png')` }}>
                 <div className="more-info">
                     <h2>More About Us</h2>
                     <p>Trained Mind is a BodySystems company.Our mission is to create a Planet in shape by providing clients with what they are looking for. Success will be a consequence.</p>

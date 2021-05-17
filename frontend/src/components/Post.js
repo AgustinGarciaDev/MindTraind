@@ -9,19 +9,26 @@ import { Modal } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 
 const Post = (props) => {
+
     useEffect(() => {
         if (!props.currentCourse) {
             fetchAPI();
         }
+        if (props.userLogged) {
+            if (email === props.userLogged.email) {
+                setBtnEdit(!btnEdit)
+            }
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [])
+
     const fetchAPI = async () => {
         try {
-            props.getCourseById(props.idCourse);
+            props.getCourseById(props.idCourse)
 
         } catch (err) {
-            console.log(err);
-            showTostError500();
+            console.log(err)
+            showTostError500()
         }
     }
     const [show, setShow] = useState(false);
@@ -40,12 +47,10 @@ const Post = (props) => {
         idComment: _id
     })
 
-
     const [editPost, setEditPost] = useState({
         text: text,
         title: title
     })
-
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -79,7 +84,6 @@ const Post = (props) => {
             showToast('error', "You cant add text")
         } else {
             props.sendReply(objConsult)
-
         }
     }
 
@@ -91,17 +95,7 @@ const Post = (props) => {
         } else {
             setEditInputTitle(!editInputTitle)
         }
-
     }
-
-
-    useEffect(() => {
-        if (props.userLogged) {
-            if (email === props.userLogged.email) {
-                setBtnEdit(!btnEdit)
-            }
-        }
-    }, [props.userLogged])
 
     const popover = (
         <Popover delay={{ show: 250, hide: 400 }}>

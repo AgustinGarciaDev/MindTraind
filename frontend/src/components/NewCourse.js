@@ -4,7 +4,6 @@ import coursesActions from "../redux/actions/coursesActtions"
 import { showToast } from '../helpers/myToast'
 import CategoryText from "../components/CategoryText"
 import LessonText from "../components/LessonText"
-import AsideNav from "../components/AsideNav"
 import Header from '../components/Header'
 import { Link } from 'react-router-dom'
 
@@ -126,7 +125,6 @@ const NewCourse = (props) => {
 
     return (
         <div className="contenedorMenu">
-            <AsideNav />
             <div className="contenedorWeb">
                 <Header />
                 <div className="newCourseContainer" style={{backgroundImage:`url('https://baravdg.com/wp-content/uploads/2021/05/rayas-red-izq-1.png')`}}>

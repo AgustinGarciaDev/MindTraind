@@ -283,14 +283,11 @@ small{
 .adminContainer{
     display: flex;
     flex-direction: column;
-    align-items: center;
     background-color: black;
     justify-content: center;
     background-position: center;
     background-size: cover;
-    height: 100vh;
-    overflow: scroll;
-    overflow-x: hidden;
+    width: 100%;
 }
 
 .selectCardContainer{
