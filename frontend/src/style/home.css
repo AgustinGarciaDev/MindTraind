@@ -5,6 +5,7 @@ html *{
 }
 .home{
     height: 100vh;
+    overflow: scroll;
 }
 .img-home{
     background-repeat: no-repeat;
@@ -17,12 +18,10 @@ html *{
 .logo{
     height: 8vh;
     margin:1vh;
-    margin-left: 3vh;
 }
 .title{
     color:white;
     font-size: 10vh;
-
 }
 .footer{
     display: flex;
@@ -57,6 +56,12 @@ html *{
      rgba(136,130,130,1) 53%, rgba(0,0,0,1) 100%);
     
 }
+
+.info{
+    display: flex;
+    flex-direction: column;
+}
+
 .img-info{
     height: 8vh;
     margin: 2vh;
@@ -175,10 +180,51 @@ html *{
 .info-in{
     display: flex;
     background-color: black;
-    justify-content: space-around;
-    justify-items: center;
+    justify-content: center;
     align-items: center;
-    height: 70vh;
+    padding: 2em;
+}
+
+.fondo-videoTM{
+    width: 40%;
+    height: 40vh;
+}
+
+#video{
+    width: 100%;
+    height: 100%;
+}
+
+.more-info{
+    width: 30%;
+    color: white;
+    margin: 1vh 1vh;
+    text-align: left;
+}
+.more-info p{
+   font-size: 2.5vh;
+   font-family: 'Roboto';
+}
+.more-info h2{
+    font-size: 4.5vh;
+    font-family: 'Anton', sans-serif; 
+ }     
+
+@media (max-width: 900px ){
+    .info-in{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .fondo-videoTM{
+        width: 95%;
+        height: 40vh;
+    }
+    .more-info{
+        width: 90%;
+        margin-top: 1vh;
+        text-align: center;
+    }
+
 }
     
 .btn-home{
@@ -226,58 +272,22 @@ a:link, a:visited, a:active {
 .txt-cartelrojo p , h5{
     padding: 1rem;
 }
-#video{
-    width: 38vw;
-    position:absolute;
-    margin: 5vh;
-    box-shadow: -2px 2px 20px 15px #ff003469;
-}
-.fondo-videoTM{
-    background-image: url("http://baravdg.com/wp-content/uploads/2021/05/rayas-red-izq-1.png") ;
-    background-size: cover;
-    height: 65vh;
-    width: 50vw;
-}
-.more-info{
-    width: 30%;
-    color: white;
-}
-.more-info p{
-   font-size: 2.5vh;
-   font-family: 'Roboto';
-}
-.more-info h2{
-    font-size: 4.5vh;
-    font-family: 'Anton', sans-serif; 
- }           
- @media only screen and (min-device-width : 700px) and (max-device-width : 1300px) {
-.fondo-info{
-    display: flex;
-    flex-direction: column;
-}
-.img-f{
-    width: 100%;
-}
-#video{
-    height: 40vh;
-    width: 45vw;
-}
-.information{
-    width: 100%;
-}
-.fondo-info{
-    display: flex;
-    flex-direction: column;
-}
 
 
+      
+ @media only screen and (min-device-width : 791px) and (max-device-width : 1000px) {
+    .fondo-info{
+        display: flex;
+        flex-direction: column;
+    }
+    .img-f{
+        width: 100%;
+    }   
  }
 
-
-
-@media only screen and (min-device-width : 381px) and (max-device-width : 699px) {
+@media only screen and (min-device-width : 560px) and (max-device-width : 790px) {
    .img-f{
-      width: 100%; 
+       display: none;
    }
    .fondo-txt{
        display: flex;
@@ -286,26 +296,12 @@ a:link, a:visited, a:active {
    }
    .titulo{
        font-size: 2.2rem;
-       padding:0.9rem;
+       padding:1.5rem;
    }
    .img-home{
        background-position: center;
-       
    }
-   .info-in{
-       display: flex;
-       flex-direction: column-reverse;
-       width: 100vw;
-   }
-   .more-info{
-       width: 90%;
-       height: 30%;
-       margin: 1rem;
-   }
-   #video{
-       width: 70vw;
-           left: 50px;
-   }
+
    .img-rp{
        display: flex;
        justify-content: space-around;
@@ -315,9 +311,6 @@ a:link, a:visited, a:active {
        height: 5vh;
        padding:0;
        margin:0;
-   }
-   .info{
-       width: 100%;
    }
    .cartel-rojo h4{
     font-size: 1rem;
@@ -338,19 +331,12 @@ a:link, a:visited, a:active {
        width: 100%;
    }
    .barras-logo{
-       width: 60%; 
-   }
-   .fondo-videoTM{
-      height: 100vh; 
-      width: 100vw;
-   }
-   .fondo-info{
-       display: flex;
-       flex-direction: column;
+       width: 60%;
+       
    }
 
 }
-@media only screen and (min-device-width : 200px) and (max-device-width : 380px) {
+@media only screen and (min-device-width : 300px) and (max-device-width : 559px) {
     .img-f{
         display: none;
     }
@@ -366,19 +352,7 @@ a:link, a:visited, a:active {
     .img-home{
         background-position: center;
     }
-    .info-in{
-        display: flex;
-        flex-direction: column-reverse;
-        width: 100vw;
-    }
-    .more-info{
-        width: 84%;
-        margin: 1rem;
-    }
-    #video{
-        width: 85vw;
-            left: 5px;
-    }
+
     .img-rp{
         display: flex;
         justify-content: space-around;
@@ -389,14 +363,11 @@ a:link, a:visited, a:active {
         padding:0;
         margin:0;
     }
-    .info{
-        width: 100%;
-    }
     .cartel-rojo h4{
      font-size: 1rem;
     }
     .cartel-rojo{
-        width: 95vw;
+        width: 85vw;
     }
     .btn-home{
          width: 3.5rem;
@@ -412,13 +383,7 @@ a:link, a:visited, a:active {
     }
     .barras-logo{
         width: 60%;
+        
     }
-    .footer{
-        height: 4rem;
-    }
-   
-
  
  }
-
-

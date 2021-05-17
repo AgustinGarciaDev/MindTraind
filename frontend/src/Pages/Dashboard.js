@@ -38,7 +38,9 @@ const Dashboard = ({ getCoursesByIdStudent, userLogged }) => {
     }
     return (
         <div className="contenedorMenu">
-            <AsideNav />
+            <div className="asideContainer">
+                <AsideNav />
+            </div>
             <div className="contenedorWeb">
                 <NavBarDashBoard />
                 {studentCourses.length === 0
@@ -49,7 +51,7 @@ const Dashboard = ({ getCoursesByIdStudent, userLogged }) => {
                             </video>
                             <div className="sobreVideo">
                                 <h1>What's your next challenge?</h1>
-                                <Link to="/courselist" ><button>Choose your course</button></Link>
+                                <Link to="/courselist" ><button>Choose your ccourse</button></Link>
                             </div>
                         </div>
                     </>

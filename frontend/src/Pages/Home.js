@@ -21,7 +21,9 @@ const Home = (props) => {
         <div className="contenedorMenu">
             {user &&
                 (
-                    <AsideNav />
+                    <div className="asideContainer">
+                        <AsideNav />
+                    </div>
 
                 )}
             <div className="contenedorWeb">
