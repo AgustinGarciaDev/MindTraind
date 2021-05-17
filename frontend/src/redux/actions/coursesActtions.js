@@ -66,7 +66,7 @@ const coursesActions = {
                 if (!data.success) {
                     return showToast("error", data.error);
                 }
-                showToast("info", "sos la wea")
+                showToast("info", "Successfully enrolled")
                 dispatch({ type: "UPDATE_COURSE", payload: data.response })
             } catch (err) {
                 if (err.response && err.response.status === 401) {

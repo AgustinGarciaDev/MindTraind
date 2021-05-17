@@ -3,7 +3,6 @@ import { useState } from "react";
 
 const CardJob = (props) => {
 
-    //HOLA AGUSTIN YA PUSHEEEEEEEEEE . GRACIAS
     const { jobtittle, modality, nameOfferent, email, description, urlImage, typeJob } = props.job
     const [modalShow, setModalShow] = useState(false);
 
@@ -20,10 +19,10 @@ const CardJob = (props) => {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="viewmore-info">
-                    <h2>{jobtittle}</h2>
-                    <p>{description}</p>
-                    <p>Type job: {typeJob}</p>
-                    <p>Contact: {email}</p>
+                        <h2>{jobtittle}</h2>
+                        <p>{description}</p>
+                        <p>Type job: {typeJob}</p>
+                        <p>Contact: {email}</p>
                     </div>
                 </Modal.Body >
 
@@ -41,7 +40,6 @@ const CardJob = (props) => {
                 <h3 className="titleJob">{jobtittle}</h3>
                 <h3 className="titleBussines">{nameOfferent}</h3>
                 <p className="titleBussines">({modality})</p>
-
             </div>
             <div className="contenedorBtn">
                 <button onClick={() => setModalShow(true)} className="btnJobs">View More</button>

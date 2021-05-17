@@ -44,6 +44,8 @@ const Foro = (props) => {
             showToast('error', "You cant add text")
         } else {
             props.sendPost({ ...objConsult, action: "add", token: token })
+            showToast('success', "Query sent successfully")
+            setModalShow(!modalShow)
         }
     }
 
