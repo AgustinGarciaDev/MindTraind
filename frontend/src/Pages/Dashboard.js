@@ -51,7 +51,7 @@ const Dashboard = ({ getCoursesByIdStudent, userLogged }) => {
                             </video>
                             <div className="sobreVideo">
                                 <h1>What's your next challenge?</h1>
-                                <Link to="/courselist" ><button>Choose your course</button></Link>
+                                <Link to="/courselist" ><button>Choose your ccourse</button></Link>
                             </div>
                         </div>
                     </>
