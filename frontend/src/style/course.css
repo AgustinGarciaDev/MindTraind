@@ -1,0 +1,336 @@
+
+.modalTextContent{
+    display: flex;
+    align-items: center;
+    margin-left: 16px;
+    margin-bottom: 10px;
+}
+
+
+.contenedorClase{
+    width: 71vw;
+    margin-bottom: 23px;
+    margin-top: 23px;
+    background: #F7F7F7;
+    box-shadow: 0 5px 25px 10px rgb(0 0 0 / 15%);
+    display: flex;
+    align-items: center;
+    height: 5vw;
+    padding: 20px;
+    justify-content: space-between;
+    border-radius: 3vw;
+}
+
+.btnClass{
+    width: 14vw;
+    border: 1px solid #FF0034;
+    border-radius: 20vw;
+    background: white;
+    font-family: 'Roboto';
+    padding: 6px;
+    font-weight: bold;
+}
+
+.classContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.titleClass{
+     font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 29px;
+}
+
+.contenedorFrame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.portadaCourse{
+    height: 32vw;
+    background-position: initial;
+    background-size: cover;
+}
+
+.superposicionPortada{
+    backdrop-filter: brightness(0.5);
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.textTitle{
+    font-family: "Anton";
+    color: white;
+    font-size: 5vw;
+}
+.contenedorProfesorYbtn{
+        display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.cardProfesor{
+    display: flex;
+    background: #f7f7f7;
+      height: 12vw;
+    padding: 20px;
+    box-shadow: 0 5px 25px 10px rgb(0 0 0 / 14%);
+    border-radius: 2vw;
+        margin-top: 2vw;
+    flex-direction: column;
+}
+    .fotoYnombreProfesor > h2{
+        margin-left: 15px;
+           font-family: 'Anton';
+           display: flex;
+           justify-content: center;
+          
+           
+    }
+    .fa-envelope{
+            font-size: 1.5vw;
+         
+    }
+
+    .cardProfesor > h2{
+        margin-left: 16px;
+    }
+
+    .fotoYnombreProfesor{
+        display: flex;
+        align-items: center;
+    }
+
+    .contenedorCorreoProfesor{
+        display: flex;
+        margin-left: 2vw;
+        margin-top: 1vw;
+         align-items: center;
+    }
+
+   .contenedorCorreoProfesor > p{
+    font-size: 20px;
+        margin-left: 23px;
+        font-weight: bold;
+   }
+
+   .contenedorTitle{
+           display: flex;
+    align-items: center;
+    color: white;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.808);
+    margin-top: 1rem;
+   }
+
+   .contenedorTitle > h2{
+           font-size: 3vw;
+    font-family: 'Anton';
+   }
+    .titleCardTeacher > h2{
+    position: relative;
+    font-family: 'Anton';
+    font-size: 2.5vh;
+   }
+
+   
+@media only screen and (min-device-width : 600px) and (max-device-width : 1200px) {
+   
+    .cardProfesor {
+      height: 18vw;
+    }
+    .contenedorTitle{
+            margin-top: 5vw;
+    margin-bottom: 2vw;
+    }
+    .btnClass {
+        width: 19vw;
+    }
+    .contenedorClase{
+        width: 81vw;
+        height: 7vw;
+    }
+    
+.contenedorTitle > h2 {
+    font-size: 4vw;
+
+}
+    .contenedorCourseAndSideBar{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        margin-top: 2vh;
+        z-index: 1;
+    }
+
+    .logoDashBoard{
+        width: 2rem;
+        height: 2rem;
+        margin: 0.5em;
+    }
+
+  
+    .titleContenedorAside{
+        font-size: 1.4rem;
+        margin: 5px 0px 5px 0px;
+    }
+    .nameTitleAside{
+        font-size: 1.2rem;
+        margin-top: 1rem;
+    }
+    .lineaTitle{
+        width: 80%;
+        margin-top: 1vh;
+    }
+    .textoCourseAside{
+        font-size: 0.9rem;
+    }
+    .btnInscripcion{
+        height: 5vh;
+        width: 30vw;
+        margin:1vh;
+    }
+
+           .contenedorForumConsultas{
+        margin-top: 2vw;
+        margin-bottom: 2vw;
+    }
+    .titleCardTeacher h2{
+        font-size: 1.1rem;
+    }
+    .contenedorProfesorYbtn{
+        display: flex;
+        justify-content: space-around;
+    }
+ 
+}
+
+@media only screen and (min-device-width : 425px) and (max-device-width : 600px) {
+   
+    
+    
+    .btnDashBoard{   
+    height: 9vh;
+    width: 25vw;
+
+    }
+   
+    .contenedorProfesorYbtn{
+        display: flex;
+    }
+
+    .cardProfesor {
+    height: 20vw;
+    display: flex;
+    justify-content: center;
+    }
+    .contenedorTitle{
+            margin-top: 5vw;
+    margin-bottom: 2vw;
+    }
+    .btnClass {
+        width: 33vw;
+    }
+  .contenedorClase {
+    width: 88vw;
+    height: 12vw;
+}
+    
+.contenedorTitle > h2 {
+    font-size: 5vw;
+}
+
+.titleClass{
+        font-size: 23px;
+}
+.fa-envelope {
+    font-size: 3.5vw;
+}
+         .contenedorForumConsultas{
+        margin-top: 2vw;
+        margin-bottom: 2vw;
+    }
+.btnDashBoard{
+    height: 9vh;
+    width: 35vw;
+}
+.titleCardTeacher h2{
+    font-size: 1.1rem;
+}
+.fotoYnombreProfesor h2{
+    font-size: 1rem;
+}
+.fotoYnombreProfesor{
+   display:flex;
+   align-items: center;
+
+}
+.contenedorCorreoProfesor p{
+  font-size: 1rem;
+  margin: 0.5rem;
+}
+.fotoProfesor{
+    width: 8.5vw;
+    height: 7vh;
+    
+}
+
+
+
+ 
+}
+
+
+
+@media only screen and (min-device-width : 200px) and (max-device-width : 425px){
+
+    .btnDashBoard {
+    width: 46vw;
+    height: 11vw;
+}
+
+      .contenedorProfesorYbtn{
+       flex-direction: column;
+   }
+  
+
+    .cardProfesor {
+            height: 34vw;
+    margin-bottom: 3vw;
+    }
+
+    .contenedorTitle{
+            margin-top: 5vw;
+    margin-bottom: 2vw;
+    }
+  .btnClass {
+    width: 100%;
+}
+    .contenedorClase{
+        width: 86vw;
+        height: 14vw;
+    }
+    
+    .contenedorTitle > h2 {
+            font-size: 7vw;
+    }
+    .fa-envelope{
+        font-size: 4vw;
+    }
+
+
+    .titleClass{
+        font-size: 22px;
+    }
+}
+
+

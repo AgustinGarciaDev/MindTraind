@@ -3,8 +3,7 @@ const joiId = require('joi-oid')
 
 const validator = (req, res, next) => {
 
-    const namesRegExp = `^[a-zA-Z]*$`
-    const numbers = `^([1-5])$`
+    const namesRegExp = `^[a-zA-Z_ -]*`
 
     const schema = joi.object({
         nameCourse: joi.string().trim().min(2).required().pattern(new RegExp(namesRegExp)).messages({
@@ -12,9 +11,9 @@ const validator = (req, res, next) => {
             'string.pattern.base': 'You can only use letters',
             'string.empty': 'You must complete this field'
         }),
-        coach: joiId.objectId().messages({
-            'string.empty': 'You must complete this field',
-            'invalid': 'It must have a valid Id'
+        email: joi.string().trim().email().required().messages({
+            'string.email': 'Use the format ej: name@example.com',
+            'string.empty': 'You must complete this field'
         }),
         pictureRefence: joi.string().trim().required().messages({
             'string.empty': 'You must complete this field'

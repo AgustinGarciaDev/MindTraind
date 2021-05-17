@@ -1,10 +1,9 @@
-import { Modal, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Modal } from "react-bootstrap";
 import { useState } from "react";
 
 const CardJob = (props) => {
 
-    const { title, modalidad, nameOffered, email, infoJobs, img } = props.job
+    const { jobtittle, modality, nameOfferent, email, description, urlImage, typeJob } = props.job
     const [modalShow, setModalShow] = useState(false);
 
     function MyVerticallyCenteredModal(props) {
@@ -14,13 +13,17 @@ const CardJob = (props) => {
                     <div className="contenedorBtnClose"> <i onClick={props.onHide} className="fas fa-times"></i></div>
                     <Modal.Title id="contained-modal-title-vcenter">
                         <div>
-                            <h2>About the company:</h2>
-                            <h2>{title}</h2>
+                            <h2 className="title-wiewmore-jobs">About the company:</h2>
                         </div>
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h1>holu</h1>
+                    <div className="viewmore-info">
+                        <h2>{jobtittle}</h2>
+                        <p>{description}</p>
+                        <p>Type job: {typeJob}</p>
+                        <p>Contact: {email}</p>
+                    </div>
                 </Modal.Body >
 
             </Modal >
@@ -32,14 +35,14 @@ const CardJob = (props) => {
 
     return (
         <div className="contenedorCardJob">
-            <div className="fotoCardJob" style={{ backgroundImage: `url("${img}")` }}></div>
+            <div className="fotoCardJob" style={{ backgroundImage: `url("${urlImage}")` }}></div>
             <div>
-                <h3 className="titleJob">{title}</h3>
-                <h3 className="titleBussines">{nameOffered}</h3>
-                <h3 className="titleBussines">{modalidad}</h3>
+                <h3 className="titleJob">{jobtittle}</h3>
+                <h3 className="titleBussines">{nameOfferent}</h3>
+                <p className="titleBussines">({modality})</p>
             </div>
             <div className="contenedorBtn">
-                <button onClick={() => setModalShow(true)} className="btnDashBoard">View More</button>
+                <button onClick={() => setModalShow(true)} className="btnJobs">View More</button>
             </div>
             <MyVerticallyCenteredModal
                 show={modalShow}

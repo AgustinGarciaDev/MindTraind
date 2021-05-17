@@ -1,31 +1,51 @@
 import CardJob from '../components/CardJob'
-import NavBarDashBoard from '../components/NavBarDashBoard'
-import AsideNav from '../components/AsideNav'
-const Jobs = () => {
+import Header from '../components/Header'
+import jobsActions from '../redux/actions/jobActions'
+import { connect } from "react-redux"
+import { useEffect, useState } from "react"
+import Spinner from 'react-bootstrap/Spinner'
 
-    const jobs = [
-        { img: "https://1000logos.net/wp-content/uploads/2016/10/Adidas-Logo.jpg", title: "Organizador", modalidad: "part time", nameOffered: "Accenture", email: "hola@gmail.com", infoJobs: "este es un trabajo a medio tiempo" },
-        { img: "https://1000logos.net/wp-content/uploads/2016/10/Adidas-Logo.jpg", title: "Organizador", modalidad: "part time", nameOffered: "Accenture", email: "hola@gmail.com", infoJobs: "este es un trabajo a medio tiempo" },
-        { img: "https://1000logos.net/wp-content/uploads/2016/10/Adidas-Logo.jpg", title: "Organizador", modalidad: "part time", nameOffered: "Accenture", email: "hola@gmail.com", infoJobs: "este es un trabajo a medio tiempo" },
-        { img: "https://1000logos.net/wp-content/uploads/2016/10/Adidas-Logo.jpg", title: "Organizador", modalidad: "part time", nameOffered: "Accenture", email: "hola@gmail.com", infoJobs: "este es un trabajo a medio tiempo" },
+const Jobs = (props) => {
+    const [loader, setLoader] = useState(true)
 
-    ]
+    useEffect(() => {
+        if (props.jobs.length === 0) {
+            props.getJobs()
+        } else {
+            setLoader(false)
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [props.jobs])
+
     return (
         <>
-            <div className="contenedorMenu">
-                <AsideNav />
-                <div className="contenedorWeb">
-                    <NavBarDashBoard />
-                    <div className="heroJobs">
-                        <h1>Jobs</h1>
-                    </div>
-                    <div className="contenedorPrincipalCardsJobs">
-                        {jobs.map(job => <CardJob job={job} />)}
-                    </div>
+
+            <div className="contenedorWeb">
+                <Header />
+                <div className="heroJobs">
+                    <h1>Jobs</h1>
+                </div>
+                <div className="contenedorPrincipalCardsJobs">
+                    {loader
+                        ?
+                        <Spinner animation="border" role="status" />
+                        :
+                        props.jobs.map(job => <CardJob key={job._id} job={job} />)}
                 </div>
             </div>
+
         </>
     )
 }
 
-export default Jobs
+const mapStateToProps = state => {
+    return {
+        jobs: state.jobs.jobs
+    }
+}
+
+const mapDispatchToProps = {
+    getJobs: jobsActions.getJobs
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Jobs)

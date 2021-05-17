@@ -3,6 +3,8 @@ import Course from '../components/Course'
 import Spinner from 'react-bootstrap/Spinner'
 import { useEffect, useState } from "react"
 import coursesActions from "../redux/actions/coursesActtions"
+import Header from '../components/Header'
+import { Link } from 'react-router-dom'
 
 const CourseContainer = (props) => {
     const [loader, setLoader] = useState(true)
@@ -17,18 +19,23 @@ const CourseContainer = (props) => {
     }, [props.coursesList])
 
     return (
-        <div className="courseBigContainer">
-            <h3 className="h3Form">Courses</h3>
-            <div className="courseContainer">
-                {
-                    loader
-                        ?
-                        <Spinner animation="border" role="status" />
-                        :
-                        props.coursesList.map(course => <Course key={course._id} course={course} />)
-                }
+        <div className="contenedorMenu">
+            <div className="contenedorWeb">
+                <Header />
+                <div className="courseBigContainer" style={{backgroundImage:`url('https://baravdg.com/wp-content/uploads/2021/05/rayas-red-izq-1.png')`}}>
+                    <h3 className="h3tittle">Courses</h3>
+                    <div className="courseContainer">
+                        {
+                            loader
+                                ?
+                                <Spinner animation="border" role="status" />
+                                :
+                                props.coursesList.map(course => <Course key={course._id} course={course} />)
+                        }
+                    </div>
+                    <Link className="formButtonsNew" to="/admin" type="button" >Go back</Link>
+                </div>
             </div>
-            <button className="formButtonsNew" onClick={() => props.setShow()}>Go back</button>
         </div>
     )
 }

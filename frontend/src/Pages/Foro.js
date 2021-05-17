@@ -1,4 +1,4 @@
-import NavBarDashBoard from '../components/NavBarDashBoard'
+import Header from '../components/Header'
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Post from '../components/Post'
 import { useEffect, useState } from "react";
@@ -8,9 +8,7 @@ import coursesActions from "../redux/actions/coursesActtions"
 import { connect } from "react-redux"
 
 const Foro = (props) => {
-
     const idCourse = props.match.params.id
-    
     const { getCourseById, currentCourse } = props
     const { firstName, lastName, profilePicture, token } = props.userLogged
     const [modalShow, setModalShow] = useState(false);
@@ -26,11 +24,12 @@ const Foro = (props) => {
         if (!currentCourse) {
             getCourseById(idCourse)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
 
-    const inputData = (e=null) => {
+    const inputData = (e = null) => {
         const campo = e.target.name
         const valor = e.target.value
         setobjConsult({
@@ -39,32 +38,36 @@ const Foro = (props) => {
         })
     }
 
-    const sendComent =  () => {
-        console.log(objConsult)
+    const sendComent = () => {
         if (objConsult.title === "" || objConsult.comment === "") {
             showToast('error', "You cant add text")
         } else {
             props.sendPost({ ...objConsult, action: "add", token: token })
+            showToast('success', "Query sent successfully")
+            setModalShow(!modalShow)
         }
     }
 
-    const editPost =  (idComment, title, text) => {
+    const editPost = (idComment, title, text) => {
         props.editPost({ ...objConsult, action: "update", idComment: idComment, title: title, text: text })
-        
+
     }
 
-    const deletePost =  (e) => {
+    const deletePost = (e) => {
 
         props.deletePost({ ...objConsult, action: "delete", idComment: e.idComment, token: token })
         showToast('success', "Delete Post")
     }
-    
-    if(!props.currentCourse || !props.userLogged){
+
+
+    if (!props.currentCourse || !props.userLogged) {
         return null
     }
+
+
     return (
-        <>
-            <NavBarDashBoard />
+        <div className="contenedorWeb">
+            <Header />
             <main className="contenedorPosteos">
                 <div className="contenedorBannerForo">
                     <div className="contenedorBtnyTextBanner">
@@ -77,12 +80,6 @@ const Foro = (props) => {
                     </div>
                 </div>
                 <div>
-                    <div className="barraBuscadora">
-                        <input className="inputSearch" placeholder="Search Post" type="text" />
-                        <div className="contenedorIconoSearch">
-                            <i class="fas fa-search"></i>
-                        </div>
-                    </div>
                     <div className="contenedorBtnTextArea">
 
                         <div onClick={() => { setModalShow(!modalShow) }} className="contenedorBienvenidaUsuario">
@@ -109,14 +106,12 @@ const Foro = (props) => {
                         }
                     </div>
                     <div className="contenedorComentarios">
-                        {props.currentCourse.comments.map(post => <Post editPost={editPost} deletePost={deletePost} idCourse={idCourse} post={post} />)}
+                        {props.currentCourse.comments.map(post => <Post key={post._id} editPost={editPost} deletePost={deletePost} idCourse={idCourse} post={post} />)}
                     </div>
 
                 </div>
             </main>
-
-
-        </>
+        </div>
     )
 }
 

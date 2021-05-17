@@ -5,6 +5,7 @@ const newJobValidator = (req, res, next) => {
     const namesRegExp = `^[a-zA-Z]*$`
     const password = /(?=.*\d)(?=.*[A-z])/
     const text = `^[a-zA-Z_ -]*`
+    const options = `^[a-zA-Z-]*`
 
     const schema = joi.object({
         nameOfferent: joi.string().trim().min(2).max(20).required().pattern(new RegExp(namesRegExp)).messages({
@@ -24,7 +25,7 @@ const newJobValidator = (req, res, next) => {
             'string.pattern.base': 'You can only use letters',
             'string.empty': 'You must complete this field'
         }),
-        typeJob: joi.string().trim().min(2).max(20).required().pattern(new RegExp(text)).messages({
+        typeJob: joi.string().trim().min(2).max(20).required().pattern(new RegExp(options)).messages({
             'string.min': 'A minimum of 2 characters.',
             'string.max': 'A maximum of 20 characters.',
             'string.pattern.base': 'You can only use letters',
@@ -51,7 +52,7 @@ const newJobValidator = (req, res, next) => {
     const validation = schema.validate(req.body, { abortEarly: false })
 
     if (validation.error) {
-        return res.json({ succes: false, error: validation.error })
+        return res.json({ success: false, error: validation.error })
     }
     next()
 }

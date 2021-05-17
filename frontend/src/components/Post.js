@@ -9,41 +9,48 @@ import { Modal } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 
 const Post = (props) => {
-    useEffect(()=>{
-        if(!props.currentCourse){
+
+    useEffect(() => {
+        if (!props.currentCourse) {
             fetchAPI();
         }
-    },[]);
+        if (props.userLogged) {
+            if (email === props.userLogged.email) {
+                setBtnEdit(!btnEdit)
+            }
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     const fetchAPI = async () => {
         try {
-            props.getCourseById(props.idCourse);
-            
+            props.getCourseById(props.idCourse)
+
         } catch (err) {
-            console.log(err);
-            showTostError500();
+            console.log(err)
+            showTostError500()
         }
     }
     const [show, setShow] = useState(false);
     const [editInput, setEditInput] = useState(false);
     const [editInputTitle, setEditInputTitle] = useState(false)
-    const { title, _id, text, user: { profilePicture, lastName, firstName } } = props.post
+    const { title, _id, text, user: { profilePicture, lastName, firstName, email } } = props.post
     const [commentReply, setCommentReply] = useState(false)
-    const { token, email } = props.userLogged
+    const [btnEdit, setBtnEdit] = useState(false)
+    const { token } = props.userLogged
     const [objConsult, setobjConsult] = useState({
         textReply: "",
         idCourse: props.currentCourse._id,
         token: token,
         action: "add",
-        userEmailReply: email,
+        userEmailReply: props.email,
         idComment: _id
     })
-
 
     const [editPost, setEditPost] = useState({
         text: text,
         title: title
     })
-
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -71,38 +78,29 @@ const Post = (props) => {
         setEditInput(!editInput)
     }
 
-    const sendReplyComment =  () => {
+    const sendReplyComment = () => {
 
         if (objConsult.textReply === "") {
             showToast('error', "You cant add text")
         } else {
-<<<<<<< HEAD
-             props.sendReply(objConsult)
-
-=======
-            const respuesta = await props.sendReply(objConsult)
-            console.log(respuesta.comments)
-            /*  setReplyCourse(respuesta.comments) */
->>>>>>> 00ca7d9e6e184ff74b5114f646cc29278c3fb4a2
+            props.sendReply(objConsult)
         }
     }
 
     const editCommentChange = (e) => {
 
         props.editPost(_id, editPost.title, editPost.text)
-        if (e.target.id === "btnText") {
+        if (e.target.dataset.input === "btnText") {
             setEditInput(!editInput)
-        }
-        if (e.target.id === "btnTitle") {
+        } else {
             setEditInputTitle(!editInputTitle)
         }
     }
 
-
     const popover = (
         <Popover delay={{ show: 250, hide: 400 }}>
             <Popover.Content>
-                <button className="btnOpcionED" onClick={handleShow}><i class="fas fa-trash-alt"></i> Delete</button>
+                <button className="btnOpcionED" onClick={handleShow}><i className="fas fa-trash-alt"></i> Delete</button>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                         <Modal.Title>Delete comment</Modal.Title>
@@ -118,7 +116,7 @@ const Post = (props) => {
                     </Modal.Footer>
                 </Modal>
                 <button onClick={changeInput} className="btnOpcionED"><i className="fas fa-edit"></i>Edit text</button>
-                <button onClick={() => { setEditInputTitle(!editInputTitle) }} className="btnOpcionED"><i class="fas fa-heading"></i>Edit title</button>
+                <button onClick={() => { setEditInputTitle(!editInputTitle) }} className="btnOpcionED"><i className="fas fa-heading"></i>Edit title</button>
             </Popover.Content>
         </Popover>
     )
@@ -129,9 +127,11 @@ const Post = (props) => {
             {!editInputTitle
                 ? <div className="contenedorEditInputs">
                     <h2 className="tituloPost">{title}</h2>
-                    <OverlayTrigger rootClose={true} trigger="click" placement="right" overlay={popover}>
-                        <Button className="btnModificarInputs" ><i className="fas fa-ellipsis-h"></i></Button>
-                    </OverlayTrigger>
+                    {btnEdit &&
+                        <OverlayTrigger rootClose={true} trigger="click" placement="right" overlay={popover}>
+                            <Button className="btnModificarInputs" ><i className="fas fa-ellipsis-h"></i></Button>
+                        </OverlayTrigger>
+                    }
                 </div>
                 : <div className="contenedorEditInputs" >
                     <input
@@ -141,8 +141,9 @@ const Post = (props) => {
                         value={editPost.title}
                     />
                     <button id="btnTitle" onClick={editCommentChange} >
-                        <i class="fas fa-edit"></i>
+                        <i className="fas fa-edit"></i>
                     </button>
+
                     <OverlayTrigger rootClose={true} trigger="click" placement="right" overlay={popover}>
                         <Button className="btnOpciones" ><i className="fas fa-ellipsis-h"></i></Button>
                     </OverlayTrigger>
@@ -162,44 +163,39 @@ const Post = (props) => {
                         <textarea
                             className="textAreaEdit"
                             onChange={inputData}
-                            name="text" 
+                            name="text"
                             type="text"
                             value={editPost.text}
                         ></textarea>
-                        <button id="btnText" onClick={editCommentChange} >
-                            <i class="fas fa-edit"></i>
+                        <button className="btnText" data-input="btnText" onClick={editCommentChange} >
+                            <i data-input="btnText" class="fas fa-edit"></i>
                         </button>
                     </div>
 
                 }
             </div>
             <div onClick={() => { setCommentReply(!commentReply) }} className="contenedorComentario replyBtn">
-                <i class="fas fa-reply"></i>
+                <i className="fas fa-reply"></i>
                 <p>Reply</p>
             </div>
-            
-                <>
-                    {props.post.reply.map(aReply => <Reply key={aReply._id} replyComment={aReply} idComment = {props.post._id} idCourse={props.currentCourse._id}/>)}
 
-<<<<<<< HEAD
-                    <div className="contenedorInputComment">
-=======
-                    }
-                    <div className="contenedorInputComment comment">
->>>>>>> 00ca7d9e6e184ff74b5114f646cc29278c3fb4a2
-                        <input
-                            value={objConsult.textReply}
-                            onChange={inputDataReply}
-                            name="textReply"
-                            className="inputComment"
-                            type="text" />
-                        <div onClick={sendReplyComment} className="contenedorIconoSearch">
-                            <i className="fas fa-paper-plane"></i>
-                        </div>
+            <>
+                {props.post.reply.map(aReply => <Reply key={aReply._id} replyComment={aReply} idComment={props.post._id} idCourse={props.currentCourse._id} />)}
 
+                <div className="contenedorInputComment">
+                    <input
+                        value={objConsult.textReply}
+                        onChange={inputDataReply}
+                        name="textReply"
+                        className="inputComment"
+                        type="text" />
+                    <div onClick={sendReplyComment} className="contenedorIconoSearch">
+                        <i className="fas fa-paper-plane"></i>
                     </div>
-                </>
-            
+
+                </div>
+            </>
+
 
         </div>
     )
@@ -215,9 +211,6 @@ const mapStateToProps = state => {
 
 
 const mapDispatchToProps = {
-
-    /*     editComment: coursesActions.editComment,
-        deleteComment: coursesActions.deleteComment, */
     sendReply: coursesActions.modifyReply,
     getCourseById: coursesActions.getCourseById,
 }

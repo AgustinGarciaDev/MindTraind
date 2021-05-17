@@ -2,21 +2,21 @@ import { OverlayTrigger } from 'react-bootstrap'
 import { Popover } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
-import { useState } from 'react'
-import {connect} from 'react-redux'
+import { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
 import coursesActions from "../redux/actions/coursesActtions"
 
 
-const Reply = ( {replyComment,modifyReply,idComment,idCourse,userLogged }) => {
-    const {textReply,userReply,_id} = replyComment;
+const Reply = (props) => {
+
+    const { replyComment, modifyReply, idComment, idCourse, userLogged } = props
+    const { textReply, userReply, _id } = replyComment;
     const [show, setShow] = useState(false);
+    const [btnEdit, setBtnEdit] = useState(false)
     const [editInput, setEditInput] = useState(false);
     const [comentario, setComentario] = useState({
         mensaje: "",
     })
-
-
-
 
     const datosInput = (e) => {
         setComentario({
@@ -27,7 +27,7 @@ const Reply = ( {replyComment,modifyReply,idComment,idCourse,userLogged }) => {
     const changeInput = () => {
         setComentario({
             ...comentario,
-            mensaje:textReply
+            mensaje: textReply
         })
         setEditInput(!editInput)
     }
@@ -35,17 +35,26 @@ const Reply = ( {replyComment,modifyReply,idComment,idCourse,userLogged }) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const requestModifyReply =( action, e ) =>{
-        if(action === "update"){
-            modifyReply({action,textReply: comentario.mensaje ,idCourse,idCommentReply:_id,token:userLogged.token,idComment})
+    const requestModifyReply = (action, e) => {
+        if (action === "update") {
+            modifyReply({ action, textReply: comentario.mensaje, idCourse, idCommentReply: _id, token: userLogged.token, idComment })
             setEditInput(!editInput)
 
         }
-            
-        else{
-            modifyReply({action,idCourse,idCommentReply:_id,token:userLogged.token,idComment})
+
+        else {
+            modifyReply({ action, idCourse, idCommentReply: _id, token: userLogged.token, idComment })
         }
     }
+
+
+    useEffect(() => {
+        if (props.userLogged) {
+            if (userReply.email === props.userLogged.email) {
+                setBtnEdit(!btnEdit)
+            }
+        }
+    }, [props.userLogged])
 
     const popover = (
         <Popover delay={{ show: 250, hide: 400 }}>
@@ -60,7 +69,7 @@ const Reply = ( {replyComment,modifyReply,idComment,idCourse,userLogged }) => {
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
-                        <Button variant="primary" onClick= {()=>requestModifyReply("delete")}>
+                        <Button variant="primary" onClick={() => requestModifyReply("delete")}>
                             Delete
                  </Button>
                     </Modal.Footer>
@@ -74,29 +83,21 @@ const Reply = ( {replyComment,modifyReply,idComment,idCourse,userLogged }) => {
         <>
             <div className="contenedorEditorYcomentario">
                 <div className="contenedorReply">
-<<<<<<< HEAD
-                    {   <div className="fotoProfesor" style={{ backgroundImage: `url("${userReply.profilePicture}")` }}></div> }
+                    {<div className="fotoProfesor" style={{ backgroundImage: `url("${userReply.profilePicture}")` }}></div>}
                     <div className="contenedorDatosUserReply">
-                            <h5>{userReply.firstName} {userReply.lastName}</h5> 
+                        <h5>{userReply.firstName} {userReply.lastName}</h5>
                         {!editInput
-                            ? <div><p>{ textReply }</p></div>
-=======
-                    <div className="fotoProfesor" style={{ backgroundImage: `url("http://baravdg.com/wp-content/uploads/2021/05/1.jpg")` }}></div>
-                    <div className="contenedorDatosUserReply">
-                        <h5>Agustin Garcia</h5>
-                        {!editInput
-                            ? <div><p>respuesta</p></div>
->>>>>>> 00ca7d9e6e184ff74b5114f646cc29278c3fb4a2
+                            ? <div><p>{textReply}</p></div>
                             : <div className="contenedorInputEdit">
                                 <input
                                     className="inputEdit"
-                                    onChange={(e)=>datosInput(e)}
+                                    onChange={(e) => datosInput(e)}
                                     name="comentario" type="text"
-                                    value = {comentario.mensaje}
+                                    value={comentario.mensaje}
                                 />
-                                <button className="btnSendEdit" onClick= {()=>requestModifyReply("update")}>
+                                <button className="btnSendEdit" onClick={() => requestModifyReply("update")}>
                                     <i class="fas fa-paper-plane"></i>
-                                    
+
                                 </button>
 
                             </div>
@@ -104,9 +105,12 @@ const Reply = ( {replyComment,modifyReply,idComment,idCourse,userLogged }) => {
 
                     </div>
                 </div>
-                <OverlayTrigger rootClose={true} trigger="click" placement="right" overlay={popover}>
-                    <Button className="btnOpciones" ><i className="fas fa-ellipsis-h"></i></Button>
-                </OverlayTrigger>
+                {btnEdit &&
+                    <OverlayTrigger rootClose={true} trigger="click" placement="right" overlay={popover}>
+                        <Button className="btnOpciones" ><i className="fas fa-ellipsis-h"></i></Button>
+                    </OverlayTrigger>
+
+                }
             </div>
         </>
     )
@@ -118,7 +122,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state) => {
     return {
-        userLogged : state.user.userLogged
+        userLogged: state.user.userLogged
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Reply)
+export default connect(mapStateToProps, mapDispatchToProps)(Reply)

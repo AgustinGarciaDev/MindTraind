@@ -8,14 +8,14 @@ const Info=()=>{
            
         <div className="info">
            
-            <div className="info-in">
+            <div className="info-in" style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/rayas-red-izq-1.png')` }}>
                 <div className="more-info">
                     <h2>More About Us</h2>
                     <p>Trained Mind is a BodySystems company.Our mission is to create a Planet in shape by providing clients with what they are looking for. Success will be a consequence.</p>
                 </div>
                 <div className="fondo-videoTM">
                     <video autoPlay loop muted id="video">
-                        <source src="http://baravdg.com/wp-content/uploads/2021/05/WhatsApp-Video-2021-05-14-at-12.18.47-AM.mp4" type="video/mp4"></source>
+                        <source src="http://baravdg.com/wp-content/uploads/2021/05/videoHome.mp4" type="video/mp4"></source>
                     </video>          
                 </div>                   
             </div>

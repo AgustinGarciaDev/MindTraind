@@ -22,8 +22,9 @@ const coursesActions = {
 
     editCourse: (data) => {
         return async (dispatch, getState) => {
+            console.log(data)
             try {
-                const response = await axios.put('http://localhost:4000/api/courses/' + data.id, data)
+                const response = await axios.put('http://localhost:4000/api/courses/' + data.id, { data: data.data, email: data.email })
                 if (response.data.success) {
                     dispatch({ type: 'GET_COURSES', payload: response.data.response })
                     return response
@@ -65,7 +66,7 @@ const coursesActions = {
                 if (!data.success) {
                     return showToast("error", data.error);
                 }
-                showToast("info", "inscripcion exitosa")
+                showToast("info", "Successfully enrolled")
                 dispatch({ type: "UPDATE_COURSE", payload: data.response })
             } catch (err) {
                 if (err.response && err.response.status === 401) {
@@ -83,7 +84,7 @@ const coursesActions = {
                 const { data } = await axios.get("http://localhost:4000/api/coursesOfUser", {
                     headers: { "Authorization": "Bearer " + token }
                 })
-                
+
                 return data
 
             } catch (err) {
@@ -101,8 +102,8 @@ const coursesActions = {
         return async (dispatch) => {
             try {
                 const { data } = await axios.get('http://localhost:4000/api/courses/' + idCourse)
-                if (data.success){
-                    dispatch({type:"UPDATE_CURRENT_COURSE",payload:data.response});
+                if (data.success) {
+                    dispatch({ type: "UPDATE_CURRENT_COURSE", payload: data.response });
                     return data.response
                 }
                 else
@@ -156,7 +157,7 @@ const coursesActions = {
                 })
 
                 if (response.data.success) {
-                    dispatch({type:"UPDATE_COURSE",payload:response.data.response})
+                    dispatch({ type: "UPDATE_COURSE", payload: response.data.response })
                 }
             } catch (err) {
                 console.log(err);
@@ -166,7 +167,6 @@ const coursesActions = {
     },
 
     editPost: (data) => {
-        console.log(data)
 
         return async (dispatch, getState) => {
             try {
@@ -174,7 +174,7 @@ const coursesActions = {
                     headers: { Authorization: "Bearer " + data.token },
                 })
                 if (response.data.success) {
-                    dispatch({type:"UPDATE_COURSE",payload:response.data.response})
+                    dispatch({ type: "UPDATE_COURSE", payload: response.data.response })
                 }
             } catch (err) {
                 console.log(err);
@@ -190,7 +190,7 @@ const coursesActions = {
                     headers: { Authorization: "Bearer " + data.token },
                 })
                 if (response.data.success) {
-                    dispatch({type:"UPDATE_COURSE",payload:response.data.response})
+                    dispatch({ type: "UPDATE_COURSE", payload: response.data.response })
                 }
             } catch (err) {
                 console.log(err);
@@ -199,7 +199,7 @@ const coursesActions = {
         }
 
     },
-    
+
     /* Reply Comment */
     modifyReply: (data) => {
 
@@ -209,7 +209,7 @@ const coursesActions = {
                     headers: { Authorization: "Bearer " + data.token },
                 })
                 if (response.data.success) {
-                    dispatch({type:"UPDATE_COURSE",payload: response.data.response});
+                    dispatch({ type: "UPDATE_COURSE", payload: response.data.response });
                 }
             } catch (err) {
                 console.log(err);
@@ -217,8 +217,8 @@ const coursesActions = {
             }
         }
     },
-    
-    
+
+
 
 
 

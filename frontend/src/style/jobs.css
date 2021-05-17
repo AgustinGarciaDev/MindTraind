@@ -1,6 +1,20 @@
+.heroJobs{
+    height: 32vw;
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("http://baravdg.com/wp-content/uploads/2021/05/Diseno-sin-titulo-10.png");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: "Anton";
+}
+
+
 .fotoCardJob{
- width: 16vw;
-height: 12vw;
+    width: 19vw;
+    height: 16vw;
     background-position: center;
     background-size: cover;
 }
@@ -8,38 +22,68 @@ height: 12vw;
 
 .contenedorCardJob{
     box-shadow: 0 0 40px 0 rgb(0 0 0 / 44%);
-    padding: 3vw;
-    height: 33vw;
+    padding: 2vw;
+    height: 55vh;
+    margin: 1vw;
+    width: 24vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
 }
 
 .contenedorPrincipalCardsJobs{
-        display: flex;
+      display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-top: 4vw;
-    margin-bottom: 4vw;
 }
 .titleJob{
     font-family: "Anton";
     margin-top: 10px;
     margin-bottom: 10px;
-    font-weight: 300;
     margin-top: 10px;
     margin-bottom: 10px;
+    font-size: 25px;
 }
 
 .titleBussines{
-     font-size: 17px;
+     font-size: 25px;
     font-family: 'Roboto';
     font-weight: bold;
         margin-top: 10px;
     margin-bottom: 10px;
 }
 
+.btnJobs{
+       width: 12vw;
+    height: 3vw;
+    background: #ff0034;
+    color: white;
+    border: none;
+    border-radius: 2vw;
+    font-size: 1vw;
+    font-family: 'Anton';
+}
+.title-wiewmore-jobs{
+    font-family: 'Anton';
+}
+.viewmore-info{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
 @media screen and  (max-width:1000px)  and  (min-width:700px) {
+   
+    .btnJobs{
+        width: 15vw;
+        height: 4vw;
+        font-size: 2vw;
+    }
+   
+   
     .contenedorCardJob {
     padding: 2vw;
-    height: 46vw;  
+    height: 40vw;  
     margin: 1vw;
     display: flex;
     flex-direction: column;
@@ -48,24 +92,31 @@ height: 12vw;
     .asideNav {
     width: 9%;
     }
-       .fotoCardJob{
-        width: 29vw;
-    height: 27vw;
+    .fotoCardJob{
+    background-size: cover;
+    background-position: center;
+    width: 90%;
     }
 }
 
 @media screen and  (max-width:700px)  and  (min-width:381px) {
    
     .heroJobs{
-         height: 46vw;
+        height: 54vw;
     }
    .heroJobs > h1 {
     font-size: 3rem;
-}
-   
+    }   
+   .contenedorPrincipalCardsJobs{
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: center;
+       align-content: center;
+   }
     .contenedorCardJob {
-    padding: 2vw;
-    height: 74vw;
+    padding: 1vw;
+    height: 50vh;
+    width: 36vw;
     margin: 2vw;
     display: flex;
     flex-direction: column;
@@ -76,32 +127,56 @@ height: 12vw;
     }
 
     .fotoCardJob{
-        width: 39vw;
-    height: 29vw;
+        width: 30vw;
+    height: 30vh;
+    }
+
+    .btnJobs{
+    width: 25vw;
+    height: 8vw;
+    font-size: 2.5vw;
     }
 }
 
 @media screen and  (max-width:381px)  and  (min-width:200px) {
    
+ .btnJobs{
+    width: 39vw;
+    height: 11vw;
+    font-size: 4vw;
+    }
+
+
     .heroJobs{
-         height: 46vw;
+         height: 57vw;
     }
    .heroJobs > h1 {
     font-size: 3rem;
 }
    
     .contenedorCardJob {
-     padding: 3vw;
-     height: 97vw;
-    margin: 2vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+        padding: 1vw;
+        height: 45vh;
+        width: 65vw;
+        margin: 2vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
 
     .fotoCardJob{
-        width: 52vw;
-    height: 32vw;
+        margin-top: 1rem;
+        width: 50vw;
+    height: 40vw;
+    }
+    .contenedorPrincipalCardsJobs{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+    }
+    .titleBussiness{
+        font-size: 18px;
     }
 }

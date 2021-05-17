@@ -1,7 +1,8 @@
 .contenedorPosteos{
     display: flex;
-
     justify-content: center;
+    min-height: 100vh;
+    padding: 3vh;
 }
 
 .contenedorBienvenidaUsuario{
@@ -28,13 +29,6 @@
     background: #F7F7F7;
     padding: 23px;
     border-radius: 1vw;
-}
-
-.contenedorBtnTextArea:hover{
-    box-shadow: 0 5px 25px 10px rgb(0 0 0 / 15%);
-}
-
-.contenedorPost:hover{
     box-shadow: 0 5px 25px 10px rgb(0 0 0 / 15%);
 }
 
@@ -85,20 +79,15 @@
     height: 3vw;
 }
 
-.contenedorComentarios{
-    margin-top: 2vw;
-    overflow: auto;
-    height: 36vw;
-}
-
 .contenedorPost{
     display: flex;
     flex-direction: column;
     background: #F7F7F7;
     padding: 23px;
     border-radius: 1vw;
-    width: 48vw;
-    margin-bottom: 3vw;
+     width: 50vw;
+    margin-top: 4vh;
+     box-shadow: 0 5px 25px 10px rgb(0 0 0 / 15%);
 }
 .comentarioFotoUser{
     width: 4vw;
@@ -130,7 +119,7 @@
 .tituloPost{
     font-family: 'Roboto';
     font-weight: bold;
-    font-size: 2vw;
+    font-size: 2.3rem;
     margin-bottom: 2vw;
 }
 
@@ -161,7 +150,7 @@
 
 .inputComment{
     display: flex;
-    width: 85%;
+    width: 90%;
     border-radius: 5vw;
     border: none;
     height: 3vw;
@@ -231,6 +220,8 @@ flex-direction: column;
 }
 .popover{
   z-index: 0;
+/*   position: relative  !important;
+  top: 10vw; */
 }
 
 .contenedorEditorYcomentario{
@@ -298,6 +289,11 @@ flex-direction: column;
 
 .spaceBtnForo{
      margin-top: 14px;
+    
+}
+
+.spaceBtnForo > a {
+ color: white;
 }
 
 .spaceBtnQuery{
@@ -370,7 +366,7 @@ flex-direction: column;
     justify-content: center;
 }
 
-#btnText{
+.btnText{
         border: none;
     background: #ff0034;
     color: #ffffff;
@@ -390,9 +386,6 @@ flex-direction: column;
 
 @media screen and  (max-width:1000px)  and  (min-width:700px) {
 
-        .contenedorComentarios {
-            height: 59vw;
-        }
         .contenedorComentarioYbuscador{
                 width: 65vw;
         }
@@ -416,6 +409,12 @@ flex-direction: column;
     }
 @media screen and  (max-width:700px)  and  (min-width:200px) {
    
+ .contenedorInputComment >  .contenedorIconoSearch{
+      height: 13vw;
+    width: 10vw;
+    }
+    
+
 
     .contenedorBtnTextArea{
             width: 93vw;
@@ -433,9 +432,6 @@ flex-direction: column;
     }
     .tituloForm{
         font-size: 3vw;
-    }
-    .contenedorComentarios{ 
-         height: 127vw;
     }
 
     .contenedorIconoSearch{
@@ -499,17 +495,12 @@ flex-direction: column;
     padding: 0;
 }
 
-    .fotoProfesor{
-        width: 10vw;
-    height: 10vw;
-    }
-
     #btnTitle{
             width: 6vw;
     height: 5vw;
     }
 
-      #btnText{
+      .btnText{
             width: 6vw;
     height: 5vw;
     }
@@ -517,5 +508,8 @@ flex-direction: column;
     .textAreaEdit{
          width: 68vw;
         height: 22vw;
+    }
+     .contenedorDatosUserReply > h5 {
+        font-size: 4vw;
     }
 }

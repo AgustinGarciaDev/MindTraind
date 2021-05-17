@@ -11,7 +11,7 @@ const Category = (props) => {
 
     const sendData = () => {
         if (data.trim() !== props.category.name && data.trim() !== '') {
-            props.addCategory({ action: 'update', id: props.category._id, text: data, id: props.category._id })
+            props.addCategory({ action: 'update', id: props.category._id, text: data })
             setInput(!input)
             
         } else {

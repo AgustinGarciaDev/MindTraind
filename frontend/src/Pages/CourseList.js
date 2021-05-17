@@ -1,5 +1,5 @@
 import SuscribeCardCourse from '../components/SuscribeCardCourse'
-import NavBarDashBoard from '../components/NavBarDashBoard'
+import Header from '../components/Header'
 import SideNavSuscribe from '../components/SideNavSuscribe'
 import coursesActions from "../redux/actions/coursesActtions"
 import { connect } from "react-redux"
@@ -25,31 +25,30 @@ const CourseList = (props) => {
         if (props.coursesList.length !== 0) {
             setLoader(false)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps 
     }, [props.coursesList])
 
-
     return (
-        <>
-            <NavBarDashBoard />
+
+        <div className="contenedorWeb">
+            <Header />
             <div className="fotoPortadaCourse">
                 <h1 className="cursoModalTitle titlePrincipal" >Boost your career with our courses</h1>
             </div>
             <div className="contenedorCourseAndSideBar">
                 <div className="contenedorInscripcionCursos courseList">
-
                     {
                         loader
                             ?
                             <Spinner animation="border" role="status" />
                             :
-                            props.coursesList.map(course => <SuscribeCardCourse courseSubscription={courseSubscription} course={course} />)
+                            props.coursesList.map(course => <SuscribeCardCourse key={course._id} close={close} courseSubscription={courseSubscription} course={course} />)
                     }
                 </div>
                 {!close && <SideNavSuscribe closeModal={closeModal} infoCourse={infoCourse} />}
             </div>
 
-
-        </>
+        </div>
 
     )
 }
