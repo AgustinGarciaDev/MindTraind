@@ -83,7 +83,7 @@ const Foro = (props) => {
                     <div className="contenedorBtnTextArea">
 
                         <div onClick={() => { setModalShow(!modalShow) }} className="contenedorBienvenidaUsuario">
-                            <img className="logoDashBoard" src={profilePicture} alt="" />
+                            {<div className="fotoUsuarioForo" style={{ backgroundImage: `url("${profilePicture}")` }}></div>}
                             <h4 className="tituloForm"> Hi {firstName} {lastName}, doubts? Contact your tutor</h4>
                         </div>
                         <div>

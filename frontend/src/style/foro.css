@@ -289,9 +289,12 @@ flex-direction: column;
 
 .spaceBtnForo{
      margin-top: 14px;
-    
 }
 
+.coach{
+    color:#ff0034;
+    font-family: "Anton";
+}
 .spaceBtnForo > a {
  color: white;
 }
@@ -382,6 +385,18 @@ flex-direction: column;
 
 .fas{
     margin-right: 0;
+}
+
+
+.fotoUsuarioForo{
+    width: 6vw;
+    min-width: 50px;
+     min-height: 50px;
+    height: 6vw;
+    background: center;
+    background-position: center;
+    background-size: cover;
+    border-radius: 100%;
 }
 
 @media screen and  (max-width:1000px)  and  (min-width:700px) {

@@ -151,7 +151,7 @@ const Post = (props) => {
 
             }
             <div className="contedorDatosUsuario">
-                <img className="comentarioFotoUser" src={profilePicture} alt="" />
+                {<div className="fotoUsuarioForo" style={{ backgroundImage: `url("${profilePicture}")` }}></div>}
                 <div className="contenedorNameUser">
                     <h3>{firstName} {lastName}</h3>
                 </div>
@@ -178,7 +178,6 @@ const Post = (props) => {
                 <i className="fas fa-reply"></i>
                 <p>Reply</p>
             </div>
-
             <>
                 {props.post.reply.map(aReply => <Reply key={aReply._id} replyComment={aReply} idComment={props.post._id} idCourse={props.currentCourse._id} />)}
 
@@ -195,8 +194,6 @@ const Post = (props) => {
 
                 </div>
             </>
-
-
         </div>
     )
 }

@@ -9,6 +9,7 @@ import coursesActions from "../redux/actions/coursesActtions"
 
 const Reply = (props) => {
 
+
     const { replyComment, modifyReply, idComment, idCourse, userLogged } = props
     const { textReply, userReply, _id } = replyComment;
     const [show, setShow] = useState(false);
@@ -83,9 +84,9 @@ const Reply = (props) => {
         <>
             <div className="contenedorEditorYcomentario">
                 <div className="contenedorReply">
-                    {<div className="fotoProfesor" style={{ backgroundImage: `url("${userReply.profilePicture}")` }}></div>}
+                    {<div className="fotoUsuarioForo" style={{ backgroundImage: `url("${userReply.profilePicture}")` }}></div>}
                     <div className="contenedorDatosUserReply">
-                        <h5>{userReply.firstName} {userReply.lastName}</h5>
+                        <h5 className={userReply.role === "coach" ? "coach" : ""} >{userReply.firstName} {userReply.lastName}</h5>
                         {!editInput
                             ? <div><p>{textReply}</p></div>
                             : <div className="contenedorInputEdit">
@@ -96,8 +97,7 @@ const Reply = (props) => {
                                     value={comentario.mensaje}
                                 />
                                 <button className="btnSendEdit" onClick={() => requestModifyReply("update")}>
-                                    <i class="fas fa-paper-plane"></i>
-
+                                    <i className="fas fa-paper-plane"></i>
                                 </button>
 
                             </div>
