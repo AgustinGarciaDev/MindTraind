@@ -39,19 +39,20 @@ const usersActions = {
   loginForced: (token, history) => {
     return async (dispatch, getState) => {
       try {
-        const { data } = await axios.get("http://localhost:4000/api/usersforcedlogin", {
+        const { data } = await axios.get("https://trained-mind.herokuapp.com/api/usersforcedlogin", {
           headers: { Authorization: "Bearer " + token },
         });
 
-        dispatch({ type: "LOGIN_USER", payload: { ...data.response, token } });
+        dispatch({
+          type: "LOGIN_USER",
+          payload: {
+            ...data.response,
+            token
+          }
+        });
       } catch (err) {
-        alert("Error 500 , please come back later");
-        console.log(err);
         if (err.response && err.response.status === 401) {
-          alert("try harder next time");
-          //localStorage.clear();
-          window.location.reload(true);
-          //history.push("/");
+          showToast("error", "What are you trying to do ??")
         }
         localStorage.clear();
       }
@@ -60,10 +61,10 @@ const usersActions = {
 
   logOutUser: () => {
     return (dispatch, getState) => {
-      showToast("info", "Come back later ", "top-right");
-      dispatch({ type: "LOG_OUT" });
-    };
+      showToast("info", "Come back later ", "top-right")
+      dispatch({ type: "LOG_OUT" })
+    }
   },
-};
+}
 
-export default usersActions;
+export default usersActions

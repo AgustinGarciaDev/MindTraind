@@ -1,17 +1,28 @@
 .signUpContainer{
   display: flex;
+  flex-direction: column;
+  background-color: black;
   min-height: 100vh;
+  background-position: center;
+  background-size: cover;
+}
+
+.formContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .formSign{
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
   background-color: whitesmoke;
-  border: solid 1px black;
-  margin: 1vh 1vh;
+  margin-top: 10vh;
   padding: 1em;
+  justify-content: space-around;
+  width: 60%;
 }
 
 .signInput{
