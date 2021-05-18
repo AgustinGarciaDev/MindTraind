@@ -56,7 +56,7 @@ const SignUp = (props) => {
   return (
     <div className="signUpContainer" style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/rayas-red-izq-1.png')` }}>
       <Header />
-      <formContainr className="formContainer">
+      <div className="formContainer">
         <form className="formSign">
           <h1>SIGN UP</h1>
 
@@ -89,7 +89,7 @@ const SignUp = (props) => {
             cookiePolicy={'single_host_origin'}
           />
         </form>
-      </formContainr>
+      </div>
     </div>
   )
 }

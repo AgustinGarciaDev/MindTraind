@@ -80,7 +80,6 @@ const Foro = (props) => {
                 </div>
                 <div>
                     <div className="contenedorBtnTextArea">
-
                         <div onClick={() => { setModalShow(!modalShow) }} className="contenedorBienvenidaUsuario">
                             {<div className="fotoUsuarioForo" style={{ backgroundImage: `url("${profilePicture}")` }}></div>}
                             <h4 className="tituloForm"> Hi {firstName} {lastName}, doubts? Contact your tutor</h4>
@@ -100,7 +99,6 @@ const Foro = (props) => {
                                 <div className="contenedorBtn">
                                     <button onClick={sendComent} className="btnDashBoard btnForm">Send</button>
                                 </div>
-
                             </div>
                         }
                     </div>

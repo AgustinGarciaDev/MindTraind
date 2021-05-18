@@ -40,7 +40,7 @@ const Dashboard = ({ getCoursesByIdStudent, userLogged }) => {
         )
     }
     return (
-        <>
+        <div className="contenedorWeb">
             <Header />
             {studentCourses.length === 0
                 ? <>
@@ -58,7 +58,7 @@ const Dashboard = ({ getCoursesByIdStudent, userLogged }) => {
                     {studentCourses.map(curso => <CourseCard key={curso._id} curso={curso} />)}
                 </div>
             }
-        </>
+        </div>
     )
 }
 

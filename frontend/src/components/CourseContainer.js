@@ -22,7 +22,7 @@ const CourseContainer = (props) => {
         <div className="contenedorMenu">
             <div className="contenedorWeb">
                 <Header />
-                <div className="courseBigContainer" style={{backgroundImage:`url('https://baravdg.com/wp-content/uploads/2021/05/rayas-red-izq-1.png')`}}>
+                <div className="courseBigContainer" style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/rayas-red-izq-1.png')` }}>
                     <h3 className="h3tittle">Courses</h3>
                     <div className="courseContainer">
                         {
@@ -33,7 +33,7 @@ const CourseContainer = (props) => {
                                 props.coursesList.map(course => <Course key={course._id} course={course} />)
                         }
                     </div>
-                    <Link className="formButtonsNew" to="/admin" type="button" >Go back</Link>
+                    <Link className="formButtonsNewWhite" to="/admin" type="button" >Go back</Link>
                 </div>
             </div>
         </div>

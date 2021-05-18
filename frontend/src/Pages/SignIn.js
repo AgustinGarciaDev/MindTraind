@@ -45,7 +45,7 @@ const SignIp = (props) => {
   return (
     <div className="signUpContainer" style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/rayas-red-izq-1.png')` }}>
       <Header />
-      <formContainr className="formContainer">
+      <div className="formContainer">
         <form className="formSign">
           <h1>SIGN IN</h1>
           <input type="text" placeholder="MY E-MAIL" className="signInput" name="email" value={userToLogin.email} onChange={readInput} />
@@ -64,13 +64,13 @@ const SignIp = (props) => {
             cookiePolicy={'single_host_origin'}
           />
         </form>
-        </formContainr>
+      </div>
     </div>
   )
 }
 
 const mapDispatchToProps = {
-        logInUser: usersActions.logInUser
+  logInUser: usersActions.logInUser
 }
 
 export default connect(null, mapDispatchToProps)(SignIp);

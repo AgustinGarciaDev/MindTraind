@@ -174,10 +174,6 @@ const Post = (props) => {
 
                 }
             </div>
-            <div onClick={() => { setCommentReply(!commentReply) }} className="contenedorComentario replyBtn">
-                <i className="fas fa-reply"></i>
-                <p>Reply</p>
-            </div>
             <>
                 {props.post.reply.map(aReply => <Reply key={aReply._id} replyComment={aReply} idComment={props.post._id} idCourse={props.currentCourse._id} />)}
 

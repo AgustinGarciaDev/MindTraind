@@ -23,6 +23,16 @@
     transition: all 0.4s;
 }
 
+.formButtonsNewWhite{
+    border: none;
+    background: white;
+    color: #FF0034;
+    border-radius: 10px;
+    box-shadow: 1px 1px 9px 2px white;
+    padding: 1vh 4vh;
+    margin: 2vh 1vh;
+}
+
 @media (max-width:500px){
     .courseCardContainer{
           width: 70%;

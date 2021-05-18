@@ -24,7 +24,7 @@ const JobsContainer = (props) => {
         <div className="contenedorMenu">
             <div className="contenedorWeb">
                 <Header />
-                <div className="courseBigContainer" style={{backgroundImage:`url('https://baravdg.com/wp-content/uploads/2021/05/rayas-red-izq-1.png')`}}>
+                <div className="courseBigContainer" style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/rayas-red-izq-1.png')` }}>
                     <h3 className="h3tittle">Jobs</h3>
                     <div className="courseContainer">
                         {
@@ -35,7 +35,7 @@ const JobsContainer = (props) => {
                                 props.jobs.map(job => <Job job={job} key={job._id} />)
                         }
                     </div>
-                    <Link className="formButtonsNew" to="/admin" type="button" >Go back</Link>
+                    <Link className="formButtonsNewWhite" to="/admin" type="button" >Go back</Link>
                 </div>
             </div>
         </div>
