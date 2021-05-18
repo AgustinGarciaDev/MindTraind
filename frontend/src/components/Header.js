@@ -40,7 +40,18 @@ const Header = (props) => {
                             </>
                         }
                         {
-                            props.userLogged.userLogged && props.userLogged.userLogged.role === 'student' || 'coach'
+                            props.userLogged.userLogged && props.userLogged.userLogged.role === 'student'
+                            &&
+                            <>
+                                <NavLink exact to="/dashboard"><p className="link">Dashboard</p></NavLink>
+                                <NavLink exact to="/courselist"><p className="link">Course list</p></NavLink>
+                                <NavLink exact to="/jobs"><p className="link">Jobs</p></NavLink>
+                                <NavLink exact to="/chat"><p className="link">Chat</p></NavLink>
+                            </>
+                        }
+
+                        {
+                            props.userLogged.userLogged && props.userLogged.userLogged.role === 'coach'
                             &&
                             <>
                                 <NavLink exact to="/dashboard"><p className="link">Dashboard</p></NavLink>

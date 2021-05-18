@@ -70,6 +70,7 @@ const NewCourse = (props) => {
         } else {
             const response = await props.addCourse(course)
             if (response.data.success) {
+                setError({})
                 showToast('success', 'Course added successfully')
                 setCourse({ nameCourse: '', categories: [], email: '', pictureRefence: '', programDescription: '', lessons: [], duration: '', difficulty: '' })
             } else {
@@ -127,7 +128,7 @@ const NewCourse = (props) => {
         <div className="contenedorMenu">
             <div className="contenedorWeb">
                 <Header />
-                <div className="newCourseContainer" style={{backgroundImage:`url('https://baravdg.com/wp-content/uploads/2021/05/rayas-red-izq-1.png')`}}>
+                <div className="newCourseContainer" style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/rayas-red-izq-1.png')` }}>
                     <form className="newCourseForm">
                         <h3 className="h3Form">Add new course</h3>
 
@@ -150,29 +151,19 @@ const NewCourse = (props) => {
                         {error.difficulty && <small>{error.difficulty}</small>}
 
                         <h3 className="h3Form">Categories</h3>
-                        <div className="categoryNew">
-                            <div className="lessonInputError">
-                                <input className="newInput" type="text" placeholder="categories" onChange={createCategory} name="name" value={category.name} />
-                                {error.categories && <small>{error.categories}</small>}
-                            </div>
-                            <i className="fas fa-plus" onClick={addCategory}></i>
-                        </div>
+                        <input className="newInput" type="text" placeholder="categories" onChange={createCategory} name="name" value={category.name} />
+                        {error.categories && <small>{error.categories}</small>}
+                        <i className="fas fa-plus" onClick={addCategory}></i>
                         <div className="newCategories">
                             {
                                 course.categories.map(category => <CategoryText deleteCategory={deleteCategory} changeCategory={changeCategory} key={category.name} category={category} />)
                             }
                         </div>
                         <h3 className="h3Form">Lessons</h3>
-                        <div className="lessonsNew">
-                            <div className="lessonInput">
-                                <div className="lessonInputError">
-                                    <input className="newInput" type="text" placeholder="lesson name" onChange={createLesson} name="lessonName" value={lesson.lessonName} />
-                                    <input className="newInput" type="text" placeholder="video" onChange={createLesson} name="videoLink" value={lesson.videoLink} />
-                                    {error.lessons && <small>{error.lessons}</small>}
-                                </div>
-                            </div>
-                            <i className="fas fa-plus" onClick={addLesson}></i>
-                        </div>
+                        <input className="newInput" type="text" placeholder="lesson name" onChange={createLesson} name="lessonName" value={lesson.lessonName} />
+                        <input className="newInput" type="text" placeholder="video" onChange={createLesson} name="videoLink" value={lesson.videoLink} />
+                        {error.lessons && <small>{error.lessons}</small>}
+                        <i className="fas fa-plus" onClick={addLesson}></i>
                         <div className="newCategories">
                             {
                                 course.lessons.map(lesson => <LessonText changeLesson={changeLesson} key={lesson.lessonName} lesson={lesson} deleteLesson={deleteLesson} />)

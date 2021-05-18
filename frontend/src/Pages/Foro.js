@@ -64,7 +64,6 @@ const Foro = (props) => {
         return null
     }
 
-
     return (
         <div className="contenedorWeb">
             <Header />

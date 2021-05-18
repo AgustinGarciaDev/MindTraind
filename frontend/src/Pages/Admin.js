@@ -18,10 +18,10 @@ const Admin = () => {
                     <NavLink className="selectCard" to={"/NewCourse"} style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/pexels-estudio-polaroid-3112004-scaled.jpg')` }}>
                         <h3>New course</h3>
                     </NavLink>
-                    <NavLink className="selectCard" to={"/EditJobs"} style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/pexels-estudio-polaroid-3112004-scaled.jpg')` }}>
+                    <NavLink className="selectCard" to={"/EditJobs"} style={{ backgroundImage: `url('https://baravdg.com/wp-content/uploads/2021/05/metodo-y-medios-de-entrenamiento-700x445-1.jpg')` }}>
                         <h3>Jobs</h3>
                     </NavLink>
-                    <NavLink className="selectCard" to={'/NewJob'} style={{ backgroundImage: `url('http://baravdg.com/wp-content/uploads/2021/05/pexels-lukas-669584-scaled.jpg')` }}>
+                    <NavLink className="selectCard" to={'/NewJob'} style={{ backgroundImage: `url('http://baravdg.com/wp-content/uploads/2021/05/entrenamiento-funcional-2-e1564502237762.jpg')` }}>
                         <h3>New job</h3>
                     </NavLink>
                 </div>
