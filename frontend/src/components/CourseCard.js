@@ -16,7 +16,7 @@ const CourseCard = (props) => {
                 </div>
             </div>
             <div className="contenedorBtn">
-                <Link to={`/class/${props.curso._id}`} ><button className="btnDashBoard">Go course!</button></Link>
+                <Link to={`/class/${props.curso._id}`} ><button className="btnDashBoard">Go to!</button></Link>
             </div>
         </div>
     )

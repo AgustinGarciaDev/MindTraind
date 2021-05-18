@@ -142,7 +142,7 @@
 .contenedorAsideNav{
    width: 49vw;
     position: sticky;
-     height: 48vw;
+    height: 100%;
     background:#080D13;
     margin-right: 0;
     margin-left: auto;
@@ -154,6 +154,7 @@
 }
 .titleContenedorAside{
   font-family: 'Anton', sans-serif;
+      margin-bottom: 2vw;
 }
 
 .nameTitleAside{
@@ -174,6 +175,7 @@
 .contenedorDatosCourseAside{
     display: flex;
     margin-top: 2vw;
+     margin-bottom: 2vw;
 }
 .textoCourseAside{
         margin-right: 4vw;
@@ -261,9 +263,8 @@
     background: #080d13;
     color: white;
     border-radius: 1vw;
-    margin-left: 6vw;
-    margin-right: 4vw;
     width: 23vw;
+    margin: 2vw;
 }
 .tituloCursoDashboard{
     font-family: "Anton";
@@ -328,6 +329,10 @@
     margin-left: 7vw;
 }
 
+.contenedorAsideNav > .btnInscripcion{
+        margin-top: 3vh;
+}
+
 /* Responsive lista de cursos*/
 
 @media only screen and (min-device-width : 676px) and (max-device-width : 1200px) {
@@ -372,7 +377,6 @@
     }
     .contenedorAsideNav{
         width: 86vw;
-        height: 72vh;
     }
     .contenedorCourseAndSideBar{
         width: 100%;
@@ -450,8 +454,7 @@
         top: 0;
         width: 100%;
         height: 100%;
-        overflow: auto;
-        padding: 20vw;
+        padding: 12vw;
         background: #080d13f5;
     }
     .btnInscripcion{
@@ -516,15 +519,14 @@
    
 
      .contenedorAsideNav{
-         position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        padding: 20vw;
-        background: #080d13f5;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 12vw;
+    background: #080d13f5;
     }
 
        .btnInscripcion {
@@ -616,15 +618,14 @@
 @media only screen and (min-device-width : 100px) and (max-device-width : 425px){
 
      .contenedorAsideNav{
-         position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        padding: 20vw;
-        background: #080d13f5;
+      position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 7vw;
+    background: #080d13f5;
     }
  .btnInscripcion {
     width: 39vw;

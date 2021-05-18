@@ -133,7 +133,7 @@ html *{
 }
 .titulo{
     color:white;
-    font-size: 7vh; 
+    font-size: 5vh;
     margin-top:-19.5vh;
     padding: 2vh;
     font-family: 'Anton', sans-serif;
@@ -234,17 +234,17 @@ html *{
 }
     
 .btn-home{
-    border: none;
+      border: none;
     background: #FF0034;
     color: white;
-    width: 11vw;
-    height: 3vw;
+    width: 16vw;
+    height: 4vw;
     border-radius: 10px;
-    box-shadow: 1px 1px 9px 2px #FF0034;
+    box-shadow: 1px 1px 9px 2px #ff0034;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin:1rem;
+    margin: 1rem;
 }
 a:link, a:visited, a:active {
     text-decoration:none;

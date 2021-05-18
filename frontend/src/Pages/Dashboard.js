@@ -40,26 +40,24 @@ const Dashboard = ({ getCoursesByIdStudent, userLogged }) => {
         )
     }
     return (
-        <div className="contenedorMenu">
-            <div className="contenedorWeb">
-                <Header />
-                {studentCourses.length === 0
-                    ? <>
-                        <div className="ContenedorPresentacion">
-                            <video className="videoDash" autoPlay loop muted >
-                                <source src="http://baravdg.com/wp-content/uploads/2021/05/pexels-produtora-midtrack-6509537-1.mp4" type="video/mp4"></source>
-                            </video>
-                            <div className="sobreVideo">
-                                <h1>What's your next challenge?</h1>
-                                <Link to="/courselist" ><button>Choose your course</button></Link>
-                            </div>
+        <div className="contenedorWeb">
+            <Header />
+            {studentCourses.length === 0
+                ? <>
+                    <div className="ContenedorPresentacion">
+                        <video className="videoDash" autoPlay loop muted >
+                            <source src="http://baravdg.com/wp-content/uploads/2021/05/pexels-produtora-midtrack-6509537-1.mp4" type="video/mp4"></source>
+                        </video>
+                        <div className="sobreVideo">
+                            <h1>What's your next challenge?</h1>
+                            <Link to="/courselist" ><button>Choose your course</button></Link>
                         </div>
-                    </>
-                    : <div className="contenedorDatosCursoDashBoard">
-                        {studentCourses.map(curso => <CourseCard key={curso._id} curso={curso} />)}
                     </div>
-                }
-            </div>
+                </>
+                : <div className="contenedorDatosCursoDashBoard">
+                    {studentCourses.map(curso => <CourseCard key={curso._id} curso={curso} />)}
+                </div>
+            }
         </div>
     )
 }

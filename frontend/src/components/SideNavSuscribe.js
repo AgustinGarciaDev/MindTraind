@@ -1,8 +1,9 @@
-import {  useState } from "react";
+import { useState } from "react";
 import { Modal } from "react-bootstrap";
 import coursesActions from '../redux/actions/coursesActtions'
 import { connect } from 'react-redux'
 import { showToast } from "../helpers/myToast";
+import { Link } from "react-router-dom"
 
 const SideNavSuscribe = (props) => {
     const [modalShow, setModalShow] = useState(false);
@@ -14,8 +15,10 @@ const SideNavSuscribe = (props) => {
     const enroll = () => {
         setModalShow(true)
         if (props.infoCourse.students.some(student => student.email === props.userLogged.email))
-            return showToast("error", "ya estas inscripto")
+            return showToast("error", "You are already registered")
+
         props.addStudentToCourse(props.userLogged.token, props.infoCourse._id, "add")
+
     }
 
     function MyVerticallyCenteredModal(props) {
@@ -50,8 +53,9 @@ const SideNavSuscribe = (props) => {
                     </div>
                 </Modal.Body >
                 <Modal.Footer>
-
-                    <button onClick={() => enroll()} className="btnInscripcion btnInscripcionModal">Inscribirme</button>
+                    <Link to="/dashboard">
+                        <button onClick={() => enroll()} className="btnInscripcion btnInscripcionModal">Register</button>
+                    </Link>
                 </Modal.Footer>
             </Modal >
         );
@@ -71,7 +75,7 @@ const SideNavSuscribe = (props) => {
                     </div>
                     <div className="textoCourseAside">
                         <h2>Difficulty</h2>
-                        <p>{difficulty} weeks</p>
+                        {[...Array(difficulty)].map((element, index) => <i key={index} className="fas fa-fire"></i>)}
                     </div>
                 </div>
                 <div>
@@ -79,7 +83,7 @@ const SideNavSuscribe = (props) => {
                     <p>{programDescription}</p>
                 </div>
             </div>
-            <button onClick={() => setModalShow(true)} className="btnInscripcion">Inscribirme</button>
+            <button onClick={() => setModalShow(true)} className="btnInscripcion">Register</button>
 
             <MyVerticallyCenteredModal
                 show={modalShow}

@@ -91,7 +91,7 @@ const Foro = (props) => {
                         {!modalShow &&
                             <div className="postYtitulo">
                                 <div>
-                                    <h2 className="titleInternalForm">titulo</h2>
+                                    <h2 className="titleInternalForm">Title</h2>
                                     <input onChange={inputData} value={objConsult.title} name="title" className="inputPost" type="text" />
                                 </div>
                                 <div>
