@@ -6,7 +6,7 @@ Aplicación web desarrollada de forma grupal en el lapso de una semana, durante 
 
 ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/66225450/121586638-41f52280-ca0a-11eb-8f2b-131d4f3a35f7.gif)
 <br/>
-Podran ver la aplicación web en: https://trained-mind.herokuapp.com/
+Podrás ver la aplicación web en: https://trained-mind.herokuapp.com/
 
 # Comenzando  🚀
 ```
